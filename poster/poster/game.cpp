@@ -4,9 +4,11 @@
 #include "game.h"
 #include "function.h"
 
+#include "arm.h"
+
 //コンストラクタ
 CGame::CGame(CManager* p) :CScene(p){
-
+	base.emplace_back((unique_ptr<BaseVector>)new CArm());
 }
 
 //更新処理

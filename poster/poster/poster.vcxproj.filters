@@ -62,6 +62,15 @@
     <ClInclude Include="function.h">
       <Filter>ライブラリ用ヘッダーファイル</Filter>
     </ClInclude>
+    <ClInclude Include="arm.h">
+      <Filter>ヘッダー ファイル\オブジェクト</Filter>
+    </ClInclude>
+    <ClInclude Include="discard.h">
+      <Filter>ヘッダー ファイル\オブジェクト</Filter>
+    </ClInclude>
+    <ClInclude Include="hitobj.h">
+      <Filter>ヘッダー ファイル</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp">
@@ -81,6 +90,15 @@
     </ClCompile>
     <ClCompile Include="library_function.cpp">
       <Filter>ライブラリ用ソースファイル</Filter>
+    </ClCompile>
+    <ClCompile Include="arm.cpp">
+      <Filter>ソース ファイル\オブジェクト</Filter>
+    </ClCompile>
+    <ClCompile Include="discard.cpp">
+      <Filter>ソース ファイル\オブジェクト</Filter>
+    </ClCompile>
+    <ClCompile Include="hitobj.cpp">
+      <Filter>ソース ファイル</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

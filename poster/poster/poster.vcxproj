@@ -154,10 +154,13 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClInclude Include="3D_function.h" />
+    <ClInclude Include="arm.h" />
     <ClInclude Include="CCamera.h" />
     <ClInclude Include="2D_function.h" />
+    <ClInclude Include="discard.h" />
     <ClInclude Include="function.h" />
     <ClInclude Include="game.h" />
+    <ClInclude Include="hitobj.h" />
     <ClInclude Include="library_function.h" />
     <ClInclude Include="main.h" />
     <ClInclude Include="objBase.h" />
@@ -167,9 +170,12 @@
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="3D_function.cpp" />
+    <ClCompile Include="arm.cpp" />
     <ClCompile Include="CCamera.cpp" />
     <ClCompile Include="2D_function.cpp" />
+    <ClCompile Include="discard.cpp" />
     <ClCompile Include="game.cpp" />
+    <ClCompile Include="hitobj.cpp" />
     <ClCompile Include="library_function.cpp" />
     <ClCompile Include="main.cpp" />
   </ItemGroup>
