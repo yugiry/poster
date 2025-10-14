@@ -60,7 +60,7 @@ int CArm::Action(vector<unique_ptr<BaseVector>>& base)
 	}
 
 	//アームが下に到着
-	if (pos.y + vec.y + ImgWidth > WINDOW_HEIGHT)
+	if (pos.y + vec.y + ImgHeight > WINDOW_HEIGHT)
 	{
 		arm_down = false;
 		move_time = GRAP_TIME;
@@ -70,6 +70,9 @@ int CArm::Action(vector<unique_ptr<BaseVector>>& base)
 	//座標更新
 	pos.x += vec.x;
 	pos.y += vec.y;
+
+	if (pos.x < 0)pos.x = 0;
+	if (pos.x > GAME_WIDTH -ImgWidth)pos.x = GAME_WIDTH - ImgWidth;
 
 	return 0;
 }

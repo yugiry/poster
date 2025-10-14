@@ -65,11 +65,11 @@
     <ClInclude Include="arm.h">
       <Filter>ヘッダー ファイル\オブジェクト</Filter>
     </ClInclude>
-    <ClInclude Include="discard.h">
-      <Filter>ヘッダー ファイル\オブジェクト</Filter>
-    </ClInclude>
     <ClInclude Include="hitobj.h">
       <Filter>ヘッダー ファイル</Filter>
+    </ClInclude>
+    <ClInclude Include="wall.h">
+      <Filter>ヘッダー ファイル\オブジェクト</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -94,11 +94,11 @@
     <ClCompile Include="arm.cpp">
       <Filter>ソース ファイル\オブジェクト</Filter>
     </ClCompile>
-    <ClCompile Include="discard.cpp">
-      <Filter>ソース ファイル\オブジェクト</Filter>
-    </ClCompile>
     <ClCompile Include="hitobj.cpp">
       <Filter>ソース ファイル</Filter>
+    </ClCompile>
+    <ClCompile Include="wall.cpp">
+      <Filter>ソース ファイル\オブジェクト</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

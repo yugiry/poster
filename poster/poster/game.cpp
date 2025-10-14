@@ -5,10 +5,29 @@
 #include "function.h"
 
 #include "arm.h"
+#include "wall.h"
 
 //コンストラクタ
-CGame::CGame(CManager* p) :CScene(p){
+CGame::CGame(CManager* p) :CScene(p) {
+	//アーム生成
 	base.emplace_back((unique_ptr<BaseVector>)new CArm());
+
+	//壁生成
+	{
+		Point pos; int w, h;
+		pos.x = 250; pos.y = 200; w = 10; h = WINDOW_HEIGHT - pos.y;
+		base.emplace_back((unique_ptr<BaseVector>)new CWall(pos, w, h));
+		pos.x = 580; pos.y = 200; w = 10; h = WINDOW_HEIGHT - pos.y;
+		base.emplace_back((unique_ptr<BaseVector>)new CWall(pos, w, h));
+		pos.x = 850; pos.y = 0; w = 10; h = WINDOW_HEIGHT - pos.y;
+		base.emplace_back((unique_ptr<BaseVector>)new CWall(pos, w, h));
+		pos.x = 0; pos.y = WINDOW_HEIGHT - 10; w = 250; h = 10;
+		base.emplace_back((unique_ptr<BaseVector>)new CWall(pos, w, h));
+		pos.x = 260; pos.y = WINDOW_HEIGHT - 10; w = 580 - pos.x; h = 10;
+		base.emplace_back((unique_ptr<BaseVector>)new CWall(pos, w, h));
+		pos.x = 590; pos.y = WINDOW_HEIGHT - 10; w = 850 - pos.x; h = 10;
+		base.emplace_back((unique_ptr<BaseVector>)new CWall(pos, w, h));
+	}
 }
 
 //更新処理
@@ -40,26 +59,17 @@ void CGame::Draw()
 	for (int i = 0; i < base.size(); i++)
 		if(base[i]->FLAG) base[i]->Draw();
 
-	//listオブジェクトの描画
-	//for (auto i = base.begin(); i != base.end(); i++)
-	//	if ((*i)->FLAG) (*i)->Draw();
+	//DrawBox(0, 0, 250, WINDOW_HEIGHT, GetColor(0, 255, 0), true);
 
-	//3D軸の描画
-	//DrawLine3D(
-	//	VGet(0, 0, 0),
-	//	VGet(0, 0, 100),
-	//	0x0000ff
-	//);
-	//DrawLine3D(
-	//	VGet(0, 0, 0),
-	//	VGet(100, 0, 0),
-	//	0xff0000
-	//);
-	//DrawLine3D(
-	//	VGet(0, 0, 0),
-	//	VGet(0, 100, 0),
-	//	0x00ff00
-	//);
+	//DrawBox(250, 0, 260, WINDOW_HEIGHT, GetColor(100, 100, 100), true);
+
+	//DrawBox(260, 0, 580, WINDOW_HEIGHT, GetColor(0, 0, 255), true);
+
+	//DrawBox(580, 0, 590, WINDOW_HEIGHT, GetColor(100, 100, 100), true);
+
+	//DrawBox(590, 0, 850, WINDOW_HEIGHT, GetColor(255, 0, 0), true);
+
+	//DrawBox(850, 0, 860, WINDOW_HEIGHT, GetColor(100, 100, 100), true);
 }
 
 CGame::~CGame()

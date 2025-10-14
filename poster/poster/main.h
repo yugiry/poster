@@ -14,8 +14,11 @@ using namespace std;
 #define RADIAN(_deg) ((float)M_PI*(_deg)/180.0f)
 
 //基本ウィンドウサイズ
-constexpr auto WINDOW_WIDTH = 800;	//横幅
+constexpr auto WINDOW_WIDTH = 1000;	//横幅
 constexpr auto WINDOW_HEIGHT = 600;	//縦幅
+
+constexpr auto GAME_WIDTH = 850;
+constexpr auto GAME_HEIGHT = 600;
 
 //2D用
  struct Point {
