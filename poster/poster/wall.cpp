@@ -7,6 +7,8 @@ CWall::CWall(Point p, int w, int h)
 
 	ImgWidth = w;
 	ImgHeight = h;
+
+	ID = WALL;
 }
 
 int CWall::Action(vector<unique_ptr<BaseVector>>& base)

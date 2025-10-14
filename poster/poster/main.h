@@ -35,8 +35,13 @@ struct Point3 {
 struct Vector3 {
 	float x, y, z;
 };
- struct ObjSize {
+struct ObjSize {
 	float h, w, d;
+};
+
+enum ID
+{
+	WALL,
 };
 
 //ƒJƒƒ‰î•ñƒNƒ‰ƒX(main.h)

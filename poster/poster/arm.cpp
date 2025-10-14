@@ -59,6 +59,11 @@ int CArm::Action(vector<unique_ptr<BaseVector>>& base)
 		vec.y = -4.0f;
 	}
 
+	for (auto i = base.begin(); i != base.end(); i++)
+	{
+
+	}
+
 	//ƒA[ƒ€‚ª‰º‚É“ž’…
 	if (pos.y + vec.y + ImgHeight > WINDOW_HEIGHT)
 	{
