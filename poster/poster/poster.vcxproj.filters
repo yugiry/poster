@@ -27,6 +27,12 @@
     <Filter Include="ライブラリ用ソースファイル">
       <UniqueIdentifier>{e93d6900-d129-4c3f-acbd-1f8be7236993}</UniqueIdentifier>
     </Filter>
+    <Filter Include="ソース ファイル\オブジェクト\ごみ">
+      <UniqueIdentifier>{68f93ff2-8244-4c01-8c46-699ea16a72e8}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="ヘッダー ファイル\オブジェクト\ごみ">
+      <UniqueIdentifier>{cd186680-39a4-44f9-8070-3b439436e7c5}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="main.h">
@@ -71,6 +77,9 @@
     <ClInclude Include="wall.h">
       <Filter>ヘッダー ファイル\オブジェクト</Filter>
     </ClInclude>
+    <ClInclude Include="paper.h">
+      <Filter>ヘッダー ファイル\オブジェクト\ごみ</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp">
@@ -99,6 +108,9 @@
     </ClCompile>
     <ClCompile Include="wall.cpp">
       <Filter>ソース ファイル\オブジェクト</Filter>
+    </ClCompile>
+    <ClCompile Include="paper.cpp">
+      <Filter>ソース ファイル\オブジェクト\ごみ</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

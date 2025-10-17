@@ -43,6 +43,8 @@ BaseVector* HitCheck_box_GetObj(vector<unique_ptr<BaseVector>>&, BaseVector*, in
 
 //円と矩形判定処理(円オブジェクト,矩形オブジェクト,円の半径)
 void HitCheck_Box_Circle(Base*, Base*, float);
+void HitCheck_Box_Circle(BaseVector*, BaseVector*, float);
+bool HitCheck_Box_CircleB(BaseVector*, BaseVector*, float);
 
 //二点間距離
 float DistanceF(float, float, float, float);

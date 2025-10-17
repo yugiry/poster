@@ -21,6 +21,9 @@ public:
 	int ImgHeight{ 0 };//画像の縦サイズ
 
 	int Dir{ 0 };//オブジェクトの向き
+	int radius{ -1 };//円の半径
+
+	int weight{ -1 };
 
 	int sound[8]{ -1,-1,-1,-1,-1,-1,-1,-1 };
 

@@ -42,6 +42,10 @@ struct ObjSize {
 enum ID
 {
 	WALL,
+	BURNABLE,
+	CRUMB,
+	PLASTIC,
+	SCRAP,
 };
 
 //ƒJƒƒ‰î•ñƒNƒ‰ƒX(main.h)

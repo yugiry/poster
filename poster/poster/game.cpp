@@ -7,14 +7,16 @@
 #include "arm.h"
 #include "wall.h"
 
+#include "paper.h"
+
 //コンストラクタ
 CGame::CGame(CManager* p) :CScene(p) {
 	//アーム生成
 	base.emplace_back((unique_ptr<BaseVector>)new CArm());
-
+	
+	Point pos; int w, h;
 	//壁生成
 	{
-		Point pos; int w, h;
 		pos.x = 250; pos.y = 200; w = 10; h = WINDOW_HEIGHT - pos.y;
 		base.emplace_back((unique_ptr<BaseVector>)new CWall(pos, w, h));
 		pos.x = 580; pos.y = 200; w = 10; h = WINDOW_HEIGHT - pos.y;
@@ -28,6 +30,9 @@ CGame::CGame(CManager* p) :CScene(p) {
 		pos.x = 590; pos.y = WINDOW_HEIGHT - 10; w = 850 - pos.x; h = 10;
 		base.emplace_back((unique_ptr<BaseVector>)new CWall(pos, w, h));
 	}
+
+	pos.x = WINDOW_WIDTH / 2; pos.y = WINDOW_HEIGHT / 2;
+	base.emplace_back((unique_ptr<BaseVector>)new CPaper(pos));
 }
 
 //更新処理
