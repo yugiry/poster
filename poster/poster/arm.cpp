@@ -31,22 +31,39 @@ int CArm::Action(vector<unique_ptr<BaseVector>>& base)
 	if (arm_state == CLOSE)
 	{
 		//物を掴む判定を出す
-		base.emplace_back((unique_ptr<BaseVector>)new CHitobj());
+		base.emplace_back((unique_ptr<BaseVector>)new CHitobj(pos));
 	}
 
 	//移動ベクトルのリセット
 	vec.x = vec.y = 0;
 
+	//アームが動いている
 	if (move_time == 0)
 	{
 		move_time--;
+		arm_state = CLOSE;
 	}
-	if (move_time != 0)move_time--;
+	if (move_time > 0)
+	{
+		move_time--;
+	}
+
+	//アームが開く
+	if (arm_open == 0)
+	{
+		arm_open--;
+		arm_state = OPEN;
+		arm_down = true;
+	}
+	if (arm_open > 0)
+	{
+		arm_open--;
+	}
 
 	//アームを下げる
 	if (CheckHitKey(KEY_INPUT_F) && !Click_Check[F] && !arm_down && pos.y == 20)
 	{
-		arm_down = true;
+		arm_open = 30;
 	}
 
 	//アームが下がっていない時
@@ -95,7 +112,10 @@ int CArm::Action(vector<unique_ptr<BaseVector>>& base)
 			{
 				if ((*i)->radius == -1)
 				{
+					if (HitCheck_box(this, (*i).get()))
+					{
 
+					}
 				}
 				else if ((*i)->radius > 0)
 				{

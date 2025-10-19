@@ -4,7 +4,7 @@
 class CHitobj :public BaseVector
 {
 public:
-	CHitobj();
+	CHitobj(Point);
 
 	int Action(vector<unique_ptr<BaseVector>>&);
 	void Draw();

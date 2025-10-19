@@ -20,7 +20,8 @@ public:
 
 	bool arm_state{ false };	//アームが開いているか閉じているか
 
-	int move_time{ 0 };			//アームが移動している時間の計測
+	int move_time{ -1 };		//アームが移動している時間の計測
+	int arm_open{ -1 };			//アームが開くまでの時間の計測
 
 	enum HIT_BUTTON
 	{
