@@ -1,5 +1,6 @@
 #pragma once
 #include "wall.h"
+#include "function.h"
 
 CWall::CWall(Point p, int w, int h)
 {

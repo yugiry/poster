@@ -8,6 +8,10 @@
 #include "wall.h"
 
 #include "paper.h"
+#include "can.h"
+
+#include "incinerator.h"
+#include "pressmachine.h"
 
 //コンストラクタ
 CGame::CGame(CManager* p) :CScene(p) {
@@ -33,6 +37,13 @@ CGame::CGame(CManager* p) :CScene(p) {
 
 	pos.x = WINDOW_WIDTH / 2; pos.y = WINDOW_HEIGHT / 2;
 	base.emplace_back((unique_ptr<BaseVector>)new CPaper(pos));
+	pos.x = WINDOW_WIDTH / 2 - 200;
+	base.emplace_back((unique_ptr<BaseVector>)new CCan(pos));
+
+	//焼却炉の炎を生成
+	base.emplace_back((unique_ptr<BaseVector>)new CIncinerator());
+	//プレス機を生成
+	base.emplace_back((unique_ptr<BaseVector>)new CPressmachine());
 }
 
 //更新処理

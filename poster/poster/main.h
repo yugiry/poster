@@ -42,6 +42,9 @@ struct ObjSize {
 enum ID
 {
 	WALL,
+	ARM,
+	INCINERATOR,
+	PRESSMACHINE,
 	BURNABLE,
 	CRUMB,
 	PLASTIC,

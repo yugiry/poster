@@ -33,6 +33,12 @@
     <Filter Include="ヘッダー ファイル\オブジェクト\ごみ">
       <UniqueIdentifier>{cd186680-39a4-44f9-8070-3b439436e7c5}</UniqueIdentifier>
     </Filter>
+    <Filter Include="ヘッダー ファイル\オブジェクト\仕分け機械">
+      <UniqueIdentifier>{d54564eb-442c-4dbb-9a5e-51d38f2be547}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="ソース ファイル\オブジェクト\仕分け機械">
+      <UniqueIdentifier>{9076140a-fb5a-4ad5-be85-c4c87a5f34cc}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="main.h">
@@ -86,6 +92,15 @@
     <ClInclude Include="Myfunction.h">
       <Filter>ライブラリ用ヘッダーファイル</Filter>
     </ClInclude>
+    <ClInclude Include="incinerator.h">
+      <Filter>ヘッダー ファイル\オブジェクト\仕分け機械</Filter>
+    </ClInclude>
+    <ClInclude Include="pressmachine.h">
+      <Filter>ヘッダー ファイル\オブジェクト\仕分け機械</Filter>
+    </ClInclude>
+    <ClInclude Include="can.h">
+      <Filter>ヘッダー ファイル\オブジェクト\ごみ</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp">
@@ -123,6 +138,15 @@
     </ClCompile>
     <ClCompile Include="Myfunction.cpp">
       <Filter>ライブラリ用ソースファイル</Filter>
+    </ClCompile>
+    <ClCompile Include="incinerator.cpp">
+      <Filter>ソース ファイル\オブジェクト\仕分け機械</Filter>
+    </ClCompile>
+    <ClCompile Include="pressmachine.cpp">
+      <Filter>ソース ファイル\オブジェクト\仕分け機械</Filter>
+    </ClCompile>
+    <ClCompile Include="can.cpp">
+      <Filter>ソース ファイル\オブジェクト\ごみ</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

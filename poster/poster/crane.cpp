@@ -36,8 +36,9 @@ int CCrane::Action(vector<unique_ptr<BaseVector>>& base)
 	//アームが閉まっている時
 	if (arm_state == CLOSE)
 	{
+		Point p{ pos.x,pos.y + ImgHeight };
 		//物を掴む判定を出す
-		//base.emplace_back((unique_ptr<BaseVector>)new CHitobj(pos));
+		base.emplace_back((unique_ptr<BaseVector>)new CHitobj(p, vec, ImgWidth, 32, 1, ARM));
 	}
 
 	//移動ベクトルのリセット
@@ -47,33 +48,56 @@ int CCrane::Action(vector<unique_ptr<BaseVector>>& base)
 	if (move_time == 0)
 	{
 		move_time--;
-		arm_state = CLOSE;
 	}
 	if (move_time > 0)
 	{
 		move_time--;
 	}
 
+	if (close_time == 0)
+	{
+		close_time--;
+		Click_Check[R] = false;
+	}
+	if (close_time > 0)
+	{
+		close_time--;
+		arm_state = CLOSE;
+	}
+
 	//アームが開く
-	if (arm_open == 0)
+	if (arm_open == 0 && Click_Check[F])
 	{
 		arm_open--;
-		arm_state = OPEN;
 		arm_down = true;
+		Click_Check[F] = false;
+	}
+	if (arm_open == 0 && Click_Check[R])
+	{
+		arm_open--;
+		close_time = 30;
 	}
 	if (arm_open > 0)
 	{
 		arm_open--;
+		arm_state = OPEN;
 	}
 
 	//アームを下げる
-	if (CheckHitKey(KEY_INPUT_F) && !Click_Check[F] && !arm_down && pos.y == 20)
+	if (CheckHitKey(KEY_INPUT_F) && !arm_down && pos.y == 20)
 	{
 		arm_open = 30;
+		Click_Check[F] = true;
+	}
+	//アームを開く
+	if (CheckHitKey(KEY_INPUT_R) && !Click_Check[R])
+	{
+		arm_open = 30;
+		Click_Check[R] = true;
 	}
 
 	//アームが下がっていない時
-	if (!arm_down && pos.y <= 20 && move_time < 0)
+	if (!arm_down && pos.y <= 20 && move_time < 0 && arm_open < 0)
 	{
 		//左右移動
 		if (CheckHitKey(KEY_INPUT_A) && !Click_Check[A])
@@ -109,6 +133,7 @@ int CCrane::Action(vector<unique_ptr<BaseVector>>& base)
 				arm_down = false;
 				move_time = GRAP_TIME;
 				vec.y -= 4.0f;
+				arm_state = CLOSE;
 			}
 		}
 
@@ -120,7 +145,7 @@ int CCrane::Action(vector<unique_ptr<BaseVector>>& base)
 				{
 					if (HitCheck_box(this, (*i).get()))
 					{
-
+						break;
 					}
 				}
 				else if ((*i)->radius > 0)
@@ -130,6 +155,11 @@ int CCrane::Action(vector<unique_ptr<BaseVector>>& base)
 						arm_down = false;
 						move_time = GRAP_TIME;
 						vec.y -= 4.0f;
+						pos.y += vec.y;
+						Larm->pos.y += vec.y;
+						Rarm->pos.y += vec.y;
+						arm_state = CLOSE;
+						break;
 					}
 				}
 			}
@@ -140,11 +170,24 @@ int CCrane::Action(vector<unique_ptr<BaseVector>>& base)
 			{
 				if ((*i)->radius == -1)
 				{
-
+					if (HitCheck_box(this, (*i).get()))
+					{
+						arm_down = false;
+						move_time = GRAP_TIME;
+						vec.y -= 4.0f;
+						pos.y += vec.y;
+						Larm->pos.y += vec.y;
+						Rarm->pos.y += vec.y;
+						arm_state = CLOSE;
+						break;
+					}
 				}
 				else if ((*i)->radius > 0)
 				{
-
+					if (HitCheck_Box_CircleB((*i).get(), this, (*i)->radius))
+					{
+						break;
+					}
 				}
 			}
 		}
@@ -154,11 +197,17 @@ int CCrane::Action(vector<unique_ptr<BaseVector>>& base)
 			{
 				if ((*i)->radius == -1)
 				{
-
+					if (HitCheck_box(this, (*i).get()))
+					{
+						break;
+					}
 				}
 				else if ((*i)->radius > 0)
 				{
-
+					if (HitCheck_Box_CircleB((*i).get(), this, (*i)->radius))
+					{
+						break;
+					}
 				}
 			}
 		}

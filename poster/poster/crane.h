@@ -30,6 +30,7 @@ public:
 		A,
 		D,
 		F,
+		R,
 		HBEND
 	};
 
