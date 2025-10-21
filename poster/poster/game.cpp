@@ -4,7 +4,7 @@
 #include "game.h"
 #include "function.h"
 
-#include "arm.h"
+#include "crane.h"
 #include "wall.h"
 
 #include "paper.h"
@@ -12,7 +12,7 @@
 //コンストラクタ
 CGame::CGame(CManager* p) :CScene(p) {
 	//アーム生成
-	base.emplace_back((unique_ptr<BaseVector>)new CArm());
+	base.emplace_back((unique_ptr<BaseVector>)new CCrane());
 	
 	Point pos; int w, h;
 	//壁生成

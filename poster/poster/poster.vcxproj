@@ -155,6 +155,7 @@
   <ItemGroup>
     <ClInclude Include="3D_function.h" />
     <ClInclude Include="arm.h" />
+    <ClInclude Include="crane.h" />
     <ClInclude Include="CCamera.h" />
     <ClInclude Include="2D_function.h" />
     <ClInclude Include="function.h" />
@@ -162,6 +163,7 @@
     <ClInclude Include="hitobj.h" />
     <ClInclude Include="library_function.h" />
     <ClInclude Include="main.h" />
+    <ClInclude Include="Myfunction.h" />
     <ClInclude Include="objBase.h" />
     <ClInclude Include="objChar.h" />
     <ClInclude Include="paper.h" />
@@ -172,12 +174,14 @@
   <ItemGroup>
     <ClCompile Include="3D_function.cpp" />
     <ClCompile Include="arm.cpp" />
+    <ClCompile Include="crane.cpp" />
     <ClCompile Include="CCamera.cpp" />
     <ClCompile Include="2D_function.cpp" />
     <ClCompile Include="game.cpp" />
     <ClCompile Include="hitobj.cpp" />
     <ClCompile Include="library_function.cpp" />
     <ClCompile Include="main.cpp" />
+    <ClCompile Include="Myfunction.cpp" />
     <ClCompile Include="paper.cpp" />
     <ClCompile Include="wall.cpp" />
   </ItemGroup>

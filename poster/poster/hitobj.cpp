@@ -1,10 +1,13 @@
 #pragma once
 #include "hitobj.h"
 
-CHitobj::CHitobj(Point p)
+CHitobj::CHitobj(Point p, int w, int h)
 {
 	pos.x = p.x;
 	pos.y = p.y + 60;
+
+	ImgWidth = w;
+	ImgHeight = h;
 }
 
 int CHitobj::Action(vector<unique_ptr<BaseVector>>& base)
@@ -23,7 +26,7 @@ int CHitobj::Action(vector<unique_ptr<BaseVector>>& base)
 
 void CHitobj::Draw()
 {
-	DrawBox(pos.x, pos.y, pos.x + 10, pos.y + 10, GetColor(255, 255, 0), true);
+	DrawBox(pos.x, pos.y, pos.x + ImgWidth, pos.y + ImgHeight, GetColor(255, 255, 0), true);
 
 	FLAG = false;
 }
