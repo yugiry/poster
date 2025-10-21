@@ -225,6 +225,11 @@ int CCrane::Action(vector<unique_ptr<BaseVector>>& base)
 	if (pos.x < 0)pos.x = 0;
 	if (pos.x > GAME_WIDTH -ImgWidth)pos.x = GAME_WIDTH - ImgWidth;
 
+	Larm->pos.x = pos.x + 8;
+	Larm->pos.y = pos.y + ImgHeight;
+	Rarm->pos.x = pos.x + ImgWidth - 8;
+	Rarm->pos.y = pos.y + ImgHeight;
+
 	Larm->Action(base);
 	Rarm->Action(base);
 

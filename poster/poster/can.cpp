@@ -4,10 +4,15 @@
 
 CCan::CCan(Point p)
 {
-	pos = p;
+	dpos = p;
 
-	ImgWidth = 32;
-	ImgHeight = 32;
+	img = LoadGraph("image\\can.png");
+
+	ImgWidth = 24;
+	ImgHeight = 64;
+
+	pos.x = dpos.x - ImgWidth / 2;
+	pos.y = dpos.y - ImgHeight / 2;
 
 	weight = 1;
 
@@ -32,13 +37,13 @@ int CCan::Action(vector<unique_ptr<BaseVector>>& base)
 
 	pos.x += vec.x;
 	pos.y += vec.y;
+	dpos.x = pos.x + ImgWidth / 2;
+	dpos.y = pos.y + ImgHeight / 2;
 
 	return 0;
 }
 
 void CCan::Draw()
 {
-	//DrawBox(pos.x, pos.y, pos.x + ImgWidth, pos.y + ImgHeight, GetColor(255, 255, 255), true);
-
-	DrawBox(pos.x, pos.y, pos.x + ImgWidth, pos.y + ImgHeight, GetColor(0, 255, 255), true);
+	DrawRotaGraph(dpos.x, dpos.y, 1, RADIAN(90), img, true);
 }

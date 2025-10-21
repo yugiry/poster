@@ -9,5 +9,7 @@ public:
 	int Action(vector<unique_ptr<BaseVector>>&);
 	void Draw();
 
+	Point dpos{ 0,0 };
+
 	float g{ 0.5f };
 };
