@@ -191,3 +191,88 @@ float DistanceF(Point3 A, Point3 B) {
 	r = sqrtf((A.x - B.x) * (A.x - B.x) + (A.y - B.y) * (A.y - B.y) + (A.z - B.z) * (A.z - B.z));
 	return r;
 }
+
+//当たり判定
+float HitLeft(Point p, Vector vw, Vector vh)
+{
+	//左上が左下より左にいれば
+	if (p.x <= p.x + vh.x)
+	{
+		//右上が左上より左にいれば
+		if (p.x + vw.x < p.x && p.x + vw.x < 0)
+			return -vw.x;
+		if (p.x < 0) return 0;
+	}
+	//左下が左上より左にいれば
+	else
+	{
+		//右下が左下より左にいれば
+		if (p.x + vh.x + vw.x < p.x + vh.x && p.x + vh.x + vw.x < 0)
+			return -(vw.x + vh.x);
+		if (p.x + vh.x < 0)return -vh.x;
+	}
+
+	return p.x;
+}
+
+float HitRight(Point p, Vector vw, Vector vh)
+{
+	//左上が左下より右にいれば
+	if (p.x >= p.x + vh.x)
+	{
+		//右上が左上より右にいれば
+		if (p.x + vw.x > p.x && p.x + vw.x > WINDOW_WIDTH)
+			return WINDOW_WIDTH - vw.x;
+		if (p.x > WINDOW_WIDTH) return WINDOW_WIDTH;
+	}
+	//左下が左上より右にいれば
+	else
+	{
+		//右下が左下より右にいれば
+		if (p.x + vh.x + vw.x > p.x + vh.x && p.x + vh.x + vw.x > WINDOW_WIDTH)
+			return WINDOW_WIDTH - (vw.x + vh.x);
+		if (p.x + vh.x > WINDOW_WIDTH)return WINDOW_WIDTH - vh.x;
+	}
+
+	return p.x;
+}
+
+float HitUp(Point p, Vector vw, Vector vh)
+{
+	//左上が左下より左にいれば
+	if (p.y <= p.y + vh.y)
+	{
+		if (p.y + vw.y < p.y && p.y + vw.y < 0)
+			return -vw.y;
+		if (p.y < 0) return 0;
+	}
+	//左下が左上より左にいれば
+	else
+	{
+		if (p.y + vh.y + vw.y < p.y + vh.y && p.y + vh.y + vw.y < 0)
+			return -(vw.y + vh.y);
+		if (p.y + vh.y < 0)return -vh.y;
+	}
+
+	return p.y;
+}
+
+float HitDown(Point p, Vector vw, Vector vh)
+{
+	//左上が左下より左にいれば
+	if (p.y >= p.y + vh.y)
+	{
+		if (p.y + vw.y > p.y && p.y + vw.y > WINDOW_HEIGHT)
+			return WINDOW_HEIGHT - vw.y;
+		if (p.y > WINDOW_HEIGHT) return WINDOW_HEIGHT;
+	}
+	//左下が左上より左にいれば
+	else
+	{
+		if (p.y + vh.y + vw.y > p.y + vh.y && p.y + vh.y + vw.y > WINDOW_HEIGHT)
+			return WINDOW_HEIGHT - (vw.y + vh.y);
+		if (p.y + vh.y > WINDOW_HEIGHT)return WINDOW_HEIGHT - vh.y;
+	}
+
+	return p.y;
+}

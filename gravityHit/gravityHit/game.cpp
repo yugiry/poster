@@ -4,8 +4,12 @@
 #include "game.h"
 #include "function.h"
 
+#include "box.h"
+#include "boxs.h"
+
 //コンストラクタ
 CGame::CGame(CManager* p) :CScene(p){
+	base.emplace_back((unique_ptr<BaseVector>)new CBox());
 }
 
 //更新処理
@@ -36,27 +40,6 @@ void CGame::Draw()
 	
 	for (int i = 0; i < base.size(); i++)
 		if(base[i]->FLAG) base[i]->Draw();
-
-	//listオブジェクトの描画
-	//for (auto i = base.begin(); i != base.end(); i++)
-	//	if ((*i)->FLAG) (*i)->Draw();
-
-	//3D軸の描画
-	//DrawLine3D(
-	//	VGet(0, 0, 0),
-	//	VGet(0, 0, 100),
-	//	0x0000ff
-	//);
-	//DrawLine3D(
-	//	VGet(0, 0, 0),
-	//	VGet(100, 0, 0),
-	//	0xff0000
-	//);
-	//DrawLine3D(
-	//	VGet(0, 0, 0),
-	//	VGet(0, 100, 0),
-	//	0x00ff00
-	//);
 }
 
 CGame::~CGame()

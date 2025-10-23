@@ -60,3 +60,9 @@ bool HitCheck_Box_Circle2(BaseVector*, BaseVector*, float);
 //二点間距離
 float DistanceF(float, float, float, float);
 float DistanceF(Point3, Point3);
+
+//当たり判定(座標、横幅ベクトル、縦幅ベクトル)
+float HitLeft(Point, Vector, Vector);
+float HitRight(Point, Vector, Vector);
+float HitUp(Point, Vector, Vector);
+float HitDown(Point, Vector, Vector);
