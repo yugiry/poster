@@ -4,11 +4,11 @@
 
 CBox::CBox()
 {
-	pos.x = 100;
-	pos.y = 100;
-
 	ImgWidth = 150;
 	ImgHeight = 50;
+
+	pos.x = WINDOW_WIDTH / 2 - ImgWidth / 2;
+	pos.y = WINDOW_HEIGHT / 2 - ImgHeight / 2;
 
 	angle_w = Vector_SetLength(unit_v, ImgWidth);
 	angle_h.x = unit_v.y; angle_h.y = unit_v.x;
