@@ -4,11 +4,11 @@
 
 CBox::CBox()
 {
-	pos.x = 100;
-	pos.y = 100;
-
 	ImgWidth = 150;
 	ImgHeight = 50;
+
+	pos.x = WINDOW_WIDTH / 2 - ImgWidth / 2;
+	pos.y = WINDOW_HEIGHT / 2 - ImgHeight / 2;
 
 	angle_w = Vector_SetLength(unit_v, ImgWidth);
 	angle_h.x = unit_v.y; angle_h.y = unit_v.x;
@@ -79,6 +79,47 @@ int CBox::Action(vector<unique_ptr<BaseVector>>& base)
 	//中心座標を求める
 	mid_pos.x = pos.x + Vector_SetLength(angle_w, ImgWidth / 2).x + Vector_SetLength(angle_h, ImgHeight / 2).x;
 	mid_pos.y = pos.y + Vector_SetLength(angle_w, ImgWidth / 2).y + Vector_SetLength(angle_h, ImgHeight / 2).y;
+
+	/* {
+		if (pos.y == pos.y + angle_w.y);
+		//右上が左上より下なら
+		else if (pos.y > pos.y + angle_w.y)
+		{
+			if (pos.y + angle_w.y == pos.y + angle_w.y + angle_h.y);
+			//右下が右上より下なら
+			else if (pos.y + angle_w.y > pos.y + angle_w.y + angle_h.y)
+			{
+
+			}
+			//右上が右下より下なら
+			else
+			{
+
+			}
+		}
+		//左上が右上より下なら
+		else
+		{
+			if (pos.y == pos.y + angle_h.y);
+			//左下が左上より下なら
+			if (pos.y > pos.y + angle_h.y)
+			{
+				if (pos.y + angle_h.y < mid_pos.y)
+				{
+					radian -= 3;
+				}
+				else
+				{
+					radian += 3;
+				}
+			}
+			//左右が左下より下なら
+			else
+			{
+
+			}
+		}
+	}*/
 
 	return 0;
 }
