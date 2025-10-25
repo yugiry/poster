@@ -50,6 +50,9 @@ int CBox::Action(vector<unique_ptr<BaseVector>>& base)
 		if (radian <= -1)radian = 359;
 		if (radian >= 360)radian = 0;
 
+		pos.x += angle_w.x / 2 + angle_h.x / 2;
+		pos.y += angle_w.y / 2 + angle_h.y / 2;
+
 		//角度から傾きを求めてベクトルに代入
 		angle_w.x = cos(RADIAN(radian));
 		angle_w.y = sin(RADIAN(radian));
@@ -58,6 +61,9 @@ int CBox::Action(vector<unique_ptr<BaseVector>>& base)
 		//代入したベクトルの長さを調整
 		angle_w = Vector_SetLength(angle_w, ImgWidth);
 		angle_h = Vector_SetLength(angle_h, ImgHeight);
+
+		pos.x -= angle_w.x / 2 + angle_h.x / 2;
+		pos.y -= angle_w.y / 2 + angle_h.y / 2;
 	}
 
 	//移動処理
