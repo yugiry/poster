@@ -101,6 +101,9 @@
     <ClInclude Include="can.h">
       <Filter>ヘッダー ファイル\オブジェクト\ごみ</Filter>
     </ClInclude>
+    <ClInclude Include="scrap.h">
+      <Filter>ヘッダー ファイル\オブジェクト\ごみ</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp">
@@ -146,6 +149,9 @@
       <Filter>ソース ファイル\オブジェクト\仕分け機械</Filter>
     </ClCompile>
     <ClCompile Include="can.cpp">
+      <Filter>ソース ファイル\オブジェクト\ごみ</Filter>
+    </ClCompile>
+    <ClCompile Include="scrap.cpp">
       <Filter>ソース ファイル\オブジェクト\ごみ</Filter>
     </ClCompile>
   </ItemGroup>

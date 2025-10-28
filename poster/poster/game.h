@@ -23,5 +23,7 @@ public:
 	int Update();//更新処理
 	void Draw();//描画処理
 
+	int SCORE;
+
 	//CCamera* camera;//カメラオブジェクト
 };

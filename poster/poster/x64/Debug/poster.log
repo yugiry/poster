@@ -1,4 +1,134 @@
-﻿  can.cpp
-C:\Users\GA2A\Desktop\post\poster\poster\can.cpp(48,28): warning C4244: '引数': 'float' から 'int' への変換です。データが失われる可能性があります。
-C:\Users\GA2A\Desktop\post\poster\poster\can.cpp(48,20): warning C4244: '引数': 'float' から 'int' への変換です。データが失われる可能性があります。
+﻿  pressmachine.cpp
+C:\dxlib\DxLib.h(1,1): warning C4819: ファイルは、現在のコード ページ (932) で表示できない文字を含んでいます。データの損失を防ぐために、ファイルを Unicode 形式で保存してください。
+  (ソース ファイル 'pressmachine.cpp' をコンパイルしています)
+  
+C:\dxlib\DxCompileConfig.h(1,1): warning C4819: ファイルは、現在のコード ページ (932) で表示できない文字を含んでいます。データの損失を防ぐために、ファイルを Unicode 形式で保存してください。
+  (ソース ファイル 'pressmachine.cpp' をコンパイルしています)
+  
+C:\dxlib\DxDataType.h(1,1): warning C4819: ファイルは、現在のコード ページ (932) で表示できない文字を含んでいます。データの損失を防ぐために、ファイルを Unicode 形式で保存してください。
+  (ソース ファイル 'pressmachine.cpp' をコンパイルしています)
+  
+C:\dxlib\DxCompileConfig.h(1,1): warning C4819: ファイルは、現在のコード ページ (932) で表示できない文字を含んでいます。データの損失を防ぐために、ファイルを Unicode 形式で保存してください。
+  (ソース ファイル 'pressmachine.cpp' をコンパイルしています)
+  
+C:\dxlib\DxDataTypeWin.h(1,1): warning C4819: ファイルは、現在のコード ページ (932) で表示できない文字を含んでいます。データの損失を防ぐために、ファイルを Unicode 形式で保存してください。
+  (ソース ファイル 'pressmachine.cpp' をコンパイルしています)
+  
+C:\dxlib\DxCompileConfig.h(1,1): warning C4819: ファイルは、現在のコード ページ (932) で表示できない文字を含んでいます。データの損失を防ぐために、ファイルを Unicode 形式で保存してください。
+  (ソース ファイル 'pressmachine.cpp' をコンパイルしています)
+  
+C:\dxlib\DxDataTypeWin.h(443,1): warning C4819: ファイルは、現在のコード ページ (932) で表示できない文字を含んでいます。データの損失を防ぐために、ファイルを Unicode 形式で保存してください。
+  (ソース ファイル 'pressmachine.cpp' をコンパイルしています)
+  
+C:\dxlib\DxDataTypeWin.h(1089,1): warning C4819: ファイルは、現在のコード ページ (932) で表示できない文字を含んでいます。データの損失を防ぐために、ファイルを Unicode 形式で保存してください。
+  (ソース ファイル 'pressmachine.cpp' をコンパイルしています)
+  
+C:\dxlib\DxLib.h(406,1): warning C4819: ファイルは、現在のコード ページ (932) で表示できない文字を含んでいます。データの損失を防ぐために、ファイルを Unicode 形式で保存してください。
+  (ソース ファイル 'pressmachine.cpp' をコンパイルしています)
+  
+C:\dxlib\DxLib.h(803,1): warning C4819: ファイルは、現在のコード ページ (932) で表示できない文字を含んでいます。データの損失を防ぐために、ファイルを Unicode 形式で保存してください。
+  (ソース ファイル 'pressmachine.cpp' をコンパイルしています)
+  
+C:\dxlib\DxLib.h(1328,1): warning C4819: ファイルは、現在のコード ページ (932) で表示できない文字を含んでいます。データの損失を防ぐために、ファイルを Unicode 形式で保存してください。
+  (ソース ファイル 'pressmachine.cpp' をコンパイルしています)
+  
+C:\dxlib\DxLib.h(1842,1): warning C4819: ファイルは、現在のコード ページ (932) で表示できない文字を含んでいます。データの損失を防ぐために、ファイルを Unicode 形式で保存してください。
+  (ソース ファイル 'pressmachine.cpp' をコンパイルしています)
+  
+C:\dxlib\DxFunctionWin.h(1,1): warning C4819: ファイルは、現在のコード ページ (932) で表示できない文字を含んでいます。データの損失を防ぐために、ファイルを Unicode 形式で保存してください。
+  (ソース ファイル 'pressmachine.cpp' をコンパイルしています)
+  
+C:\dxlib\DxFunctionWin.h(155,1): warning C4819: ファイルは、現在のコード ページ (932) で表示できない文字を含んでいます。データの損失を防ぐために、ファイルを Unicode 形式で保存してください。
+  (ソース ファイル 'pressmachine.cpp' をコンパイルしています)
+  
+C:\dxlib\DxFunctionWin.h(337,1): warning C4819: ファイルは、現在のコード ページ (932) で表示できない文字を含んでいます。データの損失を防ぐために、ファイルを Unicode 形式で保存してください。
+  (ソース ファイル 'pressmachine.cpp' をコンパイルしています)
+  
+C:\dxlib\DxLib.h(2183,1): warning C4819: ファイルは、現在のコード ページ (932) で表示できない文字を含んでいます。データの損失を防ぐために、ファイルを Unicode 形式で保存してください。
+  (ソース ファイル 'pressmachine.cpp' をコンパイルしています)
+  
+C:\dxlib\DxLib.h(2377,1): warning C4819: ファイルは、現在のコード ページ (932) で表示できない文字を含んでいます。データの損失を防ぐために、ファイルを Unicode 形式で保存してください。
+  (ソース ファイル 'pressmachine.cpp' をコンパイルしています)
+  
+C:\dxlib\DxLib.h(2572,1): warning C4819: ファイルは、現在のコード ページ (932) で表示できない文字を含んでいます。データの損失を防ぐために、ファイルを Unicode 形式で保存してください。
+  (ソース ファイル 'pressmachine.cpp' をコンパイルしています)
+  
+C:\dxlib\DxLib.h(2716,1): warning C4819: ファイルは、現在のコード ページ (932) で表示できない文字を含んでいます。データの損失を防ぐために、ファイルを Unicode 形式で保存してください。
+  (ソース ファイル 'pressmachine.cpp' をコンパイルしています)
+  
+C:\dxlib\DxLib.h(2821,1): warning C4819: ファイルは、現在のコード ページ (932) で表示できない文字を含んでいます。データの損失を防ぐために、ファイルを Unicode 形式で保存してください。
+  (ソース ファイル 'pressmachine.cpp' をコンパイルしています)
+  
+C:\dxlib\DxLib.h(2954,1): warning C4819: ファイルは、現在のコード ページ (932) で表示できない文字を含んでいます。データの損失を防ぐために、ファイルを Unicode 形式で保存してください。
+  (ソース ファイル 'pressmachine.cpp' をコンパイルしています)
+  
+C:\dxlib\DxLib.h(3064,1): warning C4819: ファイルは、現在のコード ページ (932) で表示できない文字を含んでいます。データの損失を防ぐために、ファイルを Unicode 形式で保存してください。
+  (ソース ファイル 'pressmachine.cpp' をコンパイルしています)
+  
+C:\dxlib\DxLib.h(3242,1): warning C4819: ファイルは、現在のコード ページ (932) で表示できない文字を含んでいます。データの損失を防ぐために、ファイルを Unicode 形式で保存してください。
+  (ソース ファイル 'pressmachine.cpp' をコンパイルしています)
+  
+C:\dxlib\DxLib.h(3381,1): warning C4819: ファイルは、現在のコード ページ (932) で表示できない文字を含んでいます。データの損失を防ぐために、ファイルを Unicode 形式で保存してください。
+  (ソース ファイル 'pressmachine.cpp' をコンパイルしています)
+  
+C:\dxlib\DxLib.h(3544,1): warning C4819: ファイルは、現在のコード ページ (932) で表示できない文字を含んでいます。データの損失を防ぐために、ファイルを Unicode 形式で保存してください。
+  (ソース ファイル 'pressmachine.cpp' をコンパイルしています)
+  
+C:\dxlib\DxLib.h(3735,1): warning C4819: ファイルは、現在のコード ページ (932) で表示できない文字を含んでいます。データの損失を防ぐために、ファイルを Unicode 形式で保存してください。
+  (ソース ファイル 'pressmachine.cpp' をコンパイルしています)
+  
+C:\dxlib\DxLib.h(3844,1): warning C4819: ファイルは、現在のコード ページ (932) で表示できない文字を含んでいます。データの損失を防ぐために、ファイルを Unicode 形式で保存してください。
+  (ソース ファイル 'pressmachine.cpp' をコンパイルしています)
+  
+C:\dxlib\DxLib.h(3931,1): warning C4819: ファイルは、現在のコード ページ (932) で表示できない文字を含んでいます。データの損失を防ぐために、ファイルを Unicode 形式で保存してください。
+  (ソース ファイル 'pressmachine.cpp' をコンパイルしています)
+  
+C:\dxlib\DxLib.h(4080,1): warning C4819: ファイルは、現在のコード ページ (932) で表示できない文字を含んでいます。データの損失を防ぐために、ファイルを Unicode 形式で保存してください。
+  (ソース ファイル 'pressmachine.cpp' をコンパイルしています)
+  
+C:\dxlib\DxLib.h(4586,1): warning C4819: ファイルは、現在のコード ページ (932) で表示できない文字を含んでいます。データの損失を防ぐために、ファイルを Unicode 形式で保存してください。
+  (ソース ファイル 'pressmachine.cpp' をコンパイルしています)
+  
+C:\dxlib\DxLib.h(4750,1): warning C4819: ファイルは、現在のコード ページ (932) で表示できない文字を含んでいます。データの損失を防ぐために、ファイルを Unicode 形式で保存してください。
+  (ソース ファイル 'pressmachine.cpp' をコンパイルしています)
+  
+C:\dxlib\DxLib.h(4917,1): warning C4819: ファイルは、現在のコード ページ (932) で表示できない文字を含んでいます。データの損失を防ぐために、ファイルを Unicode 形式で保存してください。
+  (ソース ファイル 'pressmachine.cpp' をコンパイルしています)
+  
+C:\dxlib\DxLib.h(5069,1): warning C4819: ファイルは、現在のコード ページ (932) で表示できない文字を含んでいます。データの損失を防ぐために、ファイルを Unicode 形式で保存してください。
+  (ソース ファイル 'pressmachine.cpp' をコンパイルしています)
+  
+C:\dxlib\DxLib.h(5258,1): warning C4819: ファイルは、現在のコード ページ (932) で表示できない文字を含んでいます。データの損失を防ぐために、ファイルを Unicode 形式で保存してください。
+  (ソース ファイル 'pressmachine.cpp' をコンパイルしています)
+  
+C:\dxlib\DxLib.h(5396,1): warning C4819: ファイルは、現在のコード ページ (932) で表示できない文字を含んでいます。データの損失を防ぐために、ファイルを Unicode 形式で保存してください。
+  (ソース ファイル 'pressmachine.cpp' をコンパイルしています)
+  
+C:\dxlib\DxLib.h(5581,1): warning C4819: ファイルは、現在のコード ページ (932) で表示できない文字を含んでいます。データの損失を防ぐために、ファイルを Unicode 形式で保存してください。
+  (ソース ファイル 'pressmachine.cpp' をコンパイルしています)
+  
+C:\Users\GA2A\Desktop\post\poster\poster\pressmachine.cpp(38,91): warning C4244: '引数': 'float' から 'int' への変換です。データが失われる可能性があります。
+C:\Users\GA2A\Desktop\post\poster\poster\pressmachine.cpp(38,78): warning C4244: '引数': 'float' から 'int' への変換です。データが失われる可能性があります。
+C:\Users\GA2A\Desktop\post\poster\poster\pressmachine.cpp(45,91): warning C4244: '引数': 'float' から 'int' への変換です。データが失われる可能性があります。
+C:\Users\GA2A\Desktop\post\poster\poster\pressmachine.cpp(45,78): warning C4244: '引数': 'float' から 'int' への変換です。データが失われる可能性があります。
+C:\Users\GA2A\Desktop\post\poster\poster\pressmachine.cpp(68,85): warning C4244: '引数': 'float' から 'int' への変換です。データが失われる可能性があります。
+C:\Users\GA2A\Desktop\post\poster\poster\pressmachine.cpp(68,72): warning C4244: '引数': 'float' から 'int' への変換です。データが失われる可能性があります。
+C:\Users\GA2A\Desktop\post\poster\poster\pressmachine.cpp(75,85): warning C4244: '引数': 'float' から 'int' への変換です。データが失われる可能性があります。
+C:\Users\GA2A\Desktop\post\poster\poster\pressmachine.cpp(75,72): warning C4244: '引数': 'float' から 'int' への変換です。データが失われる可能性があります。
+C:\Users\GA2A\Desktop\post\poster\poster\pressmachine.cpp(86,83): warning C4244: '引数': 'float' から 'int' への変換です。データが失われる可能性があります。
+C:\Users\GA2A\Desktop\post\poster\poster\pressmachine.cpp(86,71): warning C4244: '引数': 'float' から 'int' への変換です。データが失われる可能性があります。
+C:\Users\GA2A\Desktop\post\poster\poster\pressmachine.cpp(92,96): warning C4244: '引数': 'float' から 'int' への変換です。データが失われる可能性があります。
+C:\Users\GA2A\Desktop\post\poster\poster\pressmachine.cpp(92,75): warning C4244: '引数': 'float' から 'int' への変換です。データが失われる可能性があります。
+C:\Users\GA2A\Desktop\post\poster\poster\pressmachine.cpp(120,51): warning C4244: '引数': 'float' から 'int' への変換です。データが失われる可能性があります。
+C:\Users\GA2A\Desktop\post\poster\poster\pressmachine.cpp(120,30): warning C4244: '引数': 'float' から 'int' への変換です。データが失われる可能性があります。
+C:\Users\GA2A\Desktop\post\poster\poster\pressmachine.cpp(120,20): warning C4244: '引数': 'float' から 'int' への変換です。データが失われる可能性があります。
+C:\Users\GA2A\Desktop\post\poster\poster\pressmachine.cpp(120,13): warning C4244: '引数': 'float' から 'int' への変換です。データが失われる可能性があります。
+C:\Users\GA2A\Desktop\post\poster\poster\pressmachine.cpp(122,63): warning C4244: '引数': 'float' から 'int' への変換です。データが失われる可能性があります。
+C:\Users\GA2A\Desktop\post\poster\poster\pressmachine.cpp(122,39): warning C4244: '引数': 'float' から 'int' への変換です。データが失われる可能性があります。
+C:\Users\GA2A\Desktop\post\poster\poster\pressmachine.cpp(122,26): warning C4244: '引数': 'float' から 'int' への変換です。データが失われる可能性があります。
+C:\Users\GA2A\Desktop\post\poster\poster\pressmachine.cpp(122,16): warning C4244: '引数': 'float' から 'int' への変換です。データが失われる可能性があります。
+C:\Users\GA2A\Desktop\post\poster\poster\pressmachine.cpp(125,49): warning C4244: '引数': 'float' から 'int' への変換です。データが失われる可能性があります。
+C:\Users\GA2A\Desktop\post\poster\poster\pressmachine.cpp(125,31): warning C4244: '引数': 'float' から 'int' への変換です。データが失われる可能性があります。
+C:\Users\GA2A\Desktop\post\poster\poster\pressmachine.cpp(125,21): warning C4244: '引数': 'float' から 'int' への変換です。データが失われる可能性があります。
+C:\Users\GA2A\Desktop\post\poster\poster\pressmachine.cpp(125,14): warning C4244: '引数': 'float' から 'int' への変換です。データが失われる可能性があります。
   poster.vcxproj -> C:\Users\GA2A\Desktop\post\poster\x64\Debug\poster.exe

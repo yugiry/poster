@@ -35,9 +35,16 @@ CGame::CGame(CManager* p) :CScene(p) {
 		base.emplace_back((unique_ptr<BaseVector>)new CWall(pos, w, h));
 	}
 
+	//ごみの仮生成
 	pos.x = WINDOW_WIDTH / 2; pos.y = WINDOW_HEIGHT / 2;
 	base.emplace_back((unique_ptr<BaseVector>)new CPaper(pos));
 	pos.x = WINDOW_WIDTH / 2 - 200;
+	base.emplace_back((unique_ptr<BaseVector>)new CCan(pos));
+	pos.x += 30;
+	base.emplace_back((unique_ptr<BaseVector>)new CCan(pos));
+	pos.x += 30;
+	base.emplace_back((unique_ptr<BaseVector>)new CCan(pos));
+	pos.x += 30;
 	base.emplace_back((unique_ptr<BaseVector>)new CCan(pos));
 
 	//焼却炉の炎を生成
@@ -50,7 +57,15 @@ CGame::CGame(CManager* p) :CScene(p) {
 int CGame::Update(){
 	//更新処理
 	for (int i = 0; i < base.size(); i++)
-		base[i]->Action(base);
+		switch (base[i]->Action(base))
+		{
+		case 1://正しい
+			SCORE++;
+			break;
+		case 2://間違い
+			SCORE--;
+			break;
+		}
 
 	//削除処理
 	for (auto i = base.begin(); i != base.end();)
@@ -75,17 +90,8 @@ void CGame::Draw()
 	for (int i = 0; i < base.size(); i++)
 		if(base[i]->FLAG) base[i]->Draw();
 
-	//DrawBox(0, 0, 250, WINDOW_HEIGHT, GetColor(0, 255, 0), true);
-
-	//DrawBox(250, 0, 260, WINDOW_HEIGHT, GetColor(100, 100, 100), true);
-
-	//DrawBox(260, 0, 580, WINDOW_HEIGHT, GetColor(0, 0, 255), true);
-
-	//DrawBox(580, 0, 590, WINDOW_HEIGHT, GetColor(100, 100, 100), true);
-
-	//DrawBox(590, 0, 850, WINDOW_HEIGHT, GetColor(255, 0, 0), true);
-
-	//DrawBox(850, 0, 860, WINDOW_HEIGHT, GetColor(100, 100, 100), true);
+	//スコアの表示
+	DrawBox(900, 500, 950, 500 - SCORE * 50, GetColor(0, 255, 0), true);
 }
 
 CGame::~CGame()

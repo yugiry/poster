@@ -12,4 +12,6 @@ public:
 
 	int alive_time{ -1 };
 	float g{ 0.5f };
+
+	int down{ 0 };
 };

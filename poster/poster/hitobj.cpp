@@ -85,10 +85,21 @@ int CHitobj::Action(vector<unique_ptr<BaseVector>>& base)
 		}
 	}
 
+	if (ID == GDELETE)
+	{
+		for (auto i = base.begin(); i != base.end(); i++)
+		{
+			if ((*i)->ID == BURNABLE || (*i)->ID == CRUMB || (*i)->ID == PLASTIC)
+			{
+				(*i)->FLAG = false;
+			}
+		}
+	}
+
 	if (alive_time == 0)
 		FLAG = false;
-
-	alive_time--;
+	if (alive_time > 0)
+		alive_time--;
 
 	return 0;
 }

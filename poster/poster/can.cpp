@@ -33,6 +33,13 @@ int CCan::Action(vector<unique_ptr<BaseVector>>& base)
 				pos.y = (*i)->pos.y - ImgHeight;
 			}
 		}
+		if ((*i)->ID == CRUMB && (pos.x != (*i)->pos.x || pos.y != (*i)->pos.y))
+		{
+			if (HitCheck_box(pos.x,pos.y + vec.y,(*i)->pos.x,(*i)->pos.y,ImgWidth,ImgHeight,(*i)->ImgWidth,(*i)->ImgHeight))
+			{
+				vec.y = 0;
+			}
+		}
 	}
 
 	pos.x += vec.x;
@@ -45,5 +52,5 @@ int CCan::Action(vector<unique_ptr<BaseVector>>& base)
 
 void CCan::Draw()
 {
-	DrawRotaGraph(dpos.x, dpos.y, 1, RADIAN(90), img, true);
+	DrawRotaGraph(dpos.x, dpos.y, 1, RADIAN(0), img, true);
 }

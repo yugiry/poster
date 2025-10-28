@@ -84,13 +84,13 @@ int CCrane::Action(vector<unique_ptr<BaseVector>>& base)
 	}
 
 	//アームを下げる
-	if (CheckHitKey(KEY_INPUT_F) && !arm_down && pos.y == 20)
+	if (CheckHitKey(KEY_INPUT_J) && !arm_down && pos.y == 20)
 	{
 		arm_open = 30;
 		Click_Check[F] = true;
 	}
 	//アームを開く
-	if (CheckHitKey(KEY_INPUT_R) && !Click_Check[R])
+	if (CheckHitKey(KEY_INPUT_U) && !Click_Check[R])
 	{
 		arm_open = 30;
 		Click_Check[R] = true;

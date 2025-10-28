@@ -28,7 +28,7 @@ int CIncinerator::Action(vector<unique_ptr<BaseVector>>& base)
 					if (HitCheck_box(this, (*i).get()))
 					{
 						(*i)->FLAG = false;
-						break;
+						return 1;
 					}
 				}
 				else if ((*i)->radius > 0)
@@ -36,7 +36,7 @@ int CIncinerator::Action(vector<unique_ptr<BaseVector>>& base)
 					if (HitCheck_Box_CircleB((*i).get(), this, (*i)->radius))
 					{
 						(*i)->FLAG = false;
-						break;
+						return 1;
 					}
 				}
 			}
@@ -50,7 +50,7 @@ int CIncinerator::Action(vector<unique_ptr<BaseVector>>& base)
 					if (HitCheck_box(this, (*i).get()))
 					{
 						(*i)->FLAG = false;
-						break;
+						return 2;
 					}
 				}
 				else if ((*i)->radius > 0)
@@ -58,7 +58,7 @@ int CIncinerator::Action(vector<unique_ptr<BaseVector>>& base)
 					if (HitCheck_Box_CircleB((*i).get(), this, (*i)->radius))
 					{
 						(*i)->FLAG = false;
-						break;
+						return 2;
 					}
 				}
 			}
@@ -72,7 +72,7 @@ int CIncinerator::Action(vector<unique_ptr<BaseVector>>& base)
 					if (HitCheck_box(this, (*i).get()))
 					{
 						(*i)->FLAG = false;
-						break;
+						return 2;
 					}
 				}
 				else if ((*i)->radius > 0)
@@ -80,7 +80,7 @@ int CIncinerator::Action(vector<unique_ptr<BaseVector>>& base)
 					if (HitCheck_Box_CircleB((*i).get(), this, (*i)->radius))
 					{
 						(*i)->FLAG = false;
-						break;
+						return 2;
 					}
 				}
 			}
