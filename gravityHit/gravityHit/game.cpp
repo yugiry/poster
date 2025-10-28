@@ -6,6 +6,8 @@
 
 #include "box.h"
 #include "boxs.h"
+#include "circle.h"
+#include "circles.h"
 
 //コンストラクタ
 CGame::CGame(CManager* p) :CScene(p){

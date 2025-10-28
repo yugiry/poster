@@ -158,6 +158,8 @@
     <ClInclude Include="boxs.h" />
     <ClInclude Include="CCamera.h" />
     <ClInclude Include="2D_function.h" />
+    <ClInclude Include="circle.h" />
+    <ClInclude Include="circles.h" />
     <ClInclude Include="function.h" />
     <ClInclude Include="game.h" />
     <ClInclude Include="library_function.h" />
@@ -174,6 +176,8 @@
     <ClCompile Include="boxs.cpp" />
     <ClCompile Include="CCamera.cpp" />
     <ClCompile Include="2D_function.cpp" />
+    <ClCompile Include="circle.cpp" />
+    <ClCompile Include="circles.cpp" />
     <ClCompile Include="game.cpp" />
     <ClCompile Include="library_function.cpp" />
     <ClCompile Include="main.cpp" />

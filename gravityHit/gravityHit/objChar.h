@@ -20,6 +20,8 @@ public:
 	int ImgWidth{ 0 };//画像の横サイズ
 	int ImgHeight{ 0 };//画像の縦サイズ
 
+	int radius{ -1 };
+
 	int Dir{ 0 };//オブジェクトの向き
 
 	int sound[8]{ -1,-1,-1,-1,-1,-1,-1,-1 };
