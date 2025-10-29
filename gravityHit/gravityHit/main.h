@@ -27,6 +27,8 @@ constexpr auto WINDOW_HEIGHT = 600;	//ècïù
  struct Vector {
 	float x, y;
 };
+ 
+ constexpr Vector vunit{ 1,0 };
 
 //3Dóp
 struct Point3 {
