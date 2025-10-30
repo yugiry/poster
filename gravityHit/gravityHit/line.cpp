@@ -1,5 +1,6 @@
 #pragma once
 #include "line.h"
+#include "function.h"
 
 CLine::CLine()
 {
@@ -23,7 +24,7 @@ int CLine::Action(vector<unique_ptr<BaseVector>>& base)
 	{
 		if (base[i]->ID == L2)
 		{
-			
+
 		}
 	}
 
