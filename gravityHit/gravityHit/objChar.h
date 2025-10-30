@@ -24,6 +24,7 @@ public:
 	Vector VW{ 0,0 }, VH{ 0,0 };
 
 	int Dir{ 0 };//オブジェクトの向き
+	float weight{ 0 };//重さ
 
 	int sound[8]{ -1,-1,-1,-1,-1,-1,-1,-1 };
 

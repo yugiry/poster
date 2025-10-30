@@ -163,7 +163,10 @@
     <ClInclude Include="function.h" />
     <ClInclude Include="game.h" />
     <ClInclude Include="library_function.h" />
+    <ClInclude Include="line.h" />
+    <ClInclude Include="lines.h" />
     <ClInclude Include="main.h" />
+    <ClInclude Include="Myfunction.h" />
     <ClInclude Include="objBase.h" />
     <ClInclude Include="objChar.h" />
     <ClInclude Include="objID.h" />
@@ -180,7 +183,10 @@
     <ClCompile Include="circles.cpp" />
     <ClCompile Include="game.cpp" />
     <ClCompile Include="library_function.cpp" />
+    <ClCompile Include="line.cpp" />
+    <ClCompile Include="lines.cpp" />
     <ClCompile Include="main.cpp" />
+    <ClCompile Include="Myfunction.cpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

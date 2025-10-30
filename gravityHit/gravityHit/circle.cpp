@@ -18,14 +18,6 @@ int CCircle::Action(vector<unique_ptr<BaseVector>>& base)
 	vec.y += g;
 	//vec = { 0,0 };
 
-	//移動
-	{
-		if (CheckHitKey(KEY_INPUT_W))vec.y = -3.0f;
-		if (CheckHitKey(KEY_INPUT_S)) vec.y = 3.0f;
-		if (CheckHitKey(KEY_INPUT_A)) vec.x = -3.0f;
-		if (CheckHitKey(KEY_INPUT_D)) vec.x = 3.0f;
-	}
-
 	if (CheckHitKey(KEY_INPUT_SPACE))
 	{
 		pos.y = 50;
@@ -33,12 +25,16 @@ int CCircle::Action(vector<unique_ptr<BaseVector>>& base)
 
 	if (pos.y + vec.y > WINDOW_HEIGHT - radius)
 	{
-		vec.y = -vec.y * bound;
+		vec.y = (WINDOW_HEIGHT - radius - pos.y - vec.y) * bound;
 		vec.x = vec.x * bound;
 	}
-	if (pos.x + vec.x > WINDOW_WIDTH - radius || pos.x + vec.x < radius)
+	if (pos.x + vec.x > WINDOW_WIDTH - radius)
 	{
-		vec.x = -vec.x * bound;
+		vec.x = (WINDOW_WIDTH - radius - pos.x - vec.x) * bound;
+	}
+	if (pos.x + vec.x < radius)
+	{
+		vec.x = (radius - pos.x - vec.x) * bound;
 	}
 
 	for (int i = 0; i < base.size(); i++)
@@ -59,30 +55,32 @@ int CCircle::Action(vector<unique_ptr<BaseVector>>& base)
 
 		if (base[i]->ID == B2)
 		{
-			Point Q{ 0,0 };//直線上の点
-			Point A = base[i]->pos;//直線の始点
-			Point B{ base[i]->pos.x + base[i]->VW.x,base[i]->pos.y + base[i]->VW.y };//直線の終点
-			Vector n{ B.x - A.x,B.y - A.y };//直線の方向ベクトル
-			Point P = pos;
-			Vector AP{ P.x - A.x,P.y - A.y };//始点からの点までのベクトル
-			float t = (AP.x * n.x + AP.y * n.y) / (n.x * n.x + n.y * n.y);//投影係数
-			if (t < 0)t = 0;//0より小さい場合は始点値
-			if (t > 1)t = 1.0f;//1より大きい場合は終点値
-			p = Add_Point_Vector(A, Mul_Vector_Scaler(n, t));
-			Vector v{ pos.x - p.x,pos.y - p.y };
-			float l = sqrt(v.x * v.x + v.y * v.y);
-			if (l < radius)
+			Point P;
+			Point A = base[i]->pos;
+			Point B{ base[i]->pos.x + base[i]->VW.x,base[i]->pos.y + base[i]->VW.y };
+			Point C{ base[i]->pos.x + base[i]->VH.x,base[i]->pos.y + base[i]->VH.y };
+			Point D{ B.x + base[i]->VH.x,B.y + base[i]->VH.y };
+			line[0] = Near_Point_Line(pos, A, B);
+			line[1] = Near_Point_Line(pos, A, C);
+			line[2] = Near_Point_Line(pos, D, B);
+			line[3] = Near_Point_Line(pos, D, C);
+			for (int j = 0; j < 4; j++)
 			{
-				v = Vector_SetLength(v, (radius - l));
-				 
-				//v.y *= 0.2f;
-				vec.x += v.x;
-				vec.y += v.y;
-				vec.y = vec.y * bound;
+				Vector v{ pos.x - line[j].x,pos.y - line[j].y };
+				float l = sqrt(v.x * v.x + v.y * v.y);
+				if (l < radius)
+				{
+					v = Vector_SetLength(v, (radius - l));
+
+					//v.y *= 0.2f;
+					vec.x += v.x;
+					vec.y += v.y;
+					vec.y = vec.y * bound;
+				}
 			}
 		}
 	}
-
+	
 	if (vec.x < 0.01f && vec.x > -0.01f)vec.x = 0;
 	if (vec.y < 0.01f && vec.y > -0.01f)vec.y = 0;
 
@@ -98,5 +96,6 @@ void CCircle::Draw()
 
 	//DrawLine(pos.x, pos.y, pos.x + vv1.x, pos.y + vv1.y, GetColor(255, 0, 0), true);
 	//DrawLine(pos.x, pos.y, pos.x + vv2.x, pos.y + vv2.y, GetColor(255, 0, 0), true);
-	DrawLine(pos.x, pos.y, p.x, p.y, GetColor(255, 0, 0), true);
+	for (int i = 0; i < 4; i++)
+		DrawLine(pos.x, pos.y, line[i].x, line[i].y, GetColor(255, 0, 0), true);
 }

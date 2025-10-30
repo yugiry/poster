@@ -9,5 +9,6 @@ public:
 	int Action(vector<unique_ptr<BaseVector>>&);
 	void Draw();
 
-	int radian{ 0 };
+	int radian{ 330 };
+	float g{ 0.5f };
 };

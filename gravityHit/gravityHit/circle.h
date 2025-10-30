@@ -16,5 +16,5 @@ public:
 	Vector vv1{ 0,0 };
 	Vector vv2{ 0,0 };
 
-	Point p{ 0,0 };
+	Point line[4];
 };
