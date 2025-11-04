@@ -20,7 +20,10 @@ int CCircle::Action(vector<unique_ptr<BaseVector>>& base)
 
 	if (CheckHitKey(KEY_INPUT_SPACE))
 	{
+		pos.x = WINDOW_WIDTH / 2 + 5;
 		pos.y = 50;
+
+		vec = { 0,0 };
 	}
 
 	if (pos.y + vec.y > WINDOW_HEIGHT - radius)
@@ -39,6 +42,7 @@ int CCircle::Action(vector<unique_ptr<BaseVector>>& base)
 
 	for (int i = 0; i < base.size(); i++)
 	{
+		//‰~‚Æ‰~‚Ì“–‚½‚è”»’è
 		/*if (base[i]->ID == C2)
 		{
 			Vector length{ (pos.x + vec.x) - base[i]->pos.x,(pos.y + vec.y) - base[i]->pos.y };
@@ -53,17 +57,20 @@ int CCircle::Action(vector<unique_ptr<BaseVector>>& base)
 			}
 		}*/
 
+		//‰~‚ÆlŠpŒ`‚Ì“–‚½‚è”»’è
 		if (base[i]->ID == B2)
 		{
-			Point P;
+			Point P = pos;
 			Point A = base[i]->pos;
 			Point B{ base[i]->pos.x + base[i]->VW.x,base[i]->pos.y + base[i]->VW.y };
 			Point C{ base[i]->pos.x + base[i]->VH.x,base[i]->pos.y + base[i]->VH.y };
 			Point D{ B.x + base[i]->VH.x,B.y + base[i]->VH.y };
-			line[0] = Near_Point_Line(pos, A, B);
-			line[1] = Near_Point_Line(pos, A, C);
-			line[2] = Near_Point_Line(pos, D, B);
-			line[3] = Near_Point_Line(pos, D, C);
+			//l•Ó‚»‚ê‚¼‚ê‚Ì“_‚©‚çˆê”Ô‹ß‚¢‹——£‚ğ‹‚ß‚é
+			line[0] = Near_Point_Line(P, A, B);
+			line[1] = Near_Point_Line(P, A, C);
+			line[2] = Near_Point_Line(P, D, B);
+			line[3] = Near_Point_Line(P, D, C);
+			//l•Ó‚Æ‚Ì“–‚½‚è”»’è
 			for (int j = 0; j < 4; j++)
 			{
 				Vector v{ pos.x - line[j].x,pos.y - line[j].y };

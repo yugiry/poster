@@ -15,6 +15,7 @@ CBoxs::CBoxs()
 
 int CBoxs::Action(vector<unique_ptr<BaseVector>>& base)
 {
+	vec.x = 0.0f;
 	vec.y += g;
 
 	if (CheckHitKey(KEY_INPUT_W))vec.y = -4.0f;
@@ -50,12 +51,46 @@ int CBoxs::Action(vector<unique_ptr<BaseVector>>& base)
 	pos.x -= VW.x / 2 + VH.x / 2;
 	pos.y -= VW.y / 2 + VH.y / 2;
 
+	//当たり判定
+	for (int i = 0; i < base.size(); i++)
 	{
-		Point p{ pos.x + vec.x,pos.y + vec.y };
-		HitLeft(this);
-		HitRight(this);
-		HitUp(this);
-		HitDown(this);
+		//四角形と円の当たり判定
+		if (base[i]->ID == C1)
+		{
+			Point P = base[i]->pos;
+			Point A = pos;
+			Point B{ pos.x + VW.x,pos.y + VW.y };
+			Point C{ pos.x + VH.x,pos.y + VH.y };
+			Point D{ pos.x + VW.x + VH.x,pos.y + VW.y + VH.y };
+			//四辺それぞれの点から一番近い距離を求める
+			line[0] = Near_Point_Line(P, A, B);
+			line[1] = Near_Point_Line(P, A, C);
+			line[2] = Near_Point_Line(P, D, B);
+			line[3] = Near_Point_Line(P, D, C);
+			//四辺との当たり判定
+			for (int j = 0; j < 4; j++)
+			{
+				Vector v{ line[j].x - P.x,line[j].y - P.y };
+				float l = sqrt(v.x * v.x + v.y * v.y);
+				if (l < base[i]->radius)
+				{
+					v = Vector_SetLength(v, (base[i]->radius - l));
+
+					//v.y *= 0.2f;
+					vec.x += v.x;
+					vec.y += v.y;
+					vec.y = vec.y;
+				}
+			}
+		}
+	}
+
+	//画面外との当たり判定
+	{
+		HitLeft_Window(this);
+		HitRight_Window(this);
+		HitUp_Window(this);
+		HitDown_Window(this);
 	}
 
 	pos.x += vec.x;

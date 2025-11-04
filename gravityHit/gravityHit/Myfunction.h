@@ -5,7 +5,7 @@
 Point Near_Point_Line(Point, Point, Point);
 
 //四角形の当たり判定(座標、横幅ベクトル、縦幅ベクトル)
-void HitLeft(BaseVector*);
-void HitRight(BaseVector*);
-void HitUp(BaseVector*);
-void HitDown(BaseVector*);
+void HitLeft_Window(BaseVector*);
+void HitRight_Window(BaseVector*);
+void HitUp_Window(BaseVector*);
+void HitDown_Window(BaseVector*);

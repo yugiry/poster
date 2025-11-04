@@ -11,4 +11,6 @@ public:
 
 	int radian{ 330 };
 	float g{ 0.5f };
+
+	Point line[4];
 };

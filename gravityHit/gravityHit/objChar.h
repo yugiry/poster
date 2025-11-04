@@ -12,6 +12,7 @@ public:
 	int img{ -1 };//画像
 
 	Point pos{ 0,0 };//位置
+	Point Mid_pos{ 0,0 };
 	Vector vec{ 0,0 };//移動ベクトル
 
 	int CutX{ 0 };//画像切り取り位置x

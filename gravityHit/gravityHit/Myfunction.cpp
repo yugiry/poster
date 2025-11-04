@@ -15,73 +15,123 @@ Point Near_Point_Line(Point P, Point A, Point B)
 }
 
 //四角形の当たり判定(座標、横幅ベクトル、縦幅ベクトル)
-void HitLeft(BaseVector* b)
+void HitLeft_Window(BaseVector* b)
 {
 	//左上が左下より左にいれば
 	if (b->pos.x <= b->pos.x + b->VH.x)
 	{
 		//右上が左上より左にいれば
-		if (b->pos.x + b->VW.x < b->pos.x && b->pos.x + b->VW.x < 0);
+		if (b->pos.x + b->VW.x < b->pos.x && b->pos.x + b->VW.x < 0)
+		{
 
-		if (b->pos.x < 0);
-		
+			return;
+		}
+		if (b->pos.x < 0)
+		{
+
+			return;
+		}
 	}
 	//左下が左上より左にいれば
 	else
 	{
 		//右下が左下より左にいれば
-		if (b->pos.x + b->VH.x + b->VW.x < b->pos.x + b->VH.x && b->pos.x + b->VH.x + b->VW.x < 0);
-		if (b->pos.x + b->VH.x < 0);
+		if (b->pos.x + b->VH.x + b->VW.x < b->pos.x + b->VH.x && b->pos.x + b->VH.x + b->VW.x < 0)
+		{
+
+			return;
+		}
+		if (b->pos.x + b->VH.x < 0)
+		{
+
+			return;
+		}
 	}
 
 	//何も当たっていなければ
 	return;
 }
-void HitRight(BaseVector* b)
+void HitRight_Window(BaseVector* b)
 {
 	//左上が左下より右にいれば
 	if (b->pos.x >= b->pos.x + b->VH.x)
 	{
 		//右上が左上より右にいれば
-		if (b->pos.x + b->VW.x > b->pos.x && b->pos.x + b->VW.x > WINDOW_WIDTH);
-
-		if (b->pos.x > WINDOW_WIDTH);
-
+		if (b->pos.x + b->VW.x > b->pos.x && b->pos.x + b->VW.x > WINDOW_WIDTH)
+		{
+			b->pos.x = WINDOW_WIDTH - b->VW.x;
+			b->vec.x = 0;
+			return;
+		}
+		if (b->pos.x > WINDOW_WIDTH)
+		{
+			b->pos.x = WINDOW_WIDTH;
+			b->vec.x = 0;
+			return;
+		}
 	}
 	//左下が左上より右にいれば
 	else
 	{
 		//右下が左下より右にいれば
-		if (b->pos.x + b->VH.x + b->VW.x > b->pos.x + b->VH.x && b->pos.x + b->VH.x + b->VW.x > WINDOW_WIDTH);
-		if (b->pos.x + b->VH.x > WINDOW_WIDTH);
+		if (b->pos.x + b->VH.x + b->VW.x > b->pos.x + b->VH.x && b->pos.x + b->VH.x + b->VW.x > WINDOW_WIDTH)
+		{
+			b->pos.x = WINDOW_WIDTH - b->VW.x - b->VH.x;
+			b->vec.x = 0;
+			return;
+		}
+		if (b->pos.x + b->VH.x > WINDOW_WIDTH)
+		{
+			b->pos.x = WINDOW_WIDTH - b->VH.x;
+			b->vec.x = 0;
+			return;
+		}
 	}
 
 	//何も当たっていなければ
 	return;
 }
-void HitUp(BaseVector* b)
+void HitUp_Window(BaseVector* b)
 {
 	//左上が左下より左にいれば
 	if (b->pos.y <= b->pos.y + b->VH.y)
 	{
 		//右上が左上より左にいれば
-		if (b->pos.y + b->VW.y < b->pos.y && b->pos.y + b->VW.y < 0);
-
-		if (b->pos.y < 0);
-
+		if (b->pos.y + b->VW.y < b->pos.y && b->pos.y + b->VW.y < 0)
+		{
+			b->pos.y = -b->VW.y;
+			b->vec.y = 0;
+			return;
+		}
+		if (b->pos.y < 0)
+		{
+			b->pos.y = 0;
+			b->vec.y = 0;
+			return;
+		}
 	}
 	//左下が左上より左にいれば
 	else
 	{
 		//右下が左下より左にいれば
-		if (b->pos.y + b->VH.y + b->VW.y < b->pos.y + b->VH.y && b->pos.y + b->VH.y + b->VW.y < 0);
-		if (b->pos.y + b->VH.y < 0);
+		if (b->pos.y + b->VH.y + b->VW.y < b->pos.y + b->VH.y && b->pos.y + b->VH.y + b->VW.y < 0)
+		{
+			b->pos.y = -b->VH.y - b->VW.y;
+			b->vec.y = 0;
+			return;
+		}
+		if (b->pos.y + b->VH.y < 0)
+		{
+			b->pos.y = -b->VH.y;
+			b->vec.y = 0;
+			return;
+		}
 	}
 
 	//何も当たっていなければ
 	return;
 }
-void HitDown(BaseVector* b)
+void HitDown_Window(BaseVector* b)
 {
 	//左上が左下より右にいれば
 	if (b->pos.y >= b->pos.y + b->VH.y)
