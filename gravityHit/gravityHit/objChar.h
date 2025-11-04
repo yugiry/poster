@@ -12,7 +12,7 @@ public:
 	int img{ -1 };//画像
 
 	Point pos{ 0,0 };//位置
-	Point Mid_pos{ 0,0 };
+	Point Pos[4];
 	Vector vec{ 0,0 };//移動ベクトル
 
 	int CutX{ 0 };//画像切り取り位置x
@@ -22,6 +22,7 @@ public:
 	int ImgHeight{ 0 };//画像の縦サイズ
 
 	int radius{ -1 };
+	int radian{ -1 };
 	Vector VW{ 0,0 }, VH{ 0,0 };
 
 	int Dir{ 0 };//オブジェクトの向き

@@ -23,12 +23,12 @@ void HitLeft_Window(BaseVector* b)
 		//右上が左上より左にいれば
 		if (b->pos.x + b->VW.x < b->pos.x && b->pos.x + b->VW.x < 0)
 		{
-
+			b->pos.x = -b->VW.x;
 			return;
 		}
 		if (b->pos.x < 0)
 		{
-
+			b->pos.x = 0;
 			return;
 		}
 	}
@@ -38,12 +38,12 @@ void HitLeft_Window(BaseVector* b)
 		//右下が左下より左にいれば
 		if (b->pos.x + b->VH.x + b->VW.x < b->pos.x + b->VH.x && b->pos.x + b->VH.x + b->VW.x < 0)
 		{
-
+			b->pos.x = -(b->VW.x + b->VH.x);
 			return;
 		}
 		if (b->pos.x + b->VH.x < 0)
 		{
-
+			b->pos.x = -b->VH.x;
 			return;
 		}
 	}
@@ -60,13 +60,11 @@ void HitRight_Window(BaseVector* b)
 		if (b->pos.x + b->VW.x > b->pos.x && b->pos.x + b->VW.x > WINDOW_WIDTH)
 		{
 			b->pos.x = WINDOW_WIDTH - b->VW.x;
-			b->vec.x = 0;
 			return;
 		}
 		if (b->pos.x > WINDOW_WIDTH)
 		{
 			b->pos.x = WINDOW_WIDTH;
-			b->vec.x = 0;
 			return;
 		}
 	}
@@ -77,13 +75,11 @@ void HitRight_Window(BaseVector* b)
 		if (b->pos.x + b->VH.x + b->VW.x > b->pos.x + b->VH.x && b->pos.x + b->VH.x + b->VW.x > WINDOW_WIDTH)
 		{
 			b->pos.x = WINDOW_WIDTH - b->VW.x - b->VH.x;
-			b->vec.x = 0;
 			return;
 		}
 		if (b->pos.x + b->VH.x > WINDOW_WIDTH)
 		{
 			b->pos.x = WINDOW_WIDTH - b->VH.x;
-			b->vec.x = 0;
 			return;
 		}
 	}
@@ -93,37 +89,33 @@ void HitRight_Window(BaseVector* b)
 }
 void HitUp_Window(BaseVector* b)
 {
-	//左上が左下より左にいれば
+	//左上が左下より上にいれば
 	if (b->pos.y <= b->pos.y + b->VH.y)
 	{
-		//右上が左上より左にいれば
+		//右上が左上より上にいれば
 		if (b->pos.y + b->VW.y < b->pos.y && b->pos.y + b->VW.y < 0)
 		{
 			b->pos.y = -b->VW.y;
-			b->vec.y = 0;
 			return;
 		}
 		if (b->pos.y < 0)
 		{
 			b->pos.y = 0;
-			b->vec.y = 0;
 			return;
 		}
 	}
-	//左下が左上より左にいれば
+	//左下が左上より上にいれば
 	else
 	{
-		//右下が左下より左にいれば
+		//右下が左下より上にいれば
 		if (b->pos.y + b->VH.y + b->VW.y < b->pos.y + b->VH.y && b->pos.y + b->VH.y + b->VW.y < 0)
 		{
-			b->pos.y = -b->VH.y - b->VW.y;
-			b->vec.y = 0;
+			b->pos.y = -(b->VH.y + b->VW.y);
 			return;
 		}
 		if (b->pos.y + b->VH.y < 0)
 		{
 			b->pos.y = -b->VH.y;
-			b->vec.y = 0;
 			return;
 		}
 	}
@@ -133,10 +125,10 @@ void HitUp_Window(BaseVector* b)
 }
 void HitDown_Window(BaseVector* b)
 {
-	//左上が左下より右にいれば
+	//左上が左下より下にいれば
 	if (b->pos.y >= b->pos.y + b->VH.y)
 	{
-		//右上が左上より右にいれば
+		//右上が左上より下にいれば
 		if (b->pos.y + b->VW.y > b->pos.y && b->pos.y + b->VW.y > WINDOW_HEIGHT)
 		{
 			b->pos.y = WINDOW_HEIGHT - b->VW.y;
@@ -152,10 +144,10 @@ void HitDown_Window(BaseVector* b)
 		}
 
 	}
-	//左下が左上より右にいれば
+	//左下が左上より下にいれば
 	else
 	{
-		//右下が左下より右にいれば
+		//右下が左下より下にいれば
 		if (b->pos.y + b->VH.y + b->VW.y > b->pos.y + b->VH.y && b->pos.y + b->VH.y + b->VW.y > WINDOW_HEIGHT)
 		{
 			b->pos.y = WINDOW_HEIGHT - b->VW.y - b->VH.y;

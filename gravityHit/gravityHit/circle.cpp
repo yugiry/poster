@@ -57,8 +57,8 @@ int CCircle::Action(vector<unique_ptr<BaseVector>>& base)
 			}
 		}*/
 
-		//‰~‚ÆŽlŠpŒ`‚Ì“–‚½‚è”»’è
-		if (base[i]->ID == B2)
+		//‰~‚ÆŽlŠpŒ`‚Ì“–‚½‚è”»’è(ver.1)
+		/*if (base[i]->ID == B2)
 		{
 			Point P = pos;
 			Point A = base[i]->pos;
@@ -85,7 +85,7 @@ int CCircle::Action(vector<unique_ptr<BaseVector>>& base)
 					vec.y = vec.y * bound;
 				}
 			}
-		}
+		}*/
 	}
 	
 	if (vec.x < 0.01f && vec.x > -0.01f)vec.x = 0;
