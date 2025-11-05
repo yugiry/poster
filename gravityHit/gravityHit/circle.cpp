@@ -5,8 +5,8 @@
 
 CCircle::CCircle()
 {
-	pos.x = WINDOW_WIDTH / 2 + 5;
-	pos.y = 50;
+	pos.x = WINDOW_WIDTH / 2;
+	pos.y = WINDOW_HEIGHT / 2;
 
 	radius = 32;
 
@@ -103,6 +103,6 @@ void CCircle::Draw()
 
 	//DrawLine(pos.x, pos.y, pos.x + vv1.x, pos.y + vv1.y, GetColor(255, 0, 0), true);
 	//DrawLine(pos.x, pos.y, pos.x + vv2.x, pos.y + vv2.y, GetColor(255, 0, 0), true);
-	for (int i = 0; i < 4; i++)
-		DrawLine(pos.x, pos.y, line[i].x, line[i].y, GetColor(255, 0, 0), true);
+	//for (int i = 0; i < 4; i++)
+		//DrawLine(pos.x, pos.y, line[i].x, line[i].y, GetColor(255, 0, 0), true);
 }
