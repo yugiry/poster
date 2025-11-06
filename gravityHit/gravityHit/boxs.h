@@ -10,6 +10,10 @@ public:
 	void Draw();
 
 	float g{ 0.5f };
+	int x, y;
+	int ClickX, ClickY;
 
 	Point line[4];
+
+	bool click{ false };
 };
