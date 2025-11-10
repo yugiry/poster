@@ -22,6 +22,8 @@ CBoxs::CBoxs()
 
 	VH = Vector_SetLength(VH, ImgHeight);
 
+	weight = 1;
+
 	ID = B2;
 }
 
@@ -42,7 +44,39 @@ int CBoxs::Action(vector<unique_ptr<BaseVector>>& base)
 
 	if (click)
 	{
-
+		//原点から四角形の各頂点までのベクトルを計算
+		Vector v[4];
+		v[0] = { pos.x - WINDOW_WIDTH / 2,pos.y - WINDOW_HEIGHT / 2 };
+		v[1] = { (pos.x + VW.x) - WINDOW_WIDTH / 2,(pos.y + VW.y) - WINDOW_HEIGHT / 2 };
+		v[2] = { (pos.x + VH.x) - WINDOW_WIDTH / 2,(pos.y + VH.y) - WINDOW_HEIGHT / 2 };
+		v[3] = { (pos.x + VW.x + VH.x) - WINDOW_WIDTH / 2,(pos.y + VW.y + VH.y) - WINDOW_HEIGHT / 2 };
+		//各々のベクトルの長さを求める
+		float l[4];
+		for (int i = 0; i < 4; i++)
+		{
+			l[i] = Vector_Length(v[i]);
+		}
+		//各々のベクトルのなす角を求める
+		float dot[4];
+		for (int i = 0; i < 4; i++)
+		{
+			int j = i + 1;
+			if (j > 3)j = 0;
+			dot[i] = Dot(v[i], v[j]);
+		}
+		//
+		Vector S{ 0,0 };
+		for (int i = 1; i < 4; i++)
+		{
+			S.x += (1 / 2) * v[i - 1].x * v[i].x;
+			S.y += (1 / 2) * v[i - 1].y * v[i].y;
+		}
+		Vector tmpI{ 0,0 };
+		for (int i = 1; i < 4; i++)
+		{
+			Vector Si{ (1 / 2) * v[i - 1].x * v[i].x,(1 / 2) * v[i - 1].y * v[i].y };
+			tmpI.x += (1 / 6) * ((Si.x / S.x) * weight) * (0);
+		}
 	}
 
 	/*if (CheckHitKey(KEY_INPUT_U))

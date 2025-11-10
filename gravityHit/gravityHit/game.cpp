@@ -10,6 +10,7 @@
 #include "circles.h"
 #include "line.h"
 #include "lines.h"
+#include "triangle.h"
 
 //コンストラクタ
 CGame::CGame(CManager* p) :CScene(p){
@@ -21,6 +22,8 @@ CGame::CGame(CManager* p) :CScene(p){
 
 	//base.emplace_back((unique_ptr<BaseVector>)new CLine());
 	//base.emplace_back((unique_ptr<BaseVector>)new CLines());
+
+	//base.emplace_back((unique_ptr<BaseVector>)new CTriangle());
 }
 
 //更新処理
