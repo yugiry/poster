@@ -1,6 +1,7 @@
 #pragma once
 #include "boxs.h"
 #include "function.h"
+#include <math.h>
 
 CBoxs::CBoxs()
 {
@@ -31,68 +32,25 @@ int CBoxs::Action(vector<unique_ptr<BaseVector>>& base)
 {
 	vec.x = 0.0f; 
 	vec.y = 0.0f;
-	//vec.y += g;
-
-	GetMousePoint(&x, &y);
-
-	if ((GetMouseInput() & MOUSE_INPUT_LEFT) && !click)
-	{
-		ClickX = x; ClickY = y;
-		click = true;
-	}
-	click = (GetMouseInput() & MOUSE_INPUT_LEFT);
-
-	if (click)
-	{
-		//原点から四角形の各頂点までのベクトルを計算
-		Vector v[4];
-		v[0] = { pos.x - WINDOW_WIDTH / 2,pos.y - WINDOW_HEIGHT / 2 };
-		v[1] = { (pos.x + VW.x) - WINDOW_WIDTH / 2,(pos.y + VW.y) - WINDOW_HEIGHT / 2 };
-		v[2] = { (pos.x + VH.x) - WINDOW_WIDTH / 2,(pos.y + VH.y) - WINDOW_HEIGHT / 2 };
-		v[3] = { (pos.x + VW.x + VH.x) - WINDOW_WIDTH / 2,(pos.y + VW.y + VH.y) - WINDOW_HEIGHT / 2 };
-		//各々のベクトルの長さを求める
-		float l[4];
-		for (int i = 0; i < 4; i++)
-		{
-			l[i] = Vector_Length(v[i]);
-		}
-		//各々のベクトルのなす角を求める
-		float dot[4];
-		for (int i = 0; i < 4; i++)
-		{
-			int j = i + 1;
-			if (j > 3)j = 0;
-			dot[i] = Dot(v[i], v[j]);
-		}
-		//
-		Vector S{ 0,0 };
-		for (int i = 1; i < 4; i++)
-		{
-			S.x += (1 / 2) * v[i - 1].x * v[i].x;
-			S.y += (1 / 2) * v[i - 1].y * v[i].y;
-		}
-		Vector tmpI{ 0,0 };
-		for (int i = 1; i < 4; i++)
-		{
-			Vector Si{ (1 / 2) * v[i - 1].x * v[i].x,(1 / 2) * v[i - 1].y * v[i].y };
-			tmpI.x += (1 / 6) * ((Si.x / S.x) * weight) * (0);
-		}
-	}
-
-	/*if (CheckHitKey(KEY_INPUT_U))
-	{
-		radian -= 6;
-	}
-	if (CheckHitKey(KEY_INPUT_I))
-	{
-		radian += 6;
-	}*/
 
 	pos.x += VW.x / 2 + VH.x / 2;
 	pos.y += VW.y / 2 + VH.y / 2;
 
-	VW.x = cos(RADIAN(radian));
-	VW.y = sin(RADIAN(radian));
+	I = Vector_SetLength(VH, 1);
+	
+	if (CheckHitKey(KEY_INPUT_U))
+	{
+		VW.x += I.x;
+		VW.y += I.y;
+	}
+	if (CheckHitKey(KEY_INPUT_I))
+	{
+		VW.x -= I.x;
+		VW.y -= I.y;
+	}
+
+	VW.x = cos(RADIAN(atan2(VW.y, VW.x)));
+	VW.y = sin(RADIAN(atan2(VW.y, VW.x)));
 
 	VW = Vector_SetLength(VW, ImgWidth);
 
@@ -103,44 +61,10 @@ int CBoxs::Action(vector<unique_ptr<BaseVector>>& base)
 
 	if (radian < 0)radian = 359;
 	if (radian >= 360)radian = 0;
+	if (radian >= 360)radian = 0;
 
 	pos.x -= VW.x / 2 + VH.x / 2;
 	pos.y -= VW.y / 2 + VH.y / 2;
-
-	//左上が左下より下にいれば
-	if (pos.y >= pos.y + VH.y)
-	{
-		//右上が左上より下にいれば
-		if (pos.y + VW.y > pos.y && pos.y + VW.y > WINDOW_HEIGHT)
-		{
-			pos.y = WINDOW_HEIGHT - VW.y;
-			vec.y = -(vec.y * 0.4f);
-		}
-
-		if (pos.y > WINDOW_HEIGHT)
-		{
-			pos.y = WINDOW_HEIGHT;
-			vec.y = -(vec.y * 0.4f);
-		}
-	}
-	//左下が左上より下にいれば
-	else
-	{
-		//右下が左下より下にいれば
-		if (pos.y + VH.y + VW.y > pos.y + VH.y && pos.y + VH.y + VW.y > WINDOW_HEIGHT)
-		{
-			pos.y = WINDOW_HEIGHT - VW.y - VH.y;
-			vec.y = -(vec.y * 0.4f);
-		}
-		if (pos.y + VH.y > WINDOW_HEIGHT)
-		{
-			pos.y = WINDOW_HEIGHT - VH.y;
-			vec.y = -(vec.y * 0.4f);
-		}
-	}
-
-	pos.x += vec.x;
-	pos.y += vec.y;
 
 	return 0;
 }
@@ -155,5 +79,6 @@ void CBoxs::Draw()
 	if (click)
 	{
 		DrawLine(x, y, ClickX, ClickY, GetColor(0, 255, 0), true);
+		DrawFormatString(10, 20, GetColor(255, 255, 255), "%f,%f", I.x, I.y);
 	}
 }

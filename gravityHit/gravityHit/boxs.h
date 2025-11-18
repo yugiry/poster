@@ -16,4 +16,6 @@ public:
 	Point line[4];
 
 	bool click{ false };
+
+	Vector I;
 };
