@@ -33,24 +33,31 @@ int CBoxs::Action(vector<unique_ptr<BaseVector>>& base)
 	vec.x = 0.0f; 
 	vec.y = 0.0f;
 
+	GetMousePoint(&x, &y);
+
+	if ((GetMouseInput() & MOUSE_INPUT_LEFT) && !click)
+	{
+		ClickX = x;
+		ClickY = y;
+	}
+
 	pos.x += VW.x / 2 + VH.x / 2;
 	pos.y += VW.y / 2 + VH.y / 2;
 
-	I = Vector_SetLength(VH, 1);
-	
-	if (CheckHitKey(KEY_INPUT_U))
+	if (click)
 	{
-		VW.x += I.x;
-		VW.y += I.y;
+		power.x = x - ClickX;
+		power.y = y - ClickY;
+		distance.x = ClickX - pos.x;
+		distance.y = ClickY - pos.y;
+		resultpower = Vector_Length(power) * 10 / Vector_Length(distance);
+		if (power.x != 0 && power.y != 0)
+			I = Vector_SetLength(VH, resultpower);
+		else
+			I.x = I.y = 0;
+		VW.x += I.x * 1;
+		VW.y += I.y * 1;
 	}
-	if (CheckHitKey(KEY_INPUT_I))
-	{
-		VW.x -= I.x;
-		VW.y -= I.y;
-	}
-
-	VW.x = cos(RADIAN(atan2(VW.y, VW.x)));
-	VW.y = sin(RADIAN(atan2(VW.y, VW.x)));
 
 	VW = Vector_SetLength(VW, ImgWidth);
 
@@ -61,10 +68,11 @@ int CBoxs::Action(vector<unique_ptr<BaseVector>>& base)
 
 	if (radian < 0)radian = 359;
 	if (radian >= 360)radian = 0;
-	if (radian >= 360)radian = 0;
 
 	pos.x -= VW.x / 2 + VH.x / 2;
 	pos.y -= VW.y / 2 + VH.y / 2;
+
+	click = (GetMouseInput() & MOUSE_INPUT_LEFT);
 
 	return 0;
 }

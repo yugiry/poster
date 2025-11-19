@@ -18,4 +18,7 @@ public:
 	bool click{ false };
 
 	Vector I;
+	Vector power;
+	Vector distance;
+	float resultpower;
 };
