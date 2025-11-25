@@ -55,6 +55,9 @@ int CBoxs::Action(vector<unique_ptr<BaseVector>>& base)
 			I = Vector_SetLength(VH, resultpower);
 		else
 			I.x = I.y = 0;
+
+		double rad = atan2(distance.y, distance.x);
+
 		VW.x += I.x * 1;
 		VW.y += I.y * 1;
 	}
@@ -86,6 +89,7 @@ void CBoxs::Draw()
 
 	if (click)
 	{
+		DrawLine(pos.x + VW.x / 2 + VH.x / 2, pos.y + VW.y / 2 + VH.y / 2, ClickX, ClickY, GetColor(255, 0, 0), true);
 		DrawLine(x, y, ClickX, ClickY, GetColor(0, 255, 0), true);
 		DrawFormatString(10, 20, GetColor(255, 255, 255), "%f,%f", I.x, I.y);
 	}
