@@ -1,6 +1,7 @@
 #pragma once
 #include "function.h"
 
+//P->点,A->直線の始点,B->直線の終点
 Point Near_Point_Line(Point P, Point A, Point B)
 {
 	Point Q{ 0,0 };//直線上の点
@@ -12,6 +13,30 @@ Point Near_Point_Line(Point P, Point A, Point B)
 	Q = Add_Point_Vector(A, Mul_Vector_Scaler(n, t));
 
 	return Q;
+}
+
+//点と四角形それぞれの辺の近い距離を調べる
+//(点の座標、四角形の座標、四角形の横幅、四角形の縦幅)
+BoxLine Near_Point_BoxLine(Point p, Point b, Vector w, Vector h)
+{
+	BoxLine bl;
+	Point pos;
+	Point Bp = b;
+	Point Bep{ b.x + w.x,b.y + w.y };
+	pos = Near_Point_Line(p, Bp, Bep);
+	bl.vec[0] = { pos.x - p.x,pos.y - p.y };
+	Bep = { b.x + h.x,b.y + h.y };
+	pos = Near_Point_Line(p, Bp, Bep);
+	bl.vec[1] = { pos.x - p.x,pos.y - p.y };
+	Bep = { b.x + w.x + h.x, b.y + w.y + h.y };
+	Bp = { b.x + w.x,b.y + w.y };
+	pos = Near_Point_Line(p, Bp, Bep);
+	bl.vec[2] = { pos.x - p.x,pos.y - p.y };
+	Bp = { b.x + h.x,b.y + h.y };
+	pos = Near_Point_Line(p, Bp, Bep);
+	bl.vec[3] = { pos.x - p.x,pos.y - p.y };
+
+	return bl;
 }
 
 //二つのベクトルのなす角を求める

@@ -13,10 +13,11 @@ public:
 	int x, y;
 	int ClickX, ClickY;
 
-	Point line[4];
+	BoxLine line[4];
 
 	bool click{ false };
 
+	Vector rad_vec;
 	Vector I;
 	Vector power;
 	Vector distance;

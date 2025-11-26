@@ -4,147 +4,40 @@
 
 CBox::CBox()
 {
-	ImgWidth = 150;
-	ImgHeight = 50;
+	pos.y = WINDOW_HEIGHT - 100;
 
-	pos.x = WINDOW_WIDTH / 2 - ImgWidth / 2;
-	pos.y = WINDOW_HEIGHT / 2 - ImgHeight / 2;
+	ImgWidth = WINDOW_WIDTH;
+	ImgHeight = 100;
 
-	angle_w = Vector_SetLength(unit_v, ImgWidth);
-	angle_h.x = unit_v.y; angle_h.y = unit_v.x;
-	angle_h = Vector_SetLength(angle_h, ImgHeight);
+	VW.x = ImgWidth;
+	VW.y = 0;
 
-	mid_pos.x = Vector_SetLength(angle_w, ImgWidth / 2).x + Vector_SetLength(angle_h, ImgHeight / 2).x;
-	mid_pos.y = Vector_SetLength(angle_w, ImgWidth / 2).y + Vector_SetLength(angle_h, ImgHeight / 2).y;
+	VH.x = 0;
+	VH.y = ImgHeight;
 
-	radian = 0;
+	ID = B1;
 }
 
 int CBox::Action(vector<unique_ptr<BaseVector>>& base)
 {
-	vec.x = 0;
-	vec.y += 0.5f;
+	vec.x = vec.y = 0;
 
-	//移動
+	if (CheckHitKey(KEY_INPUT_W))
 	{
-		if (CheckHitKey(KEY_INPUT_W))vec.y = -3.0f;
-		if (CheckHitKey(KEY_INPUT_S)) vec.y = 3.0f;
-		if (CheckHitKey(KEY_INPUT_A)) vec.x = -3.0f;
-		if (CheckHitKey(KEY_INPUT_D)) vec.x = 3.0f;
+		vec.y = -2.0f;
+	}
+	if (CheckHitKey(KEY_INPUT_S))
+	{
+		vec.y = 2.0f;
 	}
 
-	//回転
-	{
-		//反時計回り
-		if (CheckHitKey(KEY_INPUT_U))
-		{
-			radian -= 3;
-		}
-		//時計回り
-		if (CheckHitKey(KEY_INPUT_I))
-		{
-			radian += 3;
-		}
-
-		//回転の制限
-		if (radian <= -1)radian = 359;
-		if (radian >= 360)radian = 0;
-
-		pos.x += angle_w.x / 2 + angle_h.x / 2;
-		pos.y += angle_w.y / 2 + angle_h.y / 2;
-
-		//角度から傾きを求めてベクトルに代入
-		angle_w.x = cos(RADIAN(radian));
-		angle_w.y = sin(RADIAN(radian));
-		//90度回転させたベクトルを代入
-		angle_h.x = -angle_w.y; angle_h.y = angle_w.x;
-		//代入したベクトルの長さを調整
-		angle_w = Vector_SetLength(angle_w, ImgWidth);
-		angle_h = Vector_SetLength(angle_h, ImgHeight);
-
-		pos.x -= angle_w.x / 2 + angle_h.x / 2;
-		pos.y -= angle_w.y / 2 + angle_h.y / 2;
-	}
-
-	//移動処理
-	pos.x += vec.x;
-	pos.y += vec.y;
-
-	//画面外の当たり判定
-	pos.x = HitLeft(pos, angle_w, angle_h);
-	pos.x = HitRight(pos, angle_w, angle_h);
-	pos.y = HitUp(pos, angle_w, angle_h);
-	pos.y = HitDown(pos, angle_w, angle_h);
-
-	//中心座標を求める
-	mid_pos.x = pos.x + Vector_SetLength(angle_w, ImgWidth / 2).x + Vector_SetLength(angle_h, ImgHeight / 2).x;
-	mid_pos.y = pos.y + Vector_SetLength(angle_w, ImgWidth / 2).y + Vector_SetLength(angle_h, ImgHeight / 2).y;
-
-	/* {
-		if (pos.y == pos.y + angle_w.y);
-		//右上が左上より下なら
-		else if (pos.y > pos.y + angle_w.y)
-		{
-			if (pos.y + angle_w.y == pos.y + angle_w.y + angle_h.y);
-			//右下が右上より下なら
-			else if (pos.y + angle_w.y > pos.y + angle_w.y + angle_h.y)
-			{
-
-			}
-			//右上が右下より下なら
-			else
-			{
-
-			}
-		}
-		//左上が右上より下なら
-		else
-		{
-			if (pos.y == pos.y + angle_h.y);
-			//左下が左上より下なら
-			if (pos.y > pos.y + angle_h.y)
-			{
-				if (pos.y + angle_h.y < mid_pos.y)
-				{
-					radian -= 3;
-				}
-				else
-				{
-					radian += 3;
-				}
-			}
-			//左右が左下より下なら
-			else
-			{
-
-			}
-		}
-	}*/
+	//pos.x += vec.x;
+	//pos.y += vec.y;
 
 	return 0;
 }
 
 void CBox::Draw()
 {
-	DrawFormatString(10, 20, GetColor(255, 0, 0), "%d", radian);
-
-	//左上
-	DrawLine(pos.x, pos.y, pos.x, pos.y - 300, GetColor(0, 255, 0), true);
-	//右上
-	DrawLine(pos.x + angle_w.x, pos.y + angle_w.y, pos.x + angle_w.x, pos.y + angle_w.y - 300, GetColor(0, 255, 0), true);
-	//左下
-	DrawLine(pos.x + angle_h.x, pos.y + angle_h.y, pos.x + angle_h.x, pos.y + angle_h.y - 300, GetColor(0, 255, 0), true);
-	//右下
-	DrawLine(pos.x + angle_w.x + angle_h.x, pos.y + angle_w.y + angle_h.y, pos.x + angle_w.x + angle_h.x, pos.y + angle_w.y + angle_h.y - 300, GetColor(0, 255, 0), true);
-	
-	DrawCircle(mid_pos.x, mid_pos.y, 1, GetColor(255, 255, 255), true);
-
-	//上
-	DrawLine(pos.x, pos.y, pos.x + angle_w.x, pos.y + angle_w.y, GetColor(255, 255, 255), true);
-	//左
-	DrawLine(pos.x, pos.y, pos.x + angle_h.x, pos.y + angle_h.y, GetColor(255, 255, 255), true);
-	//下
-	DrawLine(pos.x + angle_h.x, pos.y + angle_h.y, pos.x + angle_w.x + angle_h.x, pos.y + angle_w.y + angle_h.y, GetColor(255, 255, 255), true);
-	//右
-	DrawLine(pos.x + angle_w.x, pos.y + angle_w.y, pos.x + angle_h.x + angle_w.x, pos.y + angle_h.y + angle_w.y, GetColor(255, 255, 255), true);
+	DrawBox(pos.x, pos.y, pos.x + VW.x + VH.x, pos.y + VW.y + VH.y, GetColor(100, 100, 100), false);
 }

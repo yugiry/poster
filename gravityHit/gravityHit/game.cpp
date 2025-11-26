@@ -14,7 +14,7 @@
 
 //コンストラクタ
 CGame::CGame(CManager* p) :CScene(p){
-	//base.emplace_back((unique_ptr<BaseVector>)new CBox());
+	base.emplace_back((unique_ptr<BaseVector>)new CBox());
 	base.emplace_back((unique_ptr<BaseVector>)new CBoxs());
 
 	//base.emplace_back((unique_ptr<BaseVector>)new CCircle());

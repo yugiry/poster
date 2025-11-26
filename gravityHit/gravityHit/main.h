@@ -27,6 +27,10 @@ constexpr auto WINDOW_HEIGHT = 600;	//ècïù
  struct Vector {
 	float x, y;
 };
+
+ struct BoxLine {
+	 Vector vec[4];
+ };
  
  constexpr Vector vunit{ 1,0 };
 

@@ -31,7 +31,8 @@ CBoxs::CBoxs()
 int CBoxs::Action(vector<unique_ptr<BaseVector>>& base)
 {
 	vec.x = 0.0f; 
-	vec.y = 0.0f;
+	//vec.y = 0.0f;
+	vec.y += 0.5f;
 
 	GetMousePoint(&x, &y);
 
@@ -39,6 +40,32 @@ int CBoxs::Action(vector<unique_ptr<BaseVector>>& base)
 	{
 		ClickX = x;
 		ClickY = y;
+	}
+
+	//当たり判定
+	for (int i = 0; i < base.size(); i++)
+	{
+		//四角形
+		if (base[i]->ID == B1)
+		{
+			Point p = pos;
+			line[0] = Near_Point_BoxLine(p, base[i]->pos, base[i]->VW, base[i]->VH);
+			p = { pos.x + VW.x,pos.y + VW.y };
+			line[1] = Near_Point_BoxLine(p, base[i]->pos, base[i]->VW, base[i]->VH);
+			p = { pos.x + VH.x,pos.y + VH.y };
+			line[2] = Near_Point_BoxLine(p, base[i]->pos, base[i]->VW, base[i]->VH);
+			p = { pos.x + VW.x + VH.x,pos.y + VW.y + VH.y };
+			line[3] = Near_Point_BoxLine(p, base[i]->pos, base[i]->VW, base[i]->VH);
+
+			//各頂点ごとの辺への当たり判定
+			for (int j = 0; j < 4; j++)
+			{
+				float l1 = Vector_Length(line[0].vec[0]);
+				float l2 = Vector_Length(line[0].vec[2]);
+
+				
+			}
+		}
 	}
 
 	pos.x += VW.x / 2 + VH.x / 2;
@@ -86,6 +113,9 @@ int CBoxs::Action(vector<unique_ptr<BaseVector>>& base)
 
 	click = (GetMouseInput() & MOUSE_INPUT_LEFT);
 
+	pos.x += vec.x;
+	pos.y += vec.y;
+
 	return 0;
 }
 
@@ -95,6 +125,18 @@ void CBoxs::Draw()
 	DrawLine(pos.x, pos.y, pos.x + VH.x, pos.y + VH.y, GetColor(0, 255, 255), true);
 	DrawLine(pos.x + VW.x + VH.x, pos.y + VW.y + VH.y, pos.x + VW.x, pos.y + VW.y, GetColor(255, 0, 255), true);
 	DrawLine(pos.x + VW.x + VH.x, pos.y + VW.y + VH.y, pos.x + VH.x, pos.y + VH.y, GetColor(255, 255, 0), true);
+
+	/*for (int i = 0; i < 4; i++)
+	{
+		Point p = pos;
+		DrawLine(p.x, p.y, p.x + line[0].vec[i].x, p.y +line[0].vec[i].y, GetColor(255, 150, 255), true);
+		p = { pos.x + VW.x,pos.y + VW.y };
+		DrawLine(p.x, p.y, p.x + line[1].vec[i].x, p.y + line[1].vec[i].y, GetColor(150, 255, 255), true);
+		p = { pos.x + VH.x,pos.y + VH.y };
+		DrawLine(p.x, p.y, p.x + line[2].vec[i].x, p.y + line[2].vec[i].y, GetColor(255, 255, 150), true);
+		p = { pos.x + VW.x + VH.x,pos.y + VW.y + VH.y };
+		DrawLine(p.x, p.y, p.x + line[3].vec[i].x, p.y + line[3].vec[i].y, GetColor(150, 150, 150), true);
+	}*/
 
 	if (click)
 	{
