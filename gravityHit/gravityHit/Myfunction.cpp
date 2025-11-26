@@ -14,6 +14,20 @@ Point Near_Point_Line(Point P, Point A, Point B)
 	return Q;
 }
 
+//二つのベクトルのなす角を求める
+float Twe_Vector_Angle(Vector a, Vector b)
+{
+	double la = Vector_Length(a);
+	double lb = Vector_Length(b);
+
+	double cos_sita = Dot(a, b) / (la * lb);
+	
+	double sita = acos(cos_sita);
+	sita = sita * 180 / M_PI;
+
+	return sita;
+}
+
 //四角形の当たり判定(座標、横幅ベクトル、縦幅ベクトル)
 void HitLeft_Window(BaseVector* b)
 {

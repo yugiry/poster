@@ -9,3 +9,6 @@ void HitLeft_Window(BaseVector*);
 void HitRight_Window(BaseVector*);
 void HitUp_Window(BaseVector*);
 void HitDown_Window(BaseVector*);
+
+//“ñ‚Â‚ÌƒxƒNƒgƒ‹‚Ì‚È‚·Šp‚ğ‹‚ß‚é
+float Twe_Vector_Angle(Vector, Vector);
