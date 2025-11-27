@@ -48,22 +48,83 @@ int CBoxs::Action(vector<unique_ptr<BaseVector>>& base)
 		//四角形
 		if (base[i]->ID == B1)
 		{
-			Point p = pos;
-			line[0] = Near_Point_BoxLine(p, base[i]->pos, base[i]->VW, base[i]->VH);
-			p = { pos.x + VW.x,pos.y + VW.y };
-			line[1] = Near_Point_BoxLine(p, base[i]->pos, base[i]->VW, base[i]->VH);
-			p = { pos.x + VH.x,pos.y + VH.y };
-			line[2] = Near_Point_BoxLine(p, base[i]->pos, base[i]->VW, base[i]->VH);
-			p = { pos.x + VW.x + VH.x,pos.y + VW.y + VH.y };
-			line[3] = Near_Point_BoxLine(p, base[i]->pos, base[i]->VW, base[i]->VH);
+			Point p[4];
+			p[0] = pos;
+			line[0] = Near_Point_BoxLine(p[0], base[i]->pos, base[i]->VW, base[i]->VH);
+			p[1] = {pos.x + VW.x,pos.y + VW.y};
+			line[1] = Near_Point_BoxLine(p[1], base[i]->pos, base[i]->VW, base[i]->VH);
+			p[2] = {pos.x + VH.x,pos.y + VH.y};
+			line[2] = Near_Point_BoxLine(p[2], base[i]->pos, base[i]->VW, base[i]->VH);
+			p[3] = {pos.x + VW.x + VH.x,pos.y + VW.y + VH.y};
+			line[3] = Near_Point_BoxLine(p[3], base[i]->pos, base[i]->VW, base[i]->VH);
+
+			Point mp = { pos.x + VW.x / 2 + VH.x / 2,pos.y + VW.y / 2 + VH.y / 2 };
 
 			//各頂点ごとの辺への当たり判定
 			for (int j = 0; j < 4; j++)
 			{
-				float l1 = Vector_Length(line[0].vec[0]);
-				float l2 = Vector_Length(line[0].vec[2]);
+				float l1 = Vector_Length(line[j].vec[0]);
+				float l2 = Vector_Length(line[j].vec[3]);
 
-				
+				DrawFormatString(WINDOW_WIDTH / 2, 10, GetColor(255, 255, 255), "%f\n%f", l1, l2);
+
+				if (l1 < base[i]->ImgHeight && l2 < base[i]->ImgHeight)
+				{
+					if (l1 < l2)
+					{
+						power = line[j].vec[0];
+						distance = { p[j].x - mp.x,p[j].y - mp.y };
+						resultpower = Vector_Length(power) * 500 / Vector_Length(distance);
+						if (power.x != 0 || power.y != 0)
+							I = Vector_SetLength(VH, resultpower);
+						else
+							I.x = I.y = 0;
+
+						Vector disright{ -distance.y,distance.x };
+						radian = Twe_Vector_Angle(disright, power);
+
+						if (radian < 90)
+						{
+							VW.x += I.x * 1;
+							VW.y += I.y * 1;
+						}
+						else if (radian >= 90)
+						{
+							VW.x -= I.x * 1;
+							VW.y -= I.y * 1;
+						}
+						pos.x += line[j].vec[0].x;
+						pos.y += line[j].vec[0].y;
+						vec.y -= vec.y * 0.6f;
+					}
+					if (l1 > l2)
+					{
+						power = line[j].vec[3];
+						distance = { p[j].x - mp.x,p[j].y - mp.y };
+						resultpower = Vector_Length(power) * 500 / Vector_Length(distance);
+						if (power.x != 0 || power.y != 0)
+							I = Vector_SetLength(VH, resultpower);
+						else
+							I.x = I.y = 0;
+
+						Vector disright{ -distance.y,distance.x };
+						radian = Twe_Vector_Angle(disright, power);
+
+						if (radian < 90)
+						{
+							VW.x += I.x * 1;
+							VW.y += I.y * 1;
+						}
+						else if (radian >= 90)
+						{
+							VW.x -= I.x * 1;
+							VW.y -= I.y * 1;
+						}
+						pos.x += line[j].vec[3].x;
+						pos.y += line[j].vec[3].y;
+						vec.y -= vec.y * 0.6f;
+					}
+				}
 			}
 		}
 	}
@@ -112,6 +173,11 @@ int CBoxs::Action(vector<unique_ptr<BaseVector>>& base)
 	pos.y -= VW.y / 2 + VH.y / 2;
 
 	click = (GetMouseInput() & MOUSE_INPUT_LEFT);
+
+	if (CheckHitKey(KEY_INPUT_W))vec.y = -5.0f;
+	if (CheckHitKey(KEY_INPUT_S))vec.y = 5.0f;
+	if (CheckHitKey(KEY_INPUT_A))vec.x = -5.0f;
+	if (CheckHitKey(KEY_INPUT_D))vec.x = 5.0f;
 
 	pos.x += vec.x;
 	pos.y += vec.y;
