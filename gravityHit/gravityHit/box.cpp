@@ -18,6 +18,21 @@ CBox::CBox()
 	ID = B1;
 }
 
+CBox::CBox(Point p, int w, int h)
+{
+	pos = p;
+	ImgWidth = w;
+	ImgHeight = h;
+
+	VW.x = ImgWidth;
+	VW.y = 0;
+
+	VH.x = 0;
+	VH.y = ImgHeight;
+
+	ID = B1;
+}
+
 int CBox::Action(vector<unique_ptr<BaseVector>>& base)
 {
 	vec.x = vec.y = 0;

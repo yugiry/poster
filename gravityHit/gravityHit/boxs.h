@@ -5,6 +5,7 @@ class CBoxs :public BaseVector
 {
 public:
 	CBoxs();
+	CBoxs(Point, int, int);
 
 	int Action(vector<unique_ptr<BaseVector>>&);
 	void Draw();
