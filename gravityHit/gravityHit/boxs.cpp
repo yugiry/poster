@@ -90,74 +90,148 @@ int CBoxs::Action(vector<unique_ptr<BaseVector>>& base)
 			{
 				float l1 = Vector_Length(line[j].vec[0]);
 				float l2 = Vector_Length(line[j].vec[3]);
+				float l3 = Vector_Length(line[j].vec[1]);
+				float l4 = Vector_Length(line[j].vec[2]);
 
-				if (l1 < base[i]->ImgHeight && l2 < base[i]->ImgHeight)
+				if (l1 < base[i]->ImgHeight && l2 < base[i]->ImgHeight && l3 < base[i]->ImgWidth && l4 < base[i]->ImgWidth)
 				{
-					if (l1 < l2)
+					if ((l1 < l3 && l1 < l4) || (l2 < l4 && l2 < l3))
 					{
-						pos.x += VW.x / 2 + VH.x / 2;
-						pos.y += VW.y / 2 + VH.y / 2;
-
-						power = line[j].vec[0];
-						distance = { p[j].x - mp.x,p[j].y - mp.y };
-						resultpower = Vector_Length(power) * 700 / Vector_Length(distance);
-						if (power.x != 0 || power.y != 0)
-							I = Vector_SetLength(VH, resultpower);
-						else
-							I.x = I.y = 0;
-
-						Vector disright{ -distance.y,distance.x };
-						radian = Twe_Vector_Angle(disright, power);
-
-						if (radian < 90)
+						if (l1 < l2)
 						{
-							VW.x += I.x;
-							VW.y += I.y;
-						}
-						else if (radian >= 90)
-						{
-							VW.x -= I.x;
-							VW.y -= I.y;
-						}
-						pos.x += line[j].vec[0].x;
-						pos.y += line[j].vec[0].y;
-						vec.y -= vec.y * 0.6f;
+							pos.x += VW.x / 2 + VH.x / 2;
+							pos.y += VW.y / 2 + VH.y / 2;
 
-						pos.x -= VW.x / 2 + VH.x / 2;
-						pos.y -= VW.y / 2 + VH.y / 2;
+							power = line[j].vec[0];
+							distance = { p[j].x - mp.x,p[j].y - mp.y };
+							resultpower = Vector_Length(power) * 700 / Vector_Length(distance);
+							if (power.x != 0 || power.y != 0)
+								I = Vector_SetLength(VH, resultpower);
+							else
+								I.x = I.y = 0;
+
+							Vector disright{ -distance.y,distance.x };
+							radian = Twe_Vector_Angle(disright, power);
+
+							if (radian < 90)
+							{
+								VW.x += I.x;
+								VW.y += I.y;
+							}
+							else if (radian >= 90)
+							{
+								VW.x -= I.x;
+								VW.y -= I.y;
+							}
+							pos.x += line[j].vec[0].x;
+							pos.y += line[j].vec[0].y;
+							vec.y -= vec.y * 0.6f;
+
+							pos.x -= VW.x / 2 + VH.x / 2;
+							pos.y -= VW.y / 2 + VH.y / 2;
+						}
+						if (l1 > l2)
+						{
+							pos.x += VW.x / 2 + VH.x / 2;
+							pos.y += VW.y / 2 + VH.y / 2;
+
+							power = line[j].vec[3];
+							distance = { p[j].x - mp.x,p[j].y - mp.y };
+							resultpower = Vector_Length(power) * 700 / Vector_Length(distance);
+							if (power.x != 0 || power.y != 0)
+								I = Vector_SetLength(VH, resultpower);
+							else
+								I.x = I.y = 0;
+
+							Vector disright{ -distance.y,distance.x };
+							radian = Twe_Vector_Angle(disright, power);
+
+							if (radian < 90)
+							{
+								VW.x += I.x;
+								VW.y += I.y;
+							}
+							else if (radian >= 90)
+							{
+								VW.x -= I.x;
+								VW.y -= I.y;
+							}
+							pos.x += line[j].vec[3].x;
+							pos.y += line[j].vec[3].y;
+							vec.y -= vec.y * 0.6f;
+
+							pos.x -= VW.x / 2 + VH.x / 2;
+							pos.y -= VW.y / 2 + VH.y / 2;
+						}
 					}
-					if (l1 > l2)
+					if ((l1 > l3 && l2 > l3) || (l2 > l4 && l1 > l4))
 					{
-						pos.x += VW.x / 2 + VH.x / 2;
-						pos.y += VW.y / 2 + VH.y / 2;
-
-						power = line[j].vec[3];
-						distance = { p[j].x - mp.x,p[j].y - mp.y };
-						resultpower = Vector_Length(power) * 700 / Vector_Length(distance);
-						if (power.x != 0 || power.y != 0)
-							I = Vector_SetLength(VH, resultpower);
-						else
-							I.x = I.y = 0;
-
-						Vector disright{ -distance.y,distance.x };
-						radian = Twe_Vector_Angle(disright, power);
-
-						if (radian < 90)
+						if (l3 < l4)
 						{
-							VW.x += I.x;
-							VW.y += I.y;
-						}
-						else if (radian >= 90)
-						{
-							VW.x -= I.x;
-							VW.y -= I.y;
-						}
-						pos.x += line[j].vec[3].x;
-						pos.y += line[j].vec[3].y;
-						vec.y -= vec.y * 0.6f;
+							pos.x += VW.x / 2 + VH.x / 2;
+							pos.y += VW.y / 2 + VH.y / 2;
 
-						pos.x -= VW.x / 2 + VH.x / 2;
-						pos.y -= VW.y / 2 + VH.y / 2;
+							power = line[j].vec[1];
+							distance = { p[j].x - mp.x,p[j].y - mp.y };
+							resultpower = Vector_Length(power) * 700 / Vector_Length(distance);
+							if (power.x != 0 || power.y != 0)
+								I = Vector_SetLength(VW, resultpower);
+							else
+								I.x = I.y = 0;
+
+							Vector disright{ -distance.y,distance.x };
+							radian = Twe_Vector_Angle(disright, power);
+
+							if (radian < 90)
+							{
+								VW.x += I.x;
+								VW.y += I.y;
+							}
+							else if (radian >= 90)
+							{
+								VW.x -= I.x;
+								VW.y -= I.y;
+							}
+							pos.x += line[j].vec[1].x;
+							pos.y += line[j].vec[1].y;
+							vec.y -= vec.y * 0.6f;
+
+							pos.x -= VW.x / 2 + VH.x / 2;
+							pos.y -= VW.y / 2 + VH.y / 2;
+						}
+						if (l3 > l4)
+						{
+							pos.x += VW.x / 2 + VH.x / 2;
+							pos.y += VW.y / 2 + VH.y / 2;
+
+							power = line[j].vec[2];
+							distance = { p[j].x - mp.x,p[j].y - mp.y };
+							resultpower = Vector_Length(power) * 700 / Vector_Length(distance);
+							if (power.x != 0 || power.y != 0)
+								I = Vector_SetLength(VW, resultpower);
+							else
+								I.x = I.y = 0;
+
+							Vector disright{ -distance.y,distance.x };
+							radian = Twe_Vector_Angle(disright, power);
+
+							if (radian < 90)
+							{
+								VW.x += I.x;
+								VW.y += I.y;
+							}
+							else if (radian >= 90)
+							{
+								VW.x -= I.x;
+								VW.y -= I.y;
+							}
+							pos.x += line[j].vec[2].x;
+							pos.y += line[j].vec[2].y;
+							vec.y -= vec.y * 0.6f;
+
+							pos.x -= VW.x / 2 + VH.x / 2;
+							pos.y -= VW.y / 2 + VH.y / 2;
+						}
 					}
 				}
 			}
@@ -182,74 +256,148 @@ int CBoxs::Action(vector<unique_ptr<BaseVector>>& base)
 			{
 				float l1 = Vector_Length(line[j].vec[0]);
 				float l2 = Vector_Length(line[j].vec[3]);
+				float l3 = Vector_Length(line[j].vec[1]);
+				float l4 = Vector_Length(line[j].vec[2]);
 
-				if (l1 < base[i]->ImgHeight && l2 < base[i]->ImgHeight)
+				if (l1 < base[i]->ImgHeight && l2 < base[i]->ImgHeight && l3 < base[i]->ImgWidth && l4 < base[i]->ImgWidth)
 				{
-					if (l1 < l2)
+					if ((l1 < l3 && l1 < l4) || (l2 < l4 && l2 < l3))
 					{
-						pos.x += VW.x / 2 + VH.x / 2;
-						pos.y += VW.y / 2 + VH.y / 2;
-
-						power = line[j].vec[0];
-						distance = { p[j].x - mp.x,p[j].y - mp.y };
-						resultpower = Vector_Length(power) * 700 / Vector_Length(distance);
-						if (power.x != 0 || power.y != 0)
-							I = Vector_SetLength(VH, resultpower);
-						else
-							I.x = I.y = 0;
-
-						Vector disright{ -distance.y,distance.x };
-						radian = Twe_Vector_Angle(disright, power);
-
-						if (radian < 90)
+						if (l1 < l2)
 						{
-							VW.x += I.x;
-							VW.y += I.y;
-						}
-						else if (radian >= 90)
-						{
-							VW.x -= I.x;
-							VW.y -= I.y;
-						}
-						pos.x += line[j].vec[0].x;
-						pos.y += line[j].vec[0].y;
-						vec.y -= vec.y * 0.6f;
+							pos.x += VW.x / 2 + VH.x / 2;
+							pos.y += VW.y / 2 + VH.y / 2;
 
-						pos.x -= VW.x / 2 + VH.x / 2;
-						pos.y -= VW.y / 2 + VH.y / 2;
+							power = line[j].vec[0];
+							distance = { p[j].x - mp.x,p[j].y - mp.y };
+							resultpower = Vector_Length(power) * 700 / Vector_Length(distance);
+							if (power.x != 0 || power.y != 0)
+								I = Vector_SetLength(VH, resultpower);
+							else
+								I.x = I.y = 0;
+
+							Vector disright{ -distance.y,distance.x };
+							radian = Twe_Vector_Angle(disright, power);
+
+							if (radian < 90)
+							{
+								VW.x += I.x;
+								VW.y += I.y;
+							}
+							else if (radian >= 90)
+							{
+								VW.x -= I.x;
+								VW.y -= I.y;
+							}
+							pos.x += line[j].vec[0].x;
+							pos.y += line[j].vec[0].y;
+							vec.y -= vec.y * 0.6f;
+
+							pos.x -= VW.x / 2 + VH.x / 2;
+							pos.y -= VW.y / 2 + VH.y / 2;
+						}
+						if (l1 > l2)
+						{
+							pos.x += VW.x / 2 + VH.x / 2;
+							pos.y += VW.y / 2 + VH.y / 2;
+
+							power = line[j].vec[3];
+							distance = { p[j].x - mp.x,p[j].y - mp.y };
+							resultpower = Vector_Length(power) * 700 / Vector_Length(distance);
+							if (power.x != 0 || power.y != 0)
+								I = Vector_SetLength(VH, resultpower);
+							else
+								I.x = I.y = 0;
+
+							Vector disright{ -distance.y,distance.x };
+							radian = Twe_Vector_Angle(disright, power);
+
+							if (radian < 90)
+							{
+								VW.x += I.x;
+								VW.y += I.y;
+							}
+							else if (radian >= 90)
+							{
+								VW.x -= I.x;
+								VW.y -= I.y;
+							}
+							pos.x += line[j].vec[3].x;
+							pos.y += line[j].vec[3].y;
+							vec.y -= vec.y * 0.6f;
+
+							pos.x -= VW.x / 2 + VH.x / 2;
+							pos.y -= VW.y / 2 + VH.y / 2;
+						}
 					}
-					if (l1 > l2)
+					if ((l1 > l3 && l2 > l3) || (l2 > l4 && l1 > l4))
 					{
-						pos.x += VW.x / 2 + VH.x / 2;
-						pos.y += VW.y / 2 + VH.y / 2;
-
-						power = line[j].vec[3];
-						distance = { p[j].x - mp.x,p[j].y - mp.y };
-						resultpower = Vector_Length(power) * 700 / Vector_Length(distance);
-						if (power.x != 0 || power.y != 0)
-							I = Vector_SetLength(VH, resultpower);
-						else
-							I.x = I.y = 0;
-
-						Vector disright{ -distance.y,distance.x };
-						radian = Twe_Vector_Angle(disright, power);
-
-						if (radian < 90)
+						if (l3 < l4)
 						{
-							VW.x += I.x;
-							VW.y += I.y;
-						}
-						else if (radian >= 90)
-						{
-							VW.x -= I.x;
-							VW.y -= I.y;
-						}
-						pos.x += line[j].vec[3].x;
-						pos.y += line[j].vec[3].y;
-						vec.y -= vec.y * 0.6f;
+							pos.x += VW.x / 2 + VH.x / 2;
+							pos.y += VW.y / 2 + VH.y / 2;
 
-						pos.x -= VW.x / 2 + VH.x / 2;
-						pos.y -= VW.y / 2 + VH.y / 2;
+							power = line[j].vec[1];
+							distance = { p[j].x - mp.x,p[j].y - mp.y };
+							resultpower = Vector_Length(power) * 700 / Vector_Length(distance);
+							if (power.x != 0 || power.y != 0)
+								I = Vector_SetLength(VW, resultpower);
+							else
+								I.x = I.y = 0;
+
+							Vector disright{ -distance.y,distance.x };
+							radian = Twe_Vector_Angle(disright, power);
+
+							if (radian < 90)
+							{
+								VW.x += I.x;
+								VW.y += I.y;
+							}
+							else if (radian >= 90)
+							{
+								VW.x -= I.x;
+								VW.y -= I.y;
+							}
+							pos.x += line[j].vec[1].x;
+							pos.y += line[j].vec[1].y;
+							vec.y -= vec.y * 0.6f;
+
+							pos.x -= VW.x / 2 + VH.x / 2;
+							pos.y -= VW.y / 2 + VH.y / 2;
+						}
+						if (l3 > l4)
+						{
+							pos.x += VW.x / 2 + VH.x / 2;
+							pos.y += VW.y / 2 + VH.y / 2;
+
+							power = line[j].vec[2];
+							distance = { p[j].x - mp.x,p[j].y - mp.y };
+							resultpower = Vector_Length(power) * 700 / Vector_Length(distance);
+							if (power.x != 0 || power.y != 0)
+								I = Vector_SetLength(VW, resultpower);
+							else
+								I.x = I.y = 0;
+
+							Vector disright{ -distance.y,distance.x };
+							radian = Twe_Vector_Angle(disright, power);
+
+							if (radian < 90)
+							{
+								VW.x += I.x;
+								VW.y += I.y;
+							}
+							else if (radian >= 90)
+							{
+								VW.x -= I.x;
+								VW.y -= I.y;
+							}
+							pos.x += line[j].vec[2].x;
+							pos.y += line[j].vec[2].y;
+							vec.y -= vec.y * 0.6f;
+
+							pos.x -= VW.x / 2 + VH.x / 2;
+							pos.y -= VW.y / 2 + VH.y / 2;
+						}
 					}
 				}
 			}

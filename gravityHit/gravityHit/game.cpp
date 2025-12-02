@@ -18,7 +18,7 @@ CGame::CGame(CManager* p) :CScene(p){
 	base.emplace_back((unique_ptr<BaseVector>)new CBox(pos, WINDOW_WIDTH, 100));
 	pos = { 700,200 };
 	base.emplace_back((unique_ptr<BaseVector>)new CBoxs(pos, 50, 200));
-	base.emplace_back((unique_ptr<BaseVector>)new CBoxs());
+	//base.emplace_back((unique_ptr<BaseVector>)new CBoxs());
 
 	//base.emplace_back((unique_ptr<BaseVector>)new CCircle());
 	//base.emplace_back((unique_ptr<BaseVector>)new CCircles());

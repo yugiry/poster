@@ -4,9 +4,10 @@
 
 CBox::CBox()
 {
+	pos.x = 300;
 	pos.y = WINDOW_HEIGHT - 100;
 
-	ImgWidth = WINDOW_WIDTH;
+	ImgWidth = 300;
 	ImgHeight = 100;
 
 	VW.x = ImgWidth;
