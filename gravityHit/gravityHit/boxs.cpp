@@ -93,6 +93,7 @@ int CBoxs::Action(vector<unique_ptr<BaseVector>>& base)
 				float l3 = Vector_Length(line[j].vec[1]);
 				float l4 = Vector_Length(line[j].vec[2]);
 
+				//‘ŠŽè‚ÌƒGƒŠƒA‚Ì’†‚É“ü‚Á‚½‚ç
 				if (l1 < base[i]->ImgHeight && l2 < base[i]->ImgHeight && l3 < base[i]->ImgWidth && l4 < base[i]->ImgWidth)
 				{
 					if ((l1 < l3 && l1 < l4) || (l2 < l4 && l2 < l3))
@@ -104,7 +105,7 @@ int CBoxs::Action(vector<unique_ptr<BaseVector>>& base)
 
 							power = line[j].vec[0];
 							distance = { p[j].x - mp.x,p[j].y - mp.y };
-							resultpower = Vector_Length(power) * 700 / Vector_Length(distance);
+							resultpower = Vector_Length(power) * 400 / Vector_Length(distance);
 							if (power.x != 0 || power.y != 0)
 								I = Vector_SetLength(VH, resultpower);
 							else
@@ -137,7 +138,7 @@ int CBoxs::Action(vector<unique_ptr<BaseVector>>& base)
 
 							power = line[j].vec[3];
 							distance = { p[j].x - mp.x,p[j].y - mp.y };
-							resultpower = Vector_Length(power) * 700 / Vector_Length(distance);
+							resultpower = Vector_Length(power) * 400 / Vector_Length(distance);
 							if (power.x != 0 || power.y != 0)
 								I = Vector_SetLength(VH, resultpower);
 							else
@@ -173,9 +174,9 @@ int CBoxs::Action(vector<unique_ptr<BaseVector>>& base)
 
 							power = line[j].vec[1];
 							distance = { p[j].x - mp.x,p[j].y - mp.y };
-							resultpower = Vector_Length(power) * 700 / Vector_Length(distance);
+							resultpower = Vector_Length(power) * 400 / Vector_Length(distance);
 							if (power.x != 0 || power.y != 0)
-								I = Vector_SetLength(VW, resultpower);
+								I = Vector_SetLength(VH, resultpower);
 							else
 								I.x = I.y = 0;
 
@@ -206,9 +207,9 @@ int CBoxs::Action(vector<unique_ptr<BaseVector>>& base)
 
 							power = line[j].vec[2];
 							distance = { p[j].x - mp.x,p[j].y - mp.y };
-							resultpower = Vector_Length(power) * 700 / Vector_Length(distance);
+							resultpower = Vector_Length(power) * 400 / Vector_Length(distance);
 							if (power.x != 0 || power.y != 0)
-								I = Vector_SetLength(VW, resultpower);
+								I = Vector_SetLength(VH, resultpower);
 							else
 								I.x = I.y = 0;
 
