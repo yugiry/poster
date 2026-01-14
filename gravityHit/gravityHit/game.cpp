@@ -14,20 +14,10 @@
 
 //コンストラクタ
 CGame::CGame(CManager* p) :CScene(p){
-	Point pos{ 0, WINDOW_HEIGHT - 100 };
-	base.emplace_back((unique_ptr<BaseVector>)new CBox(pos, WINDOW_WIDTH, 100));
-	pos = { WINDOW_WIDTH / 2,WINDOW_HEIGHT / 2 };
-	//base.emplace_back((unique_ptr<BaseVector>)new CBoxs(pos,110,80));
-	base.emplace_back((unique_ptr<BaseVector>)new CBoxs(pos, 90, 100));
-	//base.emplace_back((unique_ptr<BaseVector>)new CBoxs());
-
-	//base.emplace_back((unique_ptr<BaseVector>)new CCircle());
-	//base.emplace_back((unique_ptr<BaseVector>)new CCircles());
-
-	//base.emplace_back((unique_ptr<BaseVector>)new CLine());
-	//base.emplace_back((unique_ptr<BaseVector>)new CLines());
-
-	//base.emplace_back((unique_ptr<BaseVector>)new CTriangle());
+	//地面
+	base.emplace_back((unique_ptr<BaseVector>)new CBox());
+	//箱
+	base.emplace_back((unique_ptr<BaseVector>)new CBoxs());
 }
 
 //更新処理

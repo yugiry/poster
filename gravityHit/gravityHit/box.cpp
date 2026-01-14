@@ -4,56 +4,33 @@
 
 CBox::CBox()
 {
-	pos.x = 300;
-	pos.y = WINDOW_HEIGHT - 100;
+	pos.x = WINDOW_WIDTH / 2;
+	pos.y = WINDOW_HEIGHT - 50;
 
-	ImgWidth = 300;
+	ImgWidth = WINDOW_WIDTH;
 	ImgHeight = 100;
 
-	VW.x = ImgWidth;
+	VW.x = ImgWidth / 2;
 	VW.y = 0;
 
 	VH.x = 0;
-	VH.y = ImgHeight;
+	VH.y = ImgHeight / 2;
 
 	ID = B1;
 }
 
 CBox::CBox(Point p, int w, int h)
 {
-	pos = p;
-	ImgWidth = w;
-	ImgHeight = h;
-
-	VW.x = ImgWidth;
-	VW.y = 0;
-
-	VH.x = 0;
-	VH.y = ImgHeight;
-
 	ID = B1;
 }
 
 int CBox::Action(vector<unique_ptr<BaseVector>>& base)
 {
-	vec.x = vec.y = 0;
-
-	if (CheckHitKey(KEY_INPUT_W))
-	{
-		vec.y = -2.0f;
-	}
-	if (CheckHitKey(KEY_INPUT_S))
-	{
-		vec.y = 2.0f;
-	}
-
-	//pos.x += vec.x;
-	//pos.y += vec.y;
-
 	return 0;
 }
 
 void CBox::Draw()
 {
-	DrawBox(pos.x, pos.y, pos.x + VW.x + VH.x, pos.y + VW.y + VH.y, GetColor(100, 100, 100), false);
+	DrawBox(pos.x - VW.x + VH.x, pos.y - VW.y + VH.y, pos.x + VW.x - VH.x, pos.y + VW.y - VH.y, GetColor(100, 100, 100), true);
+	DrawCircle(pos.x, pos.y, 2, GetColor(255, 0, 0), true);
 }

@@ -1,3 +1,41 @@
-﻿  game.cpp
-C:\Users\GA2A\Desktop\post\gravityHit\gravityHit\game.cpp(44,37): warning C4267: '引数': 'size_t' から 'int' に変換しました。データが失われているかもしれません。
+﻿  boxs.cpp
+C:\Users\GA2A\Desktop\post\gravityHit\gravityHit\boxs.cpp(13,9): warning C4244: '=': 'int' から 'float' への変換です。データが失われる可能性があります。
+C:\Users\GA2A\Desktop\post\gravityHit\gravityHit\boxs.cpp(17,9): warning C4244: '=': 'int' から 'float' への変換です。データが失われる可能性があります。
+C:\Users\GA2A\Desktop\post\gravityHit\gravityHit\boxs.cpp(72,14): warning C4305: '+=': 'double' から 'float' へ切り詰めます。
+C:\Users\GA2A\Desktop\post\gravityHit\gravityHit\boxs.cpp(76,14): warning C4305: '-=': 'double' から 'float' へ切り詰めます。
+C:\Users\GA2A\Desktop\post\gravityHit\gravityHit\boxs.cpp(87,13): warning C4244: '=': 'double' から 'float' への変換です。データが失われる可能性があります。
+C:\Users\GA2A\Desktop\post\gravityHit\gravityHit\boxs.cpp(88,13): warning C4244: '=': 'double' から 'float' への変換です。データが失われる可能性があります。
+C:\Users\GA2A\Desktop\post\gravityHit\gravityHit\boxs.cpp(90,29): warning C4244: '引数': 'int' から 'float' への変換です。データが失われる可能性があります。
+C:\Users\GA2A\Desktop\post\gravityHit\gravityHit\boxs.cpp(94,29): warning C4244: '引数': 'int' から 'float' への変換です。データが失われる可能性があります。
+C:\Users\GA2A\Desktop\post\gravityHit\gravityHit\boxs.cpp(141,23): warning C4244: '引数': 'float' から 'int' への変換です。データが失われる可能性があります。
+C:\Users\GA2A\Desktop\post\gravityHit\gravityHit\boxs.cpp(141,16): warning C4244: '引数': 'float' から 'int' への変換です。データが失われる可能性があります。
+C:\Users\GA2A\Desktop\post\gravityHit\gravityHit\boxs.cpp(148,130): warning C4244: '引数': 'float' から 'int' への変換です。データが失われる可能性があります。
+C:\Users\GA2A\Desktop\post\gravityHit\gravityHit\boxs.cpp(148,99): warning C4244: '引数': 'float' から 'int' への変換です。データが失われる可能性があります。
+C:\Users\GA2A\Desktop\post\gravityHit\gravityHit\boxs.cpp(148,68): warning C4244: '引数': 'float' から 'int' への変換です。データが失われる可能性があります。
+C:\Users\GA2A\Desktop\post\gravityHit\gravityHit\boxs.cpp(148,38): warning C4244: '引数': 'float' から 'int' への変換です。データが失われる可能性があります。
+C:\Users\GA2A\Desktop\post\gravityHit\gravityHit\boxs.cpp(149,132): warning C4244: '引数': 'float' から 'int' への変換です。データが失われる可能性があります。
+C:\Users\GA2A\Desktop\post\gravityHit\gravityHit\boxs.cpp(149,100): warning C4244: '引数': 'float' から 'int' への変換です。データが失われる可能性があります。
+C:\Users\GA2A\Desktop\post\gravityHit\gravityHit\boxs.cpp(149,68): warning C4244: '引数': 'float' から 'int' への変換です。データが失われる可能性があります。
+C:\Users\GA2A\Desktop\post\gravityHit\gravityHit\boxs.cpp(149,38): warning C4244: '引数': 'float' から 'int' への変換です。データが失われる可能性があります。
+C:\Users\GA2A\Desktop\post\gravityHit\gravityHit\boxs.cpp(150,136): warning C4244: '引数': 'float' から 'int' への変換です。データが失われる可能性があります。
+C:\Users\GA2A\Desktop\post\gravityHit\gravityHit\boxs.cpp(150,103): warning C4244: '引数': 'float' から 'int' への変換です。データが失われる可能性があります。
+C:\Users\GA2A\Desktop\post\gravityHit\gravityHit\boxs.cpp(150,70): warning C4244: '引数': 'float' から 'int' への変換です。データが失われる可能性があります。
+C:\Users\GA2A\Desktop\post\gravityHit\gravityHit\boxs.cpp(150,39): warning C4244: '引数': 'float' から 'int' への変換です。データが失われる可能性があります。
+C:\Users\GA2A\Desktop\post\gravityHit\gravityHit\boxs.cpp(151,138): warning C4244: '引数': 'float' から 'int' への変換です。データが失われる可能性があります。
+C:\Users\GA2A\Desktop\post\gravityHit\gravityHit\boxs.cpp(151,105): warning C4244: '引数': 'float' から 'int' への変換です。データが失われる可能性があります。
+C:\Users\GA2A\Desktop\post\gravityHit\gravityHit\boxs.cpp(151,72): warning C4244: '引数': 'float' から 'int' への変換です。データが失われる可能性があります。
+C:\Users\GA2A\Desktop\post\gravityHit\gravityHit\boxs.cpp(151,40): warning C4244: '引数': 'float' から 'int' への変換です。データが失われる可能性があります。
+C:\Users\GA2A\Desktop\post\gravityHit\gravityHit\boxs.cpp(157,159): warning C4244: '引数': 'float' から 'int' への変換です。データが失われる可能性があります。
+C:\Users\GA2A\Desktop\post\gravityHit\gravityHit\boxs.cpp(157,110): warning C4244: '引数': 'float' から 'int' への変換です。データが失われる可能性があります。
+C:\Users\GA2A\Desktop\post\gravityHit\gravityHit\boxs.cpp(157,74): warning C4244: '引数': 'float' から 'int' への変換です。データが失われる可能性があります。
+C:\Users\GA2A\Desktop\post\gravityHit\gravityHit\boxs.cpp(157,41): warning C4244: '引数': 'float' から 'int' への変換です。データが失われる可能性があります。
+C:\Users\GA2A\Desktop\post\gravityHit\gravityHit\boxs.cpp(161,45): warning C4244: '引数': 'float' から 'int' への変換です。データが失われる可能性があります。
+C:\Users\GA2A\Desktop\post\gravityHit\gravityHit\boxs.cpp(161,31): warning C4244: '引数': 'float' から 'int' への変換です。データが失われる可能性があります。
+C:\Users\GA2A\Desktop\post\gravityHit\gravityHit\boxs.cpp(161,21): warning C4244: '引数': 'float' から 'int' への変換です。データが失われる可能性があります。
+C:\Users\GA2A\Desktop\post\gravityHit\gravityHit\boxs.cpp(161,14): warning C4244: '引数': 'float' から 'int' への変換です。データが失われる可能性があります。
+C:\Users\GA2A\Desktop\post\gravityHit\gravityHit\boxs.cpp(165,22): warning C4244: '引数': 'float' から 'int' への変換です。データが失われる可能性があります。
+C:\Users\GA2A\Desktop\post\gravityHit\gravityHit\boxs.cpp(165,15): warning C4244: '引数': 'float' から 'int' への変換です。データが失われる可能性があります。
+  game.cpp
+C:\Users\GA2A\Desktop\post\gravityHit\gravityHit\game.cpp(34,37): warning C4267: '引数': 'size_t' から 'int' に変換しました。データが失われているかもしれません。
+  コードを生成中...
   gravityHit.vcxproj -> C:\Users\GA2A\Desktop\post\gravityHit\x64\Debug\gravityHit.exe
