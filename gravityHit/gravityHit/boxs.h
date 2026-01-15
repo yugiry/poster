@@ -24,7 +24,7 @@ public:
 
 	Point BoxPoint[4];
 	
-	BoxLine line;
+	BoxLine near_line;
 
 	bool click{ false };
 };

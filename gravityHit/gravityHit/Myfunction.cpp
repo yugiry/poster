@@ -21,22 +21,49 @@ BoxLine Near_Point_BoxLine(Point p, Point b, Vector w, Vector h)
 {
 	BoxLine bl;
 	Point pos;
-	Point Bp = b;
-	Point Bep{ b.x + w.x,b.y + w.y };
-	pos = Near_Point_Line(p, Bp, Bep);
+	//上
+	Point SL{ b.x - w.x - h.x,b.y - w.y - h.y };
+	Point EL{ b.x + w.x - h.x,b.y + w.y - h.y };
+	pos = Near_Point_Line(p, SL, EL);
 	bl.vec[0] = { pos.x - p.x,pos.y - p.y };
-	Bep = { b.x + h.x,b.y + h.y };
-	pos = Near_Point_Line(p, Bp, Bep);
+	//左
+	EL = { b.x - w.x + h.x,b.y - w.y + h.y };
+	pos = Near_Point_Line(p, SL, EL);
 	bl.vec[1] = { pos.x - p.x,pos.y - p.y };
-	Bep = { b.x + w.x + h.x, b.y + w.y + h.y };
-	Bp = { b.x + w.x,b.y + w.y };
-	pos = Near_Point_Line(p, Bp, Bep);
+	//右
+	SL = { b.x + w.x + h.x,b.y + w.y + h.y };
+	EL = { b.x + w.x - h.x,b.y + w.y - h.y };
+	pos = Near_Point_Line(p, SL, EL);
 	bl.vec[2] = { pos.x - p.x,pos.y - p.y };
-	Bp = { b.x + h.x,b.y + h.y };
-	pos = Near_Point_Line(p, Bp, Bep);
+	//下
+	EL = { b.x - w.x + h.x,b.y - w.y + h.y };
+	pos = Near_Point_Line(p, SL, EL);
 	bl.vec[3] = { pos.x - p.x,pos.y - p.y };
 
 	return bl;
+}
+
+bool Check_Hit_Point(BoxLine l, BaseVector* a)
+{
+	float length[4];
+	for (int a = 0; a < 4; a++)
+		length[a] = Vector_Length(l.vec[a]);
+
+	if (length[0] < a->ImgHeight * HARF && length[3] < a->ImgHeight * HARF && length[1] < a->ImgWidth * HARF && length[0] < a->ImgWidth * HARF)
+	{
+		return true;
+	}
+
+	return false;
+}
+
+void Hit_Box_Vertex(BoxLine l, BaseVector* a, BaseVector* b)
+{
+	//頂点が箱に当たったら
+	if (Check_Hit_Point(l, b))
+	{
+
+	}
 }
 
 //二つのベクトルのなす角を求める

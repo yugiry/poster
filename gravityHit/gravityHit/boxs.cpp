@@ -7,8 +7,8 @@ CBoxs::CBoxs()
 {
 	pos = { WINDOW_WIDTH / 2,WINDOW_HEIGHT / 2 };
 
-	ImgWidth = 50;
-	ImgHeight = 50;
+	ImgWidth = 100 / HARF;
+	ImgHeight = 100 / HARF;
 
 	VW.x = ImgWidth;
 	VW.y = 0;
@@ -28,8 +28,6 @@ CBoxs::CBoxs()
 
 CBoxs::CBoxs(Point p, int w, int h)
 {
-	
-
 	ID = B2;
 }
 
@@ -106,22 +104,10 @@ int CBoxs::Action(vector<unique_ptr<BaseVector>>& base)
 			//for (int a = 0; a < 4; a++)
 			{
 				int a = BOXPOINT::RIGHTDOWN;
-				Point NearPos;
 				Point p = BoxPoint[a];
-				Point linestart = { base[i]->pos.x - base[i]->VW.x + base[i]->VH.x,base[i]->pos.y - base[i]->VW.y + base[i]->VH.y };
-				Point lineend = { base[i]->pos.x + base[i]->VW.x + base[i]->VH.x ,base[i]->pos.y + base[i]->VW.y + base[i]->VH.y };
-				NearPos = Near_Point_Line(p, linestart, lineend);
-				line.vec[0] = { NearPos.x - p.x,NearPos.y - p.y };
-				lineend = { base[i]->pos.x - base[i]->VW.x - base[i]->VH.x ,base[i]->pos.y - base[i]->VW.y - base[i]->VH.y };
-				NearPos = Near_Point_Line(p, linestart, lineend);
-				line.vec[1] = { NearPos.x - p.x,NearPos.y - p.y };
-				linestart = { base[i]->pos.x + base[i]->VW.x - base[i]->VH.x,base[i]->pos.y + base[i]->VW.y - base[i]->VH.y };
-				lineend = { base[i]->pos.x + base[i]->VW.x + base[i]->VH.x ,base[i]->pos.y + base[i]->VW.y + base[i]->VH.y };
-				NearPos = Near_Point_Line(p, linestart, lineend);
-				line.vec[2] = { NearPos.x - p.x,NearPos.y - p.y };
-				lineend = { base[i]->pos.x - base[i]->VW.x - base[i]->VH.x ,base[i]->pos.y - base[i]->VW.y - base[i]->VH.y };
-				NearPos = Near_Point_Line(p, linestart, lineend);
-				line.vec[3] = { NearPos.x - p.x,NearPos.y - p.y };
+				near_line = Near_Point_BoxLine(p, base[i]->pos, base[i]->VW, base[i]->VH);
+
+				Hit_Box_Vertex(near_line, this, base[i].get());
 			}
 		}
 	}
@@ -160,7 +146,7 @@ void CBoxs::Draw()
 	//“–‚½‚è”»’è•\Ž¦
 	for (int i = 0; i < 4; i++)
 	{
-		DrawLine(BoxPoint[BOXPOINT::RIGHTDOWN].x, BoxPoint[BOXPOINT::RIGHTDOWN].y, BoxPoint[BOXPOINT::RIGHTDOWN].x + line.vec[i].x, BoxPoint[BOXPOINT::RIGHTDOWN].y + line.vec[i].y, GetColor(255,255,255), true);
+		DrawLine(BoxPoint[BOXPOINT::RIGHTDOWN].x, BoxPoint[BOXPOINT::RIGHTDOWN].y, BoxPoint[BOXPOINT::RIGHTDOWN].x + near_line.vec[i].x, BoxPoint[BOXPOINT::RIGHTDOWN].y + near_line.vec[i].y, GetColor(255,255,255), true);
 	}
 
 	//Œü‚«•\Ž¦

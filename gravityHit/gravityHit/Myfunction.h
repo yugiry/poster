@@ -8,6 +8,12 @@ Point Near_Point_Line(Point, Point, Point);
 //(点の座標、四角形の座標、四角形の横幅、四角形の縦幅)
 BoxLine Near_Point_BoxLine(Point, Point, Vector, Vector);
 
+//頂点が箱に当たっているか
+bool Check_Hit_Point(BoxLine, BaseVector*);
+
+//箱に当たったら当たっていないところまで戻す
+void Hit_Box_Vertex(BoxLine, BaseVector*, BaseVector*);
+
 //四角形の当たり判定(座標、横幅ベクトル、縦幅ベクトル)
 void HitLeft_Window(BaseVector*);
 void HitRight_Window(BaseVector*);

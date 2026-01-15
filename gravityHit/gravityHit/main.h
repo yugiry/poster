@@ -20,6 +20,8 @@ using namespace std;
 constexpr auto WINDOW_WIDTH = 800;	//â°ïù
 constexpr auto WINDOW_HEIGHT = 600;	//ècïù
 
+constexpr auto HARF = 2;
+
 //2Dóp
  struct Point {
 	float x, y;
