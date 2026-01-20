@@ -59,11 +59,7 @@ bool Check_Hit_Point(BoxLine l, BaseVector* a)
 
 void Hit_Box_Vertex(BoxLine l, BaseVector* a, BaseVector* b)
 {
-	//頂点が箱に当たったら
-	if (Check_Hit_Point(l, b))
-	{
 
-	}
 }
 
 //二つのベクトルのなす角を求める

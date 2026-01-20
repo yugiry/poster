@@ -107,7 +107,14 @@ int CBoxs::Action(vector<unique_ptr<BaseVector>>& base)
 				Point p = BoxPoint[a];
 				near_line = Near_Point_BoxLine(p, base[i]->pos, base[i]->VW, base[i]->VH);
 
-				Hit_Box_Vertex(near_line, this, base[i].get());
+				float length[4];
+				for (int a = 0; a < 4; a++)
+					length[a] = Vector_Length(near_line.vec[a]);
+
+				if (length[0] < base[i]->ImgHeight * HARF && length[3] < base[i]->ImgHeight * HARF && length[1] < base[i]->ImgWidth * HARF && length[0] < base[i]->ImgWidth * HARF)
+				{
+					
+				}
 			}
 		}
 	}
