@@ -39,10 +39,10 @@ int CBoxs::Action(vector<unique_ptr<BaseVector>>& base)
 
 	GetMousePoint(&x, &y);
 
-	if ((GetMouseInput() & MOUSE_INPUT_LEFT) && !click)
+	if ((GetMouseInput() & MOUSE_INPUT_LEFT))
 	{
-		ClickX = x;
-		ClickY = y;
+		ClickX = BoxPoint[BOXPOINT::RIGHTDOWN].x;
+		ClickY = BoxPoint[BOXPOINT::RIGHTDOWN].y;
 	}
 	click = (GetMouseInput() & MOUSE_INPUT_LEFT);
 
@@ -98,7 +98,7 @@ int CBoxs::Action(vector<unique_ptr<BaseVector>>& base)
 	//当たり判定
 	for (auto i = 0; i < base.size(); i++)
 	{
-		if (base[i]->ID == B1)
+		if (base[i]->ID == B1 && click)
 		{
 			//４頂点の当たり判定を求める
 			//for (int a = 0; a < 4; a++)
@@ -144,16 +144,24 @@ void CBoxs::Draw()
 
 	//箱描画
 	{
+
 		DrawLine(BoxPoint[BOXPOINT::LEFTUP].x, BoxPoint[BOXPOINT::LEFTUP].y, BoxPoint[BOXPOINT::RIGHTUP].x, BoxPoint[BOXPOINT::RIGHTUP].y, GetColor(0, 255, 0), true);
 		DrawLine(BoxPoint[BOXPOINT::LEFTUP].x, BoxPoint[BOXPOINT::LEFTUP].y, BoxPoint[BOXPOINT::LEFTDOWN].x, BoxPoint[BOXPOINT::LEFTDOWN].y, GetColor(0, 255, 0), true);
 		DrawLine(BoxPoint[BOXPOINT::RIGHTUP].x, BoxPoint[BOXPOINT::RIGHTUP].y, BoxPoint[BOXPOINT::RIGHTDOWN].x, BoxPoint[BOXPOINT::RIGHTDOWN].y, GetColor(0, 255, 0), true);
 		DrawLine(BoxPoint[BOXPOINT::LEFTDOWN].x, BoxPoint[BOXPOINT::LEFTDOWN].y, BoxPoint[BOXPOINT::RIGHTDOWN].x, BoxPoint[BOXPOINT::RIGHTDOWN].y, GetColor(0, 255, 0), true);
+
 	}
 
-	//当たり判定表示
-	for (int i = 0; i < 4; i++)
-	{
-		DrawLine(BoxPoint[BOXPOINT::RIGHTDOWN].x, BoxPoint[BOXPOINT::RIGHTDOWN].y, BoxPoint[BOXPOINT::RIGHTDOWN].x + near_line.vec[i].x, BoxPoint[BOXPOINT::RIGHTDOWN].y + near_line.vec[i].y, GetColor(255,255,255), true);
+	if (click) {
+
+		//当たり判定表示
+		for (int i = 0; i < 4; i++)
+		{
+			DrawLine(BoxPoint[BOXPOINT::RIGHTDOWN].x, BoxPoint[BOXPOINT::RIGHTDOWN].y, BoxPoint[BOXPOINT::RIGHTDOWN].x + near_line.vec[i].x, BoxPoint[BOXPOINT::RIGHTDOWN].y + near_line.vec[i].y, GetColor(255, 255, 255), true);
+		}
+
+		DrawLine(ClickX, ClickY, x, y, GetColor(0, 0, 255), true);
+
 	}
 
 	//向き表示
