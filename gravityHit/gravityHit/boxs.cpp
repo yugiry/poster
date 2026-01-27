@@ -5,10 +5,10 @@
 
 CBoxs::CBoxs()
 {
-	pos = { WINDOW_WIDTH / 2,WINDOW_HEIGHT / 2 };
-
 	ImgWidth = 100 / HARF;
 	ImgHeight = 100 / HARF;
+
+	pos = { WINDOW_WIDTH / 2,WINDOW_HEIGHT / 2 };
 
 	VW.x = ImgWidth;
 	VW.y = 0;
@@ -34,8 +34,8 @@ CBoxs::CBoxs(Point p, int w, int h)
 int CBoxs::Action(vector<unique_ptr<BaseVector>>& base)
 {
 	vec.x = 0.0f; 
-	vec.y = 0.0f;
-	//vec.y += 0.5f;
+	//vec.y = 0.0f;
+	vec.y += 0.5f;
 
 	GetMousePoint(&x, &y);
 
@@ -71,10 +71,12 @@ int CBoxs::Action(vector<unique_ptr<BaseVector>>& base)
 		if (CheckHitKey(KEY_INPUT_E))
 		{
 			radian += 1.2;
+			radian_click = true;
 		}
 		if (CheckHitKey(KEY_INPUT_Q))
 		{
 			radian -= 1.2;
+			radian_click = true;
 		}
 
 		if (radian < 0)
@@ -84,7 +86,7 @@ int CBoxs::Action(vector<unique_ptr<BaseVector>>& base)
 	}
 
 	//角度からベクトルの傾きを求める
-	{
+	if(radian_click){
 		VW.x = cos(RADIAN(radian));
 		VW.y = sin(RADIAN(radian));
 
@@ -93,12 +95,13 @@ int CBoxs::Action(vector<unique_ptr<BaseVector>>& base)
 		VH.x = -VW.y; VH.y = VW.x;
 
 		VH = Vector_SetLength(VH, ImgHeight);
+		radian_click = false;
 	}
 
 	//当たり判定
 	for (auto i = 0; i < base.size(); i++)
 	{
-		if (base[i]->ID == B1 && click)
+		if (base[i]->ID == B1)
 		{
 			//４頂点の当たり判定を求める
 			//for (int a = 0; a < 4; a++)
@@ -111,9 +114,22 @@ int CBoxs::Action(vector<unique_ptr<BaseVector>>& base)
 				for (int a = 0; a < 4; a++)
 					length[a] = Vector_Length(near_line.vec[a]);
 
+				//頂点が箱の中にいるなら当たっている判定
 				if (length[0] < base[i]->ImgHeight * HARF && length[3] < base[i]->ImgHeight * HARF && length[1] < base[i]->ImgWidth * HARF && length[0] < base[i]->ImgWidth * HARF)
 				{
-					
+					fix_length(&length[0], &near_line);
+
+					//当たった辺まで戻る抗力ベクトルを求める
+					normal_force = { near_line.vec[0].x,near_line.vec[0].y };
+					float f_length = Vector_Length(vec) + Vector_Length(normal_force);
+					normal_force = Vector_SetLength(normal_force, f_length);
+
+					//抗力ベクトルを位置に追加する
+					pos.x += normal_force.x;
+					pos.y += normal_force.y;
+					hit = true;
+
+					//回転力を追加
 				}
 			}
 		}
@@ -123,6 +139,12 @@ int CBoxs::Action(vector<unique_ptr<BaseVector>>& base)
 	{
 		pos.x += vec.x;
 		pos.y += vec.y;
+
+		if (hit)
+		{
+			vec.x = vec.y = 0.0f;
+			hit = false;
+		}
 	}
 
 	//４頂点の座標更新処理
@@ -152,13 +174,13 @@ void CBoxs::Draw()
 
 	}
 
-	if (click) {
+	//当たり判定表示
+	for (int i = 0; i < 4; i++)
+	{
+		DrawLine(BoxPoint[BOXPOINT::RIGHTDOWN].x, BoxPoint[BOXPOINT::RIGHTDOWN].y, BoxPoint[BOXPOINT::RIGHTDOWN].x + near_line.vec[i].x, BoxPoint[BOXPOINT::RIGHTDOWN].y + near_line.vec[i].y, GetColor(255, 255, 255), true);
+	}
 
-		//当たり判定表示
-		for (int i = 0; i < 4; i++)
-		{
-			DrawLine(BoxPoint[BOXPOINT::RIGHTDOWN].x, BoxPoint[BOXPOINT::RIGHTDOWN].y, BoxPoint[BOXPOINT::RIGHTDOWN].x + near_line.vec[i].x, BoxPoint[BOXPOINT::RIGHTDOWN].y + near_line.vec[i].y, GetColor(255, 255, 255), true);
-		}
+	if (click) {
 
 		DrawLine(ClickX, ClickY, x, y, GetColor(0, 0, 255), true);
 

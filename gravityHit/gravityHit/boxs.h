@@ -23,8 +23,11 @@ public:
 	int ClickX, ClickY;
 
 	Point BoxPoint[4];
-	
 	BoxLine near_line;
 
+	Vector normal_force;	//‚’¼R—Í
+
 	bool click{ false };
+	bool hit{ false };
+	bool radian_click{ false };
 };

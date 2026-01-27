@@ -76,6 +76,29 @@ float Twe_Vector_Angle(Vector a, Vector b)
 	return sita;
 }
 
+//長さの配列を短い順に揃える
+void fix_length(float* l, BoxLine* nl)
+{
+	float l_tmp;
+	Vector nl_tmp;
+
+	for (int i = 0; i < 4; i++)
+	{
+		for (int j = i; j < 4; j++)
+		{
+			if (l[i] > l[j])
+			{
+				l_tmp = l[i];
+				nl_tmp = nl->vec[i];
+				l[i] = l[j];
+				nl->vec[i] = nl->vec[j];
+				l[j] = l_tmp;
+				nl->vec[j] = nl_tmp;
+			}
+		}
+	}
+}
+
 //四角形の当たり判定(座標、横幅ベクトル、縦幅ベクトル)
 void HitLeft_Window(BaseVector* b)
 {
