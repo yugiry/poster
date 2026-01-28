@@ -37,8 +37,6 @@ Vector Vector_Rotation(Vector v, float angle) {	Vector r;	float l = Vector_Lengt
 //ì‡êœ
 float Dot(Vector v1, Vector v2) {
 	float r;
-	v1 = Vector_Normalize(v1);
-	v2 = Vector_Normalize(v2);
 
 	r = v1.x * v2.x + v1.y * v2.y;
 

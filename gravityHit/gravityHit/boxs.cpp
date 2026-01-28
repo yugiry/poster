@@ -136,7 +136,7 @@ int CBoxs::Action(vector<unique_ptr<BaseVector>>& base)
 					hit = true;
 
 					//力のベクトルの角度を調べる
-					mid_point_vec = { p.x - pos.x,p.y - pos.y };
+					mid_point_vec = { pos.x - p.x,pos.y - p.y };
 					float force_length = Vector_Length(normal_force);
 					force_radian = Twe_Vector_Angle(mid_point_vec, normal_force);
 
@@ -225,4 +225,9 @@ void CBoxs::Draw()
 	normal_force = Vector_SetLength(normal_force, 100);
 	DrawLine(WINDOW_WIDTH / 2, WINDOW_HEIGHT / 2, WINDOW_WIDTH / 2 + normal_force.x, WINDOW_HEIGHT / 2 + normal_force.y, GetColor(0, 0, 255), true);
 	normal_force = Vector_SetLength(normal_force, tmp);
+
+	tmp = Vector_Length(radian_force);
+	radian_force = Vector_SetLength(radian_force, 100);
+	DrawLine(WINDOW_WIDTH / 2, WINDOW_HEIGHT / 2, WINDOW_WIDTH / 2 + radian_force.x, WINDOW_HEIGHT / 2 + radian_force.y, GetColor(255, 255, 0), true);
+	radian_force = Vector_SetLength(radian_force, tmp);
 }

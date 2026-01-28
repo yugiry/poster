@@ -44,24 +44,7 @@ BoxLine Near_Point_BoxLine(Point p, Point b, Vector w, Vector h)
 	return bl;
 }
 
-bool Check_Hit_Point(BoxLine l, BaseVector* a)
-{
-	float length[4];
-	for (int a = 0; a < 4; a++)
-		length[a] = Vector_Length(l.vec[a]);
 
-	if (length[0] < a->ImgHeight * HARF && length[3] < a->ImgHeight * HARF && length[1] < a->ImgWidth * HARF && length[0] < a->ImgWidth * HARF)
-	{
-		return true;
-	}
-
-	return false;
-}
-
-void Hit_Box_Vertex(BoxLine l, BaseVector* a, BaseVector* b)
-{
-
-}
 
 //“ñ‚Â‚ÌƒxƒNƒgƒ‹‚Ì‚È‚·Šp‚ğ‹‚ß‚é
 float Twe_Vector_Angle(Vector a, Vector b)

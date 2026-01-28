@@ -8,12 +8,6 @@ Point Near_Point_Line(Point, Point, Point);
 //(点の座標、四角形の座標、四角形の横幅、四角形の縦幅)
 BoxLine Near_Point_BoxLine(Point, Point, Vector, Vector);
 
-//頂点が箱に当たっているか
-bool Check_Hit_Point(BoxLine, BaseVector*);
-
-//箱に当たったら当たっていないところまで戻す
-void Hit_Box_Vertex(BoxLine, BaseVector*, BaseVector*);
-
 //長さの配列を短い順に揃える
 void Fix_Length(float*, BoxLine*);
 
