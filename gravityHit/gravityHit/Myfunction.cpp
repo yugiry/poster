@@ -1,5 +1,6 @@
 #pragma once
 #include "function.h"
+#include <math.h>
 
 //P->点,A->直線の始点,B->直線の終点
 Point Near_Point_Line(Point P, Point A, Point B)
@@ -77,7 +78,7 @@ float Twe_Vector_Angle(Vector a, Vector b)
 }
 
 //長さの配列を短い順に揃える
-void fix_length(float* l, BoxLine* nl)
+void Fix_Length(float* l, BoxLine* nl)
 {
 	float l_tmp;
 	Vector nl_tmp;

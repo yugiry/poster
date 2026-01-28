@@ -23,6 +23,9 @@ CBoxs::CBoxs()
 	BoxPoint[BOXPOINT::LEFTDOWN] = { pos.x - VW.x + VH.x, pos.y - VW.y + VH.y };
 	BoxPoint[BOXPOINT::RIGHTDOWN] = { pos.x + VW.x + VH.x, pos.y + VW.y + VH.y };
 
+	normal_force = { 0,0 };
+	radian_force = { 0,0 };
+
 	ID = B2;
 }
 
@@ -33,7 +36,7 @@ CBoxs::CBoxs(Point p, int w, int h)
 
 int CBoxs::Action(vector<unique_ptr<BaseVector>>& base)
 {
-	vec.x = 0.0f; 
+	vec.x = 0.0f;
 	//vec.y = 0.0f;
 	vec.y += 0.5f;
 
@@ -54,7 +57,7 @@ int CBoxs::Action(vector<unique_ptr<BaseVector>>& base)
 		}
 		if (CheckHitKey(KEY_INPUT_S))
 		{
-			vec.y = 3.0f;
+			vec.y += 3.0f;
 		}
 		if (CheckHitKey(KEY_INPUT_A))
 		{
@@ -117,19 +120,37 @@ int CBoxs::Action(vector<unique_ptr<BaseVector>>& base)
 				//頂点が箱の中にいるなら当たっている判定
 				if (length[0] < base[i]->ImgHeight * HARF && length[3] < base[i]->ImgHeight * HARF && length[1] < base[i]->ImgWidth * HARF && length[0] < base[i]->ImgWidth * HARF)
 				{
-					fix_length(&length[0], &near_line);
+					Fix_Length(&length[0], &near_line);
 
 					//当たった辺まで戻る抗力ベクトルを求める
-					normal_force = { near_line.vec[0].x,near_line.vec[0].y };
-					float f_length = Vector_Length(vec) + Vector_Length(normal_force);
-					normal_force = Vector_SetLength(normal_force, f_length);
+					Vector point_normal_force = { near_line.vec[0].x,near_line.vec[0].y };
+					Vector gv = { 0,vec.y };
+					float f_length = Vector_Length(gv) + Vector_Length(point_normal_force);
+					point_normal_force = Vector_SetLength(point_normal_force, f_length);
 
-					//抗力ベクトルを位置に追加する
-					pos.x += normal_force.x;
-					pos.y += normal_force.y;
+					if (point_normal_force.x != normal_force.x)
+						normal_force.x = point_normal_force.x;
+					if (point_normal_force.y != normal_force.y)
+						normal_force.y = point_normal_force.y;
+
 					hit = true;
 
+					//力のベクトルの角度を調べる
+					mid_point_vec = { p.x - pos.x,p.y - pos.y };
+					float force_length = Vector_Length(normal_force);
+					force_radian = Twe_Vector_Angle(mid_point_vec, normal_force);
+
+					//
+					radian_force.x = cos(RADIAN(force_radian));
+					radian_force.y = -sin(RADIAN(force_radian));
+					radian_force = Vector_SetLength(radian_force, force_length);
+
 					//回転力を追加
+					VW.x += radian_force.x;
+					VW.y += radian_force.y;
+					VW = Vector_SetLength(VW, ImgWidth);
+					VH.x = -VW.y; VH.y = VW.x;
+					VH = Vector_SetLength(VH, ImgHeight);
 				}
 			}
 		}
@@ -142,6 +163,8 @@ int CBoxs::Action(vector<unique_ptr<BaseVector>>& base)
 
 		if (hit)
 		{
+			pos.x += normal_force.x;
+			pos.y += normal_force.y;
 			vec.x = vec.y = 0.0f;
 			hit = false;
 		}
@@ -162,7 +185,7 @@ void CBoxs::Draw()
 	DrawCircle(pos.x, pos.y, 2, GetColor(255, 0, 0), true);
 
 	//角度表示
-	DrawFormatString(5, 20, GetColor(255, 255, 255), "角度＝%f", radian);
+	DrawFormatString(5, 20, GetColor(255, 255, 255), "角度＝%f", force_radian);
 
 	//箱描画
 	{
@@ -177,7 +200,7 @@ void CBoxs::Draw()
 	//当たり判定表示
 	for (int i = 0; i < 4; i++)
 	{
-		DrawLine(BoxPoint[BOXPOINT::RIGHTDOWN].x, BoxPoint[BOXPOINT::RIGHTDOWN].y, BoxPoint[BOXPOINT::RIGHTDOWN].x + near_line.vec[i].x, BoxPoint[BOXPOINT::RIGHTDOWN].y + near_line.vec[i].y, GetColor(255, 255, 255), true);
+		//DrawLine(BoxPoint[BOXPOINT::RIGHTDOWN].x, BoxPoint[BOXPOINT::RIGHTDOWN].y, BoxPoint[BOXPOINT::RIGHTDOWN].x + near_line.vec[i].x, BoxPoint[BOXPOINT::RIGHTDOWN].y + near_line.vec[i].y, GetColor(255, 255, 255), true);
 	}
 
 	if (click) {
@@ -193,4 +216,13 @@ void CBoxs::Draw()
 	{
 		DrawLine(pos.x, pos.y, ClickX, ClickY, GetColor(255, 0, 0), true);
 	}
+
+	DrawFormatString(5, 40, GetColor(255, 255, 255), "%f,%f", normal_force.x, normal_force.y);
+
+	DrawLine(WINDOW_WIDTH / 2, WINDOW_HEIGHT / 2, WINDOW_WIDTH / 2 + mid_point_vec.x, WINDOW_HEIGHT / 2 + mid_point_vec.y, GetColor(0, 0, 255), true);
+	
+	float tmp = Vector_Length(normal_force);
+	normal_force = Vector_SetLength(normal_force, 100);
+	DrawLine(WINDOW_WIDTH / 2, WINDOW_HEIGHT / 2, WINDOW_WIDTH / 2 + normal_force.x, WINDOW_HEIGHT / 2 + normal_force.y, GetColor(0, 0, 255), true);
+	normal_force = Vector_SetLength(normal_force, tmp);
 }

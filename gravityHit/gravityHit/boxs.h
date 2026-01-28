@@ -26,6 +26,11 @@ public:
 	BoxLine near_line;
 
 	Vector normal_force;	//‚’¼R—Í
+	Vector radian_force;	//‰ñ“]—Í
+
+	Vector mid_point_vec;
+
+	float force_radian{ 0 };
 
 	bool click{ false };
 	bool hit{ false };

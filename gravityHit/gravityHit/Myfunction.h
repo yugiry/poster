@@ -15,7 +15,7 @@ bool Check_Hit_Point(BoxLine, BaseVector*);
 void Hit_Box_Vertex(BoxLine, BaseVector*, BaseVector*);
 
 //長さの配列を短い順に揃える
-void fix_length(float*, BoxLine*);
+void Fix_Length(float*, BoxLine*);
 
 //四角形の当たり判定(座標、横幅ベクトル、縦幅ベクトル)
 void HitLeft_Window(BaseVector*);
