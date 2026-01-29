@@ -57,7 +57,7 @@ int CBoxs::Action(vector<unique_ptr<BaseVector>>& base)
 		}
 		if (CheckHitKey(KEY_INPUT_S))
 		{
-			vec.y += 3.0f;
+			vec.y = 3.0f;
 		}
 		if (CheckHitKey(KEY_INPUT_A))
 		{
@@ -91,7 +91,7 @@ int CBoxs::Action(vector<unique_ptr<BaseVector>>& base)
 	//角度からベクトルの傾きを求める
 	if(radian_click){
 		VW.x = cos(RADIAN(radian));
-		VW.y = sin(RADIAN(radian));
+		VW.y = -sin(RADIAN(radian));
 
 		VW = Vector_SetLength(VW, ImgWidth);
 
@@ -136,14 +136,57 @@ int CBoxs::Action(vector<unique_ptr<BaseVector>>& base)
 					hit = true;
 
 					//力のベクトルの角度を調べる
-					mid_point_vec = { pos.x - p.x,pos.y - p.y };
+					mid_point_vec = { p.x - pos.x,p.y - pos.y };
 					float force_length = Vector_Length(normal_force);
 					force_radian = Twe_Vector_Angle(mid_point_vec, normal_force);
 
 					//
-					radian_force.x = cos(RADIAN(force_radian));
-					radian_force.y = -sin(RADIAN(force_radian));
+					Vector normal{ 1,0 };
+					float box_rad = Twe_Vector_Angle(normal, VW);
+
+					float box_force_rad = 0;
+					
+					if (mid_point_vec.x > 0)
+					{
+						box_force_rad = box_rad + force_radian;
+					}
+					else if (mid_point_vec.x < 0)
+					{
+						box_force_rad = box_rad - force_radian;
+					}
+
+					if (box_force_rad < 0)
+						box_force_rad = 359;
+					if (box_force_rad >= 360)
+						box_force_rad = 0;
+
+					radian_force.x = cos(RADIAN(box_force_rad));
+					radian_force.y = -sin(RADIAN(box_force_rad));
 					radian_force = Vector_SetLength(radian_force, force_length);
+
+					//
+					//if (abs(mid_point_vec.x) > abs(mid_point_vec.y))
+					/*{
+						if (mid_point_vec.x > 0 && radian_force.x < 0)
+						{
+							radian_force.x = -radian_force.x;
+						}
+						else if (mid_point_vec.x < 0 && radian_force.x > 0)
+						{
+							radian_force.x = -radian_force.x;
+						}
+					}*/
+					if (abs(normal_force.x) < abs(normal_force.y))
+					{
+						if (normal_force.y > 0)
+						{
+
+						}
+						else if (normal_force.y < 0)
+						{
+
+						}
+					}
 
 					//回転力を追加
 					VW.x += radian_force.x;
@@ -151,6 +194,8 @@ int CBoxs::Action(vector<unique_ptr<BaseVector>>& base)
 					VW = Vector_SetLength(VW, ImgWidth);
 					VH.x = -VW.y; VH.y = VW.x;
 					VH = Vector_SetLength(VH, ImgHeight);
+
+					radian = Twe_Vector_Angle(normal, VW);
 				}
 			}
 		}
@@ -185,7 +230,7 @@ void CBoxs::Draw()
 	DrawCircle(pos.x, pos.y, 2, GetColor(255, 0, 0), true);
 
 	//角度表示
-	DrawFormatString(5, 20, GetColor(255, 255, 255), "角度＝%f", force_radian);
+	DrawFormatString(5, 20, GetColor(255, 255, 255), "角度＝%f:角速度=%f", radian, force_radian);
 
 	//箱描画
 	{
@@ -200,7 +245,7 @@ void CBoxs::Draw()
 	//当たり判定表示
 	for (int i = 0; i < 4; i++)
 	{
-		//DrawLine(BoxPoint[BOXPOINT::RIGHTDOWN].x, BoxPoint[BOXPOINT::RIGHTDOWN].y, BoxPoint[BOXPOINT::RIGHTDOWN].x + near_line.vec[i].x, BoxPoint[BOXPOINT::RIGHTDOWN].y + near_line.vec[i].y, GetColor(255, 255, 255), true);
+		DrawLine(BoxPoint[BOXPOINT::RIGHTDOWN].x, BoxPoint[BOXPOINT::RIGHTDOWN].y, BoxPoint[BOXPOINT::RIGHTDOWN].x + near_line.vec[i].x, BoxPoint[BOXPOINT::RIGHTDOWN].y + near_line.vec[i].y, GetColor(255, 255, 255), true);
 	}
 
 	if (click) {
@@ -228,6 +273,6 @@ void CBoxs::Draw()
 
 	tmp = Vector_Length(radian_force);
 	radian_force = Vector_SetLength(radian_force, 100);
-	DrawLine(WINDOW_WIDTH / 2, WINDOW_HEIGHT / 2, WINDOW_WIDTH / 2 + radian_force.x, WINDOW_HEIGHT / 2 + radian_force.y, GetColor(255, 255, 0), true);
+	DrawLine(pos.x + VW.x, pos.y + VW.y, pos.x + VW.x + radian_force.x, pos.y + VW.y + radian_force.y, GetColor(255, 255, 0), true);
 	radian_force = Vector_SetLength(radian_force, tmp);
 }
