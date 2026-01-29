@@ -5,7 +5,7 @@
 CBox::CBox()
 {
 	pos.x = WINDOW_WIDTH / 2;
-	pos.y = WINDOW_HEIGHT - 50;
+	pos.y = WINDOW_HEIGHT - 100;
 
 	ImgWidth = WINDOW_WIDTH / HARF;
 	ImgHeight = 100 / HARF;

@@ -18,10 +18,10 @@ CBoxs::CBoxs()
 
 	radian = 0;
 
-	BoxPoint[BOXPOINT::LEFTUP] = { pos.x - VW.x - VH.x, pos.y - VW.y - VH.y };
-	BoxPoint[BOXPOINT::RIGHTUP] = { pos.x + VW.x - VH.x, pos.y + VW.y - VH.y };
-	BoxPoint[BOXPOINT::LEFTDOWN] = { pos.x - VW.x + VH.x, pos.y - VW.y + VH.y };
-	BoxPoint[BOXPOINT::RIGHTDOWN] = { pos.x + VW.x + VH.x, pos.y + VW.y + VH.y };
+	vertex_vec[BOXPOINT::LEFTUP] = { -VW.x - VH.x, -VW.y - VH.y };
+	vertex_vec[BOXPOINT::RIGHTUP] = { VW.x - VH.x, VW.y - VH.y };
+	vertex_vec[BOXPOINT::RIGHTDOWN] = { VW.x + VH.x, VW.y + VH.y };
+	vertex_vec[BOXPOINT::LEFTDOWN] = { -VW.x + VH.x, -VW.y + VH.y };
 
 	normal_force = { 0,0 };
 	radian_force = { 0,0 };
@@ -38,14 +38,14 @@ int CBoxs::Action(vector<unique_ptr<BaseVector>>& base)
 {
 	vec.x = 0.0f;
 	//vec.y = 0.0f;
-	vec.y += 0.5f;
+	vec.y += g;
 
 	GetMousePoint(&x, &y);
 
 	if ((GetMouseInput() & MOUSE_INPUT_LEFT))
 	{
-		ClickX = BoxPoint[BOXPOINT::RIGHTDOWN].x;
-		ClickY = BoxPoint[BOXPOINT::RIGHTDOWN].y;
+		ClickX = vertex_vec[BOXPOINT::RIGHTDOWN].x;
+		ClickY = vertex_vec[BOXPOINT::RIGHTDOWN].y;
 	}
 	click = (GetMouseInput() & MOUSE_INPUT_LEFT);
 
@@ -110,7 +110,8 @@ int CBoxs::Action(vector<unique_ptr<BaseVector>>& base)
 			//for (int a = 0; a < 4; a++)
 			{
 				int a = BOXPOINT::RIGHTDOWN;
-				Point p = BoxPoint[a];
+				Vector v = vertex_vec[a];
+				Point p = { pos.x + v.x,pos.y + v.y };
 				near_line = Near_Point_BoxLine(p, base[i]->pos, base[i]->VW, base[i]->VH);
 
 				float length[4];
@@ -124,6 +125,8 @@ int CBoxs::Action(vector<unique_ptr<BaseVector>>& base)
 
 					//当たった辺まで戻る抗力ベクトルを求める
 					Vector point_normal_force = { near_line.vec[0].x,near_line.vec[0].y };
+					pos.x += point_normal_force.x;
+					pos.y += point_normal_force.y;
 					Vector gv = { 0,vec.y };
 					float f_length = Vector_Length(gv) + Vector_Length(point_normal_force);
 					point_normal_force = Vector_SetLength(point_normal_force, f_length);
@@ -135,67 +138,21 @@ int CBoxs::Action(vector<unique_ptr<BaseVector>>& base)
 
 					hit = true;
 
-					//力のベクトルの角度を調べる
-					mid_point_vec = { p.x - pos.x,p.y - pos.y };
-					float force_length = Vector_Length(normal_force);
-					force_radian = Twe_Vector_Angle(mid_point_vec, normal_force);
+					p.x += normal_force.x;
+					p.y += normal_force.y;
 
-					//
-					Vector normal{ 1,0 };
-					float box_rad = Twe_Vector_Angle(normal, VW);
+					float pn_l = Vector_Length(v);
+					Vector pn_vec{ p.x - pos.x,p.y - pos.y };
 
-					float box_force_rad = 0;
-					
-					if (mid_point_vec.x > 0)
+					vertex_vec[a] = Vector_SetLength(pn_vec, pn_l);
+					for (int i = a; i < a + 4; i++)
 					{
-						box_force_rad = box_rad + force_radian;
+						int j = i;
+						int k = j + 1;
+						if (j > 3)j -= 4;
+						if (k > 3)k -= 4;
+						vertex_vec[k].x = -vertex_vec[j].y; vertex_vec[k].y = vertex_vec[j].x;
 					}
-					else if (mid_point_vec.x < 0)
-					{
-						box_force_rad = box_rad - force_radian;
-					}
-
-					if (box_force_rad < 0)
-						box_force_rad = 359;
-					if (box_force_rad >= 360)
-						box_force_rad = 0;
-
-					radian_force.x = cos(RADIAN(box_force_rad));
-					radian_force.y = -sin(RADIAN(box_force_rad));
-					radian_force = Vector_SetLength(radian_force, force_length);
-
-					//
-					//if (abs(mid_point_vec.x) > abs(mid_point_vec.y))
-					/*{
-						if (mid_point_vec.x > 0 && radian_force.x < 0)
-						{
-							radian_force.x = -radian_force.x;
-						}
-						else if (mid_point_vec.x < 0 && radian_force.x > 0)
-						{
-							radian_force.x = -radian_force.x;
-						}
-					}*/
-					if (abs(normal_force.x) < abs(normal_force.y))
-					{
-						if (normal_force.y > 0)
-						{
-
-						}
-						else if (normal_force.y < 0)
-						{
-
-						}
-					}
-
-					//回転力を追加
-					VW.x += radian_force.x;
-					VW.y += radian_force.y;
-					VW = Vector_SetLength(VW, ImgWidth);
-					VH.x = -VW.y; VH.y = VW.x;
-					VH = Vector_SetLength(VH, ImgHeight);
-
-					radian = Twe_Vector_Angle(normal, VW);
 				}
 			}
 		}
@@ -203,23 +160,17 @@ int CBoxs::Action(vector<unique_ptr<BaseVector>>& base)
 
 	//中心座標の座標更新処理
 	{
-		pos.x += vec.x;
-		pos.y += vec.y;
-
 		if (hit)
 		{
-			pos.x += normal_force.x;
-			pos.y += normal_force.y;
-			vec.x = vec.y = 0.0f;
+			vec.y -= g;
+			if (vec.y > -0.5f && vec.y < 0.5f)
+				vec.y = 0;
 			hit = false;
 		}
-	}
 
-	//４頂点の座標更新処理
-	BoxPoint[BOXPOINT::LEFTUP] = { pos.x - VW.x - VH.x, pos.y - VW.y - VH.y };
-	BoxPoint[BOXPOINT::RIGHTUP] = { pos.x + VW.x - VH.x, pos.y + VW.y - VH.y };
-	BoxPoint[BOXPOINT::LEFTDOWN] = { pos.x - VW.x + VH.x, pos.y - VW.y + VH.y };
-	BoxPoint[BOXPOINT::RIGHTDOWN] = { pos.x + VW.x + VH.x, pos.y + VW.y + VH.y };
+		pos.x += vec.x;
+		pos.y += vec.y;
+	}
 
 	return 0;
 }
@@ -233,19 +184,18 @@ void CBoxs::Draw()
 	DrawFormatString(5, 20, GetColor(255, 255, 255), "角度＝%f:角速度=%f", radian, force_radian);
 
 	//箱描画
+	for(int i = 0; i < 4 ; i += 2)
 	{
-
-		DrawLine(BoxPoint[BOXPOINT::LEFTUP].x, BoxPoint[BOXPOINT::LEFTUP].y, BoxPoint[BOXPOINT::RIGHTUP].x, BoxPoint[BOXPOINT::RIGHTUP].y, GetColor(0, 255, 0), true);
-		DrawLine(BoxPoint[BOXPOINT::LEFTUP].x, BoxPoint[BOXPOINT::LEFTUP].y, BoxPoint[BOXPOINT::LEFTDOWN].x, BoxPoint[BOXPOINT::LEFTDOWN].y, GetColor(0, 255, 0), true);
-		DrawLine(BoxPoint[BOXPOINT::RIGHTUP].x, BoxPoint[BOXPOINT::RIGHTUP].y, BoxPoint[BOXPOINT::RIGHTDOWN].x, BoxPoint[BOXPOINT::RIGHTDOWN].y, GetColor(0, 255, 0), true);
-		DrawLine(BoxPoint[BOXPOINT::LEFTDOWN].x, BoxPoint[BOXPOINT::LEFTDOWN].y, BoxPoint[BOXPOINT::RIGHTDOWN].x, BoxPoint[BOXPOINT::RIGHTDOWN].y, GetColor(0, 255, 0), true);
-
+		for (int j = 1; j < 4; j += 2)
+		{
+			DrawLine(pos.x + vertex_vec[i].x, pos.y + vertex_vec[i].y, pos.x + vertex_vec[j].x, pos.y + vertex_vec[j].y, GetColor(0, 255, 0), true);
+		}
 	}
 
 	//当たり判定表示
 	for (int i = 0; i < 4; i++)
 	{
-		DrawLine(BoxPoint[BOXPOINT::RIGHTDOWN].x, BoxPoint[BOXPOINT::RIGHTDOWN].y, BoxPoint[BOXPOINT::RIGHTDOWN].x + near_line.vec[i].x, BoxPoint[BOXPOINT::RIGHTDOWN].y + near_line.vec[i].y, GetColor(255, 255, 255), true);
+		//DrawLine(BoxPoint[BOXPOINT::RIGHTDOWN].x, BoxPoint[BOXPOINT::RIGHTDOWN].y, BoxPoint[BOXPOINT::RIGHTDOWN].x + near_line.vec[i].x, BoxPoint[BOXPOINT::RIGHTDOWN].y + near_line.vec[i].y, GetColor(255, 255, 255), true);
 	}
 
 	if (click) {

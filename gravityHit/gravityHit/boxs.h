@@ -14,15 +14,15 @@ public:
 	{
 		LEFTUP,
 		RIGHTUP,
-		LEFTDOWN,
-		RIGHTDOWN
+		RIGHTDOWN,
+		LEFTDOWN
 	};
 
 	float g{ 0.5f };
 	int x, y;
 	int ClickX, ClickY;
 
-	Point BoxPoint[4];
+	Vector vertex_vec[4];
 	BoxLine near_line;
 
 	Vector normal_force;	//êÇíºçRóÕ
