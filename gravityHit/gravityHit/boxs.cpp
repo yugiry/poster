@@ -18,6 +18,15 @@ CBoxs::CBoxs()
 
 	radian = 0;
 
+	VW.x = cos(RADIAN(radian));
+	VW.y = -sin(RADIAN(radian));
+
+	VW = Vector_SetLength(VW, ImgWidth);
+
+	VH.x = -VW.y; VH.y = VW.x;
+
+	VH = Vector_SetLength(VH, ImgHeight);
+
 	vertex_vec[BOXPOINT::LEFTUP] = { -VW.x - VH.x, -VW.y - VH.y };
 	vertex_vec[BOXPOINT::RIGHTUP] = { VW.x - VH.x, VW.y - VH.y };
 	vertex_vec[BOXPOINT::RIGHTDOWN] = { VW.x + VH.x, VW.y + VH.y };
@@ -89,7 +98,7 @@ int CBoxs::Action(vector<unique_ptr<BaseVector>>& base)
 	}
 
 	//角度からベクトルの傾きを求める
-	if(radian_click){
+	/*if(radian_click){
 		VW.x = cos(RADIAN(radian));
 		VW.y = -sin(RADIAN(radian));
 
@@ -99,7 +108,7 @@ int CBoxs::Action(vector<unique_ptr<BaseVector>>& base)
 
 		VH = Vector_SetLength(VH, ImgHeight);
 		radian_click = false;
-	}
+	}*/
 
 	//当たり判定
 	for (auto i = 0; i < base.size(); i++)
@@ -107,9 +116,9 @@ int CBoxs::Action(vector<unique_ptr<BaseVector>>& base)
 		if (base[i]->ID == B1)
 		{
 			//４頂点の当たり判定を求める
-			//for (int a = 0; a < 4; a++)
+			for (int a = 0; a < 4; a++)
 			{
-				int a = BOXPOINT::RIGHTDOWN;
+				//int a = BOXPOINT::RIGHTDOWN;
 				Vector v = vertex_vec[a];
 				Point p = { pos.x + v.x,pos.y + v.y };
 				near_line = Near_Point_BoxLine(p, base[i]->pos, base[i]->VW, base[i]->VH);
@@ -145,9 +154,9 @@ int CBoxs::Action(vector<unique_ptr<BaseVector>>& base)
 					Vector pn_vec{ p.x - pos.x,p.y - pos.y };
 
 					vertex_vec[a] = Vector_SetLength(pn_vec, pn_l);
-					for (int i = a; i < a + 4; i++)
+					for (int t = a; t < a + 4; t++)
 					{
-						int j = i;
+						int j = t;
 						int k = j + 1;
 						if (j > 3)j -= 4;
 						if (k > 3)k -= 4;
@@ -213,16 +222,4 @@ void CBoxs::Draw()
 	}
 
 	DrawFormatString(5, 40, GetColor(255, 255, 255), "%f,%f", normal_force.x, normal_force.y);
-
-	DrawLine(WINDOW_WIDTH / 2, WINDOW_HEIGHT / 2, WINDOW_WIDTH / 2 + mid_point_vec.x, WINDOW_HEIGHT / 2 + mid_point_vec.y, GetColor(0, 0, 255), true);
-	
-	float tmp = Vector_Length(normal_force);
-	normal_force = Vector_SetLength(normal_force, 100);
-	DrawLine(WINDOW_WIDTH / 2, WINDOW_HEIGHT / 2, WINDOW_WIDTH / 2 + normal_force.x, WINDOW_HEIGHT / 2 + normal_force.y, GetColor(0, 0, 255), true);
-	normal_force = Vector_SetLength(normal_force, tmp);
-
-	tmp = Vector_Length(radian_force);
-	radian_force = Vector_SetLength(radian_force, 100);
-	DrawLine(pos.x + VW.x, pos.y + VW.y, pos.x + VW.x + radian_force.x, pos.y + VW.y + radian_force.y, GetColor(255, 255, 0), true);
-	radian_force = Vector_SetLength(radian_force, tmp);
 }
