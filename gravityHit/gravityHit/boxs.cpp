@@ -124,8 +124,8 @@ int CBoxs::Action(vector<unique_ptr<BaseVector>>& base)
 				near_line = Near_Point_BoxLine(p, base[i]->pos, base[i]->VW, base[i]->VH);
 
 				float length[4];
-				for (int a = 0; a < 4; a++)
-					length[a] = Vector_Length(near_line.vec[a]);
+				for (int b = 0; b < 4; b++)
+					length[b] = Vector_Length(near_line.vec[b]);
 
 				//’¸“_‚ª” ‚Ì’†‚É‚¢‚é‚È‚ç“–‚½‚Á‚Ä‚¢‚é”»’è
 				if (length[0] < base[i]->ImgHeight * HARF && length[3] < base[i]->ImgHeight * HARF && length[1] < base[i]->ImgWidth * HARF && length[0] < base[i]->ImgWidth * HARF)
