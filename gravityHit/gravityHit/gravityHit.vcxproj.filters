@@ -71,26 +71,8 @@
     <ClInclude Include="boxs.h">
       <Filter>ヘッダー ファイル\オブジェクト</Filter>
     </ClInclude>
-    <ClInclude Include="circle.h">
-      <Filter>ヘッダー ファイル\オブジェクト</Filter>
-    </ClInclude>
-    <ClInclude Include="circles.h">
-      <Filter>ヘッダー ファイル\オブジェクト</Filter>
-    </ClInclude>
     <ClInclude Include="Myfunction.h">
       <Filter>ライブラリ用ヘッダーファイル</Filter>
-    </ClInclude>
-    <ClInclude Include="line.h">
-      <Filter>ヘッダー ファイル\オブジェクト</Filter>
-    </ClInclude>
-    <ClInclude Include="lines.h">
-      <Filter>ヘッダー ファイル\オブジェクト</Filter>
-    </ClInclude>
-    <ClInclude Include="triangle.h">
-      <Filter>ヘッダー ファイル\オブジェクト</Filter>
-    </ClInclude>
-    <ClInclude Include="checker.h">
-      <Filter>ヘッダー ファイル\オブジェクト</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -118,26 +100,8 @@
     <ClCompile Include="boxs.cpp">
       <Filter>ソース ファイル\オブジェクト</Filter>
     </ClCompile>
-    <ClCompile Include="circle.cpp">
-      <Filter>ソース ファイル\オブジェクト</Filter>
-    </ClCompile>
-    <ClCompile Include="circles.cpp">
-      <Filter>ソース ファイル\オブジェクト</Filter>
-    </ClCompile>
     <ClCompile Include="Myfunction.cpp">
       <Filter>ライブラリ用ソースファイル</Filter>
-    </ClCompile>
-    <ClCompile Include="line.cpp">
-      <Filter>ソース ファイル\オブジェクト</Filter>
-    </ClCompile>
-    <ClCompile Include="lines.cpp">
-      <Filter>ソース ファイル\オブジェクト</Filter>
-    </ClCompile>
-    <ClCompile Include="triangle.cpp">
-      <Filter>ソース ファイル\オブジェクト</Filter>
-    </ClCompile>
-    <ClCompile Include="checker.cpp">
-      <Filter>ソース ファイル\オブジェクト</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

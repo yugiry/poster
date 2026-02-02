@@ -7,7 +7,7 @@ CBox::CBox()
 	pos.x = WINDOW_WIDTH / 2;
 	pos.y = WINDOW_HEIGHT - 100;
 
-	ImgWidth = 200 / HARF;
+	ImgWidth = WINDOW_WIDTH / HARF;
 	ImgHeight = 100 / HARF;
 
 	radian = 0;

@@ -37,7 +37,7 @@
     <UseDebugLibraries>false</UseDebugLibraries>
     <PlatformToolset>v143</PlatformToolset>
     <WholeProgramOptimization>true</WholeProgramOptimization>
-    <CharacterSet>MultiByte</CharacterSet>
+    <CharacterSet>Unicode</CharacterSet>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'" Label="Configuration">
     <ConfigurationType>Application</ConfigurationType>
@@ -158,14 +158,9 @@
     <ClInclude Include="boxs.h" />
     <ClInclude Include="CCamera.h" />
     <ClInclude Include="2D_function.h" />
-    <ClInclude Include="checker.h" />
-    <ClInclude Include="circle.h" />
-    <ClInclude Include="circles.h" />
     <ClInclude Include="function.h" />
     <ClInclude Include="game.h" />
     <ClInclude Include="library_function.h" />
-    <ClInclude Include="line.h" />
-    <ClInclude Include="lines.h" />
     <ClInclude Include="main.h" />
     <ClInclude Include="Myfunction.h" />
     <ClInclude Include="objBase.h" />
@@ -173,7 +168,6 @@
     <ClInclude Include="objID.h" />
     <ClInclude Include="Scene_Base.h" />
     <ClInclude Include="Scene_Manager.h" />
-    <ClInclude Include="triangle.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="3D_function.cpp" />
@@ -181,16 +175,10 @@
     <ClCompile Include="boxs.cpp" />
     <ClCompile Include="CCamera.cpp" />
     <ClCompile Include="2D_function.cpp" />
-    <ClCompile Include="checker.cpp" />
-    <ClCompile Include="circle.cpp" />
-    <ClCompile Include="circles.cpp" />
     <ClCompile Include="game.cpp" />
     <ClCompile Include="library_function.cpp" />
-    <ClCompile Include="line.cpp" />
-    <ClCompile Include="lines.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="Myfunction.cpp" />
-    <ClCompile Include="triangle.cpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

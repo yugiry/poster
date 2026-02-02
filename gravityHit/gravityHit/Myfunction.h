@@ -11,11 +11,5 @@ BoxLine Near_Point_BoxLine(Point, Point, Vector, Vector);
 //長さの配列を短い順に揃える
 void Fix_Length(float*, BoxLine*);
 
-//四角形の当たり判定(座標、横幅ベクトル、縦幅ベクトル)
-void HitLeft_Window(BaseVector*);
-void HitRight_Window(BaseVector*);
-void HitUp_Window(BaseVector*);
-void HitDown_Window(BaseVector*);
-
 //二つのベクトルのなす角を求める
 float Twe_Vector_Angle(Vector, Vector);

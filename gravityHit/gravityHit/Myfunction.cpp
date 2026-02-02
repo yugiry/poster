@@ -2,7 +2,8 @@
 #include "function.h"
 #include <math.h>
 
-//P->点,A->直線の始点,B->直線の終点
+//点から直線までの最短距離を調べる
+//(点、直線の始点、直線の終点)
 Point Near_Point_Line(Point P, Point A, Point B)
 {
 	Point Q{ 0,0 };//直線上の点
@@ -44,8 +45,6 @@ BoxLine Near_Point_BoxLine(Point p, Point b, Vector w, Vector h)
 	return bl;
 }
 
-
-
 //二つのベクトルのなす角を求める
 float Twe_Vector_Angle(Vector a, Vector b)
 {
@@ -81,156 +80,4 @@ void Fix_Length(float* l, BoxLine* nl)
 			}
 		}
 	}
-}
-
-//四角形の当たり判定(座標、横幅ベクトル、縦幅ベクトル)
-void HitLeft_Window(BaseVector* b)
-{
-	//左上が左下より左にいれば
-	if (b->pos.x <= b->pos.x + b->VH.x)
-	{
-		//右上が左上より左にいれば
-		if (b->pos.x + b->VW.x < b->pos.x && b->pos.x + b->VW.x < 0)
-		{
-			b->pos.x = -b->VW.x;
-			return;
-		}
-		if (b->pos.x < 0)
-		{
-			b->pos.x = 0;
-			return;
-		}
-	}
-	//左下が左上より左にいれば
-	else
-	{
-		//右下が左下より左にいれば
-		if (b->pos.x + b->VH.x + b->VW.x < b->pos.x + b->VH.x && b->pos.x + b->VH.x + b->VW.x < 0)
-		{
-			b->pos.x = -(b->VW.x + b->VH.x);
-			return;
-		}
-		if (b->pos.x + b->VH.x < 0)
-		{
-			b->pos.x = -b->VH.x;
-			return;
-		}
-	}
-
-	//何も当たっていなければ
-	return;
-}
-void HitRight_Window(BaseVector* b)
-{
-	//左上が左下より右にいれば
-	if (b->pos.x >= b->pos.x + b->VH.x)
-	{
-		//右上が左上より右にいれば
-		if (b->pos.x + b->VW.x > b->pos.x && b->pos.x + b->VW.x > WINDOW_WIDTH)
-		{
-			b->pos.x = WINDOW_WIDTH - b->VW.x;
-			return;
-		}
-		if (b->pos.x > WINDOW_WIDTH)
-		{
-			b->pos.x = WINDOW_WIDTH;
-			return;
-		}
-	}
-	//左下が左上より右にいれば
-	else
-	{
-		//右下が左下より右にいれば
-		if (b->pos.x + b->VH.x + b->VW.x > b->pos.x + b->VH.x && b->pos.x + b->VH.x + b->VW.x > WINDOW_WIDTH)
-		{
-			b->pos.x = WINDOW_WIDTH - b->VW.x - b->VH.x;
-			return;
-		}
-		if (b->pos.x + b->VH.x > WINDOW_WIDTH)
-		{
-			b->pos.x = WINDOW_WIDTH - b->VH.x;
-			return;
-		}
-	}
-
-	//何も当たっていなければ
-	return;
-}
-void HitUp_Window(BaseVector* b)
-{
-	//左上が左下より上にいれば
-	if (b->pos.y <= b->pos.y + b->VH.y)
-	{
-		//右上が左上より上にいれば
-		if (b->pos.y + b->VW.y < b->pos.y && b->pos.y + b->VW.y < 0)
-		{
-			b->pos.y = -b->VW.y;
-			return;
-		}
-		if (b->pos.y < 0)
-		{
-			b->pos.y = 0;
-			return;
-		}
-	}
-	//左下が左上より上にいれば
-	else
-	{
-		//右下が左下より上にいれば
-		if (b->pos.y + b->VH.y + b->VW.y < b->pos.y + b->VH.y && b->pos.y + b->VH.y + b->VW.y < 0)
-		{
-			b->pos.y = -(b->VH.y + b->VW.y);
-			return;
-		}
-		if (b->pos.y + b->VH.y < 0)
-		{
-			b->pos.y = -b->VH.y;
-			return;
-		}
-	}
-
-	//何も当たっていなければ
-	return;
-}
-void HitDown_Window(BaseVector* b)
-{
-	//左上が左下より下にいれば
-	if (b->pos.y >= b->pos.y + b->VH.y)
-	{
-		//右上が左上より下にいれば
-		if (b->pos.y + b->VW.y > b->pos.y && b->pos.y + b->VW.y > WINDOW_HEIGHT)
-		{
-			b->pos.y = WINDOW_HEIGHT - b->VW.y;
-			b->vec.y = 0;
-			return;
-		}
-
-		if (b->pos.y > WINDOW_HEIGHT)
-		{
-			b->pos.y = WINDOW_HEIGHT;
-			b->vec.y = 0;
-			return;
-		}
-
-	}
-	//左下が左上より下にいれば
-	else
-	{
-		//右下が左下より下にいれば
-		if (b->pos.y + b->VH.y + b->VW.y > b->pos.y + b->VH.y && b->pos.y + b->VH.y + b->VW.y > WINDOW_HEIGHT)
-		{
-			b->pos.y = WINDOW_HEIGHT - b->VW.y - b->VH.y;
-			b->vec.y = 0; 
-			return;
-		}
-		if (b->pos.y + b->VH.y > WINDOW_HEIGHT)
-		{
-			b->pos.y = WINDOW_HEIGHT - b->VH.y;
-			b->vec.y = 0;
-			return;
-		}
-	}
-
-	//何も当たっていなければ
-	return;
 }
