@@ -1,4 +1,3 @@
-#pragma once
 #include "boxs.h"
 #include "function.h"
 #include <math.h>
@@ -37,10 +36,27 @@ CBoxs::CBoxs(Point p, int w, int h)
 int CBoxs::Action(vector<unique_ptr<BaseVector>>& base)
 {
 	vec.x = 0.0f;
-	vec.y += g;
-		
+	vec.y = 0.0f;
+
+	if (CheckHitKey(KEY_INPUT_W))
+	{
+		vec.y -= 4.0f;
+	}
+	if (CheckHitKey(KEY_INPUT_S))
+	{
+		vec.y += 4.0f;
+	}
+	if (CheckHitKey(KEY_INPUT_A))
+	{
+		vec.x -= 4.0f;
+	}
+	if (CheckHitKey(KEY_INPUT_D))
+	{
+		vec.x += 4.0f;
+	}
 
 	//当たり判定
+	/*
 	for (auto i = 0; i < base.size(); i++)
 	{
 		if (base[i]->ID == B1)
@@ -57,8 +73,8 @@ int CBoxs::Action(vector<unique_ptr<BaseVector>>& base)
 
 				//最短距離の長さを保存
 				float length[4];
-				for (int a = 0; a < 4; a++)
-					length[a] = Vector_Length(near_line.vec[a]);
+				for (int b = 0; b < 4; b++)
+					length[b] = Vector_Length(near_line.vec[b]);
 
 				//頂点が箱の中にいるなら当たっている判定
 				if (length[0] < base[i]->ImgHeight * HARF && length[3] < base[i]->ImgHeight * HARF && length[1] < base[i]->ImgWidth * HARF && length[2] < base[i]->ImgWidth * HARF)
@@ -85,17 +101,17 @@ int CBoxs::Action(vector<unique_ptr<BaseVector>>& base)
 					vertex_vec[a] = Vector_SetLength(pnf_vec, pnf_l);
 
 					//現在調べている頂点から各頂点までのベクトルの傾きと長さを計算し適応させる
-					for (int i = a; i < a + 4; i++)
+					for (int l = a; l < a + 4; l++)
 					{
-						int j = i;
-						int k = j + 1;
+						int m = l;
+						int n = l + 1;
 
-						int j = i > 3 ? i - 4 : i;
-						int k = j + 1 > 3 ? (j + 1) - 4 : j + 1;
+						//int m = i > 3 ? i - 4 : i;
+						//int n = m + 1 > 3 ? (m + 1) - 4 : m + 1;
 
-						if (j > 3)j -= 4;
-						if (k > 3)k -= 4;
-						vertex_vec[k].x = -vertex_vec[j].y; vertex_vec[k].y = vertex_vec[j].x;
+						if (m > 3)m -= 4;
+						if (n > 3)n -= 4;
+						vertex_vec[n].x = -vertex_vec[m].y; vertex_vec[n].y = vertex_vec[m].x;
 					}
 
 					//当たったという判定を返す
@@ -103,6 +119,15 @@ int CBoxs::Action(vector<unique_ptr<BaseVector>>& base)
 				}
 			}
 		}
+		
+	}*/
+
+	//ボックスの頂点すべてで当たっているか調べる
+	for (int i = 0; i < 4; i++)
+	{
+		i = (int)BOXPOINT::RIGHTDOWN;
+
+		
 	}
 
 	//中心座標の座標更新処理
@@ -131,7 +156,7 @@ int CBoxs::Action(vector<unique_ptr<BaseVector>>& base)
 
 
 	//リセット用
-	if (CheckHitKey(KEY_INPUT_R) && !radian_click)
+	/*if (CheckHitKey(KEY_INPUT_R) && !radian_click)
 	{
 		pos = { WINDOW_WIDTH / 2,200 };
 
@@ -162,7 +187,7 @@ int CBoxs::Action(vector<unique_ptr<BaseVector>>& base)
 
 		vec.x = vec.y = 0.0f;
 	}
-	radian_click = CheckHitKey(KEY_INPUT_R);
+	radian_click = CheckHitKey(KEY_INPUT_R);*/
 
 	//GetMousePoint(&x, &y);
 

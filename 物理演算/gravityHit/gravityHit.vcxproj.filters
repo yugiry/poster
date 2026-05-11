@@ -74,6 +74,9 @@
     <ClInclude Include="Myfunction.h">
       <Filter>ライブラリ用ヘッダーファイル</Filter>
     </ClInclude>
+    <ClInclude Include="line.h">
+      <Filter>ヘッダー ファイル\オブジェクト</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp">
@@ -102,6 +105,9 @@
     </ClCompile>
     <ClCompile Include="Myfunction.cpp">
       <Filter>ライブラリ用ソースファイル</Filter>
+    </ClCompile>
+    <ClCompile Include="line.cpp">
+      <Filter>ソース ファイル\オブジェクト</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

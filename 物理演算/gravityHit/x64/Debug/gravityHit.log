@@ -107,23 +107,17 @@ C:\dxlib\DxLib.h(5396,1): warning C4819: ファイルは、現在のコード �
 C:\dxlib\DxLib.h(5581,1): warning C4819: ファイルは、現在のコード ページ (932) で表示できない文字を含んでいます。データの損失を防ぐために、ファイルを Unicode 形式で保存してください。
   (ソース ファイル 'boxs.cpp' をコンパイルしています)
   
-C:\Users\event\Desktop\物理演算\gravityHit\boxs.cpp(13,9): warning C4244: '=': 'int' から 'float' への変換です。データが失われる可能性があります。
-C:\Users\event\Desktop\物理演算\gravityHit\boxs.cpp(17,9): warning C4244: '=': 'int' から 'float' への変換です。データが失われる可能性があります。
-C:\Users\event\Desktop\物理演算\gravityHit\boxs.cpp(132,10): warning C4244: '=': 'int' から 'float' への変換です。データが失われる可能性があります。
-C:\Users\event\Desktop\物理演算\gravityHit\boxs.cpp(136,10): warning C4244: '=': 'int' から 'float' への変換です。データが失われる可能性があります。
-C:\Users\event\Desktop\物理演算\gravityHit\boxs.cpp(140,13): warning C4244: '=': 'double' から 'float' への変換です。データが失われる可能性があります。
-C:\Users\event\Desktop\物理演算\gravityHit\boxs.cpp(141,10): warning C4244: '=': 'double' から 'float' への変換です。データが失われる可能性があります。
-C:\Users\event\Desktop\物理演算\gravityHit\boxs.cpp(143,29): warning C4244: '引数': 'int' から 'float' への変換です。データが失われる可能性があります。
-C:\Users\event\Desktop\物理演算\gravityHit\boxs.cpp(147,29): warning C4244: '引数': 'int' から 'float' への変換です。データが失われる可能性があります。
-C:\Users\event\Desktop\物理演算\gravityHit\boxs.cpp(228,23): warning C4244: '引数': 'float' から 'int' への変換です。データが失われる可能性があります。
-C:\Users\event\Desktop\物理演算\gravityHit\boxs.cpp(228,16): warning C4244: '引数': 'float' から 'int' への変換です。データが失われる可能性があります。
-C:\Users\event\Desktop\物理演算\gravityHit\boxs.cpp(238,94): warning C4244: '引数': 'float' から 'int' への変換です。データが失われる可能性があります。
-C:\Users\event\Desktop\物理演算\gravityHit\boxs.cpp(238,69): warning C4244: '引数': 'float' から 'int' への変換です。データが失われる可能性があります。
-C:\Users\event\Desktop\物理演算\gravityHit\boxs.cpp(238,44): warning C4244: '引数': 'float' から 'int' への変換です。データが失われる可能性があります。
-C:\Users\event\Desktop\物理演算\gravityHit\boxs.cpp(238,19): warning C4244: '引数': 'float' から 'int' への変換です。データが失われる可能性があります。
-C:\Users\event\Desktop\物理演算\gravityHit\boxs.cpp(243,26): warning C4244: '引数': 'int' から 'float' への変換です。データが失われる可能性があります。
-C:\Users\event\Desktop\物理演算\gravityHit\boxs.cpp(245,44): warning C4244: '引数': 'float' から 'int' への変換です。データが失われる可能性があります。
-C:\Users\event\Desktop\物理演算\gravityHit\boxs.cpp(245,31): warning C4244: '引数': 'float' から 'int' への変換です。データが失われる可能性があります。
-C:\Users\event\Desktop\物理演算\gravityHit\boxs.cpp(245,21): warning C4244: '引数': 'float' から 'int' への変換です。データが失われる可能性があります。
-C:\Users\event\Desktop\物理演算\gravityHit\boxs.cpp(245,14): warning C4244: '引数': 'float' から 'int' への変換です。データが失われる可能性があります。
-  gravityHit.vcxproj -> C:\Users\event\Desktop\物理演算\x64\Debug\gravityHit.exe
+C:\Users\event\Desktop\crane\物理演算\gravityHit\boxs.cpp(12,9): warning C4244: '=': 'int' から 'float' への変換です。データが失われる可能性があります。
+C:\Users\event\Desktop\crane\物理演算\gravityHit\boxs.cpp(16,9): warning C4244: '=': 'int' から 'float' への変換です。データが失われる可能性があります。
+C:\Users\event\Desktop\crane\物理演算\gravityHit\boxs.cpp(257,23): warning C4244: '引数': 'float' から 'int' への変換です。データが失われる可能性があります。
+C:\Users\event\Desktop\crane\物理演算\gravityHit\boxs.cpp(257,16): warning C4244: '引数': 'float' から 'int' への変換です。データが失われる可能性があります。
+C:\Users\event\Desktop\crane\物理演算\gravityHit\boxs.cpp(267,94): warning C4244: '引数': 'float' から 'int' への変換です。データが失われる可能性があります。
+C:\Users\event\Desktop\crane\物理演算\gravityHit\boxs.cpp(267,69): warning C4244: '引数': 'float' から 'int' への変換です。データが失われる可能性があります。
+C:\Users\event\Desktop\crane\物理演算\gravityHit\boxs.cpp(267,44): warning C4244: '引数': 'float' から 'int' への変換です。データが失われる可能性があります。
+C:\Users\event\Desktop\crane\物理演算\gravityHit\boxs.cpp(267,19): warning C4244: '引数': 'float' から 'int' への変換です。データが失われる可能性があります。
+C:\Users\event\Desktop\crane\物理演算\gravityHit\boxs.cpp(272,26): warning C4244: '引数': 'int' から 'float' への変換です。データが失われる可能性があります。
+C:\Users\event\Desktop\crane\物理演算\gravityHit\boxs.cpp(274,44): warning C4244: '引数': 'float' から 'int' への変換です。データが失われる可能性があります。
+C:\Users\event\Desktop\crane\物理演算\gravityHit\boxs.cpp(274,31): warning C4244: '引数': 'float' から 'int' への変換です。データが失われる可能性があります。
+C:\Users\event\Desktop\crane\物理演算\gravityHit\boxs.cpp(274,21): warning C4244: '引数': 'float' から 'int' への変換です。データが失われる可能性があります。
+C:\Users\event\Desktop\crane\物理演算\gravityHit\boxs.cpp(274,14): warning C4244: '引数': 'float' から 'int' への変換です。データが失われる可能性があります。
+  gravityHit.vcxproj -> C:\Users\event\Desktop\crane\物理演算\x64\Debug\gravityHit.exe

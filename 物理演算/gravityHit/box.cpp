@@ -1,4 +1,3 @@
-#pragma once
 #include "box.h"
 #include "function.h"
 
