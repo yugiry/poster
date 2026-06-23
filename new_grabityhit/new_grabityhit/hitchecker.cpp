@@ -40,15 +40,14 @@ void HitChecker::HitCheck_PP(BaseVector* _poly1, BaseVector* _poly2)
 
 		for (int i = 0; i < _poly2->vertexs_vec.size(); i++)
 		{
-			for (int j = i + 1; j < _poly2->vertexs_vec.size(); j++)
-			{
-				Point first = { _poly2->pos.x + vertexs_vec[i].x,_poly2->pos.y + vertexs_vec[i].y };
-				Point end = { _poly2->pos.x + vertexs_vec[j].x,_poly2->pos.y + vertexs_vec[j].y };
+			int j = i + 1;
+			if (j == _poly2->vertexs_vec.size())j = 0;
+			Point first = { _poly2->pos.x + _poly2->vertexs_vec[i].x,_poly2->pos.y + _poly2->vertexs_vec[i].y };
+			Point end = { _poly2->pos.x + _poly2->vertexs_vec[j].x,_poly2->pos.y + _poly2->vertexs_vec[j].y };
 
-				//頂点から一番近い線分上の点を出す
-				Point pos_on_line = Near_Point_Line(p, first, end);
-				vertexs_vec.push_back(Sub_Point_Point(pos_on_line, p));
-			}
+			Point pos_on_line = Near_Point_Line(p, first, end);//頂点から一番近い線分上の点を出す
+			Vector near_line = Sub_Point_Point(pos_on_line, p);//頂点から線分上の点までのベクトル
+			vertexs_vec.push_back(near_line);
 		}
 	}
 }

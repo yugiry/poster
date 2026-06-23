@@ -22,7 +22,7 @@ int CGame::UpDate(){
 	for (auto& obj : base)
 	obj->Action(base,add_list);
 
-	
+	hitchecker->CheckerUpdate(base);
 
 	//オブジェクト追加処理
 	for (auto& obj : add_list)
