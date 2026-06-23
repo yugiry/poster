@@ -36,15 +36,15 @@ public:
 	int vertex_num{ 0 };//頂点数
 
 	Point pos{ 0,0 };//中心座標
-	vector<Point> vertexs;//頂点
+	vector<Vector> vertexs_vec;//頂点
 	Vector vec{ 0,0 };//移動ベクトル
 	float g{ 0.98f };//重力加速度
 	float rc{ 0 };//反発係数(0.0f ～ 1.0f)
 
 	float angle{ 0 };//オブジェクトの角度
 
-	int ImgWidth{ 0 };//画像の横サイズ
-	int ImgHeight{ 0 };//画像の縦サイズ
+	float ImgWidth{ 0 };//画像の横サイズ
+	float ImgHeight{ 0 };//画像の縦サイズ
 	int radius{ 0 };//半径
 
 };

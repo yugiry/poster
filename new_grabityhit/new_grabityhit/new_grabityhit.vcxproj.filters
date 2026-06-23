@@ -74,6 +74,9 @@
     <ClInclude Include="hitchecker.h">
       <Filter>ヘッダー ファイル</Filter>
     </ClInclude>
+    <ClInclude Include="Myfunction.h">
+      <Filter>ライブラリ用ヘッダーファイル</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp">
@@ -99,6 +102,9 @@
     </ClCompile>
     <ClCompile Include="hitchecker.cpp">
       <Filter>ソース ファイル</Filter>
+    </ClCompile>
+    <ClCompile Include="Myfunction.cpp">
+      <Filter>ライブラリ用ソースファイル</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

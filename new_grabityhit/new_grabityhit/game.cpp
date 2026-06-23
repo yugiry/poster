@@ -10,6 +10,8 @@
 CGame::CGame(CManager* p) :CScene(p)
 {
 	base.push_back(make_unique<CBox>());
+	Point pos = { WINDOW_WIDTH / 2,WINDOW_HEIGHT - 50 };
+	base.push_back(make_unique<CBox>(pos));
 }
 
 //更新処理
@@ -19,6 +21,8 @@ int CGame::UpDate(){
 	//更新
 	for (auto& obj : base)
 	obj->Action(base,add_list);
+
+	
 
 	//オブジェクト追加処理
 	for (auto& obj : add_list)

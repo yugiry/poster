@@ -3,6 +3,7 @@
 #include "Scene_Manager.h"
 #include "objBase.h"
 #include "CCamera.h"
+#include "hitchecker.h"
 
 class CGame :public CScene
 {
@@ -35,4 +36,6 @@ public:
 			base.push_back(move(x));
 	}
 	//CCamera* camera;//カメラオブジェクト
+
+	HitChecker* hitchecker;//当たり判定
 };
