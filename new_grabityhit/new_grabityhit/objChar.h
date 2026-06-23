@@ -1,0 +1,80 @@
+#pragma once
+#include "main.h"
+
+using namespace std;
+
+//キャラクターベースクラス
+class Character {
+public:
+	int img{ -1 };//画像
+
+	Point pos{ 0,0 };//位置
+	Vector vec{ 0,0 };//移動ベクトル
+
+	float angle{ 0 };//オブジェクトの角度
+
+	int CutX{ 0 };//画像切り取り位置x
+	int CutY{ 0 };//画像切り取り位置y
+
+	int ImgWidth{ 0 };//画像の横サイズ
+	int ImgHeight{ 0 };//画像の縦サイズ
+
+	int Dir{ 0 };//オブジェクトの向き
+
+	int sound[8]{ 0,0,0,0,0,0,0,0 };//デフォルトではサウンド保持数は8個
+
+	~Character() { 
+		DeleteGraph(img);
+		for (int i = 0; i < 8; i++) DeleteSoundMem(sound[i]);
+	}
+};
+
+class PhysicsCharacter {
+public:
+	int img{ -1 };//画像
+
+	int vertex_num{ 0 };//頂点数
+
+	Point pos{ 0,0 };//中心座標
+	vector<Point> vertexs;//頂点
+	Vector vec{ 0,0 };//移動ベクトル
+	float g{ 0.98f };//重力加速度
+	float rc{ 0 };//反発係数(0.0f ～ 1.0f)
+
+	float angle{ 0 };//オブジェクトの角度
+
+	int ImgWidth{ 0 };//画像の横サイズ
+	int ImgHeight{ 0 };//画像の縦サイズ
+	int radius{ 0 };//半径
+
+};
+
+//キャラクターベース3D
+class Character3D :public Character{
+public:
+	int model{ -1 };//モデル
+
+	Point3 pos{ 0,0,0 };//位置
+	Vector3 vec{ 0,0,0 };//移動ベクトル
+
+	ObjSize size{ 0,0,0 };//オブジェクトサイズ
+
+	Vector3 b_box{ 0,0,0 };//バウンディングボックスサイズ(縦,横,高さ)
+
+	//アニメーション処理用
+	int AttachIndex{ -1 };//アニメーションアタッチNo
+	float animTime{ 0 };
+	//アタッチ番号取得
+	int Attach_num_Get(int num) { return MV1AttachAnim(model, num, -1, false); }
+
+	//バウンディングボックスサイズセット
+	void Set_Bounding_Box_Size(float x, float y, float z) {
+		b_box.x = x;
+		b_box.y = y;
+		b_box.z = z;
+	}
+
+	~Character3D() {
+		MV1DeleteModel(model); 
+	};
+};
