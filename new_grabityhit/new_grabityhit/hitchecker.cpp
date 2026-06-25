@@ -47,7 +47,7 @@ void HitChecker::HitCheck_PP(BaseVector* _poly1, BaseVector* _poly2)
 
 			Point pos_on_line = Near_Point_Line(p, first, end);//頂点から一番近い線分上の点を出す
 			Vector near_line = Sub_Point_Point(pos_on_line, p);//頂点から線分上の点までのベクトル
-			vertexs_vec.push_back(near_line);
+			shortrang_vec.push_back(near_line);
 		}
 	}
 }
