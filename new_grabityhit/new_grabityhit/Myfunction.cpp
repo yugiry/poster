@@ -22,3 +22,18 @@ Point Near_Point_Line(Point P, Point A, Point B)
 
 	return Q;
 }
+
+//点がポリゴンの中にいるかどうか調べる
+//(最短距離の座標、最短距離の長さ、ポリゴン)
+bool CheckInPolygon(vector<Point> _short_pos, vector<float> _length, BaseVector* _poly)
+{
+	for (int i = 0; i < _poly->vertex_num; i++)
+	{
+		int j = i + 1;
+		if (j == _poly->vertex_num)j = 0;
+
+
+	}
+
+	return  false;
+}

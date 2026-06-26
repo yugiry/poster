@@ -37,5 +37,5 @@ public:
 	}
 	//CCamera* camera;//カメラオブジェクト
 
-	HitChecker* hitchecker;//当たり判定
+	HitChecker* hitchecker = new HitChecker();//当たり判定
 };

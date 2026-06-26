@@ -1,7 +1,7 @@
 #pragma once
 #include "objBase.h"
 
-class HitChecker : public BaseVector
+class HitChecker
 {
 public:
 	HitChecker();
@@ -16,7 +16,7 @@ public:
 
 #pragma region •Ï”
 
-	vector<Vector> shortrang_vec;
+	//vector<Vector> shortrang_vec;//
 
 #pragma endregion
 };
