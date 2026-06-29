@@ -45,6 +45,8 @@ public:
 	bool draw_flag{ true };//オブジェクトの描画フラグ
 	Sprite sprite;//簡易描画クラス
 
+	float scale{ 1.0f };//拡大率
+
 	//オブジェクトリスト,追加オブジェクト用リスト
 	virtual int Action(const ObjList&, ObjList&) = 0;
 	virtual void Draw() = 0;

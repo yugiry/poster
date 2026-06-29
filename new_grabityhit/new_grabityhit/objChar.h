@@ -38,6 +38,7 @@ public:
 	Point pos{ 0,0 };//中心座標
 	vector<Vector> vertexs_vec;//頂点
 	Vector vec{ 0,0 };//移動ベクトル
+	vector<Poly> tri;//ポリゴン
 	float g{ 0.98f };//重力加速度
 	float rc{ 0 };//反発係数(0.0f ～ 1.0f)
 

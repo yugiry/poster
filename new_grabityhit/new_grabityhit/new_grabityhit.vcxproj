@@ -157,6 +157,7 @@
     <ClInclude Include="box.h" />
     <ClInclude Include="CCamera.h" />
     <ClInclude Include="2D_function.h" />
+    <ClInclude Include="CollisionUpdate.h" />
     <ClInclude Include="function.h" />
     <ClInclude Include="game.h" />
     <ClInclude Include="hitchecker.h" />
@@ -166,7 +167,9 @@
     <ClInclude Include="Myfunction.h" />
     <ClInclude Include="objBase.h" />
     <ClInclude Include="objChar.h" />
+    <ClInclude Include="object.h" />
     <ClInclude Include="objID.h" />
+    <ClInclude Include="Resource.h" />
     <ClInclude Include="Scene_Base.h" />
     <ClInclude Include="Scene_Manager.h" />
   </ItemGroup>
@@ -175,11 +178,14 @@
     <ClCompile Include="box.cpp" />
     <ClCompile Include="CCamera.cpp" />
     <ClCompile Include="2D_function.cpp" />
+    <ClCompile Include="CollisionUpDate.cpp" />
     <ClCompile Include="game.cpp" />
     <ClCompile Include="hitchecker.cpp" />
     <ClCompile Include="library_function.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="Myfunction.cpp" />
+    <ClCompile Include="object.cpp" />
+    <ClCompile Include="Resoure.cpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

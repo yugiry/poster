@@ -5,13 +5,17 @@
 #include "function.h"
 
 #include "box.h"
+#include "object.h"
 
 //コンストラクタ
 CGame::CGame(CManager* p) :CScene(p)
 {
-	base.push_back(make_unique<CBox>());
-	Point pos = { WINDOW_WIDTH / 2,WINDOW_HEIGHT - 50 };
-	base.push_back(make_unique<CBox>(pos));
+	base.emplace_back(make_unique<CObject>(0));
+	base.emplace_back(make_unique<CObject>(1));
+
+	//base.push_back(make_unique<CBox>());
+	//Point pos = { WINDOW_WIDTH / 2,WINDOW_HEIGHT - 50 };
+	//base.push_back(make_unique<CBox>(pos));
 }
 
 //更新処理
@@ -22,11 +26,11 @@ int CGame::UpDate(){
 	for (auto& obj : base)
 	obj->Action(base,add_list);
 
-	hitchecker->CheckerUpdate(base);
-
 	//オブジェクト追加処理
 	for (auto& obj : add_list)
 		base.push_back(move(obj));
+
+	hitchecker->CheckerUpdate(base);
 
 	//削除処理
 	erase_if(base, [](const auto& obj) {return !obj->FLAG; });

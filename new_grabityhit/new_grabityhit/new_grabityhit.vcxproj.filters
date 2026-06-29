@@ -5,27 +5,30 @@
       <UniqueIdentifier>{4FC737F1-C7A5-4376-A066-2A32D752A2FF}</UniqueIdentifier>
       <Extensions>cpp;c;cc;cxx;c++;cppm;ixx;def;odl;idl;hpj;bat;asm;asmx</Extensions>
     </Filter>
-    <Filter Include="ヘッダー ファイル">
-      <UniqueIdentifier>{93995380-89BD-4b04-88EB-625FBE52EBFB}</UniqueIdentifier>
-      <Extensions>h;hh;hpp;hxx;h++;hm;inl;inc;ipp;xsd</Extensions>
-    </Filter>
     <Filter Include="ソース ファイル\シーン">
       <UniqueIdentifier>{2eac79df-d471-4c94-af16-5b76f2d6ddca}</UniqueIdentifier>
     </Filter>
-    <Filter Include="ヘッダー ファイル\オブジェクト">
-      <UniqueIdentifier>{9472430c-2416-4a8f-82ea-7ee1147279b4}</UniqueIdentifier>
-    </Filter>
     <Filter Include="ソース ファイル\オブジェクト">
       <UniqueIdentifier>{1052309c-2852-45d0-800d-ffe5b081cbaa}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="ヘッダー ファイル\シーン">
-      <UniqueIdentifier>{6a32f91b-06f7-4bc9-9c6f-9c1de65fd0a5}</UniqueIdentifier>
     </Filter>
     <Filter Include="ライブラリ用ヘッダーファイル">
       <UniqueIdentifier>{05caca3d-783b-4307-9a47-41dc3f163b18}</UniqueIdentifier>
     </Filter>
     <Filter Include="ライブラリ用ソースファイル">
       <UniqueIdentifier>{e93d6900-d129-4c3f-acbd-1f8be7236993}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="ヘッダー ファイル">
+      <UniqueIdentifier>{93995380-89BD-4b04-88EB-625FBE52EBFB}</UniqueIdentifier>
+      <Extensions>h;hh;hpp;hxx;h++;hm;inl;inc;ipp;xsd</Extensions>
+    </Filter>
+    <Filter Include="ヘッダー ファイル\オブジェクト">
+      <UniqueIdentifier>{9472430c-2416-4a8f-82ea-7ee1147279b4}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="ヘッダー ファイル\シーン">
+      <UniqueIdentifier>{6a32f91b-06f7-4bc9-9c6f-9c1de65fd0a5}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="モトフジファンクション">
+      <UniqueIdentifier>{e6eebd9f-4299-4f3f-a0ae-c5953f139aca}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
@@ -75,7 +78,16 @@
       <Filter>ヘッダー ファイル</Filter>
     </ClInclude>
     <ClInclude Include="Myfunction.h">
-      <Filter>ライブラリ用ヘッダーファイル</Filter>
+      <Filter>モトフジファンクション</Filter>
+    </ClInclude>
+    <ClInclude Include="CollisionUpdate.h">
+      <Filter>ヘッダー ファイル</Filter>
+    </ClInclude>
+    <ClInclude Include="Resource.h">
+      <Filter>ヘッダー ファイル</Filter>
+    </ClInclude>
+    <ClInclude Include="object.h">
+      <Filter>ヘッダー ファイル\オブジェクト</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -104,7 +116,16 @@
       <Filter>ソース ファイル</Filter>
     </ClCompile>
     <ClCompile Include="Myfunction.cpp">
-      <Filter>ライブラリ用ソースファイル</Filter>
+      <Filter>モトフジファンクション</Filter>
+    </ClCompile>
+    <ClCompile Include="CollisionUpDate.cpp">
+      <Filter>ソース ファイル</Filter>
+    </ClCompile>
+    <ClCompile Include="Resoure.cpp">
+      <Filter>ソース ファイル</Filter>
+    </ClCompile>
+    <ClCompile Include="object.cpp">
+      <Filter>ソース ファイル\オブジェクト</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

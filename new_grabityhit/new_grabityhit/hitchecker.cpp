@@ -14,11 +14,16 @@ int HitChecker::CheckerUpdate(const ObjList& base)
 	{
 		for (int j = i + 1; j < base.size(); j++)
 		{
-			if (base[i]->ID == (int)ObjID::POLYGON || base[j]->ID == (int)ObjID::POLYGON)
+			BaseVector* a = base[i].get();
+			BaseVector* b = base[j].get();
+			
+			if (a->ID > b->ID)swap(a, b);
+
+			if (a->ID == (int)ObjID::POLYGON || b->ID == (int)ObjID::POLYGON)
 			{
-				HitCheck_PP(base[i].get(), base[j].get());
+				HitCheck_PP(a, b);
 			}
-			if (base[i]->ID == (int)ObjID::CIRCLE || base[j]->ID == (int)ObjID::CIRCLE)
+			if (a->ID == (int)ObjID::CIRCLE || b->ID == (int)ObjID::CIRCLE)
 			{
 
 			}
@@ -54,15 +59,23 @@ void HitChecker::HitCheck_PP(BaseVector* _poly1, BaseVector* _poly2)
 			shortrang_pos.push_back(pos_on_line);
 			shortrang_vec.push_back(near_line);
 		}
+
 		//Å’Z‹——£‚Ì’·‚³‚ğ•Û‘¶
 		vector<float>  length;
-		for (int b = 0; b < shortrang_vec.size(); b++)
-			length.push_back(Vector_Length(shortrang_vec[b]));
+		for (int i = 0; i < shortrang_vec.size(); i++)
+			length.push_back(Vector_Length(shortrang_vec[i]));
 
-		//’¸“_‚ª_poly2‚Ì’†‚É‚¢‚é‚©‚Ç‚¤‚©”»’è
-		//if (CheckInPolygon(shortrang_pos, length, _poly2))
+		//’¸“_‚ª_poly2‚Ì’†‚É‚¢‚é‚©
 		{
+			int x = 0;
 
+			for (int i = 0; i < _poly2->vertex_num; i++)
+			{
+				int j = i + 1;
+				if (j == _poly2->vertex_num)j = 0;
+
+
+			}
 		}
 	}
 }

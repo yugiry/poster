@@ -10,6 +10,7 @@
 #include <time.h>
 
 #include "objID.h"
+#include "Resource.h"
 
 using namespace std;
 
@@ -30,6 +31,10 @@ constexpr auto HALF = 2;
  struct Vector {
 	float x, y;
 };
+
+ struct Poly {
+	 Point vertex[3];
+ };
 
 //3D—p
 struct Point3 {
