@@ -6,7 +6,7 @@ CObject::CObject(int _type)
 	{
 	case 0:
 		pos.x = WINDOW_WIDTH / 2;
-		pos.y = WINDOW_HEIGHT / 2;
+		pos.y = WINDOW_HEIGHT - 125;
 
 		ImgWidth = 100;
 		ImgHeight = 100;
@@ -69,6 +69,6 @@ void CObject::Draw()
 	{
 		DrawLine(tri[i].vertex[0].x, tri[i].vertex[0].y, tri[i].vertex[1].x, tri[i].vertex[1].y, 0xffffff, true);
 		DrawLine(tri[i].vertex[1].x, tri[i].vertex[1].y, tri[i].vertex[2].x, tri[i].vertex[2].y, 0xffffff, true);
-		DrawLine(tri[i].vertex[2].x, tri[i].vertex[2].y, tri[i].vertex[1].x, tri[i].vertex[1].y, 0xffffff, true);
+		DrawLine(tri[i].vertex[2].x, tri[i].vertex[2].y, tri[i].vertex[0].x, tri[i].vertex[0].y, 0xffffff, true);
 	}
 }

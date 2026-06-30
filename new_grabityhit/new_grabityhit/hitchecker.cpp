@@ -19,16 +19,23 @@ int HitChecker::CheckerUpdate(const ObjList& base)
 			
 			if (a->ID > b->ID)swap(a, b);
 
-			if (a->ID == (int)ObjID::POLYGON || b->ID == (int)ObjID::POLYGON)
+			if (a->ID == (int)ObjID::POLYGON && b->ID == (int)ObjID::POLYGON)
 			{
 				HitCheck_PP(a, b);
 			}
-			if (a->ID == (int)ObjID::CIRCLE || b->ID == (int)ObjID::CIRCLE)
+			if (a->ID == (int)ObjID::CIRCLE && b->ID == (int)ObjID::CIRCLE)
+			{
+
+			}
+			if (a->ID == (int)ObjID::POLYGON && b->ID == (int)ObjID::CIRCLE)
 			{
 
 			}
 		}
 	}
+
+	if (object_hit)
+		printfDx("aaaa\n");
 
 	return 0;
 }
@@ -36,6 +43,40 @@ int HitChecker::CheckerUpdate(const ObjList& base)
 //多角形と多角形の当たり判定処理
 void HitChecker::HitCheck_PP(BaseVector* _poly1, BaseVector* _poly2)
 {
+	//_poly1のポリゴン分調べる
+	for (int polygon1 = 0; polygon1 < _poly1->tri.size(); polygon1++)
+	{
+		//aポリゴンの頂点ずつ
+		for (int vertex1 = 0; vertex1 < THREE; vertex1++)
+		{
+			Point p = _poly1->tri[polygon1].vertex[vertex1];		//現在調べている頂点
+
+			//_poly2のポリゴン分調べる
+			for (int polygon2 = 0; polygon2 < _poly2->tri.size(); polygon2++)
+			{
+				float cross[THREE];
+
+				//頂点が_poly2のポリゴン内に入っているか調べる
+				for (int i = 0; i < THREE; i++)
+				{
+					int j = i + 1;
+					if (j == THREE)j = 0;
+
+					Vector v1 = Sub_Point_Point(_poly2->tri[polygon2].vertex[j], _poly2->tri[polygon2].vertex[i]);
+					Vector v2 = Sub_Point_Point(p, _poly2->tri[polygon2].vertex[j]);
+
+					cross[i] = v1.x * v2.y - v1.y * v1.x;
+				}
+				if ((cross[0] > 0 && cross[1] > 0 && cross[2] > 0) || (cross[0] < 0 && cross[1] < 0 && cross[2] < 0))
+				{
+					object_hit = true;
+					break;
+				}
+			}
+
+		}
+	}
+
 	//_poly1の頂点の分判定を取る
 	for (int a = 0; a < _poly1->vertexs_vec.size(); a++)
 	{
@@ -90,4 +131,12 @@ void HitChecker::HitCheck_CC(BaseVector* _cir1, BaseVector* _cir2)
 void HitChecker::HitCheck_PC(BaseVector* _poly, BaseVector* _cir)
 {
 
+}
+
+void HitChecker::Draw()
+{
+	if (object_hit)
+	{
+		DrawString(0, 15, "hit", 0xff0000, true);
+	}
 }

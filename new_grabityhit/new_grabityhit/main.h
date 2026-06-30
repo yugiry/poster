@@ -23,6 +23,7 @@ constexpr auto WINDOW_WIDTH = 800;	//ウィンドウ横幅
 constexpr auto WINDOW_HEIGHT = 600;	//ウィンドウ縦幅
 
 constexpr auto HALF = 2;
+constexpr auto THREE = 3;
 
 //2D用
  struct Point {
