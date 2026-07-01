@@ -6,7 +6,7 @@ CObject::CObject(int _type)
 	{
 	case 0:
 		pos.x = WINDOW_WIDTH / 2;
-		pos.y = WINDOW_HEIGHT - 125;
+		pos.y = WINDOW_HEIGHT - 150;
 
 		ImgWidth = 100;
 		ImgHeight = 100;
