@@ -1,5 +1,6 @@
 #include "box.h"
 #include "function.h"
+#include "object.h"
 
 CBox::CBox()
 {
@@ -52,6 +53,12 @@ CBox::CBox(Point _p)
 
 int CBox::Action(const ObjList& base, ObjList& add_list)
 {
+	for (auto& obj : base)
+	{
+		CObject* p = dynamic_cast<CObject*>(obj.get());
+		if (!p)continue;
+	}
+
 	if (can_move)
 	{
 		vec.x = vec.y = 0.0f;

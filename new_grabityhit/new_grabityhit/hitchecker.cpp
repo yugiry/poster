@@ -51,7 +51,7 @@ void HitChecker::HitCheck_PP(BaseVector* _poly1, BaseVector* _poly2)
 		//aポリゴンの頂点ずつ
 		for (int vertex1 = 1; vertex1 < THREE; vertex1++)
 		{
-			Point p = _poly1->tri[polygon1].vertex[vertex1];		//現在調べている頂点
+			Point p = _poly1->tri[polygon1].vertex[vertex1];//現在調べている頂点
 
 			//_poly2のポリゴン分調べる
 			for (int polygon2 = 0; polygon2 < _poly2->tri.size(); polygon2++)
@@ -111,13 +111,23 @@ void HitChecker::HitCheck_PP(BaseVector* _poly1, BaseVector* _poly2)
 		}
 	}
 
-	if (poly1_hit)
+	//当たった後の動き
+	//二つとも当たっている場合
+	if (poly1_hit && poly2_hit)
 	{
 
 	}
-	if (poly2_hit)
+	//片方のみ当たっている場合
+	else
 	{
+		if (poly1_hit)
+		{
 
+		}
+		if (poly2_hit)
+		{
+
+		}
 	}
 }
 
