@@ -12,6 +12,7 @@ public:
 	void HitCheck_PP(BaseVector*, BaseVector*);
 	void HitCheck_CC(BaseVector*, BaseVector*);
 	void HitCheck_PC(BaseVector*, BaseVector*);
+	bool CheckInPolygon(vector<Point>, Point);
 
 	void Draw();
 #pragma endregion

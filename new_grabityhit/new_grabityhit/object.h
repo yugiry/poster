@@ -8,4 +8,6 @@ public:
 
 	int Action(const ObjList&, ObjList&);
 	void Draw();
+
+	bool can{ false };
 };

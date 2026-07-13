@@ -6,16 +6,17 @@ CObject::CObject(int _type)
 	{
 	case 0:
 		pos.x = WINDOW_WIDTH / 2;
-		pos.y = WINDOW_HEIGHT - 150;
+		pos.y = WINDOW_HEIGHT / 2 - 150;
 
 		ImgWidth = 100;
-		ImgHeight = 100;
+		ImgHeight = 300;
+		can = true;
 		break;
 	case 1:
 		pos.x = WINDOW_WIDTH / 2;
-		pos.y = WINDOW_HEIGHT - 50;
+		pos.y = WINDOW_HEIGHT / 2;
 
-		ImgWidth = WINDOW_WIDTH;
+		ImgWidth = 300;
 		ImgHeight = 100;
 		break;
 	}
@@ -40,9 +41,12 @@ CObject::CObject(int _type)
 
 		Poly poly;
 
-		poly.vertex[0] = { pos.x,pos.y };
-		poly.vertex[1] = { pos.x + vertexs_vec[i].x,pos.y + vertexs_vec[i].y };
-		poly.vertex[2] = { pos.x + vertexs_vec[j].x,pos.y + vertexs_vec[j].y };
+		Point p = { pos.x,pos.y };
+		poly.vertex.push_back(p);
+		p = { pos.x + vertexs_vec[i].x,pos.y + vertexs_vec[i].y };
+		poly.vertex.push_back(p);
+		p = { pos.x + vertexs_vec[j].x,pos.y + vertexs_vec[j].y };
+		poly.vertex.push_back(p);
 
 		tri.push_back(poly);
 	}
@@ -52,6 +56,25 @@ CObject::CObject(int _type)
 
 int CObject::Action(const ObjList& base, ObjList& add_list)
 {
+	if (can)
+	{
+		if (CheckHitKey(KEY_INPUT_W))pos.y -= 5.0f;
+		if (CheckHitKey(KEY_INPUT_S))pos.y += 5.0f;
+		if (CheckHitKey(KEY_INPUT_A))pos.x -= 5.0f;
+		if (CheckHitKey(KEY_INPUT_D))pos.x += 5.0f;
+	}
+
+	//à⁄ìÆèàóù
+	for (int i = 0; i < vertex_num; i++)
+	{
+		int j = i + 1;
+		if (j == vertex_num)j = 0;
+
+		tri[i].vertex[0] = { pos.x,pos.y };
+		tri[i].vertex[1] = { pos.x + vertexs_vec[i].x,pos.y + vertexs_vec[i].y };
+		tri[i].vertex[2] = { pos.x + vertexs_vec[j].x,pos.y + vertexs_vec[j].y };
+	}
+
 	return 0;
 }
 

@@ -34,7 +34,7 @@ constexpr auto THREE = 3;
 };
 
  struct Poly {
-	 Point vertex[3];
+	 vector<Point> vertex;
  };
 
 //3D—p
