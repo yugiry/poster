@@ -5,7 +5,7 @@
 #include "Scene_Manager.h"
 #include "game.h"
 
-constexpr auto FPS = 1;//基本FPS
+constexpr auto FPS = 60;//基本FPS
 
 //Point3 CCameraInfo::pos;//カメラ情報初期化(グローバル）
 

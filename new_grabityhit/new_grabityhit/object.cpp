@@ -94,4 +94,18 @@ void CObject::Draw()
 		DrawLine(tri[i].vertex[1].x, tri[i].vertex[1].y, tri[i].vertex[2].x, tri[i].vertex[2].y, 0xffffff, true);
 		DrawLine(tri[i].vertex[2].x, tri[i].vertex[2].y, tri[i].vertex[0].x, tri[i].vertex[0].y, 0xffffff, true);
 	}
+
+	switch ((int)ImgWidth)
+	{
+	case 100:
+		DrawFormatString(WINDOW_WIDTH / 2, 0, 0xffffff, "%f:%f", tri[0].vertex[1].x, tri[0].vertex[1].y);
+		if (vertex_hit)
+			DrawString(0, 20, "ècìñÇΩÇ¡ÇΩ", 0xffffff);
+		break;
+	case 300:
+		DrawFormatString(WINDOW_WIDTH / 2, 20, 0xffffff, "%f:%f", tri[0].vertex[1].x, tri[0].vertex[1].y);
+		if (vertex_hit)
+			DrawString(0, 40, "â°ìñÇΩÇ¡ÇΩ", 0xffffff);
+		break;
+	}
 }

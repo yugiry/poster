@@ -48,6 +48,7 @@ public:
 	float ImgHeight{ 0 };//画像の縦サイズ
 	int radius{ 0 };//半径
 
+	bool vertex_hit{ false };
 };
 
 //キャラクターベース3D
