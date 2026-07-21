@@ -80,8 +80,8 @@ void HitChecker::HitCheck_PP(BaseVector* _poly1, BaseVector* _poly2)
 				}
 				if ((cross[0] > 0 && cross[1] > 0 && cross[2] > 0) || (cross[0] < 0 && cross[1] < 0 && cross[2] < 0))
 				{
-					//poly1_hit = true;
-					//break;
+					poly1_hit = true;
+					break;
 				}
 			}
 		}

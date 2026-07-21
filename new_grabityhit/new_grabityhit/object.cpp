@@ -19,6 +19,11 @@ CObject::CObject(int _type)
 		ImgWidth = 300;
 		ImgHeight = 100;
 		break;
+	case 2:
+		pos.x = pos.y = 0;
+
+		ImgWidth = ImgHeight = 50;
+		break;
 	}
 
 	rc = 0.5f;

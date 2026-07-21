@@ -12,6 +12,7 @@ CGame::CGame(CManager* p) :CScene(p)
 {
 	base.emplace_back(make_unique<CObject>(0));
 	base.emplace_back(make_unique<CObject>(1));
+	//base.emplace_back(make_unique<CObject>(2));
 
 	//base.push_back(make_unique<CBox>());
 	//Point pos = { WINDOW_WIDTH / 2,WINDOW_HEIGHT - 50 };
@@ -43,7 +44,7 @@ int CGame::UpDate(){
 	*/
 
 	//オブジェクトのソート処理(クイックソート)指定したインデックス間
-	ObjSort_Quick(base, 0, base.size() - 1);
+	//ObjSort_Quick(base, 0, base.size() - 1);
 
 	return 0;
 }
