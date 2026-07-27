@@ -14,7 +14,7 @@ CObject::CObject(int _type)
 		break;
 	case 1:
 		pos.x = WINDOW_WIDTH / 2;
-		pos.y = WINDOW_HEIGHT / 2;
+		pos.y = WINDOW_HEIGHT - 100;
 
 		ImgWidth = 300;
 		ImgHeight = 100;
@@ -63,10 +63,15 @@ int CObject::Action(const ObjList& base, ObjList& add_list)
 {
 	if (can)
 	{
-		if (CheckHitKey(KEY_INPUT_W))pos.y -= 5.0f;
-		if (CheckHitKey(KEY_INPUT_S))pos.y += 5.0f;
-		if (CheckHitKey(KEY_INPUT_A))pos.x -= 5.0f;
-		if (CheckHitKey(KEY_INPUT_D))pos.x += 5.0f;
+		vec.x = 0.0f; vec.y += g;
+
+		if (CheckHitKey(KEY_INPUT_W))vec.y = -5.0f;
+		if (CheckHitKey(KEY_INPUT_S))vec.y = 5.0f;
+		if (CheckHitKey(KEY_INPUT_A))vec.x = -5.0f;
+		if (CheckHitKey(KEY_INPUT_D))vec.x = 5.0f;
+
+		pos.x += vec.x;
+		pos.y += vec.y;
 	}
 
 	//ˆÚ“®ˆ—
@@ -78,6 +83,23 @@ int CObject::Action(const ObjList& base, ObjList& add_list)
 		tri[i].vertex[0] = { pos.x,pos.y };
 		tri[i].vertex[1] = { pos.x + vertexs_vec[i].x,pos.y + vertexs_vec[i].y };
 		tri[i].vertex[2] = { pos.x + vertexs_vec[j].x,pos.y + vertexs_vec[j].y };
+
+		/*if (tri[i].vertex[1].y > WINDOW_HEIGHT)
+		{
+			pos.y += WINDOW_HEIGHT - tri[i].vertex[1].y;
+
+			tri[i].vertex[0] = { pos.x,pos.y };
+			tri[i].vertex[1] = { pos.x + vertexs_vec[i].x,pos.y + vertexs_vec[i].y };
+			tri[i].vertex[2] = { pos.x + vertexs_vec[j].x,pos.y + vertexs_vec[j].y };
+		}
+		if (tri[i].vertex[2].y > WINDOW_HEIGHT)
+		{
+			pos.y += WINDOW_HEIGHT - tri[i].vertex[2].y;
+
+			tri[i].vertex[0] = { pos.x,pos.y };
+			tri[i].vertex[1] = { pos.x + vertexs_vec[i].x,pos.y + vertexs_vec[i].y };
+			tri[i].vertex[2] = { pos.x + vertexs_vec[j].x,pos.y + vertexs_vec[j].y };
+		}*/
 	}
 
 	return 0;
