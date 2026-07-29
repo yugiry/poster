@@ -16,7 +16,7 @@ int HitChecker::CheckerUpdate(const ObjList& base)
 		{
 			BaseVector* a = base[i].get();
 			BaseVector* b = base[j].get();
-			
+
 			if (a->ID > b->ID)swap(a, b);
 
 			if (a->ID == (int)ObjID::POLYGON && b->ID == (int)ObjID::POLYGON)
@@ -80,7 +80,26 @@ void HitChecker::HitCheck_PP(BaseVector* _poly1, BaseVector* _poly2)
 				}
 				if ((cross[0] > 0 && cross[1] > 0 && cross[2] > 0) || (cross[0] < 0 && cross[1] < 0 && cross[2] < 0))
 				{
-					poly1_hit = true;
+					//重力加速をリセット
+					_poly1->vec.y = 0;
+
+					//当たった位置まで戻す
+					Point near_pos = Near_Point_Line(p, _poly2->tri[polygon2].vertex[1], _poly2->tri[polygon2].vertex[2]);
+					Vector return_vec = { near_pos.x - p.x,near_pos.y - p.y };
+
+					_poly1->pos.x += return_vec.x;
+					_poly1->pos.y += return_vec.y;
+
+					for (int a = 0; a < _poly1->vertex_num; a++)
+					{
+						int b = a + 1;
+						if (b == _poly1->vertex_num)b = 0;
+
+						_poly1->tri[a].vertex[0] = { _poly1->pos.x,_poly1->pos.y };
+						_poly1->tri[a].vertex[1] = { _poly1->pos.x + _poly1->vertexs_vec[a].x,_poly1->pos.y + _poly1->vertexs_vec[a].y };
+						_poly1->tri[a].vertex[2] = { _poly1->pos.x + _poly1->vertexs_vec[b].x,_poly1->pos.y + _poly1->vertexs_vec[b].y };
+					}
+
 					break;
 				}
 			}

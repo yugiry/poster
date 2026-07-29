@@ -70,36 +70,36 @@ int CObject::Action(const ObjList& base, ObjList& add_list)
 		if (CheckHitKey(KEY_INPUT_A))vec.x = -5.0f;
 		if (CheckHitKey(KEY_INPUT_D))vec.x = 5.0f;
 
+		//à⁄ìÆèàóù
 		pos.x += vec.x;
 		pos.y += vec.y;
-	}
 
-	//à⁄ìÆèàóù
-	for (int i = 0; i < vertex_num; i++)
-	{
-		int j = i + 1;
-		if (j == vertex_num)j = 0;
-
-		tri[i].vertex[0] = { pos.x,pos.y };
-		tri[i].vertex[1] = { pos.x + vertexs_vec[i].x,pos.y + vertexs_vec[i].y };
-		tri[i].vertex[2] = { pos.x + vertexs_vec[j].x,pos.y + vertexs_vec[j].y };
-
-		/*if (tri[i].vertex[1].y > WINDOW_HEIGHT)
 		{
-			pos.y += WINDOW_HEIGHT - tri[i].vertex[1].y;
+			Vector return_vec{ 0,0 };
+			for (int i = 0; i < vertex_num; i++)
+			{
+				int j = i + 1;
+				if (j == vertex_num)j = 0;
 
-			tri[i].vertex[0] = { pos.x,pos.y };
-			tri[i].vertex[1] = { pos.x + vertexs_vec[i].x,pos.y + vertexs_vec[i].y };
-			tri[i].vertex[2] = { pos.x + vertexs_vec[j].x,pos.y + vertexs_vec[j].y };
+				tri[i].vertex[0] = { pos.x,pos.y };
+				tri[i].vertex[1] = { pos.x + vertexs_vec[i].x,pos.y + vertexs_vec[i].y };
+				tri[i].vertex[2] = { pos.x + vertexs_vec[j].x,pos.y + vertexs_vec[j].y };
+
+				if (tri[i].vertex[1].y > WINDOW_HEIGHT)
+				{
+					return_vec.y = WINDOW_HEIGHT - tri[i].vertex[1].y;
+					vec.y = 0;
+				}
+				else if (tri[i].vertex[2].y > WINDOW_HEIGHT)
+				{
+					return_vec.y = WINDOW_HEIGHT - tri[i].vertex[2].y;
+					vec.y = 0;
+				}
+			}
+
+			pos.x += return_vec.x;
+			pos.y += return_vec.y;
 		}
-		if (tri[i].vertex[2].y > WINDOW_HEIGHT)
-		{
-			pos.y += WINDOW_HEIGHT - tri[i].vertex[2].y;
-
-			tri[i].vertex[0] = { pos.x,pos.y };
-			tri[i].vertex[1] = { pos.x + vertexs_vec[i].x,pos.y + vertexs_vec[i].y };
-			tri[i].vertex[2] = { pos.x + vertexs_vec[j].x,pos.y + vertexs_vec[j].y };
-		}*/
 	}
 
 	return 0;
@@ -128,6 +128,7 @@ void CObject::Draw()
 		DrawFormatString(WINDOW_WIDTH / 2, 0, 0xffffff, "%f:%f", tri[0].vertex[1].x, tri[0].vertex[1].y);
 		if (vertex_hit)
 			DrawString(0, 20, "ècìñÇΩÇ¡ÇΩ", 0xffffff);
+		DrawFormatString(0, 40, 0xffffff, "%f", vec.y);
 		break;
 	case 300:
 		DrawFormatString(WINDOW_WIDTH / 2, 20, 0xffffff, "%f:%f", tri[0].vertex[1].x, tri[0].vertex[1].y);
