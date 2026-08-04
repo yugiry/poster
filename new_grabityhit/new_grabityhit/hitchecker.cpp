@@ -19,6 +19,14 @@ int HitChecker::CheckerUpdate(const ObjList& base)
 
 			if (a->ID > b->ID)swap(a, b);
 
+			if (a->ID == (int)ObjID::POLYGON && b->ID == (int)ObjID::WALL)
+			{
+				HitCheck_PW(a, b);
+			}
+			if (a->ID == (int)ObjID::CIRCLE && b->ID == (int)ObjID::WALL)
+			{
+
+			}
 			if (a->ID == (int)ObjID::POLYGON && b->ID == (int)ObjID::POLYGON)
 			{
 				HitCheck_PP(a, b);
@@ -40,6 +48,57 @@ int HitChecker::CheckerUpdate(const ObjList& base)
 	return 0;
 }
 
+//多角形と壁の当たり判定処理
+void HitChecker::HitCheck_PW(BaseVector* _poly, BaseVector* _wall)
+{
+	//_poly1のポリゴン分調べる
+	for (int polygon1 = 0; polygon1 < _poly->tri.size(); polygon1++)
+	{
+		//現在のポリゴンの頂点ずつ
+		for (int vertex1 = 1; vertex1 < THREE; vertex1++)
+		{
+			Point p = _poly->tri[polygon1].vertex[vertex1];//現在調べている頂点
+
+			//_poly2のポリゴン分調べる
+			for (int polygon2 = 0; polygon2 < _wall->tri.size(); polygon2++)
+			{
+				float cross[THREE];
+
+				//頂点が_poly2のポリゴン内に入っているか調べる
+				for (int i = 0; i < THREE; i++)
+				{
+					int j = i + 1;
+					if (j == THREE)j = 0;
+
+					Vector v1 = Sub_Point_Point(_wall->tri[polygon2].vertex[j], _wall->tri[polygon2].vertex[i]);
+					Vector v2 = Sub_Point_Point(p, _wall->tri[polygon2].vertex[j]);
+
+					cross[i] = v1.x * v2.y - v1.y * v2.x;
+				}
+				if ((cross[0] > 0 && cross[1] > 0 && cross[2] > 0) || (cross[0] < 0 && cross[1] < 0 && cross[2] < 0))
+				{
+					//重力加速をリセット
+					_poly->vec.y = 0;
+
+					//当たった位置まで戻す
+					Point near_pos = Near_Point_Line(p, _wall->tri[polygon2].vertex[1], _wall->tri[polygon2].vertex[2]);
+					Vector return_vec = { near_pos.x - p.x,near_pos.y - p.y };
+
+					UpDateVertexPosition_Object(_poly, return_vec);
+
+					break;
+				}
+			}
+		}
+	}
+}
+
+//円と壁の当たり判定処理
+void HitChecker::HitCheck_CW(BaseVector* _cir, BaseVector* _wall)
+{
+
+}
+
 //多角形と多角形の当たり判定処理
 void HitChecker::HitCheck_PP(BaseVector* _poly1, BaseVector* _poly2)
 {
@@ -53,18 +112,9 @@ void HitChecker::HitCheck_PP(BaseVector* _poly1, BaseVector* _poly2)
 		{
 			Point p = _poly1->tri[polygon1].vertex[vertex1];//現在調べている頂点
 
-			//Point p = _poly1->tri[0].vertex[1];//左上...?
-
 			//_poly2のポリゴン分調べる
 			for (int polygon2 = 0; polygon2 < _poly2->tri.size(); polygon2++)
 			{
-				//int polygon2 = 0;
-				/*if (CheckInPolygon(_poly2->tri[polygon2].vertex, p));
-				{
-					poly1_hit = true;
-					break;
-				}*/
-
 				float cross[THREE];
 
 				//頂点が_poly2のポリゴン内に入っているか調べる
@@ -87,18 +137,7 @@ void HitChecker::HitCheck_PP(BaseVector* _poly1, BaseVector* _poly2)
 					Point near_pos = Near_Point_Line(p, _poly2->tri[polygon2].vertex[1], _poly2->tri[polygon2].vertex[2]);
 					Vector return_vec = { near_pos.x - p.x,near_pos.y - p.y };
 
-					_poly1->pos.x += return_vec.x;
-					_poly1->pos.y += return_vec.y;
-
-					for (int a = 0; a < _poly1->vertex_num; a++)
-					{
-						int b = a + 1;
-						if (b == _poly1->vertex_num)b = 0;
-
-						_poly1->tri[a].vertex[0] = { _poly1->pos.x,_poly1->pos.y };
-						_poly1->tri[a].vertex[1] = { _poly1->pos.x + _poly1->vertexs_vec[a].x,_poly1->pos.y + _poly1->vertexs_vec[a].y };
-						_poly1->tri[a].vertex[2] = { _poly1->pos.x + _poly1->vertexs_vec[b].x,_poly1->pos.y + _poly1->vertexs_vec[b].y };
-					}
+					UpDateVertexPosition_Object(_poly1, return_vec);
 
 					break;
 				}
@@ -107,41 +146,41 @@ void HitChecker::HitCheck_PP(BaseVector* _poly1, BaseVector* _poly2)
 	}
 
 	//_poly2のポリゴン分調べる
-	for (int polygon2 = 0; polygon2 < _poly2->tri.size(); polygon2++)
-	{
-		//aポリゴンの頂点ずつ
-		for (int vertex2 = 1; vertex2 < THREE; vertex2++)
-		{
-			Point p = _poly2->tri[polygon2].vertex[vertex2];//現在調べている頂点
+	//for (int polygon2 = 0; polygon2 < _poly2->tri.size(); polygon2++)
+	//{
+	//	//aポリゴンの頂点ずつ
+	//	for (int vertex2 = 1; vertex2 < THREE; vertex2++)
+	//	{
+	//		Point p = _poly2->tri[polygon2].vertex[vertex2];//現在調べている頂点
 
-			//_poly1のポリゴン分調べる
-			for (int polygon1 = 0; polygon1 < _poly1->tri.size(); polygon1++)
-			{
-				float cross[THREE];
+	//		//_poly1のポリゴン分調べる
+	//		for (int polygon1 = 0; polygon1 < _poly1->tri.size(); polygon1++)
+	//		{
+	//			float cross[THREE];
 
-				//頂点が_poly1のポリゴン内に入っているか調べる
-				for (int i = 0; i < THREE; i++)
-				{
-					int j = i + 1;
-					if (j == THREE)j = 0;
+	//			//頂点が_poly1のポリゴン内に入っているか調べる
+	//			for (int i = 0; i < THREE; i++)
+	//			{
+	//				int j = i + 1;
+	//				if (j == THREE)j = 0;
 
-					Vector v1 = Sub_Point_Point(_poly1->tri[polygon1].vertex[j], _poly1->tri[polygon1].vertex[i]);
-					Vector v2 = Sub_Point_Point(p, _poly1->tri[polygon1].vertex[j]);
+	//				Vector v1 = Sub_Point_Point(_poly1->tri[polygon1].vertex[j], _poly1->tri[polygon1].vertex[i]);
+	//				Vector v2 = Sub_Point_Point(p, _poly1->tri[polygon1].vertex[j]);
 
-					cross[i] = v1.x * v2.y - v1.y * v2.x;
-				}
-				if ((cross[0] > 0 && cross[1] > 0 && cross[2] > 0) || (cross[0] < 0 && cross[1] < 0 && cross[2] < 0))
-				{
-					poly2_hit = true;
-					break;
-				}
-			}
-		}
-	}
+	//				cross[i] = v1.x * v2.y - v1.y * v2.x;
+	//			}
+	//			if ((cross[0] > 0 && cross[1] > 0 && cross[2] > 0) || (cross[0] < 0 && cross[1] < 0 && cross[2] < 0))
+	//			{
+	//				poly2_hit = true;
+	//				break;
+	//			}
+	//		}
+	//	}
+	//}
 
 	//当たった後の動き
-	_poly1->vertex_hit = poly1_hit;
-	_poly2->vertex_hit = poly2_hit;
+	//_poly1->vertex_hit = poly1_hit;
+	//_poly2->vertex_hit = poly2_hit;
 }
 
 //円と円の当たり判定処理

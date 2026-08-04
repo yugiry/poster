@@ -1,4 +1,5 @@
 #include "object.h"
+#include "function.h"
 
 CObject::CObject(int _type)
 {
@@ -11,6 +12,7 @@ CObject::CObject(int _type)
 		ImgWidth = 100;
 		ImgHeight = 300;
 		can = true;
+		ID = (int)ObjID::POLYGON;
 		break;
 	case 1:
 		pos.x = WINDOW_WIDTH / 2;
@@ -18,6 +20,7 @@ CObject::CObject(int _type)
 
 		ImgWidth = 300;
 		ImgHeight = 100;
+		ID = (int)ObjID::WALL;
 		break;
 	case 2:
 		pos.x = pos.y = 0;
@@ -26,6 +29,7 @@ CObject::CObject(int _type)
 		break;
 	}
 
+	angle = 0;
 	rc = 0.5f;
 	vertex_num = 4;
 
@@ -47,16 +51,20 @@ CObject::CObject(int _type)
 		Poly poly;
 
 		Point p = { pos.x,pos.y };
+		float a = 0;
 		poly.vertex.push_back(p);
+		poly.angle.push_back(a);
 		p = { pos.x + vertexs_vec[i].x,pos.y + vertexs_vec[i].y };
+		a = GetAngle(vertexs_vec[i]);
 		poly.vertex.push_back(p);
+		poly.angle.push_back(a);
 		p = { pos.x + vertexs_vec[j].x,pos.y + vertexs_vec[j].y };
+		a = GetAngle(vertexs_vec[j]);
 		poly.vertex.push_back(p);
+		poly.angle.push_back(a);
 
 		tri.push_back(poly);
 	}
-
-	ID = (int)ObjID::POLYGON;
 }
 
 int CObject::Action(const ObjList& base, ObjList& add_list)
@@ -70,20 +78,50 @@ int CObject::Action(const ObjList& base, ObjList& add_list)
 		if (CheckHitKey(KEY_INPUT_A))vec.x = -5.0f;
 		if (CheckHitKey(KEY_INPUT_D))vec.x = 5.0f;
 
-		//à⁄ìÆèàóù
-		pos.x += vec.x;
-		pos.y += vec.y;
+		if (CheckHitKey(KEY_INPUT_I))angle++;
+		if (CheckHitKey(KEY_INPUT_U))angle--;
 
-		{
+		//ç¿ïWçXêVèàóù
+		UpDateVertexPosition_Screen(this);
+		/* {
+			//à⁄ìÆèàóù
+			pos.x += vec.x;
+			pos.y += vec.y;
+
 			Vector return_vec{ 0,0 };
 			for (int i = 0; i < vertex_num; i++)
 			{
 				int j = i + 1;
 				if (j == vertex_num)j = 0;
 
+				Vector vertex_vec;
+				float length, a, rad;
+
 				tri[i].vertex[0] = { pos.x,pos.y };
-				tri[i].vertex[1] = { pos.x + vertexs_vec[i].x,pos.y + vertexs_vec[i].y };
-				tri[i].vertex[2] = { pos.x + vertexs_vec[j].x,pos.y + vertexs_vec[j].y };
+
+
+
+				//tri[i].vertex[1] = { pos.x + vertexs_vec[i].x,pos.y + vertexs_vec[i].y};
+				length = Vector_Length(vertexs_vec[i]);
+				a = tri[i].angle[1] + angle;
+				if (a >= 360.0f)a -= 360.0f;
+				rad = a * (M_PI / 180.0f);
+				vertex_vec = { (float)cos(rad),-(float)sin(rad) };
+				vertex_vec = Vector_SetLength(vertex_vec, length);
+				tri[i].vertex[1] = { pos.x + vertex_vec.x,pos.y + vertex_vec.y };
+
+
+
+				//tri[i].vertex[2] = { pos.x + vertexs_vec[j].x,pos.y + vertexs_vec[j].y };
+				length = Vector_Length(vertexs_vec[j]);
+				a = tri[i].angle[2] + angle;
+				if (a >= 360.0f)a -= 360.0f;
+				rad = a * (M_PI / 180.0f);
+				vertex_vec = { (float)cos(rad),-(float)sin(rad) };
+				vertex_vec = Vector_SetLength(vertex_vec, length);
+				tri[i].vertex[2] = { pos.x + vertex_vec.x,pos.y + vertex_vec.y };
+
+
 
 				if (tri[i].vertex[1].y > WINDOW_HEIGHT)
 				{
@@ -99,7 +137,7 @@ int CObject::Action(const ObjList& base, ObjList& add_list)
 
 			pos.x += return_vec.x;
 			pos.y += return_vec.y;
-		}
+		}*/
 	}
 
 	return 0;
@@ -107,7 +145,7 @@ int CObject::Action(const ObjList& base, ObjList& add_list)
 
 void CObject::Draw()
 {
-	DrawCircle(pos.x, pos.y, 1, 0xff0000, true);
+	DrawCircle(pos.x, pos.y, 4, 0xff0000, true);
 
 	/*for (int i = 0; i < vertexs_vec.size(); i++)
 	{
@@ -117,6 +155,7 @@ void CObject::Draw()
 	}*/
 	for (int i = 0; i < tri.size(); i++)
 	{
+		//int i = 0;
 		DrawLine(tri[i].vertex[0].x, tri[i].vertex[0].y, tri[i].vertex[1].x, tri[i].vertex[1].y, 0xffffff, true);
 		DrawLine(tri[i].vertex[1].x, tri[i].vertex[1].y, tri[i].vertex[2].x, tri[i].vertex[2].y, 0xffffff, true);
 		DrawLine(tri[i].vertex[2].x, tri[i].vertex[2].y, tri[i].vertex[0].x, tri[i].vertex[0].y, 0xffffff, true);

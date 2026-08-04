@@ -9,6 +9,8 @@ public:
 #pragma region ä÷êî
 
 	int CheckerUpdate(const ObjList&);
+	void HitCheck_PW(BaseVector*, BaseVector*);
+	void HitCheck_CW(BaseVector*, BaseVector*);
 	void HitCheck_PP(BaseVector*, BaseVector*);
 	void HitCheck_CC(BaseVector*, BaseVector*);
 	void HitCheck_PC(BaseVector*, BaseVector*);

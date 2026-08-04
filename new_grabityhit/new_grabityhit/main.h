@@ -35,7 +35,10 @@ constexpr auto THREE = 3;
 
  struct Poly {
 	 vector<Point> vertex;
+	 vector<float> angle;
  };
+
+ constexpr Vector base_angle{ 1.0f,0.0f };
 
 //3D—p
 struct Point3 {
