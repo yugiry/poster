@@ -51,7 +51,7 @@ int HitChecker::CheckerUpdate(const ObjList& base)
 //多角形と壁の当たり判定処理
 void HitChecker::HitCheck_PW(BaseVector* _poly, BaseVector* _wall)
 {
-	//_poly1のポリゴン分調べる
+	//_polyのポリゴン分調べる
 	for (int polygon1 = 0; polygon1 < _poly->tri.size(); polygon1++)
 	{
 		//現在のポリゴンの頂点ずつ
@@ -59,12 +59,12 @@ void HitChecker::HitCheck_PW(BaseVector* _poly, BaseVector* _wall)
 		{
 			Point p = _poly->tri[polygon1].vertex[vertex1];//現在調べている頂点
 
-			//_poly2のポリゴン分調べる
+			//_wallのポリゴン分調べる
 			for (int polygon2 = 0; polygon2 < _wall->tri.size(); polygon2++)
 			{
 				float cross[THREE];
 
-				//頂点が_poly2のポリゴン内に入っているか調べる
+				//頂点が_wallのポリゴン内に入っているか調べる
 				for (int i = 0; i < THREE; i++)
 				{
 					int j = i + 1;
@@ -83,6 +83,47 @@ void HitChecker::HitCheck_PW(BaseVector* _poly, BaseVector* _wall)
 					//当たった位置まで戻す
 					Point near_pos = Near_Point_Line(p, _wall->tri[polygon2].vertex[1], _wall->tri[polygon2].vertex[2]);
 					Vector return_vec = { near_pos.x - p.x,near_pos.y - p.y };
+
+					UpDateVertexPosition_Object(_poly, return_vec);
+
+					break;
+				}
+			}
+		}
+	}
+
+	//_wallのポリゴン分調べる
+	for (int polygon1 = 0; polygon1 < _wall->tri.size(); polygon1++)
+	{
+		//現在のポリゴンの頂点ずつ
+		for (int vertex1 = 1; vertex1 < THREE; vertex1++)
+		{
+			Point p = _wall->tri[polygon1].vertex[vertex1];//現在調べている頂点
+
+			//_polyのポリゴン分調べる
+			for (int polygon2 = 0; polygon2 < _poly->tri.size(); polygon2++)
+			{
+				float cross[THREE];
+
+				//頂点が_polyのポリゴン内に入っているか調べる
+				for (int i = 0; i < THREE; i++)
+				{
+					int j = i + 1;
+					if (j == THREE)j = 0;
+
+					Vector v1 = Sub_Point_Point(_poly->tri[polygon2].vertex[j], _poly->tri[polygon2].vertex[i]);
+					Vector v2 = Sub_Point_Point(p, _poly->tri[polygon2].vertex[j]);
+
+					cross[i] = v1.x * v2.y - v1.y * v2.x;
+				}
+				if ((cross[0] > 0 && cross[1] > 0 && cross[2] > 0) || (cross[0] < 0 && cross[1] < 0 && cross[2] < 0))
+				{
+					//重力加速度をリセット
+					_poly->vec.y = 0;
+
+					//当たった位置まで戻す
+					Point near_pos = Near_Point_Line(p, _poly->tri[polygon2].vertex[1], _poly->tri[polygon2].vertex[2]);
+					Vector return_vec = { p.x - near_pos.x,p.y - near_pos.y };
 
 					UpDateVertexPosition_Object(_poly, return_vec);
 
