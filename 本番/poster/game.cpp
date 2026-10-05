@@ -16,11 +16,11 @@
 //コンストラクタ
 CGame::CGame(CManager* p) :CScene(p) {
 	//アーム生成
-	base.emplace_back((unique_ptr<BaseVector>)new CCrane());
+	//base.emplace_back((unique_ptr<BaseVector>)new CCrane());
 	
 	Point pos; int w, h;
 	//壁生成
-	{
+	/*{
 		pos.x = 250; pos.y = 200; w = 10; h = WINDOW_HEIGHT - pos.y;
 		base.emplace_back((unique_ptr<BaseVector>)new CWall(pos, w, h));
 		pos.x = 580; pos.y = 200; w = 10; h = WINDOW_HEIGHT - pos.y;
@@ -33,24 +33,24 @@ CGame::CGame(CManager* p) :CScene(p) {
 		base.emplace_back((unique_ptr<BaseVector>)new CWall(pos, w, h));
 		pos.x = 590; pos.y = WINDOW_HEIGHT - 10; w = 850 - pos.x; h = 10;
 		base.emplace_back((unique_ptr<BaseVector>)new CWall(pos, w, h));
-	}
+	}*/
 
-	//ごみの仮生成
-	pos.x = WINDOW_WIDTH / 2; pos.y = WINDOW_HEIGHT / 2;
-	base.emplace_back((unique_ptr<BaseVector>)new CPaper(pos));
-	pos.x = WINDOW_WIDTH / 2 - 200;
-	base.emplace_back((unique_ptr<BaseVector>)new CCan(pos));
-	pos.x += 30;
-	base.emplace_back((unique_ptr<BaseVector>)new CCan(pos));
-	pos.x += 30;
-	base.emplace_back((unique_ptr<BaseVector>)new CCan(pos));
-	pos.x += 30;
-	base.emplace_back((unique_ptr<BaseVector>)new CCan(pos));
+	////ごみの仮生成
+	//pos.x = WINDOW_WIDTH / 2; pos.y = WINDOW_HEIGHT / 2;
+	//base.emplace_back((unique_ptr<BaseVector>)new CPaper(pos));
+	//pos.x = WINDOW_WIDTH / 2 - 200;
+	//base.emplace_back((unique_ptr<BaseVector>)new CCan(pos));
+	//pos.x += 30;
+	//base.emplace_back((unique_ptr<BaseVector>)new CCan(pos));
+	//pos.x += 30;
+	//base.emplace_back((unique_ptr<BaseVector>)new CCan(pos));
+	//pos.x += 30;
+	//base.emplace_back((unique_ptr<BaseVector>)new CCan(pos));
 
-	//焼却炉の炎を生成
-	base.emplace_back((unique_ptr<BaseVector>)new CIncinerator());
-	//プレス機を生成
-	base.emplace_back((unique_ptr<BaseVector>)new CPressmachine());
+	////焼却炉の炎を生成
+	//base.emplace_back((unique_ptr<BaseVector>)new CIncinerator());
+	////プレス機を生成
+	//base.emplace_back((unique_ptr<BaseVector>)new CPressmachine());
 }
 
 //更新処理
@@ -85,8 +85,15 @@ int CGame::Update(){
 void CGame::Draw()
 {
 	//オブジェクト個数
-	DrawFormatString(0, 0, GetColor(255, 255, 255), "Object_Count = %d", base.size());
+	//DrawFormatString(0, 0, GetColor(255, 255, 255), "Object_Count = %d", base.size());
 	
+	//窓
+	DrawBox(0, 0, 250, 600, 0xff0000, true);
+
+	DrawBox(250, 0, 700, 600, 0x00ff00, true);
+
+	DrawBox(700, 0, 950, 600, 0x0000ff, true);
+
 	for (int i = 0; i < base.size(); i++)
 		if(base[i]->FLAG) base[i]->Draw();
 

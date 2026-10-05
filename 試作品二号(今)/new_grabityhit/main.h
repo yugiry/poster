@@ -19,8 +19,8 @@ using namespace std;
 #define DEGREE(_rad) ((float)(_rad)*180.0f/M_PI)
 
 //基本ウィンドウサイズ
-constexpr auto WINDOW_WIDTH = 800;	//ウィンドウ横幅
-constexpr auto WINDOW_HEIGHT = 600;	//ウィンドウ縦幅
+constexpr auto WINDOW_WIDTH = 1500;	//ウィンドウ横幅
+constexpr auto WINDOW_HEIGHT = 800;	//ウィンドウ縦幅
 
 constexpr auto HALF = 2;
 constexpr auto THREE = 3;

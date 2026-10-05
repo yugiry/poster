@@ -107,30 +107,30 @@ C:\dxlib\DxLib.h(5396,1): warning C4819: ファイルは、現在のコード �
 C:\dxlib\DxLib.h(5581,1): warning C4819: ファイルは、現在のコード ページ (932) で表示できない文字を含んでいます。データの損失を防ぐために、ファイルを Unicode 形式で保存してください。
   (ソース ファイル '2D_function.cpp' をコンパイルしています)
   
-C:\Users\event\Desktop\crane\new_grabityhit\new_grabityhit\objBase.h(29,7): warning C4244: '引数': 'float' から 'int' への変換です。データが失われる可能性があります。
+C:\Users\GA3\Desktop\クレーンゲーム\試作品二号(今)\new_grabityhit\objBase.h(29,7): warning C4244: '引数': 'float' から 'int' への変換です。データが失われる可能性があります。
   (ソース ファイル '2D_function.cpp' をコンパイルしています)
   
-C:\Users\event\Desktop\crane\new_grabityhit\new_grabityhit\objBase.h(29,4): warning C4244: '引数': 'float' から 'int' への変換です。データが失われる可能性があります。
+C:\Users\GA3\Desktop\クレーンゲーム\試作品二号(今)\new_grabityhit\objBase.h(29,4): warning C4244: '引数': 'float' から 'int' への変換です。データが失われる可能性があります。
   (ソース ファイル '2D_function.cpp' をコンパイルしています)
   
-C:\Users\event\Desktop\crane\new_grabityhit\new_grabityhit\2D_function.cpp(37,143): warning C4244: '=': 'double' から 'float' への変換です。データが失われる可能性があります。
-C:\Users\event\Desktop\crane\new_grabityhit\new_grabityhit\2D_function.cpp(37,202): warning C4244: '=': 'double' から 'float' への変換です。データが失われる可能性があります。
-C:\Users\event\Desktop\crane\new_grabityhit\new_grabityhit\2D_function.cpp(120,15): warning C4838: 'float' から 'LONG' への変換には縮小変換が必要です
-C:\Users\event\Desktop\crane\new_grabityhit\new_grabityhit\2D_function.cpp(120,15): warning C4244: '初期化中': 'float' から 'LONG' への変換です。データが失われる可能性があります。
-C:\Users\event\Desktop\crane\new_grabityhit\new_grabityhit\2D_function.cpp(121,15): warning C4838: 'float' から 'LONG' への変換には縮小変換が必要です
-C:\Users\event\Desktop\crane\new_grabityhit\new_grabityhit\2D_function.cpp(121,15): warning C4244: '初期化中': 'float' から 'LONG' への変換です。データが失われる可能性があります。
-C:\Users\event\Desktop\crane\new_grabityhit\new_grabityhit\2D_function.cpp(122,15): warning C4838: 'float' から 'LONG' への変換には縮小変換が必要です
-C:\Users\event\Desktop\crane\new_grabityhit\new_grabityhit\2D_function.cpp(122,15): warning C4244: '初期化中': 'float' から 'LONG' への変換です。データが失われる可能性があります。
-C:\Users\event\Desktop\crane\new_grabityhit\new_grabityhit\2D_function.cpp(123,15): warning C4838: 'float' から 'LONG' への変換には縮小変換が必要です
-C:\Users\event\Desktop\crane\new_grabityhit\new_grabityhit\2D_function.cpp(123,15): warning C4244: '初期化中': 'float' から 'LONG' への変換です。データが失われる可能性があります。
-C:\Users\event\Desktop\crane\new_grabityhit\new_grabityhit\2D_function.cpp(126,15): warning C4838: 'float' から 'LONG' への変換には縮小変換が必要です
-C:\Users\event\Desktop\crane\new_grabityhit\new_grabityhit\2D_function.cpp(126,15): warning C4244: '初期化中': 'float' から 'LONG' への変換です。データが失われる可能性があります。
-C:\Users\event\Desktop\crane\new_grabityhit\new_grabityhit\2D_function.cpp(127,15): warning C4838: 'float' から 'LONG' への変換には縮小変換が必要です
-C:\Users\event\Desktop\crane\new_grabityhit\new_grabityhit\2D_function.cpp(127,15): warning C4244: '初期化中': 'float' から 'LONG' への変換です。データが失われる可能性があります。
-C:\Users\event\Desktop\crane\new_grabityhit\new_grabityhit\2D_function.cpp(128,15): warning C4838: 'float' から 'LONG' への変換には縮小変換が必要です
-C:\Users\event\Desktop\crane\new_grabityhit\new_grabityhit\2D_function.cpp(128,15): warning C4244: '初期化中': 'float' から 'LONG' への変換です。データが失われる可能性があります。
-C:\Users\event\Desktop\crane\new_grabityhit\new_grabityhit\2D_function.cpp(129,15): warning C4838: 'float' から 'LONG' への変換には縮小変換が必要です
-C:\Users\event\Desktop\crane\new_grabityhit\new_grabityhit\2D_function.cpp(129,15): warning C4244: '初期化中': 'float' から 'LONG' への変換です。データが失われる可能性があります。
+C:\Users\GA3\Desktop\クレーンゲーム\試作品二号(今)\new_grabityhit\2D_function.cpp(37,143): warning C4244: '=': 'double' から 'float' への変換です。データが失われる可能性があります。
+C:\Users\GA3\Desktop\クレーンゲーム\試作品二号(今)\new_grabityhit\2D_function.cpp(37,202): warning C4244: '=': 'double' から 'float' への変換です。データが失われる可能性があります。
+C:\Users\GA3\Desktop\クレーンゲーム\試作品二号(今)\new_grabityhit\2D_function.cpp(120,15): warning C4838: 'float' から 'LONG' への変換には縮小変換が必要です
+C:\Users\GA3\Desktop\クレーンゲーム\試作品二号(今)\new_grabityhit\2D_function.cpp(120,15): warning C4244: '初期化中': 'float' から 'LONG' への変換です。データが失われる可能性があります。
+C:\Users\GA3\Desktop\クレーンゲーム\試作品二号(今)\new_grabityhit\2D_function.cpp(121,15): warning C4838: 'float' から 'LONG' への変換には縮小変換が必要です
+C:\Users\GA3\Desktop\クレーンゲーム\試作品二号(今)\new_grabityhit\2D_function.cpp(121,15): warning C4244: '初期化中': 'float' から 'LONG' への変換です。データが失われる可能性があります。
+C:\Users\GA3\Desktop\クレーンゲーム\試作品二号(今)\new_grabityhit\2D_function.cpp(122,15): warning C4838: 'float' から 'LONG' への変換には縮小変換が必要です
+C:\Users\GA3\Desktop\クレーンゲーム\試作品二号(今)\new_grabityhit\2D_function.cpp(122,15): warning C4244: '初期化中': 'float' から 'LONG' への変換です。データが失われる可能性があります。
+C:\Users\GA3\Desktop\クレーンゲーム\試作品二号(今)\new_grabityhit\2D_function.cpp(123,15): warning C4838: 'float' から 'LONG' への変換には縮小変換が必要です
+C:\Users\GA3\Desktop\クレーンゲーム\試作品二号(今)\new_grabityhit\2D_function.cpp(123,15): warning C4244: '初期化中': 'float' から 'LONG' への変換です。データが失われる可能性があります。
+C:\Users\GA3\Desktop\クレーンゲーム\試作品二号(今)\new_grabityhit\2D_function.cpp(126,15): warning C4838: 'float' から 'LONG' への変換には縮小変換が必要です
+C:\Users\GA3\Desktop\クレーンゲーム\試作品二号(今)\new_grabityhit\2D_function.cpp(126,15): warning C4244: '初期化中': 'float' から 'LONG' への変換です。データが失われる可能性があります。
+C:\Users\GA3\Desktop\クレーンゲーム\試作品二号(今)\new_grabityhit\2D_function.cpp(127,15): warning C4838: 'float' から 'LONG' への変換には縮小変換が必要です
+C:\Users\GA3\Desktop\クレーンゲーム\試作品二号(今)\new_grabityhit\2D_function.cpp(127,15): warning C4244: '初期化中': 'float' から 'LONG' への変換です。データが失われる可能性があります。
+C:\Users\GA3\Desktop\クレーンゲーム\試作品二号(今)\new_grabityhit\2D_function.cpp(128,15): warning C4838: 'float' から 'LONG' への変換には縮小変換が必要です
+C:\Users\GA3\Desktop\クレーンゲーム\試作品二号(今)\new_grabityhit\2D_function.cpp(128,15): warning C4244: '初期化中': 'float' から 'LONG' への変換です。データが失われる可能性があります。
+C:\Users\GA3\Desktop\クレーンゲーム\試作品二号(今)\new_grabityhit\2D_function.cpp(129,15): warning C4838: 'float' から 'LONG' への変換には縮小変換が必要です
+C:\Users\GA3\Desktop\クレーンゲーム\試作品二号(今)\new_grabityhit\2D_function.cpp(129,15): warning C4244: '初期化中': 'float' から 'LONG' への変換です。データが失われる可能性があります。
   3D_function.cpp
 C:\dxlib\DxLib.h(1,1): warning C4819: ファイルは、現在のコード ページ (932) で表示できない文字を含んでいます。データの損失を防ぐために、ファイルを Unicode 形式で保存してください。
   (ソース ファイル '3D_function.cpp' をコンパイルしています)
@@ -240,24 +240,24 @@ C:\dxlib\DxLib.h(5396,1): warning C4819: ファイルは、現在のコード �
 C:\dxlib\DxLib.h(5581,1): warning C4819: ファイルは、現在のコード ページ (932) で表示できない文字を含んでいます。データの損失を防ぐために、ファイルを Unicode 形式で保存してください。
   (ソース ファイル '3D_function.cpp' をコンパイルしています)
   
-C:\Users\event\Desktop\crane\new_grabityhit\new_grabityhit\objBase.h(29,7): warning C4244: '引数': 'float' から 'int' への変換です。データが失われる可能性があります。
+C:\Users\GA3\Desktop\クレーンゲーム\試作品二号(今)\new_grabityhit\objBase.h(29,7): warning C4244: '引数': 'float' から 'int' への変換です。データが失われる可能性があります。
   (ソース ファイル '3D_function.cpp' をコンパイルしています)
   
-C:\Users\event\Desktop\crane\new_grabityhit\new_grabityhit\objBase.h(29,4): warning C4244: '引数': 'float' から 'int' への変換です。データが失われる可能性があります。
+C:\Users\GA3\Desktop\クレーンゲーム\試作品二号(今)\new_grabityhit\objBase.h(29,4): warning C4244: '引数': 'float' から 'int' への変換です。データが失われる可能性があります。
   (ソース ファイル '3D_function.cpp' をコンパイルしています)
   
-C:\Users\event\Desktop\crane\new_grabityhit\new_grabityhit\3D_function.cpp(26,140): warning C4244: '=': 'double' から 'float' への変換です。データが失われる可能性があります。
-C:\Users\event\Desktop\crane\new_grabityhit\new_grabityhit\3D_function.cpp(26,204): warning C4244: '=': 'double' から 'float' への変換です。データが失われる可能性があります。
-C:\Users\event\Desktop\crane\new_grabityhit\new_grabityhit\3D_function.cpp(28,90): warning C4244: '=': 'double' から 'float' への変換です。データが失われる可能性があります。
-C:\Users\event\Desktop\crane\new_grabityhit\new_grabityhit\3D_function.cpp(28,138): warning C4244: '=': 'double' から 'float' への変換です。データが失われる可能性があります。
-C:\Users\event\Desktop\crane\new_grabityhit\new_grabityhit\3D_function.cpp(31,129): warning C4244: '=': 'double' から 'float' への変換です。データが失われる可能性があります。
-C:\Users\event\Desktop\crane\new_grabityhit\new_grabityhit\3D_function.cpp(31,204): warning C4244: '=': 'double' から 'float' への変換です。データが失われる可能性があります。
-C:\Users\event\Desktop\crane\new_grabityhit\new_grabityhit\3D_function.cpp(33,78): warning C4244: '=': 'double' から 'float' への変換です。データが失われる可能性があります。
-C:\Users\event\Desktop\crane\new_grabityhit\new_grabityhit\3D_function.cpp(33,137): warning C4244: '=': 'double' から 'float' への変換です。データが失われる可能性があります。
-C:\Users\event\Desktop\crane\new_grabityhit\new_grabityhit\3D_function.cpp(36,128): warning C4244: '=': 'double' から 'float' への変換です。データが失われる可能性があります。
-C:\Users\event\Desktop\crane\new_grabityhit\new_grabityhit\3D_function.cpp(36,192): warning C4244: '=': 'double' から 'float' への変換です。データが失われる可能性があります。
-C:\Users\event\Desktop\crane\new_grabityhit\new_grabityhit\3D_function.cpp(38,78): warning C4244: '=': 'double' から 'float' への変換です。データが失われる可能性があります。
-C:\Users\event\Desktop\crane\new_grabityhit\new_grabityhit\3D_function.cpp(38,126): warning C4244: '=': 'double' から 'float' への変換です。データが失われる可能性があります。
+C:\Users\GA3\Desktop\クレーンゲーム\試作品二号(今)\new_grabityhit\3D_function.cpp(26,140): warning C4244: '=': 'double' から 'float' への変換です。データが失われる可能性があります。
+C:\Users\GA3\Desktop\クレーンゲーム\試作品二号(今)\new_grabityhit\3D_function.cpp(26,204): warning C4244: '=': 'double' から 'float' への変換です。データが失われる可能性があります。
+C:\Users\GA3\Desktop\クレーンゲーム\試作品二号(今)\new_grabityhit\3D_function.cpp(28,90): warning C4244: '=': 'double' から 'float' への変換です。データが失われる可能性があります。
+C:\Users\GA3\Desktop\クレーンゲーム\試作品二号(今)\new_grabityhit\3D_function.cpp(28,138): warning C4244: '=': 'double' から 'float' への変換です。データが失われる可能性があります。
+C:\Users\GA3\Desktop\クレーンゲーム\試作品二号(今)\new_grabityhit\3D_function.cpp(31,129): warning C4244: '=': 'double' から 'float' への変換です。データが失われる可能性があります。
+C:\Users\GA3\Desktop\クレーンゲーム\試作品二号(今)\new_grabityhit\3D_function.cpp(31,204): warning C4244: '=': 'double' から 'float' への変換です。データが失われる可能性があります。
+C:\Users\GA3\Desktop\クレーンゲーム\試作品二号(今)\new_grabityhit\3D_function.cpp(33,78): warning C4244: '=': 'double' から 'float' への変換です。データが失われる可能性があります。
+C:\Users\GA3\Desktop\クレーンゲーム\試作品二号(今)\new_grabityhit\3D_function.cpp(33,137): warning C4244: '=': 'double' から 'float' への変換です。データが失われる可能性があります。
+C:\Users\GA3\Desktop\クレーンゲーム\試作品二号(今)\new_grabityhit\3D_function.cpp(36,128): warning C4244: '=': 'double' から 'float' への変換です。データが失われる可能性があります。
+C:\Users\GA3\Desktop\クレーンゲーム\試作品二号(今)\new_grabityhit\3D_function.cpp(36,192): warning C4244: '=': 'double' から 'float' への変換です。データが失われる可能性があります。
+C:\Users\GA3\Desktop\クレーンゲーム\試作品二号(今)\new_grabityhit\3D_function.cpp(38,78): warning C4244: '=': 'double' から 'float' への変換です。データが失われる可能性があります。
+C:\Users\GA3\Desktop\クレーンゲーム\試作品二号(今)\new_grabityhit\3D_function.cpp(38,126): warning C4244: '=': 'double' から 'float' への変換です。データが失われる可能性があります。
   CCamera.cpp
 C:\dxlib\DxLib.h(1,1): warning C4819: ファイルは、現在のコード ページ (932) で表示できない文字を含んでいます。データの損失を防ぐために、ファイルを Unicode 形式で保存してください。
   (ソース ファイル 'CCamera.cpp' をコンパイルしています)
@@ -367,10 +367,10 @@ C:\dxlib\DxLib.h(5396,1): warning C4819: ファイルは、現在のコード �
 C:\dxlib\DxLib.h(5581,1): warning C4819: ファイルは、現在のコード ページ (932) で表示できない文字を含んでいます。データの損失を防ぐために、ファイルを Unicode 形式で保存してください。
   (ソース ファイル 'CCamera.cpp' をコンパイルしています)
   
-C:\Users\event\Desktop\crane\new_grabityhit\new_grabityhit\objBase.h(29,7): warning C4244: '引数': 'float' から 'int' への変換です。データが失われる可能性があります。
+C:\Users\GA3\Desktop\クレーンゲーム\試作品二号(今)\new_grabityhit\objBase.h(29,7): warning C4244: '引数': 'float' から 'int' への変換です。データが失われる可能性があります。
   (ソース ファイル 'CCamera.cpp' をコンパイルしています)
   
-C:\Users\event\Desktop\crane\new_grabityhit\new_grabityhit\objBase.h(29,4): warning C4244: '引数': 'float' から 'int' への変換です。データが失われる可能性があります。
+C:\Users\GA3\Desktop\クレーンゲーム\試作品二号(今)\new_grabityhit\objBase.h(29,4): warning C4244: '引数': 'float' から 'int' への変換です。データが失われる可能性があります。
   (ソース ファイル 'CCamera.cpp' をコンパイルしています)
   
   CollisionUpDate.cpp
@@ -482,10 +482,10 @@ C:\dxlib\DxLib.h(5396,1): warning C4819: ファイルは、現在のコード �
 C:\dxlib\DxLib.h(5581,1): warning C4819: ファイルは、現在のコード ページ (932) で表示できない文字を含んでいます。データの損失を防ぐために、ファイルを Unicode 形式で保存してください。
   (ソース ファイル 'CollisionUpDate.cpp' をコンパイルしています)
   
-C:\Users\event\Desktop\crane\new_grabityhit\new_grabityhit\objBase.h(29,7): warning C4244: '引数': 'float' から 'int' への変換です。データが失われる可能性があります。
+C:\Users\GA3\Desktop\クレーンゲーム\試作品二号(今)\new_grabityhit\objBase.h(29,7): warning C4244: '引数': 'float' から 'int' への変換です。データが失われる可能性があります。
   (ソース ファイル 'CollisionUpDate.cpp' をコンパイルしています)
   
-C:\Users\event\Desktop\crane\new_grabityhit\new_grabityhit\objBase.h(29,4): warning C4244: '引数': 'float' から 'int' への変換です。データが失われる可能性があります。
+C:\Users\GA3\Desktop\クレーンゲーム\試作品二号(今)\new_grabityhit\objBase.h(29,4): warning C4244: '引数': 'float' から 'int' への変換です。データが失われる可能性があります。
   (ソース ファイル 'CollisionUpDate.cpp' をコンパイルしています)
   
   Myfunction.cpp
@@ -597,44 +597,44 @@ C:\dxlib\DxLib.h(5396,1): warning C4819: ファイルは、現在のコード �
 C:\dxlib\DxLib.h(5581,1): warning C4819: ファイルは、現在のコード ページ (932) で表示できない文字を含んでいます。データの損失を防ぐために、ファイルを Unicode 形式で保存してください。
   (ソース ファイル 'Myfunction.cpp' をコンパイルしています)
   
-C:\Users\event\Desktop\crane\new_grabityhit\new_grabityhit\objBase.h(29,7): warning C4244: '引数': 'float' から 'int' への変換です。データが失われる可能性があります。
+C:\Users\GA3\Desktop\クレーンゲーム\試作品二号(今)\new_grabityhit\objBase.h(29,7): warning C4244: '引数': 'float' から 'int' への変換です。データが失われる可能性があります。
   (ソース ファイル 'Myfunction.cpp' をコンパイルしています)
   
-C:\Users\event\Desktop\crane\new_grabityhit\new_grabityhit\objBase.h(29,4): warning C4244: '引数': 'float' から 'int' への変換です。データが失われる可能性があります。
+C:\Users\GA3\Desktop\クレーンゲーム\試作品二号(今)\new_grabityhit\objBase.h(29,4): warning C4244: '引数': 'float' から 'int' への変換です。データが失われる可能性があります。
   (ソース ファイル 'Myfunction.cpp' をコンパイルしています)
   
-C:\Users\event\Desktop\crane\new_grabityhit\new_grabityhit\Myfunction.cpp(48,14): warning C4244: '初期化中': 'double' から 'float' への変換です。データが失われる可能性があります。
-C:\Users\event\Desktop\crane\new_grabityhit\new_grabityhit\Myfunction.cpp(64,23): warning C4244: '-=': 'float' から 'int' への変換です。データが失われる可能性があります。
-C:\Users\event\Desktop\crane\new_grabityhit\new_grabityhit\Myfunction.cpp(65,17): warning C4244: '+=': 'float' から 'int' への変換です。データが失われる可能性があります。
-C:\Users\event\Desktop\crane\new_grabityhit\new_grabityhit\Myfunction.cpp(66,12): warning C4244: '初期化中': 'double' から 'float' への変換です。データが失われる可能性があります。
-C:\Users\event\Desktop\crane\new_grabityhit\new_grabityhit\Myfunction.cpp(91,69): warning C4244: '引数': '_Ty' から 'int' への変換です。データが失われる可能性があります。
-C:\Users\event\Desktop\crane\new_grabityhit\new_grabityhit\Myfunction.cpp(91,69): warning C4244:         with
-C:\Users\event\Desktop\crane\new_grabityhit\new_grabityhit\Myfunction.cpp(91,69): warning C4244:         [
-C:\Users\event\Desktop\crane\new_grabityhit\new_grabityhit\Myfunction.cpp(91,69): warning C4244:             _Ty=float
-C:\Users\event\Desktop\crane\new_grabityhit\new_grabityhit\Myfunction.cpp(91,69): warning C4244:         ]
-C:\Users\event\Desktop\crane\new_grabityhit\new_grabityhit\Myfunction.cpp(93,69): warning C4244: '引数': '_Ty' から 'int' への変換です。データが失われる可能性があります。
-C:\Users\event\Desktop\crane\new_grabityhit\new_grabityhit\Myfunction.cpp(93,69): warning C4244:         with
-C:\Users\event\Desktop\crane\new_grabityhit\new_grabityhit\Myfunction.cpp(93,69): warning C4244:         [
-C:\Users\event\Desktop\crane\new_grabityhit\new_grabityhit\Myfunction.cpp(93,69): warning C4244:             _Ty=float
-C:\Users\event\Desktop\crane\new_grabityhit\new_grabityhit\Myfunction.cpp(93,69): warning C4244:         ]
-C:\Users\event\Desktop\crane\new_grabityhit\new_grabityhit\Myfunction.cpp(87,17): warning C4101: 'a': ローカル変数は 1 度も使われていません。
-C:\Users\event\Desktop\crane\new_grabityhit\new_grabityhit\Myfunction.cpp(86,10): warning C4101: 'vertex_vec': ローカル変数は 1 度も使われていません。
-C:\Users\event\Desktop\crane\new_grabityhit\new_grabityhit\Myfunction.cpp(87,20): warning C4101: 'rad': ローカル変数は 1 度も使われていません。
-C:\Users\event\Desktop\crane\new_grabityhit\new_grabityhit\Myfunction.cpp(87,9): warning C4101: 'length': ローカル変数は 1 度も使われていません。
-C:\Users\event\Desktop\crane\new_grabityhit\new_grabityhit\Myfunction.cpp(131,69): warning C4244: '引数': '_Ty' から 'int' への変換です。データが失われる可能性があります。
-C:\Users\event\Desktop\crane\new_grabityhit\new_grabityhit\Myfunction.cpp(131,69): warning C4244:         with
-C:\Users\event\Desktop\crane\new_grabityhit\new_grabityhit\Myfunction.cpp(131,69): warning C4244:         [
-C:\Users\event\Desktop\crane\new_grabityhit\new_grabityhit\Myfunction.cpp(131,69): warning C4244:             _Ty=float
-C:\Users\event\Desktop\crane\new_grabityhit\new_grabityhit\Myfunction.cpp(131,69): warning C4244:         ]
-C:\Users\event\Desktop\crane\new_grabityhit\new_grabityhit\Myfunction.cpp(133,69): warning C4244: '引数': '_Ty' から 'int' への変換です。データが失われる可能性があります。
-C:\Users\event\Desktop\crane\new_grabityhit\new_grabityhit\Myfunction.cpp(133,69): warning C4244:         with
-C:\Users\event\Desktop\crane\new_grabityhit\new_grabityhit\Myfunction.cpp(133,69): warning C4244:         [
-C:\Users\event\Desktop\crane\new_grabityhit\new_grabityhit\Myfunction.cpp(133,69): warning C4244:             _Ty=float
-C:\Users\event\Desktop\crane\new_grabityhit\new_grabityhit\Myfunction.cpp(133,69): warning C4244:         ]
-C:\Users\event\Desktop\crane\new_grabityhit\new_grabityhit\Myfunction.cpp(127,17): warning C4101: 'a': ローカル変数は 1 度も使われていません。
-C:\Users\event\Desktop\crane\new_grabityhit\new_grabityhit\Myfunction.cpp(126,10): warning C4101: 'vertex_vec': ローカル変数は 1 度も使われていません。
-C:\Users\event\Desktop\crane\new_grabityhit\new_grabityhit\Myfunction.cpp(127,20): warning C4101: 'rad': ローカル変数は 1 度も使われていません。
-C:\Users\event\Desktop\crane\new_grabityhit\new_grabityhit\Myfunction.cpp(127,9): warning C4101: 'length': ローカル変数は 1 度も使われていません。
+C:\Users\GA3\Desktop\クレーンゲーム\試作品二号(今)\new_grabityhit\Myfunction.cpp(48,14): warning C4244: '初期化中': 'double' から 'float' への変換です。データが失われる可能性があります。
+C:\Users\GA3\Desktop\クレーンゲーム\試作品二号(今)\new_grabityhit\Myfunction.cpp(64,23): warning C4244: '-=': 'float' から 'int' への変換です。データが失われる可能性があります。
+C:\Users\GA3\Desktop\クレーンゲーム\試作品二号(今)\new_grabityhit\Myfunction.cpp(65,17): warning C4244: '+=': 'float' から 'int' への変換です。データが失われる可能性があります。
+C:\Users\GA3\Desktop\クレーンゲーム\試作品二号(今)\new_grabityhit\Myfunction.cpp(66,12): warning C4244: '初期化中': 'double' から 'float' への変換です。データが失われる可能性があります。
+C:\Users\GA3\Desktop\クレーンゲーム\試作品二号(今)\new_grabityhit\Myfunction.cpp(91,69): warning C4244: '引数': '_Ty' から 'int' への変換です。データが失われる可能性があります。
+C:\Users\GA3\Desktop\クレーンゲーム\試作品二号(今)\new_grabityhit\Myfunction.cpp(91,69): warning C4244:         with
+C:\Users\GA3\Desktop\クレーンゲーム\試作品二号(今)\new_grabityhit\Myfunction.cpp(91,69): warning C4244:         [
+C:\Users\GA3\Desktop\クレーンゲーム\試作品二号(今)\new_grabityhit\Myfunction.cpp(91,69): warning C4244:             _Ty=float
+C:\Users\GA3\Desktop\クレーンゲーム\試作品二号(今)\new_grabityhit\Myfunction.cpp(91,69): warning C4244:         ]
+C:\Users\GA3\Desktop\クレーンゲーム\試作品二号(今)\new_grabityhit\Myfunction.cpp(93,69): warning C4244: '引数': '_Ty' から 'int' への変換です。データが失われる可能性があります。
+C:\Users\GA3\Desktop\クレーンゲーム\試作品二号(今)\new_grabityhit\Myfunction.cpp(93,69): warning C4244:         with
+C:\Users\GA3\Desktop\クレーンゲーム\試作品二号(今)\new_grabityhit\Myfunction.cpp(93,69): warning C4244:         [
+C:\Users\GA3\Desktop\クレーンゲーム\試作品二号(今)\new_grabityhit\Myfunction.cpp(93,69): warning C4244:             _Ty=float
+C:\Users\GA3\Desktop\クレーンゲーム\試作品二号(今)\new_grabityhit\Myfunction.cpp(93,69): warning C4244:         ]
+C:\Users\GA3\Desktop\クレーンゲーム\試作品二号(今)\new_grabityhit\Myfunction.cpp(87,17): warning C4101: 'a': ローカル変数は 1 度も使われていません。
+C:\Users\GA3\Desktop\クレーンゲーム\試作品二号(今)\new_grabityhit\Myfunction.cpp(86,10): warning C4101: 'vertex_vec': ローカル変数は 1 度も使われていません。
+C:\Users\GA3\Desktop\クレーンゲーム\試作品二号(今)\new_grabityhit\Myfunction.cpp(87,20): warning C4101: 'rad': ローカル変数は 1 度も使われていません。
+C:\Users\GA3\Desktop\クレーンゲーム\試作品二号(今)\new_grabityhit\Myfunction.cpp(87,9): warning C4101: 'length': ローカル変数は 1 度も使われていません。
+C:\Users\GA3\Desktop\クレーンゲーム\試作品二号(今)\new_grabityhit\Myfunction.cpp(131,69): warning C4244: '引数': '_Ty' から 'int' への変換です。データが失われる可能性があります。
+C:\Users\GA3\Desktop\クレーンゲーム\試作品二号(今)\new_grabityhit\Myfunction.cpp(131,69): warning C4244:         with
+C:\Users\GA3\Desktop\クレーンゲーム\試作品二号(今)\new_grabityhit\Myfunction.cpp(131,69): warning C4244:         [
+C:\Users\GA3\Desktop\クレーンゲーム\試作品二号(今)\new_grabityhit\Myfunction.cpp(131,69): warning C4244:             _Ty=float
+C:\Users\GA3\Desktop\クレーンゲーム\試作品二号(今)\new_grabityhit\Myfunction.cpp(131,69): warning C4244:         ]
+C:\Users\GA3\Desktop\クレーンゲーム\試作品二号(今)\new_grabityhit\Myfunction.cpp(133,69): warning C4244: '引数': '_Ty' から 'int' への変換です。データが失われる可能性があります。
+C:\Users\GA3\Desktop\クレーンゲーム\試作品二号(今)\new_grabityhit\Myfunction.cpp(133,69): warning C4244:         with
+C:\Users\GA3\Desktop\クレーンゲーム\試作品二号(今)\new_grabityhit\Myfunction.cpp(133,69): warning C4244:         [
+C:\Users\GA3\Desktop\クレーンゲーム\試作品二号(今)\new_grabityhit\Myfunction.cpp(133,69): warning C4244:             _Ty=float
+C:\Users\GA3\Desktop\クレーンゲーム\試作品二号(今)\new_grabityhit\Myfunction.cpp(133,69): warning C4244:         ]
+C:\Users\GA3\Desktop\クレーンゲーム\試作品二号(今)\new_grabityhit\Myfunction.cpp(127,17): warning C4101: 'a': ローカル変数は 1 度も使われていません。
+C:\Users\GA3\Desktop\クレーンゲーム\試作品二号(今)\new_grabityhit\Myfunction.cpp(126,10): warning C4101: 'vertex_vec': ローカル変数は 1 度も使われていません。
+C:\Users\GA3\Desktop\クレーンゲーム\試作品二号(今)\new_grabityhit\Myfunction.cpp(127,20): warning C4101: 'rad': ローカル変数は 1 度も使われていません。
+C:\Users\GA3\Desktop\クレーンゲーム\試作品二号(今)\new_grabityhit\Myfunction.cpp(127,9): warning C4101: 'length': ローカル変数は 1 度も使われていません。
   Resoure.cpp
 C:\dxlib\DxLib.h(1,1): warning C4819: ファイルは、現在のコード ページ (932) で表示できない文字を含んでいます。データの損失を防ぐために、ファイルを Unicode 形式で保存してください。
   (ソース ファイル 'Resoure.cpp' をコンパイルしています)
@@ -853,18 +853,18 @@ C:\dxlib\DxLib.h(5396,1): warning C4819: ファイルは、現在のコード �
 C:\dxlib\DxLib.h(5581,1): warning C4819: ファイルは、現在のコード ページ (932) で表示できない文字を含んでいます。データの損失を防ぐために、ファイルを Unicode 形式で保存してください。
   (ソース ファイル 'box.cpp' をコンパイルしています)
   
-C:\Users\event\Desktop\crane\new_grabityhit\new_grabityhit\objBase.h(29,7): warning C4244: '引数': 'float' から 'int' への変換です。データが失われる可能性があります。
+C:\Users\GA3\Desktop\クレーンゲーム\試作品二号(今)\new_grabityhit\objBase.h(29,7): warning C4244: '引数': 'float' から 'int' への変換です。データが失われる可能性があります。
   (ソース ファイル 'box.cpp' をコンパイルしています)
   
-C:\Users\event\Desktop\crane\new_grabityhit\new_grabityhit\objBase.h(29,4): warning C4244: '引数': 'float' から 'int' への変換です。データが失われる可能性があります。
+C:\Users\GA3\Desktop\クレーンゲーム\試作品二号(今)\new_grabityhit\objBase.h(29,4): warning C4244: '引数': 'float' から 'int' への変換です。データが失われる可能性があります。
   (ソース ファイル 'box.cpp' をコンパイルしています)
   
-C:\Users\event\Desktop\crane\new_grabityhit\new_grabityhit\box.cpp(80,23): warning C4244: '引数': 'float' から 'int' への変換です。データが失われる可能性があります。
-C:\Users\event\Desktop\crane\new_grabityhit\new_grabityhit\box.cpp(80,16): warning C4244: '引数': 'float' から 'int' への変換です。データが失われる可能性があります。
-C:\Users\event\Desktop\crane\new_grabityhit\new_grabityhit\box.cpp(86,96): warning C4244: '引数': 'float' から 'int' への変換です。データが失われる可能性があります。
-C:\Users\event\Desktop\crane\new_grabityhit\new_grabityhit\box.cpp(86,70): warning C4244: '引数': 'float' から 'int' への変換です。データが失われる可能性があります。
-C:\Users\event\Desktop\crane\new_grabityhit\new_grabityhit\box.cpp(86,44): warning C4244: '引数': 'float' から 'int' への変換です。データが失われる可能性があります。
-C:\Users\event\Desktop\crane\new_grabityhit\new_grabityhit\box.cpp(86,18): warning C4244: '引数': 'float' から 'int' への変換です。データが失われる可能性があります。
+C:\Users\GA3\Desktop\クレーンゲーム\試作品二号(今)\new_grabityhit\box.cpp(80,23): warning C4244: '引数': 'float' から 'int' への変換です。データが失われる可能性があります。
+C:\Users\GA3\Desktop\クレーンゲーム\試作品二号(今)\new_grabityhit\box.cpp(80,16): warning C4244: '引数': 'float' から 'int' への変換です。データが失われる可能性があります。
+C:\Users\GA3\Desktop\クレーンゲーム\試作品二号(今)\new_grabityhit\box.cpp(86,96): warning C4244: '引数': 'float' から 'int' への変換です。データが失われる可能性があります。
+C:\Users\GA3\Desktop\クレーンゲーム\試作品二号(今)\new_grabityhit\box.cpp(86,70): warning C4244: '引数': 'float' から 'int' への変換です。データが失われる可能性があります。
+C:\Users\GA3\Desktop\クレーンゲーム\試作品二号(今)\new_grabityhit\box.cpp(86,44): warning C4244: '引数': 'float' から 'int' への変換です。データが失われる可能性があります。
+C:\Users\GA3\Desktop\クレーンゲーム\試作品二号(今)\new_grabityhit\box.cpp(86,18): warning C4244: '引数': 'float' から 'int' への変換です。データが失われる可能性があります。
   game.cpp
 C:\dxlib\DxLib.h(1,1): warning C4819: ファイルは、現在のコード ページ (932) で表示できない文字を含んでいます。データの損失を防ぐために、ファイルを Unicode 形式で保存してください。
   (ソース ファイル 'game.cpp' をコンパイルしています)
@@ -974,10 +974,10 @@ C:\dxlib\DxLib.h(5396,1): warning C4819: ファイルは、現在のコード �
 C:\dxlib\DxLib.h(5581,1): warning C4819: ファイルは、現在のコード ページ (932) で表示できない文字を含んでいます。データの損失を防ぐために、ファイルを Unicode 形式で保存してください。
   (ソース ファイル 'game.cpp' をコンパイルしています)
   
-C:\Users\event\Desktop\crane\new_grabityhit\new_grabityhit\objBase.h(29,7): warning C4244: '引数': 'float' から 'int' への変換です。データが失われる可能性があります。
+C:\Users\GA3\Desktop\クレーンゲーム\試作品二号(今)\new_grabityhit\objBase.h(29,7): warning C4244: '引数': 'float' から 'int' への変換です。データが失われる可能性があります。
   (ソース ファイル 'game.cpp' をコンパイルしています)
   
-C:\Users\event\Desktop\crane\new_grabityhit\new_grabityhit\objBase.h(29,4): warning C4244: '引数': 'float' から 'int' への変換です。データが失われる可能性があります。
+C:\Users\GA3\Desktop\クレーンゲーム\試作品二号(今)\new_grabityhit\objBase.h(29,4): warning C4244: '引数': 'float' から 'int' への変換です。データが失われる可能性があります。
   (ソース ファイル 'game.cpp' をコンパイルしています)
   
   hitchecker.cpp
@@ -1089,10 +1089,10 @@ C:\dxlib\DxLib.h(5396,1): warning C4819: ファイルは、現在のコード �
 C:\dxlib\DxLib.h(5581,1): warning C4819: ファイルは、現在のコード ページ (932) で表示できない文字を含んでいます。データの損失を防ぐために、ファイルを Unicode 形式で保存してください。
   (ソース ファイル 'hitchecker.cpp' をコンパイルしています)
   
-C:\Users\event\Desktop\crane\new_grabityhit\new_grabityhit\objBase.h(29,7): warning C4244: '引数': 'float' から 'int' への変換です。データが失われる可能性があります。
+C:\Users\GA3\Desktop\クレーンゲーム\試作品二号(今)\new_grabityhit\objBase.h(29,7): warning C4244: '引数': 'float' から 'int' への変換です。データが失われる可能性があります。
   (ソース ファイル 'hitchecker.cpp' をコンパイルしています)
   
-C:\Users\event\Desktop\crane\new_grabityhit\new_grabityhit\objBase.h(29,4): warning C4244: '引数': 'float' から 'int' への変換です。データが失われる可能性があります。
+C:\Users\GA3\Desktop\クレーンゲーム\試作品二号(今)\new_grabityhit\objBase.h(29,4): warning C4244: '引数': 'float' から 'int' への変換です。データが失われる可能性があります。
   (ソース ファイル 'hitchecker.cpp' をコンパイルしています)
   
   library_function.cpp
@@ -1204,10 +1204,10 @@ C:\dxlib\DxLib.h(5396,1): warning C4819: ファイルは、現在のコード �
 C:\dxlib\DxLib.h(5581,1): warning C4819: ファイルは、現在のコード ページ (932) で表示できない文字を含んでいます。データの損失を防ぐために、ファイルを Unicode 形式で保存してください。
   (ソース ファイル 'library_function.cpp' をコンパイルしています)
   
-C:\Users\event\Desktop\crane\new_grabityhit\new_grabityhit\objBase.h(29,7): warning C4244: '引数': 'float' から 'int' への変換です。データが失われる可能性があります。
+C:\Users\GA3\Desktop\クレーンゲーム\試作品二号(今)\new_grabityhit\objBase.h(29,7): warning C4244: '引数': 'float' から 'int' への変換です。データが失われる可能性があります。
   (ソース ファイル 'library_function.cpp' をコンパイルしています)
   
-C:\Users\event\Desktop\crane\new_grabityhit\new_grabityhit\objBase.h(29,4): warning C4244: '引数': 'float' から 'int' への変換です。データが失われる可能性があります。
+C:\Users\GA3\Desktop\クレーンゲーム\試作品二号(今)\new_grabityhit\objBase.h(29,4): warning C4244: '引数': 'float' から 'int' への変換です。データが失われる可能性があります。
   (ソース ファイル 'library_function.cpp' をコンパイルしています)
   
   main.cpp
@@ -1319,10 +1319,10 @@ C:\dxlib\DxLib.h(5396,1): warning C4819: ファイルは、現在のコード �
 C:\dxlib\DxLib.h(5581,1): warning C4819: ファイルは、現在のコード ページ (932) で表示できない文字を含んでいます。データの損失を防ぐために、ファイルを Unicode 形式で保存してください。
   (ソース ファイル 'main.cpp' をコンパイルしています)
   
-C:\Users\event\Desktop\crane\new_grabityhit\new_grabityhit\objBase.h(29,7): warning C4244: '引数': 'float' から 'int' への変換です。データが失われる可能性があります。
+C:\Users\GA3\Desktop\クレーンゲーム\試作品二号(今)\new_grabityhit\objBase.h(29,7): warning C4244: '引数': 'float' から 'int' への変換です。データが失われる可能性があります。
   (ソース ファイル 'main.cpp' をコンパイルしています)
   
-C:\Users\event\Desktop\crane\new_grabityhit\new_grabityhit\objBase.h(29,4): warning C4244: '引数': 'float' から 'int' への変換です。データが失われる可能性があります。
+C:\Users\GA3\Desktop\クレーンゲーム\試作品二号(今)\new_grabityhit\objBase.h(29,4): warning C4244: '引数': 'float' から 'int' への変換です。データが失われる可能性があります。
   (ソース ファイル 'main.cpp' をコンパイルしています)
   
   object.cpp
@@ -1434,25 +1434,25 @@ C:\dxlib\DxLib.h(5396,1): warning C4819: ファイルは、現在のコード �
 C:\dxlib\DxLib.h(5581,1): warning C4819: ファイルは、現在のコード ページ (932) で表示できない文字を含んでいます。データの損失を防ぐために、ファイルを Unicode 形式で保存してください。
   (ソース ファイル 'object.cpp' をコンパイルしています)
   
-C:\Users\event\Desktop\crane\new_grabityhit\new_grabityhit\objBase.h(29,7): warning C4244: '引数': 'float' から 'int' への変換です。データが失われる可能性があります。
+C:\Users\GA3\Desktop\クレーンゲーム\試作品二号(今)\new_grabityhit\objBase.h(29,7): warning C4244: '引数': 'float' から 'int' への変換です。データが失われる可能性があります。
   (ソース ファイル 'object.cpp' をコンパイルしています)
   
-C:\Users\event\Desktop\crane\new_grabityhit\new_grabityhit\objBase.h(29,4): warning C4244: '引数': 'float' から 'int' への変換です。データが失われる可能性があります。
+C:\Users\GA3\Desktop\クレーンゲーム\試作品二号(今)\new_grabityhit\objBase.h(29,4): warning C4244: '引数': 'float' から 'int' への変換です。データが失われる可能性があります。
   (ソース ファイル 'object.cpp' をコンパイルしています)
   
-C:\Users\event\Desktop\crane\new_grabityhit\new_grabityhit\object.cpp(148,23): warning C4244: '引数': 'float' から 'int' への変換です。データが失われる可能性があります。
-C:\Users\event\Desktop\crane\new_grabityhit\new_grabityhit\object.cpp(148,16): warning C4244: '引数': 'float' から 'int' への変換です。データが失われる可能性があります。
-C:\Users\event\Desktop\crane\new_grabityhit\new_grabityhit\object.cpp(159,88): warning C4244: '引数': 'float' から 'int' への変換です。データが失われる可能性があります。
-C:\Users\event\Desktop\crane\new_grabityhit\new_grabityhit\object.cpp(159,68): warning C4244: '引数': 'float' から 'int' への変換です。データが失われる可能性があります。
-C:\Users\event\Desktop\crane\new_grabityhit\new_grabityhit\object.cpp(159,48): warning C4244: '引数': 'float' から 'int' への変換です。データが失われる可能性があります。
-C:\Users\event\Desktop\crane\new_grabityhit\new_grabityhit\object.cpp(159,28): warning C4244: '引数': 'float' から 'int' への変換です。データが失われる可能性があります。
-C:\Users\event\Desktop\crane\new_grabityhit\new_grabityhit\object.cpp(160,88): warning C4244: '引数': 'float' から 'int' への変換です。データが失われる可能性があります。
-C:\Users\event\Desktop\crane\new_grabityhit\new_grabityhit\object.cpp(160,68): warning C4244: '引数': 'float' から 'int' への変換です。データが失われる可能性があります。
-C:\Users\event\Desktop\crane\new_grabityhit\new_grabityhit\object.cpp(160,48): warning C4244: '引数': 'float' から 'int' への変換です。データが失われる可能性があります。
-C:\Users\event\Desktop\crane\new_grabityhit\new_grabityhit\object.cpp(160,28): warning C4244: '引数': 'float' から 'int' への変換です。データが失われる可能性があります。
-C:\Users\event\Desktop\crane\new_grabityhit\new_grabityhit\object.cpp(161,88): warning C4244: '引数': 'float' から 'int' への変換です。データが失われる可能性があります。
-C:\Users\event\Desktop\crane\new_grabityhit\new_grabityhit\object.cpp(161,68): warning C4244: '引数': 'float' から 'int' への変換です。データが失われる可能性があります。
-C:\Users\event\Desktop\crane\new_grabityhit\new_grabityhit\object.cpp(161,48): warning C4244: '引数': 'float' から 'int' への変換です。データが失われる可能性があります。
-C:\Users\event\Desktop\crane\new_grabityhit\new_grabityhit\object.cpp(161,28): warning C4244: '引数': 'float' から 'int' への変換です。データが失われる可能性があります。
+C:\Users\GA3\Desktop\クレーンゲーム\試作品二号(今)\new_grabityhit\object.cpp(148,23): warning C4244: '引数': 'float' から 'int' への変換です。データが失われる可能性があります。
+C:\Users\GA3\Desktop\クレーンゲーム\試作品二号(今)\new_grabityhit\object.cpp(148,16): warning C4244: '引数': 'float' から 'int' への変換です。データが失われる可能性があります。
+C:\Users\GA3\Desktop\クレーンゲーム\試作品二号(今)\new_grabityhit\object.cpp(159,88): warning C4244: '引数': 'float' から 'int' への変換です。データが失われる可能性があります。
+C:\Users\GA3\Desktop\クレーンゲーム\試作品二号(今)\new_grabityhit\object.cpp(159,68): warning C4244: '引数': 'float' から 'int' への変換です。データが失われる可能性があります。
+C:\Users\GA3\Desktop\クレーンゲーム\試作品二号(今)\new_grabityhit\object.cpp(159,48): warning C4244: '引数': 'float' から 'int' への変換です。データが失われる可能性があります。
+C:\Users\GA3\Desktop\クレーンゲーム\試作品二号(今)\new_grabityhit\object.cpp(159,28): warning C4244: '引数': 'float' から 'int' への変換です。データが失われる可能性があります。
+C:\Users\GA3\Desktop\クレーンゲーム\試作品二号(今)\new_grabityhit\object.cpp(160,88): warning C4244: '引数': 'float' から 'int' への変換です。データが失われる可能性があります。
+C:\Users\GA3\Desktop\クレーンゲーム\試作品二号(今)\new_grabityhit\object.cpp(160,68): warning C4244: '引数': 'float' から 'int' への変換です。データが失われる可能性があります。
+C:\Users\GA3\Desktop\クレーンゲーム\試作品二号(今)\new_grabityhit\object.cpp(160,48): warning C4244: '引数': 'float' から 'int' への変換です。データが失われる可能性があります。
+C:\Users\GA3\Desktop\クレーンゲーム\試作品二号(今)\new_grabityhit\object.cpp(160,28): warning C4244: '引数': 'float' から 'int' への変換です。データが失われる可能性があります。
+C:\Users\GA3\Desktop\クレーンゲーム\試作品二号(今)\new_grabityhit\object.cpp(161,88): warning C4244: '引数': 'float' から 'int' への変換です。データが失われる可能性があります。
+C:\Users\GA3\Desktop\クレーンゲーム\試作品二号(今)\new_grabityhit\object.cpp(161,68): warning C4244: '引数': 'float' から 'int' への変換です。データが失われる可能性があります。
+C:\Users\GA3\Desktop\クレーンゲーム\試作品二号(今)\new_grabityhit\object.cpp(161,48): warning C4244: '引数': 'float' から 'int' への変換です。データが失われる可能性があります。
+C:\Users\GA3\Desktop\クレーンゲーム\試作品二号(今)\new_grabityhit\object.cpp(161,28): warning C4244: '引数': 'float' から 'int' への変換です。データが失われる可能性があります。
   コードを生成中...
-  new_grabityhit.vcxproj -> C:\Users\event\Desktop\crane\new_grabityhit\x64\Debug\new_grabityhit.exe
+  new_grabityhit.vcxproj -> C:\Users\GA3\Desktop\クレーンゲーム\試作品二号(今)\x64\Debug\new_grabityhit.exe

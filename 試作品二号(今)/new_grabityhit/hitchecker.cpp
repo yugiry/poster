@@ -78,7 +78,7 @@ void HitChecker::HitCheck_PW(BaseVector* _poly, BaseVector* _wall)
 				if ((cross[0] > 0 && cross[1] > 0 && cross[2] > 0) || (cross[0] < 0 && cross[1] < 0 && cross[2] < 0))
 				{
 					//重力加速をリセット
-					_poly->vec.y = 0;
+					_poly->vec.y = -(_poly->vec.y * _poly->rc);
 
 					//当たった位置まで戻す
 					Point near_pos = Near_Point_Line(p, _wall->tri[polygon2].vertex[1], _wall->tri[polygon2].vertex[2]);
@@ -119,7 +119,7 @@ void HitChecker::HitCheck_PW(BaseVector* _poly, BaseVector* _wall)
 				if ((cross[0] > 0 && cross[1] > 0 && cross[2] > 0) || (cross[0] < 0 && cross[1] < 0 && cross[2] < 0))
 				{
 					//重力加速度をリセット
-					_poly->vec.y = 0;
+					_poly->vec.y = -(_poly->vec.y * _poly->rc);
 
 					//当たった位置まで戻す
 					Point near_pos = Near_Point_Line(p, _poly->tri[polygon2].vertex[1], _poly->tri[polygon2].vertex[2]);

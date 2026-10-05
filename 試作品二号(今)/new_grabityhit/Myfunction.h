@@ -9,8 +9,8 @@ void PositionUpdate(BaseVector*);
 Point Near_Point_Line(Point, Point, Point);
 
 //点がポリゴンの中にいるかどうか調べる
-//(頂点、)
-bool CheckInPolygon(Point, vector<Point>, BaseVector*);
+//(ポリゴン一つ目、ポリゴン二つ目)
+bool CheckInPolygon(BaseVector*, BaseVector*);
 
 //角度
 float GetAngle(Vector, Vector);
