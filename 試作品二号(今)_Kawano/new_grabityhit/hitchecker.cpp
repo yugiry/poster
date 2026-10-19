@@ -102,41 +102,46 @@ void HitChecker::HitCheck_PW(BaseVector* _poly, BaseVector* _wall)
 				{
 					//重力加速をリセット
 					_poly->vec.y = -(_poly->vec.y * _poly->rc);
+					_poly->vec.x = -(_poly->vec.x);
+					_poly->pos.x += _poly->vec.x;_poly->pos.y += _poly->vec.y;
 
 					//当たった位置まで戻す
 					Point near_pos = Near_Point_Line(p, _wall->tri[polygon2].vertex[1], _wall->tri[polygon2].vertex[2]);
 					Vector return_vec = { near_pos.x - p.x,near_pos.y - p.y };
-
 					UpDateVertexPosition_Object(_poly, return_vec);
 
-					break;
+					return;
 				}
 				if ((dot[0].x >= 0.0f && dot[0].y >= 0.0f) && (dot[1].x >= 0.0f && dot[1].y >= 0.0f) && (dot[2].x >= 0.0f && dot[2].y >= 0.0f) &&
 					cross[0] == 0.0f && cross[1] == 0.0f && cross[2] == 0.0f)
 				{
 					//重力加速をリセット
 					_poly->vec.y = -(_poly->vec.y * _poly->rc);
+					_poly->vec.x = -(_poly->vec.x);
+					_poly->pos.x += _poly->vec.x;_poly->pos.y += _poly->vec.y;
 
 					//当たった位置まで戻す
 					Point near_pos = Near_Point_Line(p, _wall->tri[polygon2].vertex[1], _wall->tri[polygon2].vertex[2]);
 					Vector return_vec = { near_pos.x - p.x,near_pos.y - p.y };
-
 					UpDateVertexPosition_Object(_poly, return_vec);
-					break;
+
+					return;
 				}
 				//点同士のあたり判定
-				if (Dist[0].x <= 4 || Dist[1].x <= 4 || Dist[2].x <= 4 ||
-					Dist[0].y <= 4 || Dist[1].y <= 4 || Dist[2].y <= 4)
+				if (Dist[0].x <= 12 || Dist[1].x <= 12 || Dist[2].x <= 12 ||
+					Dist[0].y <= 12 || Dist[1].y <= 12 || Dist[2].y <= 12)
 				{
 					//重力加速度をリセット
-					_poly->vec.y = -(_poly->vec.y * _poly->rc);
+					_poly->vec.y = -(_poly->vec.y);
+					_poly->vec.x = -(_poly->vec.x);_poly->vec.y = -(_poly->vec.y);
+					_poly->pos.x += _poly->vec.x;_poly->pos.y += _poly->vec.y;
 
 					//当たった位置まで戻す
 					Point near_pos = Near_Point_Line(p, _wall->tri[polygon2].vertex[1], _wall->tri[polygon2].vertex[2]);
 					Vector return_vec = { p.x - near_pos.x,p.y - near_pos.y };
 					UpDateVertexPosition_Object(_poly, return_vec);
 
-					break;
+					return;
 				}
 			}
 		}
@@ -207,6 +212,23 @@ void HitChecker::HitCheck_PW(BaseVector* _poly, BaseVector* _wall)
 					UpDateVertexPosition_Object(_poly, return_vec);
 					break;
 				}
+				//点同士のあたり判定
+				if (Dist[0].x <= 12 || Dist[1].x <= 12 || Dist[2].x <= 12 ||
+					Dist[0].y <= 12 || Dist[1].y <= 12 || Dist[2].y <= 12)
+				{
+					//重力加速度をリセット
+					_poly->vec.y = -(_poly->vec.y);
+					_poly->vec.x = -(_poly->vec.x);_poly->vec.y = -(_poly->vec.y);
+					_poly->pos.x += _poly->vec.x;_poly->pos.y += _poly->vec.y;
+
+					//当たった位置まで戻す
+					Point near_pos = Near_Point_Line(p, _poly->tri[polygon2].vertex[1], _poly->tri[polygon2].vertex[2]);
+					Vector return_vec = { p.x - near_pos.x,p.y - near_pos.y };
+					UpDateVertexPosition_Object(_poly, return_vec);
+
+					return;
+				}
+
 			}
 		}
 	}
