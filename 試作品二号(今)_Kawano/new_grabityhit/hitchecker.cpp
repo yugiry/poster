@@ -1,6 +1,6 @@
 #include "hitchecker.h"
 #include "function.h"
-
+#include <cmath>
 //コンストラクタ
 HitChecker::HitChecker()
 {
@@ -21,7 +21,8 @@ int HitChecker::CheckerUpdate(const ObjList& base)
 
 			if (a->ID == (int)ObjID::POLYGON && b->ID == (int)ObjID::WALL)
 			{
-				HitCheck_PW(a, b);
+				HitCheck_PW_Axis(a, b);//軸判定関数
+				//HitCheck_PW(a,b);
 			}
 			if (a->ID == (int)ObjID::CIRCLE && b->ID == (int)ObjID::WALL)
 			{
@@ -46,6 +47,177 @@ int HitChecker::CheckerUpdate(const ObjList& base)
 		DrawString(0, 20, "hit", 0xff0000, true);
 
 	return 0;
+}
+
+//軸判定関数
+void HitChecker::HitCheck_PW_Axis(BaseVector* _poly, BaseVector* _wall)
+{
+	//_polyの三角形と_wallの三角形を調べる(頂点ごとの処理を省き、辺同士の交差を求める)
+
+	//_polyのポリゴン数
+	for (int polygon1 = 0; polygon1 < _poly->tri.size(); polygon1++)
+	{
+		//_wallのポリゴン数
+		for (int polygon2 = 0; polygon2 < _wall->tri.size(); polygon2++)
+		{
+			float min_overlap = 1.0e30f;//重なりの最小判定範囲、値は10^30乗に設定し一番高い数字にする
+
+			bool collision = true;//衝突判定、初期判定はtrueでfor文を回す
+			Vector axis = {0.0f,0.0f};//方向
+			Vector axis_result = {0.0f,0.0f};//最終的な計算された方向
+			Point edge_start;//辺の始点
+			Point edge_end;//辺の終点
+			Vector poly_center{ 0.0f,0.0f };//polyの中点
+			Vector wall_center{ 0.0f,0.0f };//wallの中点
+
+			//各三角形の辺から垂直なベクトルを作成し、分離軸を使って調べる
+			//調べる三角形の数
+			for (int shape = 0; shape < 2 && collision; shape++)
+			{
+				//調べる辺の数
+				for (int edge = 0; edge < THREE; edge++)
+				{
+					int next_edge = edge + 1;
+					if (next_edge == THREE)
+						next_edge = 0;
+
+
+					//各三角形の辺を設定
+					if (shape == 0)
+					{
+						edge_start = _poly->tri[polygon1].vertex[edge];
+						edge_end   = _poly->tri[polygon1].vertex[next_edge];
+					}
+					else
+					{
+						edge_start = _wall->tri[polygon2].vertex[edge];
+						edge_end = _wall->tri[polygon2].vertex[next_edge];
+					}
+
+					//辺に垂直な軸の作成
+					axis.x = -(edge_end.y - edge_start.y);
+					axis.y = edge_end.x - edge_start.x;
+
+					//軸の長さ
+					float axis_length = Vector_Length(axis);
+
+					//一応長さが0である辺は無視
+					/*if (axis_length <= 0.000001f)
+						continue;*/
+
+					//垂直な軸を長さで割る
+					axis.x /= axis_length;
+					axis.y /= axis_length;
+
+					//_poly,_wallの三角形に辺の最小値、最大値を設定
+					float poly_min = _poly->tri[polygon1].vertex[0].x * axis.x +
+						_poly->tri[polygon1].vertex[0].y * axis.y;
+					float poly_max = poly_min;
+
+					float wall_min = _wall->tri[polygon2].vertex[0].x * axis.x +
+						_wall->tri[polygon2].vertex[0].y * axis.y;
+					float wall_max = wall_min;
+
+					//それぞれの頂点から垂直な軸を投影して範囲を調べる
+					for (int i = 1; i < THREE; i++)
+					{
+						//_poly
+						float projection =
+							_poly->tri[polygon1].vertex[i].x * axis.x +
+							_poly->tri[polygon1].vertex[i].y * axis.y;
+						
+						//範囲内ならその位置まで狭める
+						if (projection < poly_min) poly_min = projection;
+						if (projection > poly_max) poly_max = projection;
+
+						//_wall
+						projection =
+							_wall->tri[polygon2].vertex[i].x * axis.x +
+							_wall->tri[polygon2].vertex[i].y * axis.y;
+
+						if (projection < wall_min) wall_min = projection;
+						if (projection > wall_max) wall_max = projection;
+
+					}
+
+					//重なりを計算
+					float overlap = (poly_max < wall_max ? poly_max : wall_max) -
+						(poly_min > wall_min ? poly_min : wall_min);
+
+					//軸上で離れていれば衝突していないと判定しスキップする
+					if (overlap <= 0.0001f)
+					{
+						collision = false;
+						break;
+					}
+
+
+					// 押し戻しが最小になる場所を更新
+					if (overlap < min_overlap)
+					{
+						min_overlap = overlap;
+						axis_result.x = axis.x;
+						axis_result.y = axis.y;
+					}
+				}
+			}
+
+			//当たっていなければスキップ
+			if (!collision)
+				continue;
+
+			//poly,wallの中心を求める
+			//それぞれの頂点位置を加算してそれを3で割り各ポリゴンの中点を計算
+			for (int i = 0; i < THREE; i++)
+			{
+				poly_center.x += _poly->tri[polygon1].vertex[i].x;
+				poly_center.y += _poly->tri[polygon1].vertex[i].y;
+				wall_center.x += _wall->tri[polygon2].vertex[i].x;
+				wall_center.y += _wall->tri[polygon2].vertex[i].y;
+			}
+			poly_center.x /= THREE;
+			poly_center.y /= THREE;
+			wall_center.x /= THREE;
+			wall_center.y /= THREE;
+
+
+			//それぞれの中心点からpoly-wallの法線を作成
+			Vector center;
+			center.x = poly_center.x - wall_center.x;
+			center.y = poly_center.y - wall_center.y;
+
+			if (center.x * axis_result.x + center.y * axis_result.y < 0.0f)
+			{
+				axis_result.x = -axis_result.x;
+				axis_result.y = -axis_result.y;
+			}
+
+			//押し戻す量を成分毎に設定
+			Vector pushback =
+			{
+				axis_result.x * (min_overlap + 0.001f),
+				axis_result.y * (min_overlap + 0.001f)
+			};
+			UpDateVertexPosition_Object(_poly, pushback);
+
+
+			// 壁に向かっている速度だけ反射させる
+			float vec_refrection =
+				_poly->vec.x * axis_result.x +
+				_poly->vec.y * axis_result.y;
+
+			if (vec_refrection < 0.0f)
+			{
+				_poly->vec.x -=
+					(1.0f + _poly->rc) * vec_refrection * axis_result.x;
+
+				_poly->vec.y -=
+					(1.0f + _poly->rc) * vec_refrection * axis_result.y;
+			}
+
+			return;
+		}
+	}
 }
 
 //多角形と壁の当たり判定処理
@@ -233,6 +405,8 @@ void HitChecker::HitCheck_PW(BaseVector* _poly, BaseVector* _wall)
 		}
 	}
 }
+
+
 
 //円と壁の当たり判定処理
 void HitChecker::HitCheck_CW(BaseVector* _cir, BaseVector* _wall)

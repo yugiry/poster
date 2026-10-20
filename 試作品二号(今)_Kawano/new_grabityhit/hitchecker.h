@@ -10,6 +10,7 @@ public:
 
 	int CheckerUpdate(const ObjList&);
 	void HitCheck_PW(BaseVector*, BaseVector*);
+	void HitCheck_PW_Axis(BaseVector*, BaseVector*);//ÉeÉXÉgä÷êî
 	void HitCheck_CW(BaseVector*, BaseVector*);
 	void HitCheck_PP(BaseVector*, BaseVector*);
 	void HitCheck_CC(BaseVector*, BaseVector*);
