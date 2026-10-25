@@ -51,6 +51,8 @@ int HitChecker::CheckerUpdate(const ObjList& base)
 //‘½ŠpŒ`‚Æ•Ç‚Ì“–‚½‚è”»’èˆ—
 void HitChecker::HitCheck_PW(BaseVector* _poly, BaseVector* _wall)
 {
+	Vector return_vec{ 0,0 };
+
 	//_poly‚Ìƒ|ƒŠƒSƒ“•ª’²‚×‚é
 	for (int polygon1 = 0; polygon1 < _poly->tri.size(); polygon1++)
 	{
@@ -91,10 +93,8 @@ void HitChecker::HitCheck_PW(BaseVector* _poly, BaseVector* _wall)
 
 					//“–‚½‚Á‚½ˆÊ’u‚Ü‚Å–ß‚·
 					Point near_pos = Near_Point_Line(p, _wall->tri[polygon2].vertex[1], _wall->tri[polygon2].vertex[2]);
-					Vector return_vec = { near_pos.x - p.x,near_pos.y - p.y };
-					UpDateVertexPosition_Object(_poly, return_vec);
-
-					return;
+					return_vec = { near_pos.x - p.x,near_pos.y - p.y };
+					//UpDateVertexPosition_Object(_poly, return_vec);
 				}
 			}
 		}
@@ -136,15 +136,18 @@ void HitChecker::HitCheck_PW(BaseVector* _poly, BaseVector* _wall)
 
 					//“–‚½‚Á‚½ˆÊ’u‚Ü‚Å–ß‚·
 					Point near_pos = Near_Point_Line(p, _poly->tri[polygon2].vertex[1], _poly->tri[polygon2].vertex[2]);
-					Vector return_vec = { p.x - near_pos.x,p.y - near_pos.y };
+					Vector return_vec2 = { p.x - near_pos.x,p.y - near_pos.y };
 
-					UpDateVertexPosition_Object(_poly, return_vec);
+					if (Vector_Length(return_vec) < Vector_Length(return_vec2))
+						return_vec = return_vec2;
 
-					break;
+					//UpDateVertexPosition_Object(_poly, return_vec);
 				}
 			}
 		}
 	}
+
+	UpDateVertexPosition_Object(_poly, return_vec);
 }
 
 //‰~‚Æ•Ç‚Ì“–‚½‚è”»’èˆ—
