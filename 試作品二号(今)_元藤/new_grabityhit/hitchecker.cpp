@@ -65,9 +65,6 @@ void HitChecker::HitCheck_PW(BaseVector* _poly, BaseVector* _wall)
 
 				float cross[THREE];
 
-				Vector dot[THREE];
-				Vector Dist[THREE];//点同士の距離
-				Point old_pos;
 				//頂点が_wallのポリゴン内に入っているか調べる
 				for (int i = 0; i < THREE; i++)
 				{
@@ -81,64 +78,20 @@ void HitChecker::HitCheck_PW(BaseVector* _poly, BaseVector* _wall)
 
 					//求めたベクトルから外積を使って調べる
 					cross[i] = v1.x * v2.y - v1.y * v2.x;
-
-
-					//内積
-					Vector d1 = Sub_Point_Point(p, _wall->tri[polygon2].vertex[i]);
-					Vector d2 = Sub_Point_Point(p, _wall->tri[polygon2].vertex[j]);
-					Vector v3 = Sub_Point_Point(_wall->tri[polygon2].vertex[i], _wall->tri[polygon2].vertex[j]);
-
-					dot[i].x = d1.x * v1.x + d1.y * v1.y;
-					dot[i].y = d2.x * v3.x + d2.y * v3.y;
-
-					//点同士が重なった時
-					Dist[i].x = (d1.x * d1.x) + (d1.y * d1.y);
-					Dist[i].y = (d2.x * d2.x) + (d2.y * d2.y);
-
-
 				}
 
 				if ((cross[0] > 0 && cross[1] > 0 && cross[2] > 0) || (cross[0] < 0 && cross[1] < 0 && cross[2] < 0))
 				{
+					//
+					Vector return_power{ _poly->tri[polygon1].vertex[2].y - _poly->tri[polygon1].vertex[1].y,-(_poly->tri[polygon1].vertex[2].x - _poly->tri[polygon1].vertex[1].x) };
+					return_power = Vector_SetLength(return_power, Vector_Length(_poly->vec) * _poly->rc);
+
 					//重力加速をリセット
-					_poly->vec.y = -(_poly->vec.y * _poly->rc);
-					_poly->vec.x = -(_poly->vec.x);
-					_poly->pos.x += _poly->vec.x;_poly->pos.y += _poly->vec.y;
+					_poly->vec = return_power;
 
 					//当たった位置まで戻す
 					Point near_pos = Near_Point_Line(p, _wall->tri[polygon2].vertex[1], _wall->tri[polygon2].vertex[2]);
 					Vector return_vec = { near_pos.x - p.x,near_pos.y - p.y };
-					UpDateVertexPosition_Object(_poly, return_vec);
-
-					return;
-				}
-				if ((dot[0].x >= 0.0f && dot[0].y >= 0.0f) && (dot[1].x >= 0.0f && dot[1].y >= 0.0f) && (dot[2].x >= 0.0f && dot[2].y >= 0.0f) &&
-					cross[0] == 0.0f && cross[1] == 0.0f && cross[2] == 0.0f)
-				{
-					//重力加速をリセット
-					_poly->vec.y = -(_poly->vec.y * _poly->rc);
-					_poly->vec.x = -(_poly->vec.x);
-					_poly->pos.x += _poly->vec.x;_poly->pos.y += _poly->vec.y;
-
-					//当たった位置まで戻す
-					Point near_pos = Near_Point_Line(p, _wall->tri[polygon2].vertex[1], _wall->tri[polygon2].vertex[2]);
-					Vector return_vec = { near_pos.x - p.x,near_pos.y - p.y };
-					UpDateVertexPosition_Object(_poly, return_vec);
-
-					return;
-				}
-				//点同士のあたり判定
-				if (Dist[0].x <= 12 || Dist[1].x <= 12 || Dist[2].x <= 12 ||
-					Dist[0].y <= 12 || Dist[1].y <= 12 || Dist[2].y <= 12)
-				{
-					//重力加速度をリセット
-					_poly->vec.y = -(_poly->vec.y);
-					_poly->vec.x = -(_poly->vec.x);_poly->vec.y = -(_poly->vec.y);
-					_poly->pos.x += _poly->vec.x;_poly->pos.y += _poly->vec.y;
-
-					//当たった位置まで戻す
-					Point near_pos = Near_Point_Line(p, _wall->tri[polygon2].vertex[1], _wall->tri[polygon2].vertex[2]);
-					Vector return_vec = { p.x - near_pos.x,p.y - near_pos.y };
 					UpDateVertexPosition_Object(_poly, return_vec);
 
 					return;
@@ -160,8 +113,6 @@ void HitChecker::HitCheck_PW(BaseVector* _poly, BaseVector* _wall)
 			{
 				float cross[THREE];//外積
 
-				Vector dot[THREE];
-				Vector Dist[THREE];//点同士の距離
 				//頂点が_polyのポリゴン内に入っているか調べる
 				for (int i = 0; i < THREE; i++)
 				{
@@ -172,63 +123,25 @@ void HitChecker::HitCheck_PW(BaseVector* _poly, BaseVector* _wall)
 					Vector v1 = Sub_Point_Point(_poly->tri[polygon2].vertex[j], _poly->tri[polygon2].vertex[i]);
 					Vector v2 = Sub_Point_Point(p, _poly->tri[polygon2].vertex[j]);
 					cross[i] = v1.x * v2.y - v1.y * v2.x;
-					//内積
-					Vector d1 = Sub_Point_Point(p, _poly->tri[polygon2].vertex[i]);
-					Vector d2 = Sub_Point_Point(p, _poly->tri[polygon2].vertex[j]);
-					Vector v3 = Sub_Point_Point(_poly->tri[polygon2].vertex[i], _poly->tri[polygon2].vertex[j]);
-
-					dot[i].x = d1.x * v1.x + d1.y * v1.y;
-					dot[i].y = d2.x * v3.x + d2.y * v3.y;
-
-					//点同士が重なった時
-					Dist[i].x = (d1.x * d1.x) + (d1.y * d1.y);
-					Dist[i].y = (d2.x * d2.x) + (d2.y * d2.y);
 
 				}
 				//外積判定
 				if ((cross[0] > 0 && cross[1] > 0 && cross[2] > 0) || (cross[0] < 0 && cross[1] < 0 && cross[2] < 0))
 				{
-					//重力加速度をリセット
-					_poly->vec.y = -(_poly->vec.y * _poly->rc);
+					Vector return_power{ _poly->tri[polygon2].vertex[2].y - _poly->tri[polygon2].vertex[1].y,_poly->tri[polygon2].vertex[2].x - _poly->tri[polygon2].vertex[1].x };
+					return_power = Vector_SetLength(return_power, Vector_Length(_poly->vec) * _poly->rc);
 
-					//当たった位置まで戻す
-					Point near_pos = Near_Point_Line(p, _poly->tri[polygon2].vertex[1], _poly->tri[polygon2].vertex[2]);
-					Vector return_vec = { p.x - near_pos.x,p.y - near_pos.y };
-
-					UpDateVertexPosition_Object(_poly, return_vec);
-
-					break;
-				}
-				if ((dot[0].x >= 0.0f && dot[0].y >= 0.0f) && (dot[1].x >= 0.0f && dot[1].y >= 0.0f) && (dot[2].x >= 0.0f && dot[2].y >= 0.0f) &&
-					cross[0] == 0.0f && cross[1] == 0.0f && cross[2] == 0.0f)
-				{
 					//重力加速をリセット
-					_poly->vec.y = -(_poly->vec.y * _poly->rc);
-
-					//当たった位置まで戻す
-					Point near_pos = Near_Point_Line(p, _poly->tri[polygon2].vertex[1], _poly->tri[polygon2].vertex[2]);
-					Vector return_vec = { near_pos.x - p.x,near_pos.y - p.y };
-
-					UpDateVertexPosition_Object(_poly, return_vec);
-					break;
-				}
-				//点同士のあたり判定
-				if (Dist[0].x <= 12 || Dist[1].x <= 12 || Dist[2].x <= 12 ||
-					Dist[0].y <= 12 || Dist[1].y <= 12 || Dist[2].y <= 12)
-				{
-					//重力加速度をリセット
-					_poly->vec.y = -(_poly->vec.y);
-					_poly->vec.x = -(_poly->vec.x);_poly->vec.y = -(_poly->vec.y);
-					_poly->pos.x += _poly->vec.x;_poly->pos.y += _poly->vec.y;
+					_poly->vec = return_power;
 
 					//当たった位置まで戻す
 					Point near_pos = Near_Point_Line(p, _poly->tri[polygon2].vertex[1], _poly->tri[polygon2].vertex[2]);
 					Vector return_vec = { p.x - near_pos.x,p.y - near_pos.y };
+
 					UpDateVertexPosition_Object(_poly, return_vec);
 
-					return;
+					break;
 				}
-
 			}
 		}
 	}
