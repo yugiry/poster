@@ -31,7 +31,6 @@ CObject::CObject(int _type)
 
 	angle = 0;
 	rc = 0.5f;
-	mass = 1.0f;
 	vertex_num = 4;
 
 	//’¸“_‚Ì‰Šú‰»
@@ -72,8 +71,7 @@ int CObject::Action(const ObjList& base, ObjList& add_list)
 {
 	if (can)
 	{
-		vec.x = 0.0f; 
-		vec.y += g * mass;//d—Í~¿—Ê
+		vec.x = 0.0f; vec.y += g;
 
 		if (CheckHitKey(KEY_INPUT_W))vec.y = -5.0f;
 		if (CheckHitKey(KEY_INPUT_S))vec.y = 5.0f;

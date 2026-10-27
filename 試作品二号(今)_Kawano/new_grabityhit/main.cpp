@@ -6,6 +6,7 @@
 #include "game.h"
 
 constexpr auto FPS = 60;//基本FPS
+
 //Point3 CCameraInfo::pos;//カメラ情報初期化(グローバル）
 
 int APIENTRY wWinMain(_In_ HINSTANCE hInstance, _In_opt_ HINSTANCE,
@@ -61,6 +62,7 @@ int APIENTRY wWinMain(_In_ HINSTANCE hInstance, _In_opt_ HINSTANCE,
 			//処理時間が指定FPSの時間が経過していない場合、経過まで待機
 			WaitTimer((int)nextTime - GetNowCount());
 		}
+
 		ScreenFlip();	//画面を更新
 
 		//escキーでプログラム終了

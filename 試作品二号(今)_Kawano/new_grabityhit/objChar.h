@@ -40,9 +40,6 @@ public:
 	Vector vec{ 0,0 };//移動ベクトル
 	vector<Poly> tri;//ポリゴン
 	float g{ 0.98f };//重力加速度
-	float mass{ 1.0f };//物体の質量
-	float angle_velocity{ 0.0f };//角速度
-	float inertia{ 1.0f };//慣性モーメント
 	float rc{ 0 };//反発係数(0.0f ～ 1.0f)
 
 	float angle{ 0 };//オブジェクトの角度
