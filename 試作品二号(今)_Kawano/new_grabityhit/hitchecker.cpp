@@ -54,6 +54,7 @@ void HitChecker::HitCheck_PW_Axis(BaseVector* _poly, BaseVector* _wall)
 {
 	//_polyの三角形と_wallの三角形を調べる(頂点ごとの処理を省き、辺同士の交差を求める)
 
+		
 	//_polyのポリゴン数
 	for (int polygon1 = 0; polygon1 < _poly->tri.size(); polygon1++)
 	{
@@ -63,8 +64,8 @@ void HitChecker::HitCheck_PW_Axis(BaseVector* _poly, BaseVector* _wall)
 			float min_overlap = 1.0e30f;//重なりの最小判定範囲、値は10^30乗に設定し一番高い数字にする
 
 			bool collision = true;//衝突判定、初期判定はtrueでfor文を回す
-			Vector axis = {0.0f,0.0f};//方向
-			Vector axis_result = {0.0f,0.0f};//最終的な計算された方向
+			Vector axis = { 0.0f,0.0f };//方向
+			Vector axis_result = { 0.0f,0.0f };//最終的な計算された方向
 			Point edge_start;//辺の始点
 			Point edge_end;//辺の終点
 			Vector poly_center{ 0.0f,0.0f };//polyの中点
@@ -86,7 +87,7 @@ void HitChecker::HitCheck_PW_Axis(BaseVector* _poly, BaseVector* _wall)
 					if (shape == 0)
 					{
 						edge_start = _poly->tri[polygon1].vertex[edge];
-						edge_end   = _poly->tri[polygon1].vertex[next_edge];
+						edge_end = _poly->tri[polygon1].vertex[next_edge];
 					}
 					else
 					{
@@ -102,8 +103,8 @@ void HitChecker::HitCheck_PW_Axis(BaseVector* _poly, BaseVector* _wall)
 					float axis_length = Vector_Length(axis);
 
 					//一応長さが0である辺は無視
-					/*if (axis_length <= 0.000001f)
-						continue;*/
+					if (axis_length <= 0.000001f)
+						continue;
 
 					//垂直な軸を長さで割る
 					axis.x /= axis_length;
@@ -125,7 +126,7 @@ void HitChecker::HitCheck_PW_Axis(BaseVector* _poly, BaseVector* _wall)
 						float projection =
 							_poly->tri[polygon1].vertex[i].x * axis.x +
 							_poly->tri[polygon1].vertex[i].y * axis.y;
-						
+
 						//範囲内ならその位置まで狭める
 						if (projection < poly_min) poly_min = projection;
 						if (projection > poly_max) poly_max = projection;
@@ -164,7 +165,10 @@ void HitChecker::HitCheck_PW_Axis(BaseVector* _poly, BaseVector* _wall)
 
 			//当たっていなければスキップ
 			if (!collision)
+			{
 				continue;
+			}
+
 
 			//poly,wallの中心を求める
 			//それぞれの頂点位置を加算してそれを3で割り各ポリゴンの中点を計算
@@ -180,9 +184,8 @@ void HitChecker::HitCheck_PW_Axis(BaseVector* _poly, BaseVector* _wall)
 			wall_center.x /= THREE;
 			wall_center.y /= THREE;
 
-
 			//それぞれの中心点からpoly-wallの法線を作成
-			Vector center;
+			Vector center{ 0.0f,0.0f };
 			center.x = poly_center.x - wall_center.x;
 			center.y = poly_center.y - wall_center.y;
 
@@ -198,8 +201,38 @@ void HitChecker::HitCheck_PW_Axis(BaseVector* _poly, BaseVector* _wall)
 				axis_result.x * (min_overlap + 0.001f),
 				axis_result.y * (min_overlap + 0.001f)
 			};
-			UpDateVertexPosition_Object(_poly, pushback);
 
+			//重心から衝突点までのベクトル
+			Point contact_point{ 0.0f,0.0f };
+
+			for (int i = 0; i < THREE; i++)
+			{
+				contact_point.x += _poly->tri[polygon1].vertex[i].x;
+				contact_point.y += _poly->tri[polygon1].vertex[i].y;
+			}
+			contact_point.x /= THREE;
+			contact_point.y /= THREE;
+
+			//近似してその差を計算
+			float rx = contact_point.x - _poly->pos.x;
+			float ry = contact_point.y - _poly->pos.y;
+
+			float vn = _poly->vec.x * axis_result.x + _poly->vec.y * axis_result.y;
+
+
+			if (vn < 0.0f && _poly->inertia > 0.000001f)
+			{
+				// 法線方向の力積の大きさ
+				float impulse =
+					-(1.0f + _poly->rc) * vn * _poly->mass;
+				// 角速度の変化
+				_poly->angle_velocity +=
+					(rx * axis_result.y - ry * axis_result.x)
+					* impulse / _poly->inertia;
+				_poly->angle += _poly->angle_velocity;
+			}
+
+			UpDateVertexPosition_Object(_poly, pushback);
 
 			// 壁に向かっている速度だけ反射させる
 			float vec_refrection =
@@ -219,6 +252,7 @@ void HitChecker::HitCheck_PW_Axis(BaseVector* _poly, BaseVector* _wall)
 		}
 	}
 }
+
 
 //多角形と壁の当たり判定処理
 void HitChecker::HitCheck_PW(BaseVector* _poly, BaseVector* _wall)
@@ -253,7 +287,6 @@ void HitChecker::HitCheck_PW(BaseVector* _poly, BaseVector* _wall)
 
 					//求めたベクトルから外積を使って調べる
 					cross[i] = v1.x * v2.y - v1.y * v2.x;
-
 
 					//内積
 					Vector d1 = Sub_Point_Point(p, _wall->tri[polygon2].vertex[i]);

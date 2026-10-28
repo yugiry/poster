@@ -25,6 +25,8 @@ constexpr auto WINDOW_HEIGHT = 800;	//ウィンドウ縦幅
 constexpr auto HALF = 2;
 constexpr auto THREE = 3;
 
+extern float delta_time;//グローバルタイマー
+
 //2D用
  struct Point {
 	float x, y;

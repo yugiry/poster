@@ -11,6 +11,7 @@ CBox::CBox()
 	ImgHeight = 100;
 
 	rc = 0.5f;
+	mass = 1.0f;
 	vertex_num = 4;
 
 	//’¸“_‚Ì‰Šú‰»
@@ -36,6 +37,7 @@ CBox::CBox(Point _p)
 	ImgHeight = 100;
 
 	rc = 0.0f;
+	mass = 1.0f;
 	vertex_num = 4;
 
 	//’¸“_‚Ì‰Šú‰»
