@@ -60,12 +60,12 @@ void HitChecker::HitCheck_PW_Axis(BaseVector* _poly, BaseVector* _wall)
 		if (angle_power > 0)
 		{
 			angle_power -= 1.0f;
-			_poly->pos.x -= 5.0f;
+			_poly->pos.x += _poly->vec.y*2;
 		}
 		else if (angle_power < 0)
 		{
 			angle_power += 1.0f;
-			_poly->pos.x += 5.0f;
+			_poly->pos.x -= _poly->vec.y*2;
 		}
 			
 		if (angle_power < 1.0f && angle_power > -1.0f)
@@ -76,6 +76,9 @@ void HitChecker::HitCheck_PW_Axis(BaseVector* _poly, BaseVector* _wall)
 	//_poly‚Ìƒ|ƒŠƒSƒ“”
 	for (int polygon1 = 0; polygon1 < _poly->tri.size(); polygon1++)
 	{
+		int polygon_next1 = polygon1++;
+		if (polygon_next1 == _poly->tri.size())
+			polygon_next1 = 0;
 		//_wall‚Ìƒ|ƒŠƒSƒ“”
 		for (int polygon2 = 0; polygon2 < _wall->tri.size(); polygon2++)
 		{
@@ -244,29 +247,33 @@ void HitChecker::HitCheck_PW_Axis(BaseVector* _poly, BaseVector* _wall)
 					-(1.0f + _poly->rc) * vn * _poly->mass;
 				// Šp‘¬“x‚Ì•Ï‰»
 
+				//‰¼
 				Vector a = Sub_Point_Point(_wall->tri[polygon2].vertex[0], _poly->tri[polygon1].vertex[1]);
 				Vector b = Sub_Point_Point(_wall->tri[polygon2].vertex[0], _poly->tri[polygon1].vertex[2]);
-
+				Vector d = Sub_Point_Point(_poly->tri[polygon_next1].vertex[1], _poly->tri[polygon_next1].vertex[2]);
+				Vector e = Sub_Point_Point(_poly->tri[polygon1].vertex[1], _poly->tri[polygon1].vertex[2]);
 				Vector c = Sub_Vector_Vector(a,b);
 	
-				_poly->angle_velocity +=
+			_poly->angle_velocity +=
 					(rx * axis_result.y - ry * axis_result.x)
 					* impulse / _poly->inertia;
 				//if (_poly->angle_velocity > 0)
 					//_poly->angle++;
 
-				if (c.x > 0)
+				if (_poly->vec.y > -0.3f)
 				{
-					//_poly->angle--;
-					angle_power = -20.0f;
-				}
-				else if (c.x < 0)
-				{
-					//_poly->angle++;
-					angle_power = 20.0f;
+					if (_poly->tri[polygon1].vertex[1].y > _poly->tri[polygon1].vertex[2].y)
+					{
+						angle_power = 20.0f;
+					}
+					else if (_poly->tri[polygon1].vertex[1].y < _poly->tri[polygon1].vertex[2].y)
+					{
+						angle_power = -20.0f;
+					}
 				}
 					
-					
+				DrawFormatString(0, 200, 0xffffff, "d = %f,%f", d.x, d.y);
+				DrawFormatString(0, 220, 0xffffff, "e = %f,%f", e.x, e.y);
 				
 			}
 
