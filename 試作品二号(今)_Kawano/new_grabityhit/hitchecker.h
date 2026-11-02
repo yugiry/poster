@@ -24,6 +24,7 @@ public:
 
 	//vector<Vector> shortrang_vec;//
 	bool object_hit{ false };
-
+	bool angle_plus{false};
+	float angle_power{0.0f};
 #pragma endregion
 };

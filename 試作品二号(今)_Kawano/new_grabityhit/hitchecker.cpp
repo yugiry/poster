@@ -54,6 +54,24 @@ void HitChecker::HitCheck_PW_Axis(BaseVector* _poly, BaseVector* _wall)
 {
 	//_polyの三角形と_wallの三角形を調べる(頂点ごとの処理を省き、辺同士の交差を求める)
 
+	if (angle_power != 0)
+	{
+		_poly->angle += angle_power;
+		if (angle_power > 0)
+		{
+			angle_power -= 1.0f;
+			_poly->pos.x -= 5.0f;
+		}
+		else if (angle_power < 0)
+		{
+			angle_power += 1.0f;
+			_poly->pos.x += 5.0f;
+		}
+			
+		if (angle_power < 1.0f && angle_power > -1.0f)
+			angle_power = 0;
+	}
+		
 		
 	//_polyのポリゴン数
 	for (int polygon1 = 0; polygon1 < _poly->tri.size(); polygon1++)
@@ -219,22 +237,41 @@ void HitChecker::HitCheck_PW_Axis(BaseVector* _poly, BaseVector* _wall)
 
 			float vn = _poly->vec.x * axis_result.x + _poly->vec.y * axis_result.y;
 
-
 			if (vn < 0.0f && _poly->inertia > 0.000001f)
 			{
 				// 法線方向の力積の大きさ
 				float impulse =
 					-(1.0f + _poly->rc) * vn * _poly->mass;
 				// 角速度の変化
+
+				Vector a = Sub_Point_Point(_wall->tri[polygon2].vertex[0], _poly->tri[polygon1].vertex[1]);
+				Vector b = Sub_Point_Point(_wall->tri[polygon2].vertex[0], _poly->tri[polygon1].vertex[2]);
+
+				Vector c = Sub_Vector_Vector(a,b);
+	
 				_poly->angle_velocity +=
 					(rx * axis_result.y - ry * axis_result.x)
 					* impulse / _poly->inertia;
-				_poly->angle += _poly->angle_velocity;
+				//if (_poly->angle_velocity > 0)
+					//_poly->angle++;
+
+				if (c.x > 0)
+				{
+					//_poly->angle--;
+					angle_power = -20.0f;
+				}
+				else if (c.x < 0)
+				{
+					//_poly->angle++;
+					angle_power = 20.0f;
+				}
+					
+					
+				
 			}
 
-			UpDateVertexPosition_Object(_poly, pushback);
 
-			// 壁に向かっている速度だけ反射させる
+			//壁に向かっている速度だけ反射させる
 			float vec_refrection =
 				_poly->vec.x * axis_result.x +
 				_poly->vec.y * axis_result.y;
@@ -246,7 +283,10 @@ void HitChecker::HitCheck_PW_Axis(BaseVector* _poly, BaseVector* _wall)
 
 				_poly->vec.y -=
 					(1.0f + _poly->rc) * vec_refrection * axis_result.y;
+
 			}
+
+			UpDateVertexPosition_Object(_poly, pushback);
 
 			return;
 		}
