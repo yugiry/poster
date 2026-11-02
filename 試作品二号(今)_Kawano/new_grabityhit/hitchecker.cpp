@@ -259,14 +259,16 @@ void HitChecker::HitCheck_PW_Axis(BaseVector* _poly, BaseVector* _wall)
 					* impulse / _poly->inertia;
 				//if (_poly->angle_velocity > 0)
 					//_poly->angle++;
+			float dist = _poly->tri[polygon1].vertex[1].y - _poly->tri[polygon1].vertex[2].y;
 
-				if (_poly->vec.y > -0.3f)
+				if (_poly->vec.y > 10.0f)
 				{
-					if (_poly->tri[polygon1].vertex[1].y > _poly->tri[polygon1].vertex[2].y)
+
+					if (dist > 10.0f && dist < 298.0f)
 					{
 						angle_power = 20.0f;
 					}
-					else if (_poly->tri[polygon1].vertex[1].y < _poly->tri[polygon1].vertex[2].y)
+					else if (dist < -10.0f && dist > -298.0f)
 					{
 						angle_power = -20.0f;
 					}
@@ -274,6 +276,7 @@ void HitChecker::HitCheck_PW_Axis(BaseVector* _poly, BaseVector* _wall)
 					
 				DrawFormatString(0, 200, 0xffffff, "d = %f,%f", d.x, d.y);
 				DrawFormatString(0, 220, 0xffffff, "e = %f,%f", e.x, e.y);
+				DrawFormatString(0, 240, 0xffffff, "dist = %f",dist);
 				
 			}
 
