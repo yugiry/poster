@@ -60,12 +60,12 @@ void HitChecker::HitCheck_PW_Axis(BaseVector* _poly, BaseVector* _wall)
 		if (angle_power > 0)
 		{
 			angle_power -= 1.0f;
-			_poly->pos.x += _poly->vec.y*2;
+			_poly->pos.x += _poly->vec.y * 2;
 		}
 		else if (angle_power < 0)
 		{
 			angle_power += 1.0f;
-			_poly->pos.x -= _poly->vec.y*2;
+			_poly->pos.x -= _poly->vec.y * 2;
 		}
 			
 		if (angle_power < 1.0f && angle_power > -1.0f)
