@@ -53,7 +53,8 @@ int HitChecker::CheckerUpdate(const ObjList& base)
 void HitChecker::HitCheck_PW_Axis(BaseVector* _poly, BaseVector* _wall)
 {
 	//_polyの三角形と_wallの三角形を調べる(頂点ごとの処理を省き、辺同士の交差を求める)
-
+	if(angle_set_timer > 0)
+	angle_set_timer--;
 	if (angle_power != 0)
 	{
 		_poly->angle += angle_power;
@@ -71,14 +72,18 @@ void HitChecker::HitCheck_PW_Axis(BaseVector* _poly, BaseVector* _wall)
 		if (angle_power < 1.0f && angle_power > -1.0f)
 			angle_power = 0;
 	}
-		
-		
+
+
 	//_polyのポリゴン数
 	for (int polygon1 = 0; polygon1 < _poly->tri.size(); polygon1++)
 	{
 		int polygon_next1 = polygon1++;
 		if (polygon_next1 == _poly->tri.size())
 			polygon_next1 = 0;
+
+
+
+
 		//_wallのポリゴン数
 		for (int polygon2 = 0; polygon2 < _wall->tri.size(); polygon2++)
 		{
@@ -247,37 +252,28 @@ void HitChecker::HitCheck_PW_Axis(BaseVector* _poly, BaseVector* _wall)
 					-(1.0f + _poly->rc) * vn * _poly->mass;
 				// 角速度の変化
 
-				//仮
-				Vector a = Sub_Point_Point(_wall->tri[polygon2].vertex[0], _poly->tri[polygon1].vertex[1]);
-				Vector b = Sub_Point_Point(_wall->tri[polygon2].vertex[0], _poly->tri[polygon1].vertex[2]);
-				Vector d = Sub_Point_Point(_poly->tri[polygon_next1].vertex[1], _poly->tri[polygon_next1].vertex[2]);
-				Vector e = Sub_Point_Point(_poly->tri[polygon1].vertex[1], _poly->tri[polygon1].vertex[2]);
-				Vector c = Sub_Vector_Vector(a,b);
-	
 			_poly->angle_velocity +=
 					(rx * axis_result.y - ry * axis_result.x)
 					* impulse / _poly->inertia;
-				//if (_poly->angle_velocity > 0)
-					//_poly->angle++;
+
 			float dist = _poly->tri[polygon1].vertex[1].y - _poly->tri[polygon1].vertex[2].y;
 
-				if (_poly->vec.y > 10.0f)
+				if (_poly->vec.y > 10.0f && angle_set_timer <= 0)
 				{
 
 					if (dist > 10.0f && dist < 298.0f)
 					{
 						angle_power = 20.0f;
+						angle_set_timer = ANGLE_MAX_TIMER;
 					}
 					else if (dist < -10.0f && dist > -298.0f)
 					{
 						angle_power = -20.0f;
+						angle_set_timer = ANGLE_MAX_TIMER;
 					}
+
+
 				}
-					
-				DrawFormatString(0, 200, 0xffffff, "d = %f,%f", d.x, d.y);
-				DrawFormatString(0, 220, 0xffffff, "e = %f,%f", e.x, e.y);
-				DrawFormatString(0, 240, 0xffffff, "dist = %f",dist);
-				
 			}
 
 
@@ -300,6 +296,8 @@ void HitChecker::HitCheck_PW_Axis(BaseVector* _poly, BaseVector* _wall)
 
 			return;
 		}
+
+
 	}
 }
 

@@ -20,10 +20,22 @@ public:
 	void Draw();
 #pragma endregion
 
+#pragma region ’è”
+	const float ANGLE_MAX_TIMER = 30.0f;
+
+#pragma endregion
+
 #pragma region •Ï”
 
 	//vector<Vector> shortrang_vec;//
 	bool object_hit{ false };
 	float angle_power{0.0f};//Šp‘¬“x‚É‰ÁZ‚·‚é’l
+	float angle_set_timer = ANGLE_MAX_TIMER;
+	Point most_under_point;
+
 #pragma endregion
+
+
+
+
 };
