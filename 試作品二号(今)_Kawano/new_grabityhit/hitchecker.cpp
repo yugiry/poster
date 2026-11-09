@@ -60,12 +60,12 @@ void HitChecker::HitCheck_PW_Axis(BaseVector* _poly, BaseVector* _wall)
 		_poly->angle += angle_power;
 		if (angle_power > 0)
 		{
-			angle_power -= 1.0f;
+			angle_power -= 1.5f;
 			_poly->pos.x += _poly->vec.y * 2;
 		}
 		else if (angle_power < 0)
 		{
-			angle_power += 1.0f;
+			angle_power += 1.5f;
 			_poly->pos.x -= _poly->vec.y * 2;
 		}
 			
@@ -80,9 +80,13 @@ void HitChecker::HitCheck_PW_Axis(BaseVector* _poly, BaseVector* _wall)
 		int polygon_next1 = polygon1++;
 		if (polygon_next1 == _poly->tri.size())
 			polygon_next1 = 0;
+		int polygon_old1 = polygon1--;
+		if (polygon_old1 == -1)
+			polygon_old1 = _poly->tri.size() - 1;
 
-
-
+		//Å‰º“_‚ğ’²‚×‚é
+		if (most_under_point.y < _poly->tri[polygon1].vertex[1].y)
+			most_under_point = _poly->tri[polygon1].vertex[1];
 
 		//_wall‚Ìƒ|ƒŠƒSƒ“”
 		for (int polygon2 = 0; polygon2 < _wall->tri.size(); polygon2++)
@@ -294,10 +298,12 @@ void HitChecker::HitCheck_PW_Axis(BaseVector* _poly, BaseVector* _wall)
 
 			UpDateVertexPosition_Object(_poly, pushback);
 
+
+
 			return;
 		}
 
-
+		
 	}
 }
 
