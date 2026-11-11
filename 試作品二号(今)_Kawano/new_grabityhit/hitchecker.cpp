@@ -242,6 +242,7 @@ void HitChecker::HitCheck_PW_Axis(BaseVector* _poly, BaseVector* _wall)
 			contact_point.x /= THREE;
 			contact_point.y /= THREE;
 
+
 			//‹ßŽ—‚µ‚Ä‚»‚Ì·‚ðŒvŽZ
 			float rx = contact_point.x - _poly->pos.x;
 			float ry = contact_point.y - _poly->pos.y;
@@ -266,16 +267,22 @@ void HitChecker::HitCheck_PW_Axis(BaseVector* _poly, BaseVector* _wall)
 
 					if (dist > 10.0f && dist < 298.0f)
 					{
-						angle_power = 20.0f;
-						angle_set_timer = ANGLE_MAX_TIMER;
+						if (_poly->tri[polygon1].vertex[0].x > _wall->tri[polygon2].vertex[0].x)
+						{
+							angle_power = 20.0f;
+							angle_set_timer = ANGLE_MAX_TIMER;
+						}
+						else
+						{
+							angle_power = -20.0f;
+							angle_set_timer = ANGLE_MAX_TIMER;
+						}
 					}
 					else if (dist < -10.0f && dist > -298.0f)
 					{
 						angle_power = -20.0f;
 						angle_set_timer = ANGLE_MAX_TIMER;
 					}
-
-
 				}
 			}
 
