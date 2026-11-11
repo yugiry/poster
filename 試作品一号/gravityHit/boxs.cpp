@@ -36,27 +36,27 @@ CBoxs::CBoxs(Point p, int w, int h)
 int CBoxs::Action(vector<unique_ptr<BaseVector>>& base)
 {
 	vec.x = 0.0f;
-	vec.y = 0.0f;
+	vec.y += g;
 
 	if (CheckHitKey(KEY_INPUT_W))
 	{
-		vec.y -= 4.0f;
+		vec.y = -4.0f;
 	}
 	if (CheckHitKey(KEY_INPUT_S))
 	{
-		vec.y += 4.0f;
+		vec.y = 4.0f;
 	}
 	if (CheckHitKey(KEY_INPUT_A))
 	{
-		vec.x -= 4.0f;
+		vec.x = -4.0f;
 	}
 	if (CheckHitKey(KEY_INPUT_D))
 	{
-		vec.x += 4.0f;
+		vec.x = 4.0f;
 	}
 
 	//当たり判定
-	/*
+	
 	for (auto i = 0; i < base.size(); i++)
 	{
 		if (base[i]->ID == B1)
@@ -120,15 +120,15 @@ int CBoxs::Action(vector<unique_ptr<BaseVector>>& base)
 			}
 		}
 		
-	}*/
+	}
 
 	//ボックスの頂点すべてで当たっているか調べる
-	for (int i = 0; i < 4; i++)
+	/*for (int i = 0; i < 4; i++)
 	{
 		i = (int)BOXPOINT::RIGHTDOWN;
 
 		
-	}
+	}*/
 
 	//中心座標の座標更新処理
 	{

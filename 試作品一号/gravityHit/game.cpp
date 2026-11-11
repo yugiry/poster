@@ -11,11 +11,11 @@
 //コンストラクタ
 CGame::CGame(CManager* p) :CScene(p){
 	//地面
-	//base.emplace_back((unique_ptr<BaseVector>)new CBox());
+	base.emplace_back((unique_ptr<BaseVector>)new CBox());
 	//箱
 	base.emplace_back((unique_ptr<BaseVector>)new CBoxs());
 	//線
-	base.emplace_back((unique_ptr<BaseVector>)new CLine());
+	//base.emplace_back((unique_ptr<BaseVector>)new CLine());
 }
 
 //更新処理

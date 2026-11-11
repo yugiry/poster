@@ -83,7 +83,7 @@ int CObject::Action(const ObjList& base, ObjList& add_list)
 
 		//À•WXVˆ—
 		UpDateVertexPosition_Screen(this);
-		/* {
+		/* { 
 			//ˆÚ“®ˆ—
 			pos.x += vec.x;
 			pos.y += vec.y;
