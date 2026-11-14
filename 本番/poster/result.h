@@ -23,6 +23,11 @@ public:
 	void Draw();//描画処理
 
 	int SCORE;
+private:
+	int n_game_clear_image{-1};
+	int n_game_over_image{-1};
+
+	bool n_is_clear{false};//ゲームクリアかゲームオーバーか
 
 	//CCamera* camera;//カメラオブジェクト
 };

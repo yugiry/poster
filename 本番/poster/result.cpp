@@ -7,6 +7,8 @@
 //コンストラクタ
 CResult::CResult(CManager* p) :CScene(p) {
 
+	n_game_clear_image = LoadGraph("image\\GameClear.png");
+	n_game_over_image = LoadGraph("image\\GameOver.png");
 }
 
 int CResult::Update() {
@@ -21,7 +23,13 @@ int CResult::Update() {
 }
 
 void CResult::Draw() {
-	DrawString(WINDOW_WIDTH / 2, WINDOW_HEIGHT / 2, "リザルト", 0xfcffff);
+	DrawString(WINDOW_WIDTH / 2, WINDOW_HEIGHT / 2, "Push To BACK", 0xfcffff);
+
+	//ゲームクリアかゲームオーバー画面表示
+	if (n_is_clear)
+		DrawGraph(0, 0, n_game_clear_image, false);
+	else
+		DrawGraph(0, 0, n_game_over_image, false);
 }
 
 CResult::~CResult() {}

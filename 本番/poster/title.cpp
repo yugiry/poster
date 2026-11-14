@@ -22,7 +22,8 @@ int CTitle::Update() {
 
 void CTitle::Draw() {
 	DrawGraph(0, 0, image, false);
-	DrawString(WINDOW_WIDTH / 2, WINDOW_HEIGHT / 2, "ƒ^ƒCƒgƒ‹", 0x000000);
+	SetFontSize(64);
+	DrawString(WINDOW_WIDTH / 2, WINDOW_HEIGHT / 2, "Push To ENTER", 0x000000);
 }
 
 CTitle::~CTitle(){}
