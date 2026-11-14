@@ -1,123 +1,67 @@
-﻿  boxs.cpp
-C:\dxlib\DxLib.h(1,1): warning C4819: ファイルは、現在のコード ページ (932) で表示できない文字を含んでいます。データの損失を防ぐために、ファイルを Unicode 形式で保存してください。
-  (ソース ファイル 'boxs.cpp' をコンパイルしています)
-  
-C:\dxlib\DxCompileConfig.h(1,1): warning C4819: ファイルは、現在のコード ページ (932) で表示できない文字を含んでいます。データの損失を防ぐために、ファイルを Unicode 形式で保存してください。
-  (ソース ファイル 'boxs.cpp' をコンパイルしています)
-  
-C:\dxlib\DxDataType.h(1,1): warning C4819: ファイルは、現在のコード ページ (932) で表示できない文字を含んでいます。データの損失を防ぐために、ファイルを Unicode 形式で保存してください。
-  (ソース ファイル 'boxs.cpp' をコンパイルしています)
-  
-C:\dxlib\DxCompileConfig.h(1,1): warning C4819: ファイルは、現在のコード ページ (932) で表示できない文字を含んでいます。データの損失を防ぐために、ファイルを Unicode 形式で保存してください。
-  (ソース ファイル 'boxs.cpp' をコンパイルしています)
-  
-C:\dxlib\DxDataTypeWin.h(1,1): warning C4819: ファイルは、現在のコード ページ (932) で表示できない文字を含んでいます。データの損失を防ぐために、ファイルを Unicode 形式で保存してください。
-  (ソース ファイル 'boxs.cpp' をコンパイルしています)
-  
-C:\dxlib\DxCompileConfig.h(1,1): warning C4819: ファイルは、現在のコード ページ (932) で表示できない文字を含んでいます。データの損失を防ぐために、ファイルを Unicode 形式で保存してください。
-  (ソース ファイル 'boxs.cpp' をコンパイルしています)
-  
-C:\dxlib\DxDataTypeWin.h(443,1): warning C4819: ファイルは、現在のコード ページ (932) で表示できない文字を含んでいます。データの損失を防ぐために、ファイルを Unicode 形式で保存してください。
-  (ソース ファイル 'boxs.cpp' をコンパイルしています)
-  
-C:\dxlib\DxDataTypeWin.h(1089,1): warning C4819: ファイルは、現在のコード ページ (932) で表示できない文字を含んでいます。データの損失を防ぐために、ファイルを Unicode 形式で保存してください。
-  (ソース ファイル 'boxs.cpp' をコンパイルしています)
-  
-C:\dxlib\DxLib.h(406,1): warning C4819: ファイルは、現在のコード ページ (932) で表示できない文字を含んでいます。データの損失を防ぐために、ファイルを Unicode 形式で保存してください。
-  (ソース ファイル 'boxs.cpp' をコンパイルしています)
-  
-C:\dxlib\DxLib.h(803,1): warning C4819: ファイルは、現在のコード ページ (932) で表示できない文字を含んでいます。データの損失を防ぐために、ファイルを Unicode 形式で保存してください。
-  (ソース ファイル 'boxs.cpp' をコンパイルしています)
-  
-C:\dxlib\DxLib.h(1328,1): warning C4819: ファイルは、現在のコード ページ (932) で表示できない文字を含んでいます。データの損失を防ぐために、ファイルを Unicode 形式で保存してください。
-  (ソース ファイル 'boxs.cpp' をコンパイルしています)
-  
-C:\dxlib\DxLib.h(1842,1): warning C4819: ファイルは、現在のコード ページ (932) で表示できない文字を含んでいます。データの損失を防ぐために、ファイルを Unicode 形式で保存してください。
-  (ソース ファイル 'boxs.cpp' をコンパイルしています)
-  
-C:\dxlib\DxFunctionWin.h(1,1): warning C4819: ファイルは、現在のコード ページ (932) で表示できない文字を含んでいます。データの損失を防ぐために、ファイルを Unicode 形式で保存してください。
-  (ソース ファイル 'boxs.cpp' をコンパイルしています)
-  
-C:\dxlib\DxFunctionWin.h(155,1): warning C4819: ファイルは、現在のコード ページ (932) で表示できない文字を含んでいます。データの損失を防ぐために、ファイルを Unicode 形式で保存してください。
-  (ソース ファイル 'boxs.cpp' をコンパイルしています)
-  
-C:\dxlib\DxFunctionWin.h(337,1): warning C4819: ファイルは、現在のコード ページ (932) で表示できない文字を含んでいます。データの損失を防ぐために、ファイルを Unicode 形式で保存してください。
-  (ソース ファイル 'boxs.cpp' をコンパイルしています)
-  
-C:\dxlib\DxLib.h(2183,1): warning C4819: ファイルは、現在のコード ページ (932) で表示できない文字を含んでいます。データの損失を防ぐために、ファイルを Unicode 形式で保存してください。
-  (ソース ファイル 'boxs.cpp' をコンパイルしています)
-  
-C:\dxlib\DxLib.h(2377,1): warning C4819: ファイルは、現在のコード ページ (932) で表示できない文字を含んでいます。データの損失を防ぐために、ファイルを Unicode 形式で保存してください。
-  (ソース ファイル 'boxs.cpp' をコンパイルしています)
-  
-C:\dxlib\DxLib.h(2572,1): warning C4819: ファイルは、現在のコード ページ (932) で表示できない文字を含んでいます。データの損失を防ぐために、ファイルを Unicode 形式で保存してください。
-  (ソース ファイル 'boxs.cpp' をコンパイルしています)
-  
-C:\dxlib\DxLib.h(2716,1): warning C4819: ファイルは、現在のコード ページ (932) で表示できない文字を含んでいます。データの損失を防ぐために、ファイルを Unicode 形式で保存してください。
-  (ソース ファイル 'boxs.cpp' をコンパイルしています)
-  
-C:\dxlib\DxLib.h(2821,1): warning C4819: ファイルは、現在のコード ページ (932) で表示できない文字を含んでいます。データの損失を防ぐために、ファイルを Unicode 形式で保存してください。
-  (ソース ファイル 'boxs.cpp' をコンパイルしています)
-  
-C:\dxlib\DxLib.h(2954,1): warning C4819: ファイルは、現在のコード ページ (932) で表示できない文字を含んでいます。データの損失を防ぐために、ファイルを Unicode 形式で保存してください。
-  (ソース ファイル 'boxs.cpp' をコンパイルしています)
-  
-C:\dxlib\DxLib.h(3064,1): warning C4819: ファイルは、現在のコード ページ (932) で表示できない文字を含んでいます。データの損失を防ぐために、ファイルを Unicode 形式で保存してください。
-  (ソース ファイル 'boxs.cpp' をコンパイルしています)
-  
-C:\dxlib\DxLib.h(3242,1): warning C4819: ファイルは、現在のコード ページ (932) で表示できない文字を含んでいます。データの損失を防ぐために、ファイルを Unicode 形式で保存してください。
-  (ソース ファイル 'boxs.cpp' をコンパイルしています)
-  
-C:\dxlib\DxLib.h(3381,1): warning C4819: ファイルは、現在のコード ページ (932) で表示できない文字を含んでいます。データの損失を防ぐために、ファイルを Unicode 形式で保存してください。
-  (ソース ファイル 'boxs.cpp' をコンパイルしています)
-  
-C:\dxlib\DxLib.h(3544,1): warning C4819: ファイルは、現在のコード ページ (932) で表示できない文字を含んでいます。データの損失を防ぐために、ファイルを Unicode 形式で保存してください。
-  (ソース ファイル 'boxs.cpp' をコンパイルしています)
-  
-C:\dxlib\DxLib.h(3735,1): warning C4819: ファイルは、現在のコード ページ (932) で表示できない文字を含んでいます。データの損失を防ぐために、ファイルを Unicode 形式で保存してください。
-  (ソース ファイル 'boxs.cpp' をコンパイルしています)
-  
-C:\dxlib\DxLib.h(3844,1): warning C4819: ファイルは、現在のコード ページ (932) で表示できない文字を含んでいます。データの損失を防ぐために、ファイルを Unicode 形式で保存してください。
-  (ソース ファイル 'boxs.cpp' をコンパイルしています)
-  
-C:\dxlib\DxLib.h(3931,1): warning C4819: ファイルは、現在のコード ページ (932) で表示できない文字を含んでいます。データの損失を防ぐために、ファイルを Unicode 形式で保存してください。
-  (ソース ファイル 'boxs.cpp' をコンパイルしています)
-  
-C:\dxlib\DxLib.h(4080,1): warning C4819: ファイルは、現在のコード ページ (932) で表示できない文字を含んでいます。データの損失を防ぐために、ファイルを Unicode 形式で保存してください。
-  (ソース ファイル 'boxs.cpp' をコンパイルしています)
-  
-C:\dxlib\DxLib.h(4586,1): warning C4819: ファイルは、現在のコード ページ (932) で表示できない文字を含んでいます。データの損失を防ぐために、ファイルを Unicode 形式で保存してください。
-  (ソース ファイル 'boxs.cpp' をコンパイルしています)
-  
-C:\dxlib\DxLib.h(4750,1): warning C4819: ファイルは、現在のコード ページ (932) で表示できない文字を含んでいます。データの損失を防ぐために、ファイルを Unicode 形式で保存してください。
-  (ソース ファイル 'boxs.cpp' をコンパイルしています)
-  
-C:\dxlib\DxLib.h(4917,1): warning C4819: ファイルは、現在のコード ページ (932) で表示できない文字を含んでいます。データの損失を防ぐために、ファイルを Unicode 形式で保存してください。
-  (ソース ファイル 'boxs.cpp' をコンパイルしています)
-  
-C:\dxlib\DxLib.h(5069,1): warning C4819: ファイルは、現在のコード ページ (932) で表示できない文字を含んでいます。データの損失を防ぐために、ファイルを Unicode 形式で保存してください。
-  (ソース ファイル 'boxs.cpp' をコンパイルしています)
-  
-C:\dxlib\DxLib.h(5258,1): warning C4819: ファイルは、現在のコード ページ (932) で表示できない文字を含んでいます。データの損失を防ぐために、ファイルを Unicode 形式で保存してください。
-  (ソース ファイル 'boxs.cpp' をコンパイルしています)
-  
-C:\dxlib\DxLib.h(5396,1): warning C4819: ファイルは、現在のコード ページ (932) で表示できない文字を含んでいます。データの損失を防ぐために、ファイルを Unicode 形式で保存してください。
-  (ソース ファイル 'boxs.cpp' をコンパイルしています)
-  
-C:\dxlib\DxLib.h(5581,1): warning C4819: ファイルは、現在のコード ページ (932) で表示できない文字を含んでいます。データの損失を防ぐために、ファイルを Unicode 形式で保存してください。
-  (ソース ファイル 'boxs.cpp' をコンパイルしています)
-  
-C:\Users\GA3\Desktop\クレーンゲーム\試作品一号\gravityHit\boxs.cpp(12,9): warning C4244: '=': 'int' から 'float' への変換です。データが失われる可能性があります。
-C:\Users\GA3\Desktop\クレーンゲーム\試作品一号\gravityHit\boxs.cpp(16,9): warning C4244: '=': 'int' から 'float' への変換です。データが失われる可能性があります。
-C:\Users\GA3\Desktop\クレーンゲーム\試作品一号\gravityHit\boxs.cpp(259,23): warning C4244: '引数': 'float' から 'int' への変換です。データが失われる可能性があります。
-C:\Users\GA3\Desktop\クレーンゲーム\試作品一号\gravityHit\boxs.cpp(259,16): warning C4244: '引数': 'float' から 'int' への変換です。データが失われる可能性があります。
-C:\Users\GA3\Desktop\クレーンゲーム\試作品一号\gravityHit\boxs.cpp(269,94): warning C4244: '引数': 'float' から 'int' への変換です。データが失われる可能性があります。
-C:\Users\GA3\Desktop\クレーンゲーム\試作品一号\gravityHit\boxs.cpp(269,69): warning C4244: '引数': 'float' から 'int' への変換です。データが失われる可能性があります。
-C:\Users\GA3\Desktop\クレーンゲーム\試作品一号\gravityHit\boxs.cpp(269,44): warning C4244: '引数': 'float' から 'int' への変換です。データが失われる可能性があります。
-C:\Users\GA3\Desktop\クレーンゲーム\試作品一号\gravityHit\boxs.cpp(269,19): warning C4244: '引数': 'float' から 'int' への変換です。データが失われる可能性があります。
-C:\Users\GA3\Desktop\クレーンゲーム\試作品一号\gravityHit\boxs.cpp(274,26): warning C4244: '引数': 'int' から 'float' への変換です。データが失われる可能性があります。
-C:\Users\GA3\Desktop\クレーンゲーム\試作品一号\gravityHit\boxs.cpp(276,44): warning C4244: '引数': 'float' から 'int' への変換です。データが失われる可能性があります。
-C:\Users\GA3\Desktop\クレーンゲーム\試作品一号\gravityHit\boxs.cpp(276,31): warning C4244: '引数': 'float' から 'int' への変換です。データが失われる可能性があります。
-C:\Users\GA3\Desktop\クレーンゲーム\試作品一号\gravityHit\boxs.cpp(276,21): warning C4244: '引数': 'float' から 'int' への変換です。データが失われる可能性があります。
-C:\Users\GA3\Desktop\クレーンゲーム\試作品一号\gravityHit\boxs.cpp(276,14): warning C4244: '引数': 'float' から 'int' への変換です。データが失われる可能性があります。
-  gravityHit.vcxproj -> C:\Users\GA3\Desktop\クレーンゲーム\試作品一号\x64\Debug\gravityHit.exe
+﻿  3D_function.cpp
+C:\Users\takum\Desktop\Phys\試作品一号\gravityHit\3D_function.cpp(26,140): warning C4244: '=': 'double' から 'float' への変換です。データが失われる可能性があります。
+C:\Users\takum\Desktop\Phys\試作品一号\gravityHit\3D_function.cpp(26,204): warning C4244: '=': 'double' から 'float' への変換です。データが失われる可能性があります。
+C:\Users\takum\Desktop\Phys\試作品一号\gravityHit\3D_function.cpp(28,90): warning C4244: '=': 'double' から 'float' への変換です。データが失われる可能性があります。
+C:\Users\takum\Desktop\Phys\試作品一号\gravityHit\3D_function.cpp(28,138): warning C4244: '=': 'double' から 'float' への変換です。データが失われる可能性があります。
+C:\Users\takum\Desktop\Phys\試作品一号\gravityHit\3D_function.cpp(31,129): warning C4244: '=': 'double' から 'float' への変換です。データが失われる可能性があります。
+C:\Users\takum\Desktop\Phys\試作品一号\gravityHit\3D_function.cpp(31,204): warning C4244: '=': 'double' から 'float' への変換です。データが失われる可能性があります。
+C:\Users\takum\Desktop\Phys\試作品一号\gravityHit\3D_function.cpp(33,78): warning C4244: '=': 'double' から 'float' への変換です。データが失われる可能性があります。
+C:\Users\takum\Desktop\Phys\試作品一号\gravityHit\3D_function.cpp(33,137): warning C4244: '=': 'double' から 'float' への変換です。データが失われる可能性があります。
+C:\Users\takum\Desktop\Phys\試作品一号\gravityHit\3D_function.cpp(36,128): warning C4244: '=': 'double' から 'float' への変換です。データが失われる可能性があります。
+C:\Users\takum\Desktop\Phys\試作品一号\gravityHit\3D_function.cpp(36,192): warning C4244: '=': 'double' から 'float' への変換です。データが失われる可能性があります。
+C:\Users\takum\Desktop\Phys\試作品一号\gravityHit\3D_function.cpp(38,78): warning C4244: '=': 'double' から 'float' への変換です。データが失われる可能性があります。
+C:\Users\takum\Desktop\Phys\試作品一号\gravityHit\3D_function.cpp(38,126): warning C4244: '=': 'double' から 'float' への変換です。データが失われる可能性があります。
+  box.cpp
+C:\Users\takum\Desktop\Phys\試作品一号\gravityHit\box.cpp(15,13): warning C4244: '=': 'double' から 'float' への変換です。データが失われる可能性があります。
+C:\Users\takum\Desktop\Phys\試作品一号\gravityHit\box.cpp(16,13): warning C4244: '=': 'double' から 'float' への変換です。データが失われる可能性があります。
+C:\Users\takum\Desktop\Phys\試作品一号\gravityHit\box.cpp(18,29): warning C4244: '引数': 'int' から 'float' への変換です。データが失われる可能性があります。
+C:\Users\takum\Desktop\Phys\試作品一号\gravityHit\box.cpp(22,29): warning C4244: '引数': 'int' から 'float' への変換です。データが失われる可能性があります。
+C:\Users\takum\Desktop\Phys\試作品一号\gravityHit\box.cpp(48,13): warning C4244: '=': 'double' から 'float' への変換です。データが失われる可能性があります。
+C:\Users\takum\Desktop\Phys\試作品一号\gravityHit\box.cpp(49,13): warning C4244: '=': 'double' から 'float' への変換です。データが失われる可能性があります。
+C:\Users\takum\Desktop\Phys\試作品一号\gravityHit\box.cpp(51,29): warning C4244: '引数': 'int' から 'float' への変換です。データが失われる可能性があります。
+C:\Users\takum\Desktop\Phys\試作品一号\gravityHit\box.cpp(55,29): warning C4244: '引数': 'int' から 'float' への変換です。データが失われる可能性があります。
+C:\Users\takum\Desktop\Phys\試作品一号\gravityHit\box.cpp(63,87): warning C4244: '引数': 'float' から 'int' への変換です。データが失われる可能性があります。
+C:\Users\takum\Desktop\Phys\試作品一号\gravityHit\box.cpp(63,66): warning C4244: '引数': 'float' から 'int' への変換です。データが失われる可能性があります。
+C:\Users\takum\Desktop\Phys\試作品一号\gravityHit\box.cpp(63,45): warning C4244: '引数': 'float' から 'int' への変換です。データが失われる可能性があります。
+C:\Users\takum\Desktop\Phys\試作品一号\gravityHit\box.cpp(63,24): warning C4244: '引数': 'float' から 'int' への変換です。データが失われる可能性があります。
+C:\Users\takum\Desktop\Phys\試作品一号\gravityHit\box.cpp(64,87): warning C4244: '引数': 'float' から 'int' への変換です。データが失われる可能性があります。
+C:\Users\takum\Desktop\Phys\試作品一号\gravityHit\box.cpp(64,66): warning C4244: '引数': 'float' から 'int' への変換です。データが失われる可能性があります。
+C:\Users\takum\Desktop\Phys\試作品一号\gravityHit\box.cpp(64,45): warning C4244: '引数': 'float' から 'int' への変換です。データが失われる可能性があります。
+C:\Users\takum\Desktop\Phys\試作品一号\gravityHit\box.cpp(64,24): warning C4244: '引数': 'float' から 'int' への変換です。データが失われる可能性があります。
+C:\Users\takum\Desktop\Phys\試作品一号\gravityHit\box.cpp(65,87): warning C4244: '引数': 'float' から 'int' への変換です。データが失われる可能性があります。
+C:\Users\takum\Desktop\Phys\試作品一号\gravityHit\box.cpp(65,66): warning C4244: '引数': 'float' から 'int' への変換です。データが失われる可能性があります。
+C:\Users\takum\Desktop\Phys\試作品一号\gravityHit\box.cpp(65,45): warning C4244: '引数': 'float' から 'int' への変換です。データが失われる可能性があります。
+C:\Users\takum\Desktop\Phys\試作品一号\gravityHit\box.cpp(65,24): warning C4244: '引数': 'float' から 'int' への変換です。データが失われる可能性があります。
+C:\Users\takum\Desktop\Phys\試作品一号\gravityHit\box.cpp(66,87): warning C4244: '引数': 'float' から 'int' への変換です。データが失われる可能性があります。
+C:\Users\takum\Desktop\Phys\試作品一号\gravityHit\box.cpp(66,66): warning C4244: '引数': 'float' から 'int' への変換です。データが失われる可能性があります。
+C:\Users\takum\Desktop\Phys\試作品一号\gravityHit\box.cpp(66,45): warning C4244: '引数': 'float' から 'int' への変換です。データが失われる可能性があります。
+C:\Users\takum\Desktop\Phys\試作品一号\gravityHit\box.cpp(66,24): warning C4244: '引数': 'float' から 'int' への変換です。データが失われる可能性があります。
+C:\Users\takum\Desktop\Phys\試作品一号\gravityHit\box.cpp(67,23): warning C4244: '引数': 'float' から 'int' への変換です。データが失われる可能性があります。
+C:\Users\takum\Desktop\Phys\試作品一号\gravityHit\box.cpp(67,16): warning C4244: '引数': 'float' から 'int' への変換です。データが失われる可能性があります。
+  boxs.cpp
+C:\Users\takum\Desktop\Phys\試作品一号\gravityHit\boxs.cpp(12,9): warning C4244: '=': 'int' から 'float' への変換です。データが失われる可能性があります。
+C:\Users\takum\Desktop\Phys\試作品一号\gravityHit\boxs.cpp(16,9): warning C4244: '=': 'int' から 'float' への変換です。データが失われる可能性があります。
+C:\Users\takum\Desktop\Phys\試作品一号\gravityHit\boxs.cpp(259,23): warning C4244: '引数': 'float' から 'int' への変換です。データが失われる可能性があります。
+C:\Users\takum\Desktop\Phys\試作品一号\gravityHit\boxs.cpp(259,16): warning C4244: '引数': 'float' から 'int' への変換です。データが失われる可能性があります。
+C:\Users\takum\Desktop\Phys\試作品一号\gravityHit\boxs.cpp(269,94): warning C4244: '引数': 'float' から 'int' への変換です。データが失われる可能性があります。
+C:\Users\takum\Desktop\Phys\試作品一号\gravityHit\boxs.cpp(269,69): warning C4244: '引数': 'float' から 'int' への変換です。データが失われる可能性があります。
+C:\Users\takum\Desktop\Phys\試作品一号\gravityHit\boxs.cpp(269,44): warning C4244: '引数': 'float' から 'int' への変換です。データが失われる可能性があります。
+C:\Users\takum\Desktop\Phys\試作品一号\gravityHit\boxs.cpp(269,19): warning C4244: '引数': 'float' から 'int' への変換です。データが失われる可能性があります。
+C:\Users\takum\Desktop\Phys\試作品一号\gravityHit\boxs.cpp(274,26): warning C4244: '引数': 'int' から 'float' への変換です。データが失われる可能性があります。
+C:\Users\takum\Desktop\Phys\試作品一号\gravityHit\boxs.cpp(276,44): warning C4244: '引数': 'float' から 'int' への変換です。データが失われる可能性があります。
+C:\Users\takum\Desktop\Phys\試作品一号\gravityHit\boxs.cpp(276,31): warning C4244: '引数': 'float' から 'int' への変換です。データが失われる可能性があります。
+C:\Users\takum\Desktop\Phys\試作品一号\gravityHit\boxs.cpp(276,21): warning C4244: '引数': 'float' から 'int' への変換です。データが失われる可能性があります。
+C:\Users\takum\Desktop\Phys\試作品一号\gravityHit\boxs.cpp(276,14): warning C4244: '引数': 'float' から 'int' への変換です。データが失われる可能性があります。
+  CCamera.cpp
+  2D_function.cpp
+C:\Users\takum\Desktop\Phys\試作品一号\gravityHit\2D_function.cpp(36,143): warning C4244: '=': 'double' から 'float' への変換です。データが失われる可能性があります。
+C:\Users\takum\Desktop\Phys\試作品一号\gravityHit\2D_function.cpp(36,202): warning C4244: '=': 'double' から 'float' への変換です。データが失われる可能性があります。
+  game.cpp
+C:\Users\takum\Desktop\Phys\試作品一号\gravityHit\game.cpp(32,37): warning C4267: '引数': 'size_t' から 'int' に変換しました。データが失われているかもしれません。
+  library_function.cpp
+  line.cpp
+  main.cpp
+  Myfunction.cpp
+C:\Users\takum\Desktop\Phys\試作品一号\gravityHit\Myfunction.cpp(59,9): warning C4244: 'return': 'double' から 'float' への変換です。データが失われる可能性があります。
+  コードを生成中...
+  gravityHit.vcxproj -> C:\Users\takum\Desktop\Phys\試作品一号\x64\Debug\gravityHit.exe
