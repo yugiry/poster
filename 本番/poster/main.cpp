@@ -3,8 +3,8 @@
 #pragma once
 #include "main.h"
 #include "Scene_Manager.h"
-//#include "Title.h"
-#include "game.h"
+#include "title.h"
+//#include "game.h"
 
 constexpr auto FPS = 60;//基本FPS
 
@@ -43,8 +43,7 @@ int APIENTRY wWinMain(_In_ HINSTANCE hInstance, _In_opt_ HINSTANCE,
 	CManager* manager = new CManager();
 
 	//初回シーンの生成
-	//manager->scene = new CTitle(manager);
-	manager->scene = new CGame(manager);
+	manager->scene = new CTitle(manager);
 
 
 	//ループ

@@ -43,6 +43,7 @@ public:
 	float rc{ 0 };//反発係数(0.0f ～ 1.0f)
 
 	float angle{ 0 };//オブジェクトの角度
+	float avec{ 0 };//オブジェクトの角速度
 
 	float ImgWidth{ 0 };//画像の横サイズ
 	float ImgHeight{ 0 };//画像の縦サイズ

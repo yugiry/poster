@@ -77,6 +77,9 @@ void UpDateVertexPosition_Screen(BaseVector* _obj)
 	_obj->pos.x += _obj->vec.x;
 	_obj->pos.y += _obj->vec.y;
 
+	//Šp“xˆ—
+	_obj->angle += _obj->avec;
+
 	Vector return_vec{ 0,0 };
 	for (int i = 0; i < _obj->vertex_num; i++)
 	{

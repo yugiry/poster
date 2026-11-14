@@ -170,9 +170,11 @@
     <ClInclude Include="objChar.h" />
     <ClInclude Include="paper.h" />
     <ClInclude Include="pressmachine.h" />
+    <ClInclude Include="result.h" />
     <ClInclude Include="Scene_Base.h" />
     <ClInclude Include="Scene_Manager.h" />
     <ClInclude Include="scrap.h" />
+    <ClInclude Include="title.h" />
     <ClInclude Include="wall.h" />
   </ItemGroup>
   <ItemGroup>
@@ -190,7 +192,9 @@
     <ClCompile Include="Myfunction.cpp" />
     <ClCompile Include="paper.cpp" />
     <ClCompile Include="pressmachine.cpp" />
+    <ClCompile Include="result.cpp" />
     <ClCompile Include="scrap.cpp" />
+    <ClCompile Include="title.cpp" />
     <ClCompile Include="wall.cpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />

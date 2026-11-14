@@ -2,6 +2,7 @@
 #include "DxLib.h"
 #include "Scene_Manager.h"
 #include "game.h"
+#include "result.h"
 #include "function.h"
 
 #include "crane.h"
@@ -77,6 +78,12 @@ int CGame::Update(){
 	//listオブジェクトの更新処理	
 	//for (auto i = base.begin(); i != base.end(); i++)
 	//	(*i)->Action(base);
+
+	if (CheckHitKey(KEY_INPUT_Y)) {
+		manager->Scene_Delete();
+		manager->scene = new CResult(manager);
+		return 0;
+	}
 
 	return 0;
 }
