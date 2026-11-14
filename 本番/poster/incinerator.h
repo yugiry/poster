@@ -8,4 +8,7 @@ public:
 
 	int Action(vector<unique_ptr<BaseVector>>&);
 	void Draw();
+
+private:
+	int image{ -1 };
 };

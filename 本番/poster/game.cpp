@@ -48,8 +48,8 @@ CGame::CGame(CManager* p) :CScene(p) {
 	pos.x += 30;
 	base.emplace_back((unique_ptr<BaseVector>)new CCan(pos));
 
-	////Ä‹p˜F‚Ì‰Š‚ğ¶¬
-	//base.emplace_back((unique_ptr<BaseVector>)new CIncinerator());
+	//Ä‹p˜F‚Ì‰Š‚ğ¶¬
+	base.emplace_back((unique_ptr<BaseVector>)new CIncinerator());
 	////ƒvƒŒƒX‹@‚ğ¶¬
 	//base.emplace_back((unique_ptr<BaseVector>)new CPressmachine());
 }

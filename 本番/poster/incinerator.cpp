@@ -7,10 +7,10 @@ CIncinerator::CIncinerator()
 {
 	pos.x = 590;
 	pos.y = 550;
-
+	image = LoadGraph("image\\Fire.png");
 	ImgWidth = 260;
-	ImgHeight = 40;
-
+	ImgHeight = 260;
+	pri = 5;
 	ID = INCINERATOR;
 }
 
@@ -93,4 +93,5 @@ int CIncinerator::Action(vector<unique_ptr<BaseVector>>& base)
 void CIncinerator::Draw()
 {
 	DrawBox(pos.x, pos.y, pos.x + ImgWidth, pos.y + ImgHeight, GetColor(255, 0, 0), false);
+	DrawExtendGraph(pos.x, pos.y, pos.x + ImgWidth, pos.y + ImgHeight, image, true);
 }

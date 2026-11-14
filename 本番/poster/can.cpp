@@ -18,7 +18,7 @@ CCan::CCan(Point p)
 	pos.y = dpos.y - ImgHeight / 2;
 
 	weight = 1;
-
+	pri = 1;
 	ID = CRUMB;
 }
 
