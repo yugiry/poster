@@ -6,7 +6,7 @@
 
 //コンストラクタ
 CTitle::CTitle(CManager* p) :CScene(p) {
-
+	image = LoadGraph("image\\title.png");
 }
 
 int CTitle::Update() {
@@ -21,7 +21,8 @@ int CTitle::Update() {
 }
 
 void CTitle::Draw() {
-	DrawString(WINDOW_WIDTH / 2, WINDOW_HEIGHT / 2, "タイトル", 0xfcffff);
+	DrawGraph(0, 0, image, false);
+	DrawString(WINDOW_WIDTH / 2, WINDOW_HEIGHT / 2, "タイトル", 0x000000);
 }
 
 CTitle::~CTitle(){}

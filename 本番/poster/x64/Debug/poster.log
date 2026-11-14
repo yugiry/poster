@@ -1,8 +1,5 @@
-﻿  game.cpp
-C:\Users\RiTe2\OneDrive\Desktop\post\本番\poster\game.cpp(22,8): warning C4101: 'pos': ローカル変数は 1 度も使われていません。
-C:\Users\RiTe2\OneDrive\Desktop\post\本番\poster\game.cpp(22,20): warning C4101: 'h': ローカル変数は 1 度も使われていません。
-C:\Users\RiTe2\OneDrive\Desktop\post\本番\poster\game.cpp(22,17): warning C4101: 'w': ローカル変数は 1 度も使われていません。
-C:\Users\RiTe2\OneDrive\Desktop\post\本番\poster\game.cpp(76,37): warning C4267: '引数': 'size_t' から 'int' に変換しました。データが失われているかもしれません。
+﻿  main.cpp
   result.cpp
+  title.cpp
   コードを生成中...
-  poster.vcxproj -> C:\Users\RiTe2\OneDrive\Desktop\post\本番\x64\Debug\poster.exe
+  poster.vcxproj -> C:\Users\takum\Desktop\Phys\本番\x64\Debug\poster.exe
