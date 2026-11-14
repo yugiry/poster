@@ -31,7 +31,7 @@ CObject::CObject(int _type)
 
 	angle = 0;
 	rc = 0.5f;
-	mass = 1.0f;
+	inv_mass = 1.0f;
 	vertex_num = 4;
 
 	//頂点の初期化
@@ -73,7 +73,7 @@ int CObject::Action(const ObjList& base, ObjList& add_list)
 	if (can)
 	{
 		vec.x = 0.0f; 
-		vec.y += g * mass;//重力×質量
+		vec.y += g * inv_mass;//重力×質量
 
 		if (CheckHitKey(KEY_INPUT_W))vec.y = -5.0f;
 		if (CheckHitKey(KEY_INPUT_S))vec.y = 5.0f;
@@ -83,6 +83,7 @@ int CObject::Action(const ObjList& base, ObjList& add_list)
 		if (CheckHitKey(KEY_INPUT_I))angle++;
 		if (CheckHitKey(KEY_INPUT_U))angle--;
 
+		angle += angular_velocity;
 		//座標更新処理
 		UpDateVertexPosition_Screen(this);
 		/* {

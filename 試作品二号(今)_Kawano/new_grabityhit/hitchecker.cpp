@@ -1,13 +1,13 @@
-#include "hitchecker.h"
+ï»¿#include "hitchecker.h"
 #include "function.h"
 #include <cmath>
-//ƒRƒ“ƒXƒgƒ‰ƒNƒ^
+//ã‚³ãƒ³ã‚¹ãƒˆãƒ©ã‚¯ã‚¿
 HitChecker::HitChecker()
 {
 
 }
 
-//“–‚½‚è”»’è‚ÌXVˆ—
+//å½“ãŸã‚Šåˆ¤å®šã®æ›´æ–°å‡¦ç†
 int HitChecker::CheckerUpdate(const ObjList& base)
 {
 	for (int i = 0; i < base.size(); i++)
@@ -21,7 +21,7 @@ int HitChecker::CheckerUpdate(const ObjList& base)
 
 			if (a->ID == (int)ObjID::POLYGON && b->ID == (int)ObjID::WALL)
 			{
-				HitCheck_PW_Axis(a, b);//²”»’èŠÖ”
+				HitCheck_PW_Axis(a, b);//è»¸åˆ¤å®šé–¢æ•°
 				//HitCheck_PW(a,b);
 			}
 			if (a->ID == (int)ObjID::CIRCLE && b->ID == (int)ObjID::WALL)
@@ -49,10 +49,10 @@ int HitChecker::CheckerUpdate(const ObjList& base)
 	return 0;
 }
 
-//²”»’èŠÖ”
+//è»¸åˆ¤å®šé–¢æ•°
 void HitChecker::HitCheck_PW_Axis(BaseVector* _poly, BaseVector* _wall)
 {
-	//_poly‚ÌOŠpŒ`‚Æ_wall‚ÌOŠpŒ`‚ğ’²‚×‚é(’¸“_‚²‚Æ‚Ìˆ—‚ğÈ‚«A•Ó“¯m‚ÌŒğ·‚ğ‹‚ß‚é)
+	//_polyã®ä¸‰è§’å½¢ã¨_wallã®ä¸‰è§’å½¢ã‚’èª¿ã¹ã‚‹(é ‚ç‚¹ã”ã¨ã®å‡¦ç†ã‚’çœãã€è¾ºåŒå£«ã®äº¤å·®ã‚’æ±‚ã‚ã‚‹)
 	if(angle_set_timer > 0)
 	angle_set_timer--;
 	if (angle_power != 0)
@@ -74,37 +74,28 @@ void HitChecker::HitCheck_PW_Axis(BaseVector* _poly, BaseVector* _wall)
 	}
 
 
-	//_poly‚Ìƒ|ƒŠƒSƒ“”
+	//_polyã®ãƒãƒªã‚´ãƒ³æ•°
 	for (int polygon1 = 0; polygon1 < _poly->tri.size(); polygon1++)
 	{
-		int polygon_next1 = polygon1++;
-		if (polygon_next1 == _poly->tri.size())
-			polygon_next1 = 0;
 
-		int polygon_old1 = polygon1--;
-		if (polygon_old1 == -1)
-			polygon_old1 = _poly->tri.size() - 1;
-
-
-
-		//_wall‚Ìƒ|ƒŠƒSƒ“”
+		//_wallã®ãƒãƒªã‚´ãƒ³æ•°
 		for (int polygon2 = 0; polygon2 < _wall->tri.size(); polygon2++)
 		{
-			float min_overlap = 1.0e30f;//d‚È‚è‚ÌÅ¬”»’è”ÍˆÍA’l‚Í10^30æ‚Éİ’è‚µˆê”Ô‚‚¢”š‚É‚·‚é
+			float min_overlap = 1.0e30f;//é‡ãªã‚Šã®æœ€å°åˆ¤å®šç¯„å›²ã€å€¤ã¯10^30ä¹—ã«è¨­å®šã—ä¸€ç•ªé«˜ã„æ•°å­—ã«ã™ã‚‹
 
-			bool collision = true;//Õ“Ë”»’èA‰Šú”»’è‚Ítrue‚Åfor•¶‚ğ‰ñ‚·
-			Vector axis = { 0.0f,0.0f };//•ûŒü
-			Vector axis_result = { 0.0f,0.0f };//ÅI“I‚ÈŒvZ‚³‚ê‚½•ûŒü
-			Point edge_start;//•Ó‚Ìn“_
-			Point edge_end;//•Ó‚ÌI“_
-			Vector poly_center{ 0.0f,0.0f };//poly‚Ì’†“_
-			Vector wall_center{ 0.0f,0.0f };//wall‚Ì’†“_
+			bool collision = true;//è¡çªåˆ¤å®šã€åˆæœŸåˆ¤å®šã¯trueã§foræ–‡ã‚’å›ã™
+			Vector axis = { 0.0f,0.0f };//æ–¹å‘
+			Vector axis_result = { 0.0f,0.0f };//æœ€çµ‚çš„ãªè¨ˆç®—ã•ã‚ŒãŸæ–¹å‘
+			Point edge_start;//è¾ºã®å§‹ç‚¹
+			Point edge_end;//è¾ºã®çµ‚ç‚¹
+			Vector poly_center{ 0.0f,0.0f };//polyã®ä¸­ç‚¹
+			Vector wall_center{ 0.0f,0.0f };//wallã®ä¸­ç‚¹
 
-			//ŠeOŠpŒ`‚Ì•Ó‚©‚ç‚’¼‚ÈƒxƒNƒgƒ‹‚ğì¬‚µA•ª—£²‚ğg‚Á‚Ä’²‚×‚é
-			//’²‚×‚éOŠpŒ`‚Ì”
+			//å„ä¸‰è§’å½¢ã®è¾ºã‹ã‚‰å‚ç›´ãªãƒ™ã‚¯ãƒˆãƒ«ã‚’ä½œæˆã—ã€åˆ†é›¢è»¸ã‚’ä½¿ã£ã¦èª¿ã¹ã‚‹
+			//èª¿ã¹ã‚‹ä¸‰è§’å½¢ã®æ•°
 			for (int shape = 0; shape < 2 && collision; shape++)
 			{
-				//’²‚×‚é•Ó‚Ì”
+				//èª¿ã¹ã‚‹è¾ºã®æ•°
 				for (int edge = 0; edge < THREE; edge++)
 				{
 					int next_edge = edge + 1;
@@ -112,7 +103,7 @@ void HitChecker::HitCheck_PW_Axis(BaseVector* _poly, BaseVector* _wall)
 						next_edge = 0;
 
 
-					//ŠeOŠpŒ`‚Ì•Ó‚ğİ’è
+					//å„ä¸‰è§’å½¢ã®è¾ºã‚’è¨­å®š
 					if (shape == 0)
 					{
 						edge_start = _poly->tri[polygon1].vertex[edge];
@@ -124,22 +115,22 @@ void HitChecker::HitCheck_PW_Axis(BaseVector* _poly, BaseVector* _wall)
 						edge_end = _wall->tri[polygon2].vertex[next_edge];
 					}
 
-					//•Ó‚É‚’¼‚È²‚Ìì¬
+					//è¾ºã«å‚ç›´ãªè»¸ã®ä½œæˆ
 					axis.x = -(edge_end.y - edge_start.y);
 					axis.y = edge_end.x - edge_start.x;
 
-					//²‚Ì’·‚³
+					//è»¸ã®é•·ã•
 					float axis_length = Vector_Length(axis);
 
-					//ˆê‰’·‚³‚ª0‚Å‚ ‚é•Ó‚Í–³‹
+					//ä¸€å¿œé•·ã•ãŒ0ã§ã‚ã‚‹è¾ºã¯ç„¡è¦–
 					if (axis_length <= 0.000001f)
 						continue;
 
-					//‚’¼‚È²‚ğ’·‚³‚ÅŠ„‚é
+					//å‚ç›´ãªè»¸ã‚’é•·ã•ã§å‰²ã‚‹
 					axis.x /= axis_length;
 					axis.y /= axis_length;
 
-					//_poly,_wall‚ÌOŠpŒ`‚É•Ó‚ÌÅ¬’lAÅ‘å’l‚ğİ’è
+					//_poly,_wallã®ä¸‰è§’å½¢ã«è¾ºã®æœ€å°å€¤ã€æœ€å¤§å€¤ã‚’è¨­å®š
 					float poly_min = _poly->tri[polygon1].vertex[0].x * axis.x +
 						_poly->tri[polygon1].vertex[0].y * axis.y;
 					float poly_max = poly_min;
@@ -148,7 +139,7 @@ void HitChecker::HitCheck_PW_Axis(BaseVector* _poly, BaseVector* _wall)
 						_wall->tri[polygon2].vertex[0].y * axis.y;
 					float wall_max = wall_min;
 
-					//‚»‚ê‚¼‚ê‚Ì’¸“_‚©‚ç‚’¼‚È²‚ğ“Š‰e‚µ‚Ä”ÍˆÍ‚ğ’²‚×‚é
+					//ãã‚Œãã‚Œã®é ‚ç‚¹ã‹ã‚‰å‚ç›´ãªè»¸ã‚’æŠ•å½±ã—ã¦ç¯„å›²ã‚’èª¿ã¹ã‚‹
 					for (int i = 1; i < THREE; i++)
 					{
 						//_poly
@@ -156,7 +147,7 @@ void HitChecker::HitCheck_PW_Axis(BaseVector* _poly, BaseVector* _wall)
 							_poly->tri[polygon1].vertex[i].x * axis.x +
 							_poly->tri[polygon1].vertex[i].y * axis.y;
 
-						//”ÍˆÍ“à‚È‚ç‚»‚ÌˆÊ’u‚Ü‚Å‹·‚ß‚é
+						//ç¯„å›²å†…ãªã‚‰ãã®ä½ç½®ã¾ã§ç‹­ã‚ã‚‹
 						if (projection < poly_min) poly_min = projection;
 						if (projection > poly_max) poly_max = projection;
 
@@ -170,37 +161,42 @@ void HitChecker::HitCheck_PW_Axis(BaseVector* _poly, BaseVector* _wall)
 
 					}
 
-					//d‚È‚è‚ğŒvZ
+					//é‡ãªã‚Šã‚’è¨ˆç®—
 					float overlap = (poly_max < wall_max ? poly_max : wall_max) -
 						(poly_min > wall_min ? poly_min : wall_min);
 
-					//²ã‚Å—£‚ê‚Ä‚¢‚ê‚ÎÕ“Ë‚µ‚Ä‚¢‚È‚¢‚Æ”»’è‚µƒXƒLƒbƒv‚·‚é
+					//è»¸ä¸Šã§é›¢ã‚Œã¦ã„ã‚Œã°è¡çªã—ã¦ã„ãªã„ã¨åˆ¤å®šã—ã‚¹ã‚­ãƒƒãƒ—ã™ã‚‹
 					if (overlap <= 0.0001f)
 					{
 						collision = false;
 						break;
 					}
+					else
+					{
+						//æ¥è§¦ç‚¹ã‹ã‚‰æœ€ã‚‚è¿‘ã„ç‚¹ã‚’ç‰¹å®š
+						contact = _poly->tri[polygon1].vertex[edge];
+					}
 
 
-					// ‰Ÿ‚µ–ß‚µ‚ªÅ¬‚É‚È‚éêŠ‚ğXV
+					// æŠ¼ã—æˆ»ã—ãŒæœ€å°ã«ãªã‚‹å ´æ‰€ã‚’æ›´æ–°
 					if (overlap < min_overlap)
 					{
 						min_overlap = overlap;
 						axis_result.x = axis.x;
 						axis_result.y = axis.y;
+						normal = axis;
 					}
 				}
 			}
 
-			//“–‚½‚Á‚Ä‚¢‚È‚¯‚ê‚ÎƒXƒLƒbƒv
+			//å½“ãŸã£ã¦ã„ãªã‘ã‚Œã°ã‚¹ã‚­ãƒƒãƒ—
 			if (!collision)
 			{
 				continue;
 			}
 
-
-			//poly,wall‚Ì’†S‚ğ‹‚ß‚é
-			//‚»‚ê‚¼‚ê‚Ì’¸“_ˆÊ’u‚ğ‰ÁZ‚µ‚Ä‚»‚ê‚ğ3‚ÅŠ„‚èŠeƒ|ƒŠƒSƒ“‚Ì’†“_‚ğŒvZ
+			//poly,wallã®ä¸­å¿ƒã‚’æ±‚ã‚ã‚‹
+			//ãã‚Œãã‚Œã®é ‚ç‚¹ä½ç½®ã‚’åŠ ç®—ã—ã¦ãã‚Œã‚’3ã§å‰²ã‚Šå„ãƒãƒªã‚´ãƒ³ã®ä¸­ç‚¹ã‚’è¨ˆç®—
 			for (int i = 0; i < THREE; i++)
 			{
 				poly_center.x += _poly->tri[polygon1].vertex[i].x;
@@ -213,7 +209,7 @@ void HitChecker::HitCheck_PW_Axis(BaseVector* _poly, BaseVector* _wall)
 			wall_center.x /= THREE;
 			wall_center.y /= THREE;
 
-			//‚»‚ê‚¼‚ê‚Ì’†S“_‚©‚çpoly-wall‚Ì–@ü‚ğì¬
+			//ãã‚Œãã‚Œã®ä¸­å¿ƒç‚¹ã‹ã‚‰poly-wallã®æ³•ç·šã‚’ä½œæˆ
 			Vector center{ 0.0f,0.0f };
 			center.x = poly_center.x - wall_center.x;
 			center.y = poly_center.y - wall_center.y;
@@ -224,131 +220,151 @@ void HitChecker::HitCheck_PW_Axis(BaseVector* _poly, BaseVector* _wall)
 				axis_result.y = -axis_result.y;
 			}
 
-			//‰Ÿ‚µ–ß‚·—Ê‚ğ¬•ª–ˆ‚Éİ’è
+			//æŠ¼ã—æˆ»ã™é‡ã‚’æˆåˆ†æ¯ã«è¨­å®š
 			Vector pushback =
 			{
 				axis_result.x * (min_overlap + 0.001f),
 				axis_result.y * (min_overlap + 0.001f)
 			};
 
-			//dS‚©‚çÕ“Ë“_‚Ü‚Å‚ÌƒxƒNƒgƒ‹
-			Point contact_point{ 0.0f,0.0f };
-
 			for (int i = 0; i < THREE; i++)
 			{
-				contact_point.x += _poly->tri[polygon1].vertex[i].x;
-				contact_point.y += _poly->tri[polygon1].vertex[i].y;
+				contact.x += _poly->tri[polygon1].vertex[i].x;
+				contact.y += _poly->tri[polygon1].vertex[i].y;
 			}
-			contact_point.x /= THREE;
-			contact_point.y /= THREE;
-
-
-			//‹ß—‚µ‚Ä‚»‚Ì·‚ğŒvZ
-			float rx = contact_point.x - _poly->pos.x;
-			float ry = contact_point.y - _poly->pos.y;
-
 			float vn = _poly->vec.x * axis_result.x + _poly->vec.y * axis_result.y;
 
 			if (vn < 0.0f && _poly->inertia > 0.000001f)
 			{
-				// –@ü•ûŒü‚Ì—ÍÏ‚Ì‘å‚«‚³
-				float impulse =
-					-(1.0f + _poly->rc) * vn * _poly->mass;
-				// Šp‘¬“x‚Ì•Ï‰»
 
-			_poly->angle_velocity +=
-					(rx * axis_result.y - ry * axis_result.x)
-					* impulse / _poly->inertia;
+				//float dist = _poly->tri[polygon1].vertex[1].y - _poly->tri[polygon1].vertex[2].y;
 
-			float dist = _poly->tri[polygon1].vertex[1].y - _poly->tri[polygon1].vertex[2].y;
+				//if (_poly->vec.y > 10.0f && angle_set_timer <= 0)
+				//{
 
-				if (_poly->vec.y > 10.0f && angle_set_timer <= 0)
-				{
-
-					if (dist > 10.0f && dist < 298.0f)
-					{
-						if (_poly->tri[polygon1].vertex[0].x > _wall->tri[polygon2].vertex[0].x)
-						{
-							angle_power = 20.0f;
-							angle_set_timer = ANGLE_MAX_TIMER;
-						}
-						else
-						{
-							angle_power = -20.0f;
-							angle_set_timer = ANGLE_MAX_TIMER;
-						}
-					}
-					else if (dist < -10.0f && dist > -298.0f)
-					{
-						angle_power = -20.0f;
-						angle_set_timer = ANGLE_MAX_TIMER;
-					}
-				}
+				//	if (dist > 10.0f && dist < 298.0f)
+				//	{
+				//		if (_poly->tri[polygon1].vertex[0].x > _wall->tri[polygon2].vertex[0].x)
+				//		{
+				//			angle_power = 20.0f;
+				//			angle_set_timer = ANGLE_MAX_TIMER;
+				//		}
+				//		else
+				//		{
+				//			angle_power = -20.0f;
+				//			angle_set_timer = ANGLE_MAX_TIMER;
+				//		}
+				//	}
+				//	else if (dist < -10.0f && dist > -298.0f)
+				//	{
+				//		angle_power = -20.0f;
+				//		angle_set_timer = ANGLE_MAX_TIMER;
+				//	}
+				//}
 			}
 
-
-			//•Ç‚ÉŒü‚©‚Á‚Ä‚¢‚é‘¬“x‚¾‚¯”½Ë‚³‚¹‚é
+			//å£ã«å‘ã‹ã£ã¦ã„ã‚‹é€Ÿåº¦ã ã‘åå°„ã•ã›ã‚‹
 			float vec_refrection =
 				_poly->vec.x * axis_result.x +
 				_poly->vec.y * axis_result.y;
 
 			if (vec_refrection < 0.0f)
 			{
+
+				//è¿‘ä¼¼ã—ã¦ãã®å·®ã‚’è¨ˆç®—
+				Vector r{ contact.x - _poly->pos.x,
+						contact.y - _poly->pos.y };
+
+				//æ¥è§¦ç‚¹ã®é€Ÿåº¦
+				Vector contact_velocity{
+					_poly->vec.x - _poly->angular_velocity * r.y,
+					_poly->vec.y - _poly->angular_velocity * r.x
+				};
 				_poly->vec.x -=
 					(1.0f + _poly->rc) * vec_refrection * axis_result.x;
 
 				_poly->vec.y -=
 					(1.0f + _poly->rc) * vec_refrection * axis_result.y;
 
+				const float velocityAlongNormal =
+					contact_velocity.x * normal.x +
+					contact_velocity.y * normal.y;
+
+				// å£ã«å‘ã‹ã£ã¦ã„ã‚‹æ™‚ã ã‘è¡çªã®åŠ›ç©ã‚’ä¸ãˆã‚‹
+				if (velocityAlongNormal < 0.0f)
+				{
+					const float invMass = _poly->inv_mass;
+					const float invInertia = _poly->inv_inertia;
+
+					const float rCrossN = r.x * normal.y - r.y * normal.x;
+
+					const float denominator =
+						invMass + rCrossN * rCrossN * invInertia;
+
+					if (denominator > 0.0001f)
+					{
+						// _poly->rc ã¯åç™ºä¿‚æ•°ï¼ˆ0ã€œ1ï¼‰ã‚’æƒ³å®š
+						const float impulseMagnitude =
+							-(1.0f + _poly->rc) * velocityAlongNormal / denominator;
+
+						const Vector impulse{
+							normal.x * impulseMagnitude,
+							normal.y * impulseMagnitude
+						};
+
+						_poly->vec.x += impulse.x * invMass;
+						_poly->vec.y += impulse.y * invMass;
+
+						// æ¥è§¦ç‚¹ãŒé‡å¿ƒã‹ã‚‰ãšã‚Œã¦ã„ã‚‹ã¨è§’é€Ÿåº¦ãŒç”Ÿã¾ã‚Œã‚‹
+						_poly->angular_velocity +=
+							(r.x * impulse.y - r.y * impulse.x) * invInertia;
+					}
+				}
 			}
 
 			UpDateVertexPosition_Object(_poly, pushback);
-
-			
-
 			return;
 		}
-
-		
 	}
 }
 
 
-//‘½ŠpŒ`‚Æ•Ç‚Ì“–‚½‚è”»’èˆ—
+
+//å¤šè§’å½¢ã¨å£ã®å½“ãŸã‚Šåˆ¤å®šå‡¦ç†
 void HitChecker::HitCheck_PW(BaseVector* _poly, BaseVector* _wall)
 {
-	//_poly‚Ìƒ|ƒŠƒSƒ“•ª’²‚×‚é
+	//_polyã®ãƒãƒªã‚´ãƒ³åˆ†èª¿ã¹ã‚‹
 	for (int polygon1 = 0; polygon1 < _poly->tri.size(); polygon1++)
 	{
-		//Œ»İ‚Ìƒ|ƒŠƒSƒ“‚Ì’¸“_‚¸‚Â
+		//ç¾åœ¨ã®ãƒãƒªã‚´ãƒ³ã®é ‚ç‚¹ãšã¤
 		for (int vertex1 = 0; vertex1 < THREE; vertex1++)
 		{
-			Point p = _poly->tri[polygon1].vertex[vertex1];//Œ»İ’²‚×‚Ä‚¢‚é’¸“_
+			Point p = _poly->tri[polygon1].vertex[vertex1];//ç¾åœ¨èª¿ã¹ã¦ã„ã‚‹é ‚ç‚¹
 
-			//_wall‚Ìƒ|ƒŠƒSƒ“•ª’²‚×‚é
+			//_wallã®ãƒãƒªã‚´ãƒ³åˆ†èª¿ã¹ã‚‹
 			for (int polygon2 = 0; polygon2 < _wall->tri.size(); polygon2++)
 			{
 
 				float cross[THREE];
 
 				Vector dot[THREE];
-				Vector Dist[THREE];//“_“¯m‚Ì‹——£
+				Vector Dist[THREE];//ç‚¹åŒå£«ã®è·é›¢
 				Point old_pos;
-				//’¸“_‚ª_wall‚Ìƒ|ƒŠƒSƒ““à‚É“ü‚Á‚Ä‚¢‚é‚©’²‚×‚é
+				//é ‚ç‚¹ãŒ_wallã®ãƒãƒªã‚´ãƒ³å†…ã«å…¥ã£ã¦ã„ã‚‹ã‹èª¿ã¹ã‚‹
 				for (int i = 0; i < THREE; i++)
 				{
 					int j = i + 1;
 					if (j == THREE)j = 0;
 
-					//‚ ‚½‚Á‚½‘Šè‚Ì–Ê‚ÌƒxƒNƒgƒ‹
+					//ã‚ãŸã£ãŸç›¸æ‰‹ã®é¢ã®ãƒ™ã‚¯ãƒˆãƒ«
 					Vector v1 = Sub_Point_Point(_wall->tri[polygon2].vertex[j], _wall->tri[polygon2].vertex[i]);
-					//“–‚½‚Á‚½©•ª‚Ì’¸“_‚©‚ç–Ê‚Ü‚Å‚ÌƒxƒNƒgƒ‹
+					//å½“ãŸã£ãŸè‡ªåˆ†ã®é ‚ç‚¹ã‹ã‚‰é¢ã¾ã§ã®ãƒ™ã‚¯ãƒˆãƒ«
 					Vector v2 = Sub_Point_Point(p, _wall->tri[polygon2].vertex[j]);
 
-					//‹‚ß‚½ƒxƒNƒgƒ‹‚©‚çŠOÏ‚ğg‚Á‚Ä’²‚×‚é
+					//æ±‚ã‚ãŸãƒ™ã‚¯ãƒˆãƒ«ã‹ã‚‰å¤–ç©ã‚’ä½¿ã£ã¦èª¿ã¹ã‚‹
 					cross[i] = v1.x * v2.y - v1.y * v2.x;
 
-					//“àÏ
+					//å†…ç©
 					Vector d1 = Sub_Point_Point(p, _wall->tri[polygon2].vertex[i]);
 					Vector d2 = Sub_Point_Point(p, _wall->tri[polygon2].vertex[j]);
 					Vector v3 = Sub_Point_Point(_wall->tri[polygon2].vertex[i], _wall->tri[polygon2].vertex[j]);
@@ -356,7 +372,7 @@ void HitChecker::HitCheck_PW(BaseVector* _poly, BaseVector* _wall)
 					dot[i].x = d1.x * v1.x + d1.y * v1.y;
 					dot[i].y = d2.x * v3.x + d2.y * v3.y;
 
-					//“_“¯m‚ªd‚È‚Á‚½
+					//ç‚¹åŒå£«ãŒé‡ãªã£ãŸæ™‚
 					Dist[i].x = (d1.x * d1.x) + (d1.y * d1.y);
 					Dist[i].y = (d2.x * d2.x) + (d2.y * d2.y);
 
@@ -365,12 +381,12 @@ void HitChecker::HitCheck_PW(BaseVector* _poly, BaseVector* _wall)
 
 				if ((cross[0] > 0 && cross[1] > 0 && cross[2] > 0) || (cross[0] < 0 && cross[1] < 0 && cross[2] < 0))
 				{
-					//d—Í‰Á‘¬‚ğƒŠƒZƒbƒg
+					//é‡åŠ›åŠ é€Ÿã‚’ãƒªã‚»ãƒƒãƒˆ
 					_poly->vec.y = -(_poly->vec.y * _poly->rc);
 					_poly->vec.x = -(_poly->vec.x);
 					_poly->pos.x += _poly->vec.x;_poly->pos.y += _poly->vec.y;
 
-					//“–‚½‚Á‚½ˆÊ’u‚Ü‚Å–ß‚·
+					//å½“ãŸã£ãŸä½ç½®ã¾ã§æˆ»ã™
 					Point near_pos = Near_Point_Line(p, _wall->tri[polygon2].vertex[1], _wall->tri[polygon2].vertex[2]);
 					Vector return_vec = { near_pos.x - p.x,near_pos.y - p.y };
 					UpDateVertexPosition_Object(_poly, return_vec);
@@ -380,28 +396,28 @@ void HitChecker::HitCheck_PW(BaseVector* _poly, BaseVector* _wall)
 				if ((dot[0].x >= 0.0f && dot[0].y >= 0.0f) && (dot[1].x >= 0.0f && dot[1].y >= 0.0f) && (dot[2].x >= 0.0f && dot[2].y >= 0.0f) &&
 					cross[0] == 0.0f && cross[1] == 0.0f && cross[2] == 0.0f)
 				{
-					//d—Í‰Á‘¬‚ğƒŠƒZƒbƒg
+					//é‡åŠ›åŠ é€Ÿã‚’ãƒªã‚»ãƒƒãƒˆ
 					_poly->vec.y = -(_poly->vec.y * _poly->rc);
 					_poly->vec.x = -(_poly->vec.x);
 					_poly->pos.x += _poly->vec.x;_poly->pos.y += _poly->vec.y;
 
-					//“–‚½‚Á‚½ˆÊ’u‚Ü‚Å–ß‚·
+					//å½“ãŸã£ãŸä½ç½®ã¾ã§æˆ»ã™
 					Point near_pos = Near_Point_Line(p, _wall->tri[polygon2].vertex[1], _wall->tri[polygon2].vertex[2]);
 					Vector return_vec = { near_pos.x - p.x,near_pos.y - p.y };
 					UpDateVertexPosition_Object(_poly, return_vec);
 
 					return;
 				}
-				//“_“¯m‚Ì‚ ‚½‚è”»’è
+				//ç‚¹åŒå£«ã®ã‚ãŸã‚Šåˆ¤å®š
 				if (Dist[0].x <= 12 || Dist[1].x <= 12 || Dist[2].x <= 12 ||
 					Dist[0].y <= 12 || Dist[1].y <= 12 || Dist[2].y <= 12)
 				{
-					//d—Í‰Á‘¬“x‚ğƒŠƒZƒbƒg
+					//é‡åŠ›åŠ é€Ÿåº¦ã‚’ãƒªã‚»ãƒƒãƒˆ
 					_poly->vec.y = -(_poly->vec.y);
 					_poly->vec.x = -(_poly->vec.x);_poly->vec.y = -(_poly->vec.y);
 					_poly->pos.x += _poly->vec.x;_poly->pos.y += _poly->vec.y;
 
-					//“–‚½‚Á‚½ˆÊ’u‚Ü‚Å–ß‚·
+					//å½“ãŸã£ãŸä½ç½®ã¾ã§æˆ»ã™
 					Point near_pos = Near_Point_Line(p, _wall->tri[polygon2].vertex[1], _wall->tri[polygon2].vertex[2]);
 					Vector return_vec = { p.x - near_pos.x,p.y - near_pos.y };
 					UpDateVertexPosition_Object(_poly, return_vec);
@@ -412,32 +428,32 @@ void HitChecker::HitCheck_PW(BaseVector* _poly, BaseVector* _wall)
 		}
 	}
 
-	//_wall‚Ìƒ|ƒŠƒSƒ“•ª’²‚×‚é
+	//_wallã®ãƒãƒªã‚´ãƒ³åˆ†èª¿ã¹ã‚‹
 	for (int polygon1 = 0; polygon1 < _wall->tri.size(); polygon1++)
 	{
-		//Œ»İ‚Ìƒ|ƒŠƒSƒ“‚Ì’¸“_‚¸‚Â
+		//ç¾åœ¨ã®ãƒãƒªã‚´ãƒ³ã®é ‚ç‚¹ãšã¤
 		for (int vertex1 = 0; vertex1 < THREE; vertex1++)
 		{
-			Point p = _wall->tri[polygon1].vertex[vertex1];//Œ»İ’²‚×‚Ä‚¢‚é’¸“_
+			Point p = _wall->tri[polygon1].vertex[vertex1];//ç¾åœ¨èª¿ã¹ã¦ã„ã‚‹é ‚ç‚¹
 
-			//_poly‚Ìƒ|ƒŠƒSƒ“•ª’²‚×‚é
+			//_polyã®ãƒãƒªã‚´ãƒ³åˆ†èª¿ã¹ã‚‹
 			for (int polygon2 = 0; polygon2 < _poly->tri.size(); polygon2++)
 			{
-				float cross[THREE];//ŠOÏ
+				float cross[THREE];//å¤–ç©
 
 				Vector dot[THREE];
-				Vector Dist[THREE];//“_“¯m‚Ì‹——£
-				//’¸“_‚ª_poly‚Ìƒ|ƒŠƒSƒ““à‚É“ü‚Á‚Ä‚¢‚é‚©’²‚×‚é
+				Vector Dist[THREE];//ç‚¹åŒå£«ã®è·é›¢
+				//é ‚ç‚¹ãŒ_polyã®ãƒãƒªã‚´ãƒ³å†…ã«å…¥ã£ã¦ã„ã‚‹ã‹èª¿ã¹ã‚‹
 				for (int i = 0; i < THREE; i++)
 				{
 					int j = i + 1;
 					if (j == THREE)j = 0;
 
-					//ŠOÏ
+					//å¤–ç©
 					Vector v1 = Sub_Point_Point(_poly->tri[polygon2].vertex[j], _poly->tri[polygon2].vertex[i]);
 					Vector v2 = Sub_Point_Point(p, _poly->tri[polygon2].vertex[j]);
 					cross[i] = v1.x * v2.y - v1.y * v2.x;
-					//“àÏ
+					//å†…ç©
 					Vector d1 = Sub_Point_Point(p, _poly->tri[polygon2].vertex[i]);
 					Vector d2 = Sub_Point_Point(p, _poly->tri[polygon2].vertex[j]);
 					Vector v3 = Sub_Point_Point(_poly->tri[polygon2].vertex[i], _poly->tri[polygon2].vertex[j]);
@@ -445,18 +461,18 @@ void HitChecker::HitCheck_PW(BaseVector* _poly, BaseVector* _wall)
 					dot[i].x = d1.x * v1.x + d1.y * v1.y;
 					dot[i].y = d2.x * v3.x + d2.y * v3.y;
 
-					//“_“¯m‚ªd‚È‚Á‚½
+					//ç‚¹åŒå£«ãŒé‡ãªã£ãŸæ™‚
 					Dist[i].x = (d1.x * d1.x) + (d1.y * d1.y);
 					Dist[i].y = (d2.x * d2.x) + (d2.y * d2.y);
 
 				}
-				//ŠOÏ”»’è
+				//å¤–ç©åˆ¤å®š
 				if ((cross[0] > 0 && cross[1] > 0 && cross[2] > 0) || (cross[0] < 0 && cross[1] < 0 && cross[2] < 0))
 				{
-					//d—Í‰Á‘¬“x‚ğƒŠƒZƒbƒg
+					//é‡åŠ›åŠ é€Ÿåº¦ã‚’ãƒªã‚»ãƒƒãƒˆ
 					_poly->vec.y = -(_poly->vec.y * _poly->rc);
 
-					//“–‚½‚Á‚½ˆÊ’u‚Ü‚Å–ß‚·
+					//å½“ãŸã£ãŸä½ç½®ã¾ã§æˆ»ã™
 					Point near_pos = Near_Point_Line(p, _poly->tri[polygon2].vertex[1], _poly->tri[polygon2].vertex[2]);
 					Vector return_vec = { p.x - near_pos.x,p.y - near_pos.y };
 
@@ -467,26 +483,26 @@ void HitChecker::HitCheck_PW(BaseVector* _poly, BaseVector* _wall)
 				if ((dot[0].x >= 0.0f && dot[0].y >= 0.0f) && (dot[1].x >= 0.0f && dot[1].y >= 0.0f) && (dot[2].x >= 0.0f && dot[2].y >= 0.0f) &&
 					cross[0] == 0.0f && cross[1] == 0.0f && cross[2] == 0.0f)
 				{
-					//d—Í‰Á‘¬‚ğƒŠƒZƒbƒg
+					//é‡åŠ›åŠ é€Ÿã‚’ãƒªã‚»ãƒƒãƒˆ
 					_poly->vec.y = -(_poly->vec.y * _poly->rc);
 
-					//“–‚½‚Á‚½ˆÊ’u‚Ü‚Å–ß‚·
+					//å½“ãŸã£ãŸä½ç½®ã¾ã§æˆ»ã™
 					Point near_pos = Near_Point_Line(p, _poly->tri[polygon2].vertex[1], _poly->tri[polygon2].vertex[2]);
 					Vector return_vec = { near_pos.x - p.x,near_pos.y - p.y };
 
 					UpDateVertexPosition_Object(_poly, return_vec);
 					break;
 				}
-				//“_“¯m‚Ì‚ ‚½‚è”»’è
+				//ç‚¹åŒå£«ã®ã‚ãŸã‚Šåˆ¤å®š
 				if (Dist[0].x <= 12 || Dist[1].x <= 12 || Dist[2].x <= 12 ||
 					Dist[0].y <= 12 || Dist[1].y <= 12 || Dist[2].y <= 12)
 				{
-					//d—Í‰Á‘¬“x‚ğƒŠƒZƒbƒg
+					//é‡åŠ›åŠ é€Ÿåº¦ã‚’ãƒªã‚»ãƒƒãƒˆ
 					_poly->vec.y = -(_poly->vec.y);
 					_poly->vec.x = -(_poly->vec.x);_poly->vec.y = -(_poly->vec.y);
 					_poly->pos.x += _poly->vec.x;_poly->pos.y += _poly->vec.y;
 
-					//“–‚½‚Á‚½ˆÊ’u‚Ü‚Å–ß‚·
+					//å½“ãŸã£ãŸä½ç½®ã¾ã§æˆ»ã™
 					Point near_pos = Near_Point_Line(p, _poly->tri[polygon2].vertex[1], _poly->tri[polygon2].vertex[2]);
 					Vector return_vec = { p.x - near_pos.x,p.y - near_pos.y };
 					UpDateVertexPosition_Object(_poly, return_vec);
@@ -501,31 +517,31 @@ void HitChecker::HitCheck_PW(BaseVector* _poly, BaseVector* _wall)
 
 
 
-//‰~‚Æ•Ç‚Ì“–‚½‚è”»’èˆ—
+//å††ã¨å£ã®å½“ãŸã‚Šåˆ¤å®šå‡¦ç†
 void HitChecker::HitCheck_CW(BaseVector* _cir, BaseVector* _wall)
 {
 
 }
 
-//‘½ŠpŒ`‚Æ‘½ŠpŒ`‚Ì“–‚½‚è”»’èˆ—
+//å¤šè§’å½¢ã¨å¤šè§’å½¢ã®å½“ãŸã‚Šåˆ¤å®šå‡¦ç†
 void HitChecker::HitCheck_PP(BaseVector* _poly1, BaseVector* _poly2)
 {
 	bool poly1_hit = false, poly2_hit = false;
 
-	//_poly1‚Ìƒ|ƒŠƒSƒ“•ª’²‚×‚é
+	//_poly1ã®ãƒãƒªã‚´ãƒ³åˆ†èª¿ã¹ã‚‹
 	for (int polygon1 = 0; polygon1 < _poly1->tri.size(); polygon1++)
 	{
-		//Œ»İ‚Ìƒ|ƒŠƒSƒ“‚Ì’¸“_‚¸‚Â
+		//ç¾åœ¨ã®ãƒãƒªã‚´ãƒ³ã®é ‚ç‚¹ãšã¤
 		for (int vertex1 = 1; vertex1 < THREE; vertex1++)
 		{
-			Point p = _poly1->tri[polygon1].vertex[vertex1];//Œ»İ’²‚×‚Ä‚¢‚é’¸“_
+			Point p = _poly1->tri[polygon1].vertex[vertex1];//ç¾åœ¨èª¿ã¹ã¦ã„ã‚‹é ‚ç‚¹
 
-			//_poly2‚Ìƒ|ƒŠƒSƒ“•ª’²‚×‚é
+			//_poly2ã®ãƒãƒªã‚´ãƒ³åˆ†èª¿ã¹ã‚‹
 			for (int polygon2 = 0; polygon2 < _poly2->tri.size(); polygon2++)
 			{
 				float cross[THREE];
 
-				//’¸“_‚ª_poly2‚Ìƒ|ƒŠƒSƒ““à‚É“ü‚Á‚Ä‚¢‚é‚©’²‚×‚é
+				//é ‚ç‚¹ãŒ_poly2ã®ãƒãƒªã‚´ãƒ³å†…ã«å…¥ã£ã¦ã„ã‚‹ã‹èª¿ã¹ã‚‹
 				for (int i = 0; i < THREE; i++)
 				{
 					int j = i + 1;
@@ -538,10 +554,10 @@ void HitChecker::HitCheck_PP(BaseVector* _poly1, BaseVector* _poly2)
 				}
 				if ((cross[0] > 0 && cross[1] > 0 && cross[2] > 0) || (cross[0] < 0 && cross[1] < 0 && cross[2] < 0))
 				{
-					//d—Í‰Á‘¬‚ğƒŠƒZƒbƒg
+					//é‡åŠ›åŠ é€Ÿã‚’ãƒªã‚»ãƒƒãƒˆ
 					_poly1->vec.y = 0;
 
-					//“–‚½‚Á‚½ˆÊ’u‚Ü‚Å–ß‚·
+					//å½“ãŸã£ãŸä½ç½®ã¾ã§æˆ»ã™
 					Point near_pos = Near_Point_Line(p, _poly2->tri[polygon2].vertex[1], _poly2->tri[polygon2].vertex[2]);
 					Vector return_vec = { near_pos.x - p.x,near_pos.y - p.y };
 
@@ -553,20 +569,20 @@ void HitChecker::HitCheck_PP(BaseVector* _poly1, BaseVector* _poly2)
 		}
 	}
 
-	//_poly2‚Ìƒ|ƒŠƒSƒ“•ª’²‚×‚é
+	//_poly2ã®ãƒãƒªã‚´ãƒ³åˆ†èª¿ã¹ã‚‹
 	//for (int polygon2 = 0; polygon2 < _poly2->tri.size(); polygon2++)
 	//{
-	//	//aƒ|ƒŠƒSƒ“‚Ì’¸“_‚¸‚Â
+	//	//aãƒãƒªã‚´ãƒ³ã®é ‚ç‚¹ãšã¤
 	//	for (int vertex2 = 1; vertex2 < THREE; vertex2++)
 	//	{
-	//		Point p = _poly2->tri[polygon2].vertex[vertex2];//Œ»İ’²‚×‚Ä‚¢‚é’¸“_
+	//		Point p = _poly2->tri[polygon2].vertex[vertex2];//ç¾åœ¨èª¿ã¹ã¦ã„ã‚‹é ‚ç‚¹
 
-	//		//_poly1‚Ìƒ|ƒŠƒSƒ“•ª’²‚×‚é
+	//		//_poly1ã®ãƒãƒªã‚´ãƒ³åˆ†èª¿ã¹ã‚‹
 	//		for (int polygon1 = 0; polygon1 < _poly1->tri.size(); polygon1++)
 	//		{
 	//			float cross[THREE];
 
-	//			//’¸“_‚ª_poly1‚Ìƒ|ƒŠƒSƒ““à‚É“ü‚Á‚Ä‚¢‚é‚©’²‚×‚é
+	//			//é ‚ç‚¹ãŒ_poly1ã®ãƒãƒªã‚´ãƒ³å†…ã«å…¥ã£ã¦ã„ã‚‹ã‹èª¿ã¹ã‚‹
 	//			for (int i = 0; i < THREE; i++)
 	//			{
 	//				int j = i + 1;
@@ -586,18 +602,18 @@ void HitChecker::HitCheck_PP(BaseVector* _poly1, BaseVector* _poly2)
 	//	}
 	//}
 
-	//“–‚½‚Á‚½Œã‚Ì“®‚«
+	//å½“ãŸã£ãŸå¾Œã®å‹•ã
 	//_poly1->vertex_hit = poly1_hit;
 	//_poly2->vertex_hit = poly2_hit;
 }
 
-//‰~‚Æ‰~‚Ì“–‚½‚è”»’èˆ—
+//å††ã¨å††ã®å½“ãŸã‚Šåˆ¤å®šå‡¦ç†
 void HitChecker::HitCheck_CC(BaseVector* _cir1, BaseVector* _cir2)
 {
 
 }
 
-//‘½ŠpŒ`‚Æ‰~‚Ì“–‚½‚è”»’èˆ—
+//å¤šè§’å½¢ã¨å††ã®å½“ãŸã‚Šåˆ¤å®šå‡¦ç†
 void HitChecker::HitCheck_PC(BaseVector* _poly, BaseVector* _cir)
 {
 
@@ -611,12 +627,12 @@ void HitChecker::Draw()
 	}
 }
 
-//“_‚ªƒ|ƒŠƒSƒ“‚Ì’†‚É‚¢‚é‚©‚Ç‚¤‚©’²‚×‚é
-//(n“_AI“_A’¸“_)
+//ç‚¹ãŒãƒãƒªã‚´ãƒ³ã®ä¸­ã«ã„ã‚‹ã‹ã©ã†ã‹èª¿ã¹ã‚‹
+//(å§‹ç‚¹ã€çµ‚ç‚¹ã€é ‚ç‚¹)
 bool HitChecker::CheckInPolygon(vector<Point> vsp, Point vp)
 {
 	float cross[THREE];
-	//’¸“_‚ª_poly1‚Ìƒ|ƒŠƒSƒ““à‚É“ü‚Á‚Ä‚¢‚é‚©’²‚×‚é
+	//é ‚ç‚¹ãŒ_poly1ã®ãƒãƒªã‚´ãƒ³å†…ã«å…¥ã£ã¦ã„ã‚‹ã‹èª¿ã¹ã‚‹
 	for (int i = 0; i < THREE; i++)
 	{
 		int j = i + 1;

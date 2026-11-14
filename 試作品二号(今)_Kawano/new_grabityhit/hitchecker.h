@@ -31,7 +31,8 @@ public:
 	bool object_hit{ false };
 	float angle_power{0.0f};//角速度に加算する値
 	float angle_set_timer = ANGLE_MAX_TIMER;
-	Point most_under_point;
+	Point contact{0,0};//回転用の接触点
+	Vector normal{ 0,0 };//カベから物体への法線ベクトル
 
 #pragma endregion
 
