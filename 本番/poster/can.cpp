@@ -6,10 +6,13 @@ CCan::CCan(Point p)
 {
 	dpos = p;
 
-	img = LoadGraph("image\\can.png");
+	img = LoadGraph("image\\Trash.png");
 
-	ImgWidth = 24;
-	ImgHeight = 64;
+	ImgWidth = 32;
+	ImgHeight = 32;
+
+	CutX = 0;
+	CutY = 0;
 
 	pos.x = dpos.x - ImgWidth / 2;
 	pos.y = dpos.y - ImgHeight / 2;
@@ -52,5 +55,5 @@ int CCan::Action(vector<unique_ptr<BaseVector>>& base)
 
 void CCan::Draw()
 {
-	DrawRotaGraph(dpos.x, dpos.y, 1, RADIAN(0), img, true);
+	DrawRectRotaGraph(dpos.x, dpos.y,CutX,CutY,ImgWidth,ImgHeight,1, RADIAN(0), img, true);
 }

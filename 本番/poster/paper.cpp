@@ -5,12 +5,12 @@
 CPaper::CPaper(Point p)
 {
 	pos = p;
-
 	ImgWidth = 32;
 	ImgHeight = 32;
-
+	img = LoadGraph("image\\Trash.png");
 	radius = 16;
-
+	CutX = 0;
+	CutY = 32;
 	weight = 1;
 
 	ID = BURNABLE;
@@ -39,7 +39,5 @@ int CPaper::Action(vector<unique_ptr<BaseVector>>& base)
 
 void CPaper::Draw()
 {
-	//DrawBox(pos.x, pos.y, pos.x + ImgWidth, pos.y + ImgHeight, GetColor(255, 255, 255), true);
-
-	DrawCircle(pos.x, pos.y, radius, GetColor(255, 255, 255), true);
+	DrawRectRotaGraph(dpos.x, dpos.y, CutX, CutY, ImgWidth, ImgHeight, 1, RADIAN(0), img, true);
 }

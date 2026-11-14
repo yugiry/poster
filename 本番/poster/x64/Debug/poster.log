@@ -1,2 +1,13 @@
-﻿  title.cpp
+﻿  game.cpp
+C:\Users\takum\Desktop\Phys\本番\poster\game.cpp(25,55): warning C4244: '=': 'float' から 'int' への変換です。データが失われる可能性があります。
+C:\Users\takum\Desktop\Phys\本番\poster\game.cpp(27,55): warning C4244: '=': 'float' から 'int' への変換です。データが失われる可能性があります。
+C:\Users\takum\Desktop\Phys\本番\poster\game.cpp(29,53): warning C4244: '=': 'float' から 'int' への変換です。データが失われる可能性があります。
+C:\Users\takum\Desktop\Phys\本番\poster\game.cpp(33,52): warning C4244: '=': 'float' から 'int' への変換です。データが失われる可能性があります。
+C:\Users\takum\Desktop\Phys\本番\poster\game.cpp(35,52): warning C4244: '=': 'float' から 'int' への変換です。データが失われる可能性があります。
+C:\Users\takum\Desktop\Phys\本番\poster\game.cpp(76,37): warning C4267: '引数': 'size_t' から 'int' に変換しました。データが失われているかもしれません。
+  paper.cpp
+C:\Users\takum\Desktop\Phys\本番\poster\paper.cpp(27,47): warning C4244: '引数': 'int' から 'float' への変換です。データが失われる可能性があります。
+C:\Users\takum\Desktop\Phys\本番\poster\paper.cpp(42,32): warning C4244: '引数': 'float' から 'int' への変換です。データが失われる可能性があります。
+C:\Users\takum\Desktop\Phys\本番\poster\paper.cpp(42,24): warning C4244: '引数': 'float' から 'int' への変換です。データが失われる可能性があります。
+  コードを生成中...
   poster.vcxproj -> C:\Users\takum\Desktop\Phys\本番\x64\Debug\poster.exe
